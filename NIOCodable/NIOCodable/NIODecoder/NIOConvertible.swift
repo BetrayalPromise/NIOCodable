@@ -195,6 +195,45 @@ public protocol CustomConvertible {
     
     func toInt32(key: CodingKey, value: String) -> Int32
     func toInt32(key: CodingKey, value: String) -> Int32?
+    
+    func toInt64(key: CodingKey, value: Bool) -> Int64
+    func toInt64(key: CodingKey, value: Bool) -> Int64?
+    
+    func toInt64(key: CodingKey, value: Int) -> Int64
+    func toInt64(key: CodingKey, value: Int) -> Int64?
+    
+    func toInt64(key: CodingKey, value: Int8) -> Int64
+    func toInt64(key: CodingKey, value: Int8) -> Int64?
+    
+    func toInt64(key: CodingKey, value: Int16) -> Int64
+    func toInt64(key: CodingKey, value: Int16) -> Int64?
+    
+    func toInt64(key: CodingKey, value: Int32) -> Int64
+    func toInt64(key: CodingKey, value: Int32) -> Int64?
+    
+    func toInt64(key: CodingKey, value: UInt) -> Int64
+    func toInt64(key: CodingKey, value: UInt) -> Int64?
+    
+    func toInt64(key: CodingKey, value: UInt8) -> Int64
+    func toInt64(key: CodingKey, value: UInt8) -> Int64?
+    
+    func toInt64(key: CodingKey, value: UInt16) -> Int64
+    func toInt64(key: CodingKey, value: UInt16) -> Int64?
+    
+    func toInt64(key: CodingKey, value: UInt32) -> Int64
+    func toInt64(key: CodingKey, value: UInt32) -> Int64?
+    
+    func toInt64(key: CodingKey, value: UInt64) -> Int64
+    func toInt64(key: CodingKey, value: UInt64) -> Int64?
+    
+    func toInt64(key: CodingKey, value: Float) -> Int64
+    func toInt64(key: CodingKey, value: Float) -> Int64?
+    
+    func toInt64(key: CodingKey, value: Double) -> Int64
+    func toInt64(key: CodingKey, value: Double) -> Int64?
+    
+    func toInt64(key: CodingKey, value: String) -> Int64
+    func toInt64(key: CodingKey, value: String) -> Int64?
 }
 
 // MARK: Int转Bool
@@ -1023,5 +1062,154 @@ extension CustomConvertible {
     
     func toInt32(key: CodingKey, value: String) -> Int32? {
         return Int32(value)
+    }
+}
+
+// MARK: Bool转Int64
+extension CustomConvertible {
+    func toInt64(key: CodingKey, value: Bool) -> Int64 {
+        switch value {
+        case true: return 1
+        default: return 0
+        }
+    }
+    
+    func toInt64(key: CodingKey, value: Bool) -> Int64? {
+        switch value {
+        case true: return 1
+        default: return 0
+        }
+    }
+}
+
+// MARK: Int转Int64
+extension CustomConvertible {
+    func toInt64(key: CodingKey, value: Int) -> Int64 {
+        return Int64(value)
+    }
+    
+    func toInt64(key: CodingKey, value: Int) -> Int64? {
+        return Int64(value)
+    }
+}
+
+// MARK: Int8转Int64
+extension CustomConvertible {
+    func toInt64(key: CodingKey, value: Int8) -> Int64 {
+        return Int64(value)
+    }
+
+    func toInt64(key: CodingKey, value: Int8) -> Int64? {
+        return Int64(value)
+    }
+}
+
+// MARK: Int16转Int64
+extension CustomConvertible {
+    func toInt64(key: CodingKey, value: Int16) -> Int64 {
+        return Int64(value)
+    }
+    
+    func toInt64(key: CodingKey, value: Int16) -> Int64? {
+        return Int64(value)
+    }
+}
+
+// MARK: Int32转Int64
+extension CustomConvertible {
+    func toInt64(key: CodingKey, value: Int32) -> Int64 {
+        return Int64(value)
+    }
+    
+    func toInt64(key: CodingKey, value: Int32) -> Int64? {
+        return Int64(value)
+    }
+}
+
+// MARK: UInt转Int64
+extension CustomConvertible {
+    func toInt64(key: CodingKey, value: UInt) -> Int64 {
+        return Int64(value)
+    }
+    
+    func toInt64(key: CodingKey, value: UInt) -> Int64? {
+        return Int64(value)
+    }
+}
+
+// MARK: UInt8转Int64
+extension CustomConvertible {
+    func toInt64(key: CodingKey, value: UInt8) -> Int64 {
+        return Int64(value)
+    }
+    
+    func toInt64(key: CodingKey, value: UInt8) -> Int64? {
+        return Int64(value)
+    }
+}
+
+// MARK: UInt16转Int64
+extension CustomConvertible {
+    func toInt64(key: CodingKey, value: UInt16) -> Int64 {
+        return Int64(value)
+    }
+    
+    func toInt64(key: CodingKey, value: UInt16) -> Int64? {
+        return Int64(value)
+    }
+}
+
+// MARK: UInt32转Int64
+extension CustomConvertible {
+    func toInt64(key: CodingKey, value: UInt32) -> Int64 {
+        return Int64(value)
+    }
+    
+    func toInt64(key: CodingKey, value: UInt32) -> Int64? {
+        return Int64(value)
+    }
+}
+
+// MARK: UInt64转Int64
+extension CustomConvertible {
+    func toInt64(key: CodingKey, value: UInt64) -> Int64 {
+        return Int64(value)
+    }
+    
+    func toInt64(key: CodingKey, value: UInt64) -> Int64? {
+        return Int64(value)
+    }
+}
+
+// MARK: Float转Int64
+extension CustomConvertible {
+    func toInt64(key: CodingKey, value: Float) -> Int64 {
+        return Int64(value)
+    }
+    
+    func toInt64(key: CodingKey, value: Float) -> Int64? {
+        return Int64(value)
+    }
+}
+
+// MARK: Double转Int64
+extension CustomConvertible {
+    func toInt64(key: CodingKey, value: Double) -> Int64 {
+        return Int64(value)
+    }
+    
+    func toInt64(key: CodingKey, value: Double) -> Int64? {
+        return Int64(value)
+    }
+}
+
+// MARK: String转Int64
+extension CustomConvertible {
+    func toInt64(key: CodingKey, value: String) -> Int64 {
+        return Int64(value) ?? 0
+    }
+    
+    func toInt64(key: CodingKey, value: String) -> Int64? {
+        return Int64(value)
     }
 }
