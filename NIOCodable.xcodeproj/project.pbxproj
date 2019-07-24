@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		F7A549EA22E802A000EEB188 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A549E922E802A000EEB188 /* AppDelegate.swift */; };
 		F7A549EC22E802A000EEB188 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A549EB22E802A000EEB188 /* ViewController.swift */; };
-		F7A549EF22E802A000EEB188 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7A549ED22E802A000EEB188 /* Main.storyboard */; };
 		F7A549F122E802A000EEB188 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7A549F022E802A000EEB188 /* Assets.xcassets */; };
-		F7A549F422E802A000EEB188 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7A549F222E802A000EEB188 /* LaunchScreen.storyboard */; };
 		F7A549FF22E802A100EEB188 /* NIOCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A549FE22E802A100EEB188 /* NIOCodableTests.swift */; };
 		F7A54A1122E802CF00EEB188 /* NIODecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A54A0B22E802CF00EEB188 /* NIODecoder.swift */; };
 		F7A54A1222E802CF00EEB188 /* NIOJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A54A0C22E802CF00EEB188 /* NIOJSONDecoder.swift */; };
@@ -35,9 +33,7 @@
 		F7A549E622E8029F00EEB188 /* NIOCodable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NIOCodable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A549E922E802A000EEB188 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7A549EB22E802A000EEB188 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F7A549EE22E802A000EEB188 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7A549F022E802A000EEB188 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F7A549F322E802A000EEB188 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7A549F522E802A000EEB188 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7A549FA22E802A100EEB188 /* NIOCodableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NIOCodableTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A549FE22E802A100EEB188 /* NIOCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIOCodableTests.swift; sourceTree = "<group>"; };
@@ -92,9 +88,7 @@
 				F7A54A0922E802C200EEB188 /* NIOCodable */,
 				F7A549E922E802A000EEB188 /* AppDelegate.swift */,
 				F7A549EB22E802A000EEB188 /* ViewController.swift */,
-				F7A549ED22E802A000EEB188 /* Main.storyboard */,
 				F7A549F022E802A000EEB188 /* Assets.xcassets */,
-				F7A549F222E802A000EEB188 /* LaunchScreen.storyboard */,
 				F7A549F522E802A000EEB188 /* Info.plist */,
 			);
 			path = NIOCodable;
@@ -219,9 +213,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7A549F422E802A000EEB188 /* LaunchScreen.storyboard in Resources */,
 				F7A549F122E802A000EEB188 /* Assets.xcassets in Resources */,
-				F7A549EF22E802A000EEB188 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,25 +259,6 @@
 			targetProxy = F7A549FB22E802A100EEB188 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		F7A549ED22E802A000EEB188 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F7A549EE22E802A000EEB188 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F7A549F222E802A000EEB188 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F7A549F322E802A000EEB188 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F7A54A0122E802A100EEB188 /* Debug */ = {
@@ -409,6 +382,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LRXW8DEK2D;
 				INFOPLIST_FILE = NIOCodable/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -426,6 +400,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LRXW8DEK2D;
 				INFOPLIST_FILE = NIOCodable/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

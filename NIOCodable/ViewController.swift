@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @objc
     func handle(button: UIButton) {
         struct JSON: Codable {
-            var name: Bool
+            var name: Bool?
         }
         let data: Data = """
         [{"name": "3a"}, {"name": "true"}]
@@ -36,6 +36,10 @@ extension ViewController: CustomConvertible {
         if value == "3a" {
             return true
         }
+        return false
+    }
+
+    func toBool(key: CodingKey, value: String) -> Bool? {
         return false
     }
 }
