@@ -41,7 +41,7 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
      // MARK: Bool?
     func decodeIfPresent(_ type: Bool.Type, forKey key: K) throws -> Bool? {
         guard var entry: Any = self.source[key.stringValue] else {
-            throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: [key], debugDescription: "Value不存在"))
+            return nil
         }
         return try self.decodeIfPresent(value: &entry, type: Bool.self, forKey: key)
     }
@@ -57,7 +57,7 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     // MARK: Int?
     func decodeIfPresent(_ type: Int.Type, forKey key: K) throws -> Int? {
         guard var entry: Any = self.source[key.stringValue] else {
-            throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: [key], debugDescription: "Value不存在"))
+            return nil
         }
         return try self.decodeIfPresent(value: &entry, type: Int.self, forKey: key)
     }
@@ -73,7 +73,7 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     // MARK: Int8?
     func decodeIfPresent(_ type: Int8.Type, forKey key: K) throws -> Int8? {
         guard var entry: Any = self.source[key.stringValue] else {
-            throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: [key], debugDescription: "Value不存在"))
+            return nil
         }
         return try self.decodeIfPresent(value: &entry, type: Int8.self, forKey: key)
     }
@@ -89,7 +89,7 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     // MARK: Int16?
     func decodeIfPresent(_ type: Int16.Type, forKey key: K) throws -> Int16? {
         guard var entry: Any = self.source[key.stringValue] else {
-            throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: [key], debugDescription: "Value不存在"))
+            return nil
         }
         return try self.decodeIfPresent(value: &entry, type: Int16.self, forKey: key)
     }
@@ -105,7 +105,7 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     // MARK: Int32?
     func decodeIfPresent(_ type: Int32.Type, forKey key: K) throws -> Int32? {
         guard var entry: Any = self.source[key.stringValue] else {
-            throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: [key], debugDescription: "Value不存在"))
+            return nil
         }
         return try self.decodeIfPresent(value: &entry, type: Int32.self, forKey: key)
     }
@@ -121,7 +121,7 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     // MARK: Int64?
     func decodeIfPresent(_ type: Int64.Type, forKey key: K) throws -> Int64? {
         guard var entry: Any = self.source[key.stringValue] else {
-            throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: [key], debugDescription: "Value不存在"))
+            return nil
         }
         return try self.decodeIfPresent(value: &entry, type: Int64.self, forKey: key)
     }
@@ -137,7 +137,7 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     // MARK: UInt?
     func decodeIfPresent(_ type: UInt.Type, forKey key: K) throws -> UInt? {
         guard var entry: Any = self.source[key.stringValue] else {
-            throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: [key], debugDescription: "Value不存在"))
+            return nil
         }
         return try self.decodeIfPresent(value: &entry, type: UInt.self, forKey: key)
     }
@@ -153,7 +153,7 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     // MARK: UInt8?
     func decodeIfPresent(_ type: UInt8.Type, forKey key: K) throws -> UInt8? {
         guard var entry: Any = self.source[key.stringValue] else {
-            throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: [key], debugDescription: "Value不存在"))
+            return nil
         }
         return try self.decodeIfPresent(value: &entry, type: UInt8.self, forKey: key)
     }
@@ -169,7 +169,7 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     // MARK: UInt16?
     func decodeIfPresent(_ type: UInt16.Type, forKey key: K) throws -> UInt16? {
         guard var entry: Any = self.source[key.stringValue] else {
-            throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: [key], debugDescription: "Value不存在"))
+            return nil
         }
         return try self.decodeIfPresent(value: &entry, type: UInt16.self, forKey: key)
     }
@@ -185,7 +185,7 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     // MARK: UInt32?
     func decodeIfPresent(_ type: UInt32.Type, forKey key: K) throws -> UInt32? {
         guard var entry: Any = self.source[key.stringValue] else {
-            throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: [key], debugDescription: "Value不存在"))
+            return nil
         }
         return try self.decodeIfPresent(value: &entry, type: UInt32.self, forKey: key)
     }
@@ -201,7 +201,7 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     // MARK: UInt64?
     func decodeIfPresent(_ type: UInt64.Type, forKey key: K) throws -> UInt64? {
         guard var entry: Any = self.source[key.stringValue] else {
-            throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: [key], debugDescription: "Value不存在"))
+            return nil
         }
         return try self.decodeIfPresent(value: &entry, type: UInt64.self, forKey: key)
     }
@@ -217,7 +217,7 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     // MARK: T?
     func decodeIfPresent(_ type: Float.Type, forKey key: K) throws -> Float? {
         guard var entry: Any = self.source[key.stringValue] else {
-            throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: [key], debugDescription: "Value不存在"))
+            return nil
         }
         return try self.decodeIfPresent(value: &entry, type: Float.self, forKey: key)
     }
@@ -231,7 +231,7 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     
     func decodeIfPresent(_ type: Double.Type, forKey key: K) throws -> Double? {
         guard var entry: Any = self.source[key.stringValue] else {
-            throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: [key], debugDescription: "Value不存在"))
+            return nil
         }
         return try self.decodeIfPresent(value: &entry, type: Double.self, forKey: key)
     }
@@ -247,7 +247,7 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     // MARK: String?
     func decodeIfPresent(_ type: String.Type, forKey key: K) throws -> String? {
         guard var entry: Any = self.source[key.stringValue] else {
-            throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: [key], debugDescription: "Value不存在"))
+            return nil
         }
         return try self.decodeIfPresent(value: &entry, type: String.self, forKey: key)
     }

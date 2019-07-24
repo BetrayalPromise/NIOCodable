@@ -5,11 +5,12 @@ class NIORealizeDecoder: Decoder {
     var userInfo: [CodingUserInfoKey : Any] = [:]
     var source: Any
     var storage: OperationData = OperationData()
-    
-    init(source: Any, codingPath: [CodingKey] = [], userInfo: [CodingUserInfoKey : Any] = [:]) {
+    let strategy: NIOJSONDecoder.TypeDecodingStrategy
+    init(strategy: NIOJSONDecoder.TypeDecodingStrategy, source: Any, codingPath: [CodingKey] = [], userInfo: [CodingUserInfoKey : Any] = [:]) {
         self.source = source
         self.codingPath = codingPath
         self.userInfo = userInfo
+        self.strategy = strategy
         self.storage.push(source)
     }
     

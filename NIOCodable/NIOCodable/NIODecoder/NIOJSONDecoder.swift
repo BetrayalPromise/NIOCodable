@@ -13,7 +13,7 @@ public final class NIOJSONDecoder {
             guard let source: Any = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) else {
                 throw DecodingError.typeMismatch(type, DecodingError.Context(codingPath: [], debugDescription: "非JSON对象结构"))
             }
-            let decoder: NIORealizeDecoder = NIORealizeDecoder(source: source)
+            let decoder: NIORealizeDecoder = NIORealizeDecoder(strategy: self.typeDecodingStrategy, source: source)
             guard let value = try decoder.unbox(source, as: type) else {
                 throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: [], debugDescription: "无JSON顶级结构"))
             }
