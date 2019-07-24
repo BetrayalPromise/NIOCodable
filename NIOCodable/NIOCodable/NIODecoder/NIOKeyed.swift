@@ -958,34 +958,74 @@ extension NIOKeyed {
             self.decoder.codingPath.removeLast()
             self.decoder.storage.pop()
         }
+        let strategy: NIOJSONDecoder.TypeDecodingStrategy = self.instance?.typeDecodingStrategy ?? .default
         if let `value`: Int32 = value as? Int32 {
             return value
         } else if let `value`: Bool = value as? Bool {
-            return value == true ? 1 : 0
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: Int = value as? Int {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: Int8 = value as? Int8 {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: Int16 = value as? Int16 {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: Int64 = value as? Int64 {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: UInt = value as? UInt {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: UInt8 = value as? UInt8 {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: UInt16 = value as? UInt16 {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: UInt32 = value as? UInt32 {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: UInt64 = value as? UInt64 {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: Float = value as? Float {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: Double = value as? Double {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: String = value as? String {
-            return Int32(value.lowercased()) ?? 0
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value.lowercased())
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value.lowercased())
+            }
         } else {
             return 0
         }
@@ -998,34 +1038,74 @@ extension NIOKeyed {
             self.decoder.codingPath.removeLast()
             self.decoder.storage.pop()
         }
+        let strategy: NIOJSONDecoder.TypeDecodingStrategy = self.instance?.typeDecodingStrategy ?? .default
         if let `value`: Int32 = value as? Int32 {
             return value
         } else if let `value`: Bool = value as? Bool {
-            return value == true ? 1 : 0
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: Int = value as? Int {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: Int8 = value as? Int8 {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: Int16 = value as? Int16 {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: Int64 = value as? Int64 {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: UInt = value as? UInt {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: UInt8 = value as? UInt8 {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: UInt16 = value as? UInt16 {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: UInt32 = value as? UInt32 {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: UInt64 = value as? UInt64 {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: Float = value as? Float {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: Double = value as? Double {
-            return Int32(value)
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value)
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value)
+            }
         } else if let `value`: String = value as? String {
-            return Int32(value.lowercased())
+            switch strategy {
+            case .default: return self.toInt32(key: key, value: value.lowercased())
+            case .custom(let delegate): return delegate.toInt32(key: key, value: value.lowercased())
+            }
         } else {
             return nil
         }
