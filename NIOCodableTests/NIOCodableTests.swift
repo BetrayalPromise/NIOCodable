@@ -1,33 +1,36 @@
-//
-//  NIOCodableTests.swift
-//  NIOCodableTests
-//
-//  Created by Chunyang Li 李春阳 on 2019/7/24.
-//  Copyright © 2019 com.nio. All rights reserved.
-//
-
 import XCTest
 @testable import NIOCodable
 
 class NIOCodableTests: XCTestCase {
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        
     }
 
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        struct JSON: Codable {
+            var name: Bool?
+        }
+        let data: Data = """
+        {"name": "3a"}
+        """.data(using: String.Encoding.utf8) ?? Data()
+        
+        do {
+            let decoder = NIOJSONDecoder()
+            let model: JSON = try decoder.decode(type: JSON.self, from: data)
+            XCTAssert(model.name == false)
+        } catch {
+            print(error)
+        }
     }
 
     func testPerformanceExample() {
-        // This is an example of a performance test case.
         self.measure {
-            // Put the code you want to measure the time of here.
+            
         }
     }
 
