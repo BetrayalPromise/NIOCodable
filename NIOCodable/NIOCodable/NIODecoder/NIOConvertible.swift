@@ -234,6 +234,45 @@ public protocol CustomConvertible {
     
     func toInt64(key: CodingKey, value: String) -> Int64
     func toInt64(key: CodingKey, value: String) -> Int64?
+    
+    func toUInt(key: CodingKey, value: Bool) -> UInt
+    func toUInt(key: CodingKey, value: Bool) -> UInt?
+    
+    func toUInt(key: CodingKey, value: Int) -> UInt
+    func toUInt(key: CodingKey, value: Int) -> UInt?
+    
+    func toUInt(key: CodingKey, value: Int8) -> UInt
+    func toUInt(key: CodingKey, value: Int8) -> UInt?
+    
+    func toUInt(key: CodingKey, value: Int16) -> UInt
+    func toUInt(key: CodingKey, value: Int16) -> UInt?
+    
+    func toUInt(key: CodingKey, value: Int32) -> UInt
+    func toUInt(key: CodingKey, value: Int32) -> UInt?
+    
+    func toUInt(key: CodingKey, value: Int64) -> UInt
+    func toUInt(key: CodingKey, value: Int64) -> UInt?
+    
+    func toUInt(key: CodingKey, value: UInt8) -> UInt
+    func toUInt(key: CodingKey, value: UInt8) -> UInt?
+    
+    func toUInt(key: CodingKey, value: UInt16) -> UInt
+    func toUInt(key: CodingKey, value: UInt16) -> UInt?
+    
+    func toUInt(key: CodingKey, value: UInt32) -> UInt
+    func toUInt(key: CodingKey, value: UInt32) -> UInt?
+    
+    func toUInt(key: CodingKey, value: UInt64) -> UInt
+    func toUInt(key: CodingKey, value: UInt64) -> UInt?
+    
+    func toUInt(key: CodingKey, value: Float) -> UInt
+    func toUInt(key: CodingKey, value: Float) -> UInt?
+    
+    func toUInt(key: CodingKey, value: Double) -> UInt
+    func toUInt(key: CodingKey, value: Double) -> UInt?
+    
+    func toUInt(key: CodingKey, value: String) -> UInt
+    func toUInt(key: CodingKey, value: String) -> UInt?
 }
 
 // MARK: Int转Bool
@@ -1211,5 +1250,153 @@ extension CustomConvertible {
     
     func toInt64(key: CodingKey, value: String) -> Int64? {
         return Int64(value)
+    }
+}
+
+// MARK: Bool转UInt
+extension CustomConvertible {
+    func toUInt(key: CodingKey, value: Bool) -> UInt {
+        switch value {
+        case true: return 1
+        default: return 0
+        }
+    }
+    
+    func toUInt(key: CodingKey, value: Bool) -> UInt? {
+        switch value {
+        case true: return 1
+        default: return 0
+        }
+    }
+}
+
+// MARK: Int转UInt
+extension CustomConvertible {
+    func toUInt(key: CodingKey, value: Int) -> UInt {
+        return UInt(value)
+    }
+    
+    func toUInt(key: CodingKey, value: Int) -> UInt? {
+        return UInt(value)
+    }
+}
+
+// MARK: Int8转UInt
+extension CustomConvertible {
+    func toUInt(key: CodingKey, value: Int8) -> UInt {
+        return UInt(value)
+    }
+    
+    func toUInt(key: CodingKey, value: Int8) -> UInt? {
+        return UInt(value)
+    }
+}
+
+// MARK: Int16转UInt
+extension CustomConvertible {
+    func toUInt(key: CodingKey, value: Int16) -> UInt {
+        return UInt(value)
+    }
+    
+    func toUInt(key: CodingKey, value: Int16) -> UInt? {
+        return UInt(value)
+    }
+}
+
+// MARK: Int32转UInt
+extension CustomConvertible {
+    func toUInt(key: CodingKey, value: Int32) -> UInt {
+        return UInt(value)
+    }
+    func toUInt(key: CodingKey, value: Int32) -> UInt? {
+        return UInt(value)
+    }
+}
+
+// MARK: Int64转UInt
+extension CustomConvertible {
+    func toUInt(key: CodingKey, value: Int64) -> UInt {
+        return UInt(value)
+    }
+    
+    func toUInt(key: CodingKey, value: Int64) -> UInt? {
+        return UInt(value)
+    }
+}
+
+// MARK: UInt8转UInt
+extension CustomConvertible {
+    func toUInt(key: CodingKey, value: UInt8) -> UInt {
+        return UInt(value)
+    }
+    
+    func toUInt(key: CodingKey, value: UInt8) -> UInt? {
+        return UInt(value)
+    }
+}
+
+// MARK: UInt16转UInt
+extension CustomConvertible {
+    func toUInt(key: CodingKey, value: UInt16) -> UInt {
+        return UInt(value)
+    }
+    
+    func toUInt(key: CodingKey, value: UInt16) -> UInt? {
+        return UInt(value)
+    }
+}
+
+// MARK: UInt32转UInt
+extension CustomConvertible {
+    func toUInt(key: CodingKey, value: UInt32) -> UInt {
+        return UInt(value)
+    }
+    
+    func toUInt(key: CodingKey, value: UInt32) -> UInt? {
+        return UInt(value)
+    }
+}
+
+// MARK: UInt64转UInt
+extension CustomConvertible {
+    func toUInt(key: CodingKey, value: UInt64) -> UInt {
+        return UInt(value)
+    }
+    
+    func toUInt(key: CodingKey, value: UInt64) -> UInt? {
+        return UInt(value)
+    }
+}
+
+// MARK: Float转UInt
+extension CustomConvertible {
+    func toUInt(key: CodingKey, value: Float) -> UInt {
+        return UInt(value)
+    }
+    
+    func toUInt(key: CodingKey, value: Float) -> UInt? {
+        return UInt(value)
+    }
+}
+
+// MARK: Double转UInt
+extension CustomConvertible {
+    func toUInt(key: CodingKey, value: Double) -> UInt {
+        return UInt(value)
+    }
+    
+    func toUInt(key: CodingKey, value: Double) -> UInt? {
+        return UInt(value)
+    }
+}
+
+// MARK: String转UInt
+extension CustomConvertible {
+    func toUInt(key: CodingKey, value: String) -> UInt {
+        return UInt(value) ?? 0
+    }
+    
+    func toUInt(key: CodingKey, value: String) -> UInt? {
+        return UInt(value)
     }
 }
