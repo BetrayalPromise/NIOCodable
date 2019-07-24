@@ -124,8 +124,8 @@
 				F7A54A0C22E802CF00EEB188 /* NIOJSONDecoder.swift */,
 				F7A54A0B22E802CF00EEB188 /* NIODecoder.swift */,
 				F7A54A0D22E802CF00EEB188 /* NIOConvertible.swift */,
-				F7A54A0E22E802CF00EEB188 /* NIOUnkeyed.swift */,
 				F7A54A0F22E802CF00EEB188 /* NIOKeyed.swift */,
+				F7A54A0E22E802CF00EEB188 /* NIOUnkeyed.swift */,
 				F7A54A1022E802CF00EEB188 /* NIOSingleValue.swift */,
 			);
 			path = NIODecoder;

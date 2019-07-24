@@ -5,25 +5,27 @@ class NIODecoder: Decoder {
     var userInfo: [CodingUserInfoKey : Any] = [:]
     var source: Any
     var storage: OperationData = OperationData()
-    init(source: Any, codingPath: [CodingKey] = [], userInfo: [CodingUserInfoKey : Any] = [:]) {
+    weak var instance: NIOJSONDecoder?
+    
+    init(instance: NIOJSONDecoder, source: Any, codingPath: [CodingKey] = [], userInfo: [CodingUserInfoKey : Any] = [:]) {
+        self.instance = instance
         self.source = source
         self.codingPath = codingPath
         self.userInfo = userInfo
-        self.storage.push(source)
     }
     
     func container<Key>(keyedBy type: Key.Type) throws -> KeyedDecodingContainer<Key> where Key : CodingKey {
         guard let dictionary: [AnyHashable: Any] = self.storage.currentValue as? [AnyHashable: Any] else {
-            return KeyedDecodingContainer<Key>(NIOKeyed(source: [:], decoder: self))
+            return KeyedDecodingContainer<Key>(NIOKeyed(instance: self.instance, source: [:], decoder: self))
         }
-        return KeyedDecodingContainer<Key>(NIOKeyed(source: dictionary, decoder: self))
+        return KeyedDecodingContainer<Key>(NIOKeyed(instance: self.instance, source: dictionary, decoder: self))
     }
     
     func unkeyedContainer() throws -> UnkeyedDecodingContainer {
         guard let array: [Any] = self.storage.currentValue as? [Any] else {
-            return NIOUnkeyed(source: [], decoder: self)
+            return NIOUnkeyed(instance: self.instance, source: [], decoder: self)
         }
-        return NIOUnkeyed(source: array, decoder: self)
+        return NIOUnkeyed(instance: self.instance, source: array, decoder: self)
     }
     
     func singleValueContainer() throws -> SingleValueDecodingContainer {
@@ -48,9 +50,8 @@ struct OperationData {
         return self.container.count
     }
     
-    var currentValue: Any {
-        precondition(!self.container.isEmpty, "Empty container stack.")
-        return self.container.last!
+    var currentValue: Any? {
+        return self.container.last
     }
     
     mutating func push(_ value: Any) {
@@ -58,7 +59,8 @@ struct OperationData {
     }
     
     mutating func pop() {
-        precondition(!self.container.isEmpty, "Empty container stack.")
-        self.container.removeLast()
+        if self.container.count > 0 {
+            self.container.removeLast()
+        }
     }
 }

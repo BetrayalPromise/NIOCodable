@@ -11,8 +11,9 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     }
     let decoder: NIODecoder
     var source: [AnyHashable: Any]
-    
-    init(source: [AnyHashable: Any], decoder: NIODecoder) {
+    weak var instance: NIOJSONDecoder?
+    init(instance: NIOJSONDecoder?, source: [AnyHashable: Any], decoder: NIODecoder) {
+        self.instance = instance
         self.source = source
         self.decoder = decoder
         self.codingPath = decoder.codingPath
@@ -269,9 +270,9 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
         }
 
         guard let dictionary: [AnyHashable: Any] = self.source[key.stringValue] as? [AnyHashable: Any] else {
-            return KeyedDecodingContainer(NIOKeyed<NestedKey>(source: [:], decoder: self.decoder))
+            return KeyedDecodingContainer(NIOKeyed<NestedKey>(instance: self.instance, source: [:], decoder: self.decoder))
         }
-        return KeyedDecodingContainer(NIOKeyed<NestedKey>(source: dictionary, decoder: self.decoder))
+        return KeyedDecodingContainer(NIOKeyed<NestedKey>(instance: self.instance, source: dictionary, decoder: self.decoder))
     }
     
     func nestedUnkeyedContainer(forKey key: K) throws -> UnkeyedDecodingContainer {
@@ -280,9 +281,9 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
             self.decoder.codingPath.removeLast()
         }
         guard let array: [Any] = self.source[key.stringValue] as? [Any] else {
-            return NIOUnkeyed(source: [], decoder: self.decoder)
+            return NIOUnkeyed(instance: self.instance, source: [], decoder: self.decoder)
         }
-        return NIOUnkeyed(source: array, decoder: self.decoder)
+        return NIOUnkeyed(instance: self.instance, source: array, decoder: self.decoder)
     }
     
     func superDecoder() throws -> Decoder {
@@ -330,7 +331,15 @@ extension NIOKeyed {
         } else if let `value`: Double = value as? Double {
             return value > 0.0 ? true : false
         } else if let `value`: String = value as? String {
-            return (value.lowercased() == "true" || value.lowercased() == "yes") ? true : false
+            guard let strategy: NIOJSONDecoder.TypeDecodingStrategy = self.instance?.typeDecodingStrategy else {
+                return (value.lowercased() == "true" || value.lowercased() == "yes") ? true : false
+            }
+            switch strategy {
+            case .default:
+                return (value.lowercased() == "true" || value.lowercased() == "yes") ? true : false
+            case .custom(let delegate):
+                return delegate.toBool(key: key, value: value)
+            }
         } else {
             return false
         }

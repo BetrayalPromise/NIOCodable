@@ -14,15 +14,16 @@ class ViewController: UIViewController {
     @objc
     func handle(button: UIButton) {
         struct JSON: Codable {
-            var name: Bool?
+            var name: Bool
         }
         let data: Data = """
-        {"name": "3a"}
+        [{"name": "3a"}, {"name": "true"}]
         """.data(using: String.Encoding.utf8) ?? Data()
         
         do {
             let decoder: NIOJSONDecoder = NIOJSONDecoder()
-            let model: JSON = try decoder.decode(type: JSON.self, from: data)
+            decoder.typeDecodingStrategy = .custom(self)
+            let model = try decoder.decode(type: [JSON].self, from: data)
             print(model)
         } catch {
             print(error)
@@ -31,5 +32,10 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: CustomConvertible {
-
+    func toBool(key: CodingKey, value: String) -> Bool {
+        if value == "3a" {
+            return true
+        }
+        return false
+    }
 }
