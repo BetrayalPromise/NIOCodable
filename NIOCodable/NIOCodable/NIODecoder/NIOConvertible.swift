@@ -78,6 +78,45 @@ public protocol CustomConvertible {
     
     func toInt(key: CodingKey, value: String) -> Int
     func toInt(key: CodingKey, value: String) -> Int?
+    
+    func toInt8(key: CodingKey, value: Bool) -> Int8
+    func toInt8(key: CodingKey, value: Bool) -> Int8?
+    
+    func toInt8(key: CodingKey, value: Int) -> Int8
+    func toInt8(key: CodingKey, value: Int) -> Int8?
+    
+    func toInt8(key: CodingKey, value: Int16) -> Int8
+    func toInt8(key: CodingKey, value: Int16) -> Int8?
+    
+    func toInt8(key: CodingKey, value: Int32) -> Int8
+    func toInt8(key: CodingKey, value: Int32) -> Int8?
+    
+    func toInt8(key: CodingKey, value: Int64) -> Int8
+    func toInt8(key: CodingKey, value: Int64) -> Int8?
+    
+    func toInt8(key: CodingKey, value: UInt) -> Int8
+    func toInt8(key: CodingKey, value: UInt) -> Int8?
+    
+    func toInt8(key: CodingKey, value: UInt8) -> Int8
+    func toInt8(key: CodingKey, value: UInt8) -> Int8?
+    
+    func toInt8(key: CodingKey, value: UInt16) -> Int8
+    func toInt8(key: CodingKey, value: UInt16) -> Int8?
+
+    func toInt8(key: CodingKey, value: UInt32) -> Int8
+    func toInt8(key: CodingKey, value: UInt32) -> Int8?
+    
+    func toInt8(key: CodingKey, value: UInt64) -> Int8
+    func toInt8(key: CodingKey, value: UInt64) -> Int8?
+    
+    func toInt8(key: CodingKey, value: Float) -> Int8
+    func toInt8(key: CodingKey, value: Float) -> Int8?
+    
+    func toInt8(key: CodingKey, value: Double) -> Int8
+    func toInt8(key: CodingKey, value: Double) -> Int8?
+    
+    func toInt8(key: CodingKey, value: String) -> Int8
+    func toInt8(key: CodingKey, value: String) -> Int8?
 }
 
 // MARK: - 其他类型转Bool
@@ -463,5 +502,147 @@ extension CustomConvertible {
     
     func toInt(key: CodingKey, value: String) -> Int? {
         return Int(value)
+    }
+}
+
+// MARK: Bool转Int8
+extension CustomConvertible {
+    func toInt8(key: CodingKey, value: Bool) -> Int8 {
+        switch value {
+        case true: return 1
+        default: return 0
+        }
+    }
+    
+    func toInt8(key: CodingKey, value: Bool) -> Int8? {
+        switch value {
+        case true: return 1
+        case false: return 0
+        }
+    }
+}
+
+// MARK: Int转Int8
+extension CustomConvertible {
+    func toInt8(key: CodingKey, value: Int) -> Int8 {
+        return Int8(value)
+    }
+    
+    func toInt8(key: CodingKey, value: Int) -> Int8? {
+        return Int8(value)
+    }
+}
+
+// MARK: Int16转Int8
+extension CustomConvertible {
+    func toInt8(key: CodingKey, value: Int16) -> Int8 {
+        return Int8(value)
+    }
+    
+    func toInt8(key: CodingKey, value: Int16) -> Int8? {
+        return Int8(value)
+    }
+}
+
+// MARK: Int32转Int8
+extension CustomConvertible {
+    func toInt8(key: CodingKey, value: Int32) -> Int8 {
+        return Int8(value)
+    }
+    
+    func toInt8(key: CodingKey, value: Int32) -> Int8? {
+        return Int8(value)
+    }
+}
+
+// MARK: Int64转Int8
+extension CustomConvertible {
+    func toInt8(key: CodingKey, value: Int64) -> Int8 {
+        return Int8(value)
+    }
+    
+    func toInt8(key: CodingKey, value: Int64) -> Int8? {
+        return Int8(value)
+    }
+}
+
+extension CustomConvertible {
+    func toInt8(key: CodingKey, value: UInt) -> Int8 {
+        return Int8(value)
+    }
+    
+    func toInt8(key: CodingKey, value: UInt) -> Int8? {
+        return Int8(value)
+    }
+}
+
+extension CustomConvertible {
+    func toInt8(key: CodingKey, value: UInt8) -> Int8 {
+        return Int8(value)
+    }
+    
+    func toInt8(key: CodingKey, value: UInt8) -> Int8? {
+        return Int8(value)
+    }
+}
+
+extension CustomConvertible {
+    func toInt8(key: CodingKey, value: UInt16) -> Int8 {
+        return Int8(value)
+    }
+    
+    func toInt8(key: CodingKey, value: UInt16) -> Int8? {
+        return Int8(value)
+    }
+}
+
+
+extension CustomConvertible {
+    func toInt8(key: CodingKey, value: UInt32) -> Int8 {
+        return Int8(value)
+    }
+    
+    func toInt8(key: CodingKey, value: UInt32) -> Int8? {
+        return Int8(value)
+    }
+}
+
+extension CustomConvertible {
+    func toInt8(key: CodingKey, value: UInt64) -> Int8 {
+        return Int8(value)
+    }
+    
+    func toInt8(key: CodingKey, value: UInt64) -> Int8? {
+        return Int8(value)
+    }
+}
+
+extension CustomConvertible {
+    func toInt8(key: CodingKey, value: Float) -> Int8 {
+        return Int8(value)
+    }
+    
+    func toInt8(key: CodingKey, value: Float) -> Int8? {
+        return Int8(value)
+    }
+}
+
+extension CustomConvertible {
+    func toInt8(key: CodingKey, value: Double) -> Int8 {
+        return Int8(value)
+    }
+    
+    func toInt8(key: CodingKey, value: Double) -> Int8? {
+        return Int8(value)
+    }
+}
+
+extension CustomConvertible {
+    func toInt8(key: CodingKey, value: String) -> Int8 {
+        return Int8(value) ?? 0
+    }
+    
+    func toInt8(key: CodingKey, value: String) -> Int8? {
+        return Int8(value)
     }
 }
