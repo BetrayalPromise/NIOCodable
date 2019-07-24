@@ -13,7 +13,7 @@
 		F7A549F122E802A000EEB188 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7A549F022E802A000EEB188 /* Assets.xcassets */; };
 		F7A549F422E802A000EEB188 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7A549F222E802A000EEB188 /* LaunchScreen.storyboard */; };
 		F7A549FF22E802A100EEB188 /* NIOCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A549FE22E802A100EEB188 /* NIOCodableTests.swift */; };
-		F7A54A1122E802CF00EEB188 /* NIORealizeDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A54A0B22E802CF00EEB188 /* NIORealizeDecoder.swift */; };
+		F7A54A1122E802CF00EEB188 /* NIODecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A54A0B22E802CF00EEB188 /* NIODecoder.swift */; };
 		F7A54A1222E802CF00EEB188 /* NIOJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A54A0C22E802CF00EEB188 /* NIOJSONDecoder.swift */; };
 		F7A54A1322E802CF00EEB188 /* NIOConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A54A0D22E802CF00EEB188 /* NIOConvertible.swift */; };
 		F7A54A1422E802CF00EEB188 /* NIOUnkeyed.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A54A0E22E802CF00EEB188 /* NIOUnkeyed.swift */; };
@@ -42,7 +42,7 @@
 		F7A549FA22E802A100EEB188 /* NIOCodableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NIOCodableTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A549FE22E802A100EEB188 /* NIOCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIOCodableTests.swift; sourceTree = "<group>"; };
 		F7A54A0022E802A100EEB188 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F7A54A0B22E802CF00EEB188 /* NIORealizeDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIORealizeDecoder.swift; sourceTree = "<group>"; };
+		F7A54A0B22E802CF00EEB188 /* NIODecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIODecoder.swift; sourceTree = "<group>"; };
 		F7A54A0C22E802CF00EEB188 /* NIOJSONDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIOJSONDecoder.swift; sourceTree = "<group>"; };
 		F7A54A0D22E802CF00EEB188 /* NIOConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIOConvertible.swift; sourceTree = "<group>"; };
 		F7A54A0E22E802CF00EEB188 /* NIOUnkeyed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIOUnkeyed.swift; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				F7A54A0C22E802CF00EEB188 /* NIOJSONDecoder.swift */,
-				F7A54A0B22E802CF00EEB188 /* NIORealizeDecoder.swift */,
+				F7A54A0B22E802CF00EEB188 /* NIODecoder.swift */,
 				F7A54A0D22E802CF00EEB188 /* NIOConvertible.swift */,
 				F7A54A0E22E802CF00EEB188 /* NIOUnkeyed.swift */,
 				F7A54A0F22E802CF00EEB188 /* NIOKeyed.swift */,
@@ -246,7 +246,7 @@
 				F7A54A1622E802CF00EEB188 /* NIOSingleValue.swift in Sources */,
 				F7A549EA22E802A000EEB188 /* AppDelegate.swift in Sources */,
 				F7A54A1522E802CF00EEB188 /* NIOKeyed.swift in Sources */,
-				F7A54A1122E802CF00EEB188 /* NIORealizeDecoder.swift in Sources */,
+				F7A54A1122E802CF00EEB188 /* NIODecoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

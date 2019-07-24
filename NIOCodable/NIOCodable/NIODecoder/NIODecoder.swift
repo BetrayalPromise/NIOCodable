@@ -1,16 +1,14 @@
 import Foundation
 
-class NIORealizeDecoder: Decoder {
+class NIODecoder: Decoder {
     var codingPath: [CodingKey] = []
     var userInfo: [CodingUserInfoKey : Any] = [:]
     var source: Any
     var storage: OperationData = OperationData()
-    let strategy: NIOJSONDecoder.TypeDecodingStrategy
-    init(strategy: NIOJSONDecoder.TypeDecodingStrategy, source: Any, codingPath: [CodingKey] = [], userInfo: [CodingUserInfoKey : Any] = [:]) {
+    init(source: Any, codingPath: [CodingKey] = [], userInfo: [CodingUserInfoKey : Any] = [:]) {
         self.source = source
         self.codingPath = codingPath
         self.userInfo = userInfo
-        self.strategy = strategy
         self.storage.push(source)
     }
     
@@ -33,7 +31,7 @@ class NIORealizeDecoder: Decoder {
     }
 }
 
-extension NIORealizeDecoder {
+extension NIODecoder {
     func unbox<T>(_ value: Any, as type: T.Type) throws -> T? where T: Decodable {
         self.storage.push(value)
         defer {

@@ -3,10 +3,10 @@ import Foundation
 struct NIOSingleValue: SingleValueDecodingContainer {
     var codingPath: [CodingKey] = []
     
-    let decoder: NIORealizeDecoder
+    let decoder: NIODecoder
     var source: Any
     
-    init(source: Any, decoder: NIORealizeDecoder) {
+    init(source: Any, decoder: NIODecoder) {
         self.source = source
         self.decoder = decoder
     }

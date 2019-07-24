@@ -5,7 +5,7 @@ struct NIOUnkeyed: UnkeyedDecodingContainer {
         return self.currentIndex >= self.count!
     }
     
-    let decoder: NIORealizeDecoder
+    let decoder: NIODecoder
     var source: [Any]
     var codingPath: [CodingKey] = []
     var currentIndex: Int = 0
@@ -14,7 +14,7 @@ struct NIOUnkeyed: UnkeyedDecodingContainer {
         return self.source.count
     }
     
-    init(source: [Any], decoder: NIORealizeDecoder) {
+    init(source: [Any], decoder: NIODecoder) {
         self.decoder = decoder
         self.source = source
         self.codingPath = decoder.codingPath

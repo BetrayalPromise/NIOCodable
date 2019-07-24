@@ -9,10 +9,10 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
             return Key(stringValue: hash)
         })
     }
-    let decoder: NIORealizeDecoder
+    let decoder: NIODecoder
     var source: [AnyHashable: Any]
     
-    init(source: [AnyHashable: Any], decoder: NIORealizeDecoder) {
+    init(source: [AnyHashable: Any], decoder: NIODecoder) {
         self.source = source
         self.decoder = decoder
         self.codingPath = decoder.codingPath
