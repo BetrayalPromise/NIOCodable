@@ -39,10 +39,50 @@ public protocol CustomConvertible {
     
     func toBool(key: CodingKey, value: String) -> Bool
     func toBool(key: CodingKey, value: String) -> Bool?
+    
+    func toInt(key: CodingKey, value: Bool) -> Int
+    func toInt(key: CodingKey, value: Bool) -> Int?
+    
+    func toInt(key: CodingKey, value: Int8) -> Int
+    func toInt(key: CodingKey, value: Int8) -> Int?
+    
+    func toInt(key: CodingKey, value: Int16) -> Int
+    func toInt(key: CodingKey, value: Int16) -> Int?
+    
+    func toInt(key: CodingKey, value: Int32) -> Int
+    func toInt(key: CodingKey, value: Int32) -> Int?
+    
+    func toInt(key: CodingKey, value: Int64) -> Int
+    func toInt(key: CodingKey, value: Int64) -> Int?
+    
+    func toInt(key: CodingKey, value: UInt) -> Int
+    func toInt(key: CodingKey, value: UInt) -> Int?
+    
+    func toInt(key: CodingKey, value: UInt8) -> Int
+    func toInt(key: CodingKey, value: UInt8) -> Int?
+    
+    func toInt(key: CodingKey, value: UInt16) -> Int
+    func toInt(key: CodingKey, value: UInt16) -> Int?
+    
+    func toInt(key: CodingKey, value: UInt32) -> Int
+    func toInt(key: CodingKey, value: UInt32) -> Int?
+    
+    func toInt(key: CodingKey, value: UInt64) -> Int
+    func toInt(key: CodingKey, value: UInt64) -> Int?
+    
+    func toInt(key: CodingKey, value: Float) -> Int
+    func toInt(key: CodingKey, value: Float) -> Int?
+    
+    func toInt(key: CodingKey, value: Double) -> Int
+    func toInt(key: CodingKey, value: Double) -> Int?
+    
+    func toInt(key: CodingKey, value: String) -> Int
+    func toInt(key: CodingKey, value: String) -> Int?
 }
 
-
-// MARK: - Int转Bool
+// MARK: - 其他类型转Bool
+// MARK: -
+// MARK: Int转Bool
 extension CustomConvertible {
     func toBool(key: CodingKey, value: Int) -> Bool {
         switch value {
@@ -60,7 +100,7 @@ extension CustomConvertible {
     }
 }
 
-// MARK: - Int8转Bool
+// MARK: Int8转Bool
 extension CustomConvertible {
     func toBool(key: CodingKey, value: Int8) -> Bool {
         switch value {
@@ -78,7 +118,7 @@ extension CustomConvertible {
     }
 }
 
-// MARK: - Int16转Bool
+// MARK: Int16转Bool
 extension CustomConvertible {
     func toBool(key: CodingKey, value: Int16) -> Bool {
         switch value {
@@ -95,7 +135,7 @@ extension CustomConvertible {
     }
 }
 
-// MARK: - Int32转Bool
+// MARK: Int32转Bool
 extension CustomConvertible {
     func toBool(key: CodingKey, value: Int32) -> Bool {
         switch value {
@@ -113,7 +153,7 @@ extension CustomConvertible {
     }
 }
 
-// MARK: - Int64转Bool
+// MARK: Int64转Bool
 extension CustomConvertible {
     func toBool(key: CodingKey, value: Int64) -> Bool {
         switch value {
@@ -131,7 +171,7 @@ extension CustomConvertible {
     }
 }
 
-// MARK: - UInt转Bool
+// MARK: UInt转Bool
 extension CustomConvertible {
     func toBool(key: CodingKey, value: UInt) -> Bool {
         switch value {
@@ -149,7 +189,7 @@ extension CustomConvertible {
     }
 }
 
-// MARK: - UInt8转Bool
+// MARK: UInt8转Bool
 extension CustomConvertible {
     func toBool(key: CodingKey, value: UInt8) -> Bool {
         switch value {
@@ -167,7 +207,7 @@ extension CustomConvertible {
     }
 }
 
-// MARK: - UInt16转Bool
+// MARK: UInt16转Bool
 extension CustomConvertible {
     func toBool(key: CodingKey, value: UInt16) -> Bool {
         switch value {
@@ -184,7 +224,7 @@ extension CustomConvertible {
     }
 }
 
-// MARK: - UInt32转Bool
+// MARK: UInt32转Bool
 extension CustomConvertible {
     func toBool(key: CodingKey, value: UInt32) -> Bool {
         switch value {
@@ -202,7 +242,7 @@ extension CustomConvertible {
     }
 }
 
-// MARK: - UInt64转Bool
+// MARK: UInt64转Bool
 extension CustomConvertible {
     func toBool(key: CodingKey, value: UInt64) -> Bool {
         switch value {
@@ -220,7 +260,7 @@ extension CustomConvertible {
     }
 }
 
-// MARK: - Float转Bool
+// MARK: Float转Bool
 extension CustomConvertible {
     func toBool(key: CodingKey, value: Float) -> Bool {
         switch value {
@@ -238,7 +278,7 @@ extension CustomConvertible {
     }
 }
 
-// MARK: - Double转Bool
+// MARK: Double转Bool
 extension CustomConvertible {
     func toBool(key: CodingKey, value: Double) -> Bool {
         switch value {
@@ -256,7 +296,7 @@ extension CustomConvertible {
     }
 }
 
-// MARK: - String转Bool
+// MARK: String转Bool
 extension CustomConvertible {
     func toBool(key: CodingKey, value: String) -> Bool {
         switch value.lowercased() {
@@ -272,5 +312,156 @@ extension CustomConvertible {
         case "false", "no": return false
         default: return nil
         }
+    }
+}
+
+// MARK: - 其他类型转Int
+// MARK: -
+// MARK: Int转Bool
+extension CustomConvertible {
+    func toInt(key: CodingKey, value: Bool) -> Int {
+        switch value {
+        case true: return 1
+        default: return 0
+        }
+    }
+    
+    func toInt(key: CodingKey, value: Bool) -> Int? {
+        switch value {
+        case true: return 1
+        default: return 0
+        }
+    }
+}
+
+// MARK: Int8转Int
+extension CustomConvertible {
+    func toInt(key: CodingKey, value: Int8) -> Int {
+        return Int(value)
+    }
+    
+    func toInt(key: CodingKey, value: Int8) -> Int? {
+        return Int(value)
+    }
+}
+
+// MARK: Int16转Int
+extension CustomConvertible {
+    func toInt(key: CodingKey, value: Int16) -> Int {
+        return Int(value)
+    }
+    
+    func toInt(key: CodingKey, value: Int16) -> Int? {
+        return Int(value)
+    }
+}
+
+// MARK: Int32转Int
+extension CustomConvertible {
+    func toInt(key: CodingKey, value: Int32) -> Int {
+        return Int(value)
+    }
+    
+    func toInt(key: CodingKey, value: Int32) -> Int? {
+        return Int(value)
+    }
+}
+
+// MARK: Int64转Int
+extension CustomConvertible {
+    func toInt(key: CodingKey, value: Int64) -> Int {
+        return Int(value)
+    }
+    
+    func toInt(key: CodingKey, value: Int64) -> Int? {
+        return Int(value)
+    }
+}
+
+// MARK: UInt转Int
+extension CustomConvertible {
+    func toInt(key: CodingKey, value: UInt) -> Int {
+        return Int(value)
+    }
+    
+    func toInt(key: CodingKey, value: UInt) -> Int? {
+        return Int(value)
+    }
+}
+
+// MARK: UInt8转Int
+extension CustomConvertible {
+    func toInt(key: CodingKey, value: UInt8) -> Int {
+        return Int(value)
+    }
+    
+    func toInt(key: CodingKey, value: UInt8) -> Int? {
+        return Int(value)
+    }
+}
+
+// MARK: UInt16转Int
+extension CustomConvertible {
+    func toInt(key: CodingKey, value: UInt16) -> Int {
+        return Int(value)
+    }
+    
+    func toInt(key: CodingKey, value: UInt16) -> Int? {
+        return Int(value)
+    }
+}
+
+// MARK: UInt32转Int
+extension CustomConvertible {
+    func toInt(key: CodingKey, value: UInt32) -> Int {
+        return Int(value)
+    }
+    
+    func toInt(key: CodingKey, value: UInt32) -> Int? {
+        return Int(value)
+    }
+}
+
+// MARK: UInt64转Int
+extension CustomConvertible {
+    func toInt(key: CodingKey, value: UInt64) -> Int {
+        return Int(value)
+    }
+    
+    func toInt(key: CodingKey, value: UInt64) -> Int? {
+        return Int(value)
+    }
+}
+
+// MARK: Float转Int
+extension CustomConvertible {
+    func toInt(key: CodingKey, value: Float) -> Int {
+        return Int(value)
+    }
+    
+    func toInt(key: CodingKey, value: Float) -> Int? {
+        return Int(value)
+    }
+}
+
+// MARK: Double转Int
+extension CustomConvertible {
+    func toInt(key: CodingKey, value: Double) -> Int {
+        return Int(value)
+    }
+    
+    func toInt(key: CodingKey, value: Double) -> Int? {
+        return Int(value)
+    }
+}
+
+// MARK: String转Int
+extension CustomConvertible {
+    func toInt(key: CodingKey, value: String) -> Int {
+        return Int(value) ?? 0
+    }
+    
+    func toInt(key: CodingKey, value: String) -> Int? {
+        return Int(value)
     }
 }
