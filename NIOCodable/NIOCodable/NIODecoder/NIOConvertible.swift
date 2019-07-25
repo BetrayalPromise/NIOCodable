@@ -922,11 +922,19 @@ extension CustomConvertible {
 // MARK: String转Int
 extension CustomConvertible {
     func toInt(key: CodingKey, value: String) -> Int {
-        return Int(value) ?? 0
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return Int(value) ?? 0
+        }
     }
     
     func toInt(key: CodingKey, value: String) -> Int? {
-        return Int(value)
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return Int(value)
+        }
     }
 }
 
@@ -1070,11 +1078,19 @@ extension CustomConvertible {
 // MARK: String转Int8
 extension CustomConvertible {
     func toInt8(key: CodingKey, value: String) -> Int8 {
-        return Int8(value) ?? 0
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return Int8(value) ?? 0
+        }
     }
     
     func toInt8(key: CodingKey, value: String) -> Int8? {
-        return Int8(value)
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return Int8(value)
+        }
     }
 }
 
@@ -1219,11 +1235,19 @@ extension CustomConvertible {
 // MARK: String转Int16
 extension CustomConvertible {
     func toInt16(key: CodingKey, value: String) -> Int16 {
-        return Int16(value) ?? 0
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return Int16(value) ?? 0
+        }
     }
     
     func toInt16(key: CodingKey, value: String) -> Int16? {
-        return Int16(value)
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return Int16(value)
+        }
     }
 }
 
@@ -1369,11 +1393,19 @@ extension CustomConvertible {
 // MARK: String转Int32
 extension CustomConvertible {
     func toInt32(key: CodingKey, value: String) -> Int32 {
-        return Int32(value) ?? 0
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return Int32(value) ?? 0
+        }
     }
     
     func toInt32(key: CodingKey, value: String) -> Int32? {
-        return Int32(value)
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return Int32(value)
+        }
     }
 }
 
@@ -1518,11 +1550,19 @@ extension CustomConvertible {
 // MARK: String转Int64
 extension CustomConvertible {
     func toInt64(key: CodingKey, value: String) -> Int64 {
-        return Int64(value) ?? 0
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return Int64(value) ?? 0
+        }
     }
     
     func toInt64(key: CodingKey, value: String) -> Int64? {
-        return Int64(value)
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return Int64(value)
+        }
     }
 }
 

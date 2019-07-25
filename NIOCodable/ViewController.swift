@@ -17,29 +17,28 @@ class ViewController: UIViewController {
             var name: Bool?
         }
         let data: Data = """
-        [{"name": "3a"}, {"name": "true"}]
+        [
+        {"name": true},
+        {"name": false},
+        {"name": "true"},
+        {"name": "false"},
+        {"name": "yes"},
+        {"name": "no"},
+        {"name": 1},
+        {"name": 0},
+        {"name": -1},
+        {"name": "1"},
+        {"name": "0"},
+        {"name": "-1"}
+        ]
         """.data(using: String.Encoding.utf8) ?? Data()
         
         do {
             let decoder: NIOJSONDecoder = NIOJSONDecoder()
-            decoder.typeDecodingStrategy = .custom(self)
             let model = try decoder.decode(type: [JSON].self, from: data)
             print(model)
         } catch {
             print(error)
         }
-    }
-}
-
-extension ViewController: CustomConvertible {
-    func toBool(key: CodingKey, value: String) -> Bool {
-        if value == "3a" {
-            return true
-        }
-        return false
-    }
-
-    func toBool(key: CodingKey, value: String) -> Bool? {
-        return false
     }
 }
