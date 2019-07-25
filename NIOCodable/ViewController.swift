@@ -14,31 +14,21 @@ class ViewController: UIViewController {
     @objc
     func handle(button: UIButton) {
         struct JSON: Codable {
-            var name: Bool?
+            var name: UInt8?
         }
         let data: Data = """
         [
-        {"name": true},
-        {"name": false},
-        {"name": "true"},
-        {"name": "false"},
-        {"name": "yes"},
-        {"name": "no"},
-        {"name": 1},
-        {"name": 0},
-        {"name": -1},
-        {"name": "1"},
-        {"name": "0"},
-        {"name": "-1"}
+        {"name": -20},
         ]
         """.data(using: String.Encoding.utf8) ?? Data()
-        
+
         do {
-            let decoder: NIOJSONDecoder = NIOJSONDecoder()
-            let model = try decoder.decode(type: [JSON].self, from: data)
+            let decoder: JSONDecoder = JSONDecoder()
+            let model = try decoder.decode([JSON].self, from: data)
             print(model)
         } catch {
             print(error)
         }
+
     }
 }

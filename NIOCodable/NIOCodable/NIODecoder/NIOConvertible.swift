@@ -1865,10 +1865,12 @@ extension CustomConvertible {
 // MARK: Float转UInt8
 extension CustomConvertible {
     func toUInt8(key: CodingKey, value: Float) -> UInt8 {
+        assert(value >= 0, "UInt8不能容纳负数")
         return UInt8(value)
     }
 
     func toUInt8(key: CodingKey, value: Float) -> UInt8? {
+        assert(value >= 0, "UInt8不能容纳负数")
         return UInt8(value)
     }
 }
@@ -1876,10 +1878,12 @@ extension CustomConvertible {
 // MARK: Double转UInt8
 extension CustomConvertible {
     func toUInt8(key: CodingKey, value: Double) -> UInt8 {
+        assert(value >= 0, "UInt8不能容纳负数")
         return UInt8(value)
     }
 
     func toUInt8(key: CodingKey, value: Double) -> UInt8? {
+        assert(value >= 0, "UInt8不能容纳负数")
         return UInt8(value)
     }
 }
@@ -1923,10 +1927,12 @@ extension CustomConvertible {
 // MARK: Int转UInt16
 extension CustomConvertible {
     func toUInt16(key: CodingKey, value: Int) -> UInt16 {
+        assert(value >= 0, "UInt16不能容纳负数")
         return UInt16(value)
     }
 
     func toUInt16(key: CodingKey, value: Int) -> UInt16? {
+        assert(value >= 0, "UInt16不能容纳负数")
         return UInt16(value)
     }
 }
@@ -1934,10 +1940,12 @@ extension CustomConvertible {
 // MARK: Int8转UInt16
 extension CustomConvertible {
     func toUInt16(key: CodingKey, value: Int8) -> UInt16 {
+        assert(value >= 0, "UInt16不能容纳负数")
         return UInt16(value)
     }
 
     func toUInt16(key: CodingKey, value: Int8) -> UInt16? {
+        assert(value >= 0, "UInt16不能容纳负数")
         return UInt16(value)
     }
 }
@@ -1945,10 +1953,12 @@ extension CustomConvertible {
 // MARK: Int16转UInt16
 extension CustomConvertible {
     func toUInt16(key: CodingKey, value: Int16) -> UInt16 {
+        assert(value >= 0, "UInt16不能容纳负数")
         return UInt16(value)
     }
 
     func toUInt16(key: CodingKey, value: Int16) -> UInt16? {
+        assert(value >= 0, "UInt16不能容纳负数")
         return UInt16(value)
     }
 }
@@ -1956,10 +1966,12 @@ extension CustomConvertible {
 // MARK: Int32转UInt16
 extension CustomConvertible {
     func toUInt16(key: CodingKey, value: Int32) -> UInt16 {
+        assert(value >= 0, "UInt16不能容纳负数")
         return UInt16(value)
     }
 
     func toUInt16(key: CodingKey, value: Int32) -> UInt16? {
+        assert(value >= 0, "UInt16不能容纳负数")
         return UInt16(value)
     }
 }
@@ -1967,10 +1979,12 @@ extension CustomConvertible {
 // MARK: Int64转UInt16
 extension CustomConvertible {
     func toUInt16(key: CodingKey, value: Int64) -> UInt16 {
+        assert(value >= 0, "UInt16不能容纳负数")
         return UInt16(value)
     }
 
     func toUInt16(key: CodingKey, value: Int64) -> UInt16? {
+        assert(value >= 0, "UInt16不能容纳负数")
         return UInt16(value)
     }
 }
@@ -2022,10 +2036,12 @@ extension CustomConvertible {
 // MARK: Float转UInt16
 extension CustomConvertible {
     func toUInt16(key: CodingKey, value: Float) -> UInt16 {
+        assert(value >= 0, "UInt16不能容纳负数")
         return UInt16(value)
     }
 
     func toUInt16(key: CodingKey, value: Float) -> UInt16? {
+        assert(value >= 0, "UInt16不能容纳负数")
         return UInt16(value)
     }
 }
@@ -2033,10 +2049,12 @@ extension CustomConvertible {
 // MARK: Double转UInt16
 extension CustomConvertible {
     func toUInt16(key: CodingKey, value: Double) -> UInt16 {
+        assert(value >= 0, "UInt16不能容纳负数")
         return UInt16(value)
     }
 
     func toUInt16(key: CodingKey, value: Double) -> UInt16? {
+        assert(value >= 0, "UInt16不能容纳负数")
         return UInt16(value)
     }
 }
@@ -2080,10 +2098,12 @@ extension CustomConvertible {
 // MARK: Int转UInt32
 extension CustomConvertible {
     func toUInt32(key: CodingKey, value: Int) -> UInt32 {
+        assert(value >= 0, "UInt32不能容纳负数")
         return UInt32(value)
     }
 
     func toUInt32(key: CodingKey, value: Int) -> UInt32? {
+        assert(value >= 0, "UInt32不能容纳负数")
         return UInt32(value)
     }
 }
@@ -2091,10 +2111,12 @@ extension CustomConvertible {
 // MARK: Int8转UInt32
 extension CustomConvertible {
     func toUInt32(key: CodingKey, value: Int8) -> UInt32 {
+        assert(value >= 0, "UInt32不能容纳负数")
         return UInt32(value)
     }
 
     func toUInt32(key: CodingKey, value: Int8) -> UInt32? {
+        assert(value >= 0, "UInt32不能容纳负数")
         return UInt32(value)
     }
 }
@@ -2102,10 +2124,12 @@ extension CustomConvertible {
 // MARK: Int16转UInt32
 extension CustomConvertible {
     func toUInt32(key: CodingKey, value: Int16) -> UInt32 {
+        assert(value >= 0, "UInt32不能容纳负数")
         return UInt32(value)
     }
 
     func toUInt32(key: CodingKey, value: Int16) -> UInt32? {
+        assert(value >= 0, "UInt32不能容纳负数")
         return UInt32(value)
     }
 }
@@ -2113,10 +2137,12 @@ extension CustomConvertible {
 // MARK: Int32转UInt32
 extension CustomConvertible {
     func toUInt32(key: CodingKey, value: Int32) -> UInt32 {
+        assert(value >= 0, "UInt32不能容纳负数")
         return UInt32(value)
     }
 
     func toUInt32(key: CodingKey, value: Int32) -> UInt32? {
+        assert(value >= 0, "UInt32不能容纳负数")
         return UInt32(value)
     }
 }
@@ -2124,10 +2150,12 @@ extension CustomConvertible {
 // MARK: Int64转UInt32
 extension CustomConvertible {
     func toUInt32(key: CodingKey, value: Int64) -> UInt32 {
+        assert(value >= 0, "UInt32不能容纳负数")
         return UInt32(value)
     }
 
     func toUInt32(key: CodingKey, value: Int64) -> UInt32? {
+        assert(value >= 0, "UInt32不能容纳负数")
         return UInt32(value)
     }
 }
@@ -2179,10 +2207,12 @@ extension CustomConvertible {
 // MARK: Float转UInt32
 extension CustomConvertible {
     func toUInt32(key: CodingKey, value: Float) -> UInt32 {
+        assert(value >= 0, "UInt32不能容纳负数")
         return UInt32(value)
     }
 
     func toUInt32(key: CodingKey, value: Float) -> UInt32? {
+        assert(value >= 0, "UInt32不能容纳负数")
         return UInt32(value)
     }
 }
@@ -2190,10 +2220,12 @@ extension CustomConvertible {
 // MARK: Double转UInt32
 extension CustomConvertible {
     func toUInt32(key: CodingKey, value: Double) -> UInt32 {
+        assert(value >= 0, "UInt32不能容纳负数")
         return UInt32(value)
     }
 
     func toUInt32(key: CodingKey, value: Double) -> UInt32? {
+        assert(value >= 0, "UInt32不能容纳负数")
         return UInt32(value)
     }
 }
@@ -2237,10 +2269,12 @@ extension CustomConvertible {
 // MARK: Int转UInt64
 extension CustomConvertible {
     func toUInt64(key: CodingKey, value: Int) -> UInt64 {
+        assert(value >= 0, "UInt64不能容纳负数")
         return UInt64(value)
     }
 
     func toUInt64(key: CodingKey, value: Int) -> UInt64? {
+        assert(value >= 0, "UInt64不能容纳负数")
         return UInt64(value)
     }
 }
@@ -2248,10 +2282,12 @@ extension CustomConvertible {
 // MARK: Int8转UInt64
 extension CustomConvertible {
     func toUInt64(key: CodingKey, value: Int8) -> UInt64 {
+        assert(value >= 0, "UInt64不能容纳负数")
         return UInt64(value)
     }
 
     func toUInt64(key: CodingKey, value: Int8) -> UInt64? {
+        assert(value >= 0, "UInt64不能容纳负数")
         return UInt64(value)
     }
 }
@@ -2259,10 +2295,12 @@ extension CustomConvertible {
 // MARK: Int16转UInt64
 extension CustomConvertible {
     func toUInt64(key: CodingKey, value: Int16) -> UInt64 {
+        assert(value >= 0, "UInt64不能容纳负数")
         return UInt64(value)
     }
 
     func toUInt64(key: CodingKey, value: Int16) -> UInt64? {
+        assert(value >= 0, "UInt64不能容纳负数")
         return UInt64(value)
     }
 }
@@ -2270,10 +2308,12 @@ extension CustomConvertible {
 // MARK: Int32转UInt64
 extension CustomConvertible {
     func toUInt64(key: CodingKey, value: Int32) -> UInt64 {
+        assert(value >= 0, "UInt64不能容纳负数")
         return UInt64(value)
     }
 
     func toUInt64(key: CodingKey, value: Int32) -> UInt64? {
+        assert(value >= 0, "UInt64不能容纳负数")
         return UInt64(value)
     }
 }
@@ -2281,10 +2321,12 @@ extension CustomConvertible {
 // MARK: Int64转UInt64
 extension CustomConvertible {
     func toUInt64(key: CodingKey, value: Int64) -> UInt64 {
+        assert(value >= 0, "UInt64不能容纳负数")
         return UInt64(value)
     }
 
     func toUInt64(key: CodingKey, value: Int64) -> UInt64? {
+        assert(value >= 0, "UInt64不能容纳负数")
         return UInt64(value)
     }
 }

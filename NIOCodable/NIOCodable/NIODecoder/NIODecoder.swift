@@ -46,21 +46,11 @@ extension NIODecoder {
 struct OperationData {
     private(set) var container: [Any] = []
     
-    var count: Int {
-        return self.container.count
-    }
+    var count: Int { return self.container.count }
     
-    var currentValue: Any? {
-        return self.container.last
-    }
+    var currentValue: Any? { return self.container.last }
     
-    mutating func push(_ value: Any) {
-        self.container.append(value)
-    }
+    mutating func push(_ value: Any) { self.container.append(value) }
     
-    mutating func pop() {
-        if self.container.count > 0 {
-            self.container.removeLast()
-        }
-    }
+    mutating func pop() { if self.container.count > 0 { self.container.removeLast() } }
 }
