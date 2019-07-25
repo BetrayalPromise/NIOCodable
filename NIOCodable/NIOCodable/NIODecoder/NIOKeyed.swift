@@ -263,6 +263,10 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     
     // MARK: T?
     func decodeIfPresent<T>(_ type: T.Type, forKey key: K) throws -> T? where T : Decodable {
+        guard let entry = self.source[key.stringValue] else {
+            return nil
+        }
+        print(entry)
         return try type.init(from: self.decoder)
     }
     

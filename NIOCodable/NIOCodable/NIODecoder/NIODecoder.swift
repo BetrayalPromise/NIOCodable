@@ -39,7 +39,13 @@ extension NIODecoder {
         defer {
             self.storage.pop()
         }
-        return try type.init(from: self)
+        print(type)
+        do {
+            return try type.init(from: self)
+        } catch  {
+            print(error)
+            throw error
+        }
     }
 }
 

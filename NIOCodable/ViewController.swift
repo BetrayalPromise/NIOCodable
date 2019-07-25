@@ -13,18 +13,34 @@ class ViewController: UIViewController {
     
     @objc
     func handle(button: UIButton) {
-        struct JSON: Codable {
-            var name: Int
+        struct Book: Decodable {
+            var title: String
+            var frontCover: BookCover?
+            var backCover: BookCover?
         }
+        
+        struct BookCover: Decodable {
+            var text: String
+            var image: String?
+            enum CodingKeys: String, CodingKey {
+                case text
+                case image
+            }
+        }
+        
         let data: Data = """
-        [
-        {"name": "2342cdfdqe"},
-        ]
+        {
+            "title": "Blah",
+            "frontCover": {},
+            "backCover": {
+                "image": "", "text": "It's good, read it"
+            }
+        }
         """.data(using: String.Encoding.utf8) ?? Data()
 
         do {
-            let decoder: JSONDecoder = JSONDecoder()
-            let model = try decoder.decode([JSON].self, from: data)
+            let decoder: NIOJSONDecoder = NIOJSONDecoder()
+            let model = try decoder.decode(type: Book.self, from: data)
             print(model)
         } catch {
             print(error)
