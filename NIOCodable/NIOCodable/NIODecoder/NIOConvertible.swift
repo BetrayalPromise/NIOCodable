@@ -1586,10 +1586,12 @@ extension CustomConvertible {
 // MARK: Int转UInt
 extension CustomConvertible {
     func toUInt(key: CodingKey, value: Int) -> UInt {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt(value)
     }
     
     func toUInt(key: CodingKey, value: Int) -> UInt? {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt(value)
     }
 }
@@ -1597,10 +1599,12 @@ extension CustomConvertible {
 // MARK: Int8转UInt
 extension CustomConvertible {
     func toUInt(key: CodingKey, value: Int8) -> UInt {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt(value)
     }
     
     func toUInt(key: CodingKey, value: Int8) -> UInt? {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt(value)
     }
 }
@@ -1608,10 +1612,12 @@ extension CustomConvertible {
 // MARK: Int16转UInt
 extension CustomConvertible {
     func toUInt(key: CodingKey, value: Int16) -> UInt {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt(value)
     }
     
     func toUInt(key: CodingKey, value: Int16) -> UInt? {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt(value)
     }
 }
@@ -1619,9 +1625,11 @@ extension CustomConvertible {
 // MARK: Int32转UInt
 extension CustomConvertible {
     func toUInt(key: CodingKey, value: Int32) -> UInt {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt(value)
     }
     func toUInt(key: CodingKey, value: Int32) -> UInt? {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt(value)
     }
 }
@@ -1629,10 +1637,12 @@ extension CustomConvertible {
 // MARK: Int64转UInt
 extension CustomConvertible {
     func toUInt(key: CodingKey, value: Int64) -> UInt {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt(value)
     }
     
     func toUInt(key: CodingKey, value: Int64) -> UInt? {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt(value)
     }
 }
@@ -1684,10 +1694,12 @@ extension CustomConvertible {
 // MARK: Float转UInt
 extension CustomConvertible {
     func toUInt(key: CodingKey, value: Float) -> UInt {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt(value)
     }
     
     func toUInt(key: CodingKey, value: Float) -> UInt? {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt(value)
     }
 }
@@ -1695,10 +1707,12 @@ extension CustomConvertible {
 // MARK: Double转UInt
 extension CustomConvertible {
     func toUInt(key: CodingKey, value: Double) -> UInt {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt(value)
     }
     
     func toUInt(key: CodingKey, value: Double) -> UInt? {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt(value)
     }
 }
@@ -1706,11 +1720,19 @@ extension CustomConvertible {
 // MARK: String转UInt
 extension CustomConvertible {
     func toUInt(key: CodingKey, value: String) -> UInt {
-        return UInt(value) ?? 0
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return 0
+        }
     }
     
     func toUInt(key: CodingKey, value: String) -> UInt? {
-        return UInt(value)
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return UInt(value.lowercased())
+        }
     }
 }
 
@@ -1734,10 +1756,12 @@ extension CustomConvertible {
 // MARK: Int转UInt8
 extension CustomConvertible {
     func toUInt8(key: CodingKey, value: Int) -> UInt8 {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt8(value)
     }
 
     func toUInt8(key: CodingKey, value: Int) -> UInt8? {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt8(value)
     }
 }
@@ -1745,10 +1769,12 @@ extension CustomConvertible {
 // MARK: Int8转UInt8
 extension CustomConvertible {
     func toUInt8(key: CodingKey, value: Int8) -> UInt8 {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt8(value)
     }
 
     func toUInt8(key: CodingKey, value: Int8) -> UInt8? {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt8(value)
     }
 }
@@ -1756,10 +1782,12 @@ extension CustomConvertible {
 // MARK: Int16转UInt8
 extension CustomConvertible {
     func toUInt8(key: CodingKey, value: Int16) -> UInt8 {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt8(value)
     }
 
     func toUInt8(key: CodingKey, value: Int16) -> UInt8? {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt8(value)
     }
 }
@@ -1767,10 +1795,12 @@ extension CustomConvertible {
 // MARK: Int32转UInt8
 extension CustomConvertible {
     func toUInt8(key: CodingKey, value: Int32) -> UInt8 {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt8(value)
     }
 
     func toUInt8(key: CodingKey, value: Int32) -> UInt8? {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt8(value)
     }
 }
@@ -1778,10 +1808,12 @@ extension CustomConvertible {
 // MARK: Int64转UInt8
 extension CustomConvertible {
     func toUInt8(key: CodingKey, value: Int64) -> UInt8 {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt8(value)
     }
 
     func toUInt8(key: CodingKey, value: Int64) -> UInt8? {
+        assert(value >= 0,  "UInt不能容纳负数")
         return UInt8(value)
     }
 }
@@ -1855,11 +1887,19 @@ extension CustomConvertible {
 // MARK: String转UInt8
 extension CustomConvertible {
     func toUInt8(key: CodingKey, value: String) -> UInt8 {
-        return UInt8(value) ?? 0
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return UInt8(value.lowercased()) ?? 0
+        }
     }
 
     func toUInt8(key: CodingKey, value: String) -> UInt8? {
-        return UInt8(value)
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return UInt8(value.lowercased())
+        }
     }
 }
 
@@ -2004,11 +2044,19 @@ extension CustomConvertible {
 // MARK: String转UInt16
 extension CustomConvertible {
     func toUInt16(key: CodingKey, value: String) -> UInt16 {
-        return UInt16(value) ?? 0
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return UInt16(value.lowercased()) ?? 0
+        }
     }
 
     func toUInt16(key: CodingKey, value: String) -> UInt16? {
-        return UInt16(value)
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return UInt16(value.lowercased())
+        }
     }
 }
 
@@ -2153,11 +2201,19 @@ extension CustomConvertible {
 // MARK: String转UInt32
 extension CustomConvertible {
     func toUInt32(key: CodingKey, value: String) -> UInt32 {
-        return UInt32(value) ?? 0
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return UInt32(value.lowercased()) ?? 0
+        }
     }
 
     func toUInt32(key: CodingKey, value: String) -> UInt32? {
-        return UInt32(value)
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return UInt32(value.lowercased())
+        }
     }
 }
 
@@ -2280,10 +2336,12 @@ extension CustomConvertible {
 // MARK: Float转UInt64
 extension CustomConvertible {
     func toUInt64(key: CodingKey, value: Float) -> UInt64 {
+        assert(value >= 0,  "UInt64不能容纳负数")
         return UInt64(value)
     }
 
     func toUInt64(key: CodingKey, value: Float) -> UInt64? {
+        assert(value >= 0,  "UInt64不能容纳负数")
         return UInt64(value)
     }
 }
@@ -2291,10 +2349,12 @@ extension CustomConvertible {
 // MARK: Double转UInt64
 extension CustomConvertible {
     func toUInt64(key: CodingKey, value: Double) -> UInt64 {
+        assert(value >= 0,  "UInt64不能容纳负数")
         return UInt64(value)
     }
 
     func toUInt64(key: CodingKey, value: Double) -> UInt64? {
+        assert(value >= 0,  "UInt64不能容纳负数")
         return UInt64(value)
     }
 }
@@ -2302,11 +2362,19 @@ extension CustomConvertible {
 // MARK: String转UInt64
 extension CustomConvertible {
     func toUInt64(key: CodingKey, value: String) -> UInt64 {
-        return UInt64(value) ?? 0
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return UInt64(value.lowercased()) ?? 0
+        }
     }
 
     func toUInt64(key: CodingKey, value: String) -> UInt64? {
-        return UInt64(value)
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return UInt64(value.lowercased())
+        }
     }
 }
 
@@ -2451,11 +2519,19 @@ extension CustomConvertible {
 // MARK: String转Float
 extension CustomConvertible {
     func toFloat(key: CodingKey, value: String) -> Float {
-        return Float(value) ?? 0
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return Float(value.lowercased()) ?? 0
+        }
     }
 
     func toFloat(key: CodingKey, value: String) -> Float? {
-        return Float(value)
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return Float(value.lowercased())
+        }
     }
 }
 
@@ -2600,11 +2676,19 @@ extension CustomConvertible {
 // MARK: String转Double
 extension CustomConvertible {
     func toDouble(key: CodingKey, value: String) -> Double {
-          return Double(value) ?? 0
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return Double(value.lowercased()) ?? 0
+        }
     }
 
     func toDouble(key: CodingKey, value: String) -> Double? {
-          return Double(value)
+        switch value.lowercased() {
+        case "true", "yes": return 1
+        case "false", "no": return 0
+        default: return Double(value.lowercased())
+        }
     }
 }
 

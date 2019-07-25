@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NIOCodable/ViewController.swift"
-            timestampString = "585717846.810347"
+            timestampString = "585724558.7357171"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NIOCodable/ViewController.swift"
-            timestampString = "585717846.810423"
+            timestampString = "585724558.735796"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NIOCodableTests/NIOCodableTests.swift"
-            timestampString = "585717846.8104841"
+            timestampString = "585724558.73586"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
@@ -74,13 +74,497 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
-            timestampString = "585717846.810912"
+            timestampString = "585724558.736413"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1087"
             endingLineNumber = "1087"
             landmarkName = "CustomConvertible"
             landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+            timestampString = "585724558.736497"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2373"
+            endingLineNumber = "2373"
+            landmarkName = "toUInt64(key:value:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toUInt64(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.Optional&lt;Swift.UInt64&gt;"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724558.956152"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2373"
+                  endingLineNumber = "2373"
+                  offsetFromSymbolStart = "159">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toUInt64(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.Optional&lt;Swift.UInt64&gt;"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724558.959134"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2373"
+                  endingLineNumber = "2373"
+                  offsetFromSymbolStart = "167">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toUInt64(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.Optional&lt;Swift.UInt64&gt;"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724558.961419"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2373"
+                  endingLineNumber = "2373"
+                  offsetFromSymbolStart = "328">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toUInt64(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.Optional&lt;Swift.UInt64&gt;"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724558.96343"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2373"
+                  endingLineNumber = "2373"
+                  offsetFromSymbolStart = "501">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toUInt64(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.Optional&lt;Swift.UInt64&gt;"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724558.9654469"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2373"
+                  endingLineNumber = "2373"
+                  offsetFromSymbolStart = "650">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+            timestampString = "585724558.736559"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2365"
+            endingLineNumber = "2365"
+            landmarkName = "toUInt64(key:value:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toUInt64(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.UInt64"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724558.973554"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2365"
+                  endingLineNumber = "2365"
+                  offsetFromSymbolStart = "180">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toUInt64(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.UInt64"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724558.976131"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2365"
+                  endingLineNumber = "2365"
+                  offsetFromSymbolStart = "188">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toUInt64(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.UInt64"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724558.9782259"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2365"
+                  endingLineNumber = "2365"
+                  offsetFromSymbolStart = "349">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toUInt64(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.UInt64"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724558.9800251"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2365"
+                  endingLineNumber = "2365"
+                  offsetFromSymbolStart = "512">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toUInt64(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.UInt64"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724558.98171"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2365"
+                  endingLineNumber = "2365"
+                  offsetFromSymbolStart = "661">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NIOCodable/NIOCodable/NIODecoder/NIOKeyed.swift"
+            timestampString = "585724558.736617"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2003"
+            endingLineNumber = "2003"
+            landmarkName = "decode(value:type:forKey:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+            timestampString = "585724558.7366771"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2522"
+            endingLineNumber = "2522"
+            landmarkName = "toFloat(key:value:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toFloat(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.Float"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724558.9928401"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2522"
+                  endingLineNumber = "2522"
+                  offsetFromSymbolStart = "172">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toFloat(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.Float"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724558.9946311"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2522"
+                  endingLineNumber = "2522"
+                  offsetFromSymbolStart = "180">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toFloat(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.Float"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724558.996366"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2522"
+                  endingLineNumber = "2522"
+                  offsetFromSymbolStart = "341">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toFloat(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.Float"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724558.998116"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2522"
+                  endingLineNumber = "2522"
+                  offsetFromSymbolStart = "506">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toFloat(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.Float"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724558.99993"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2522"
+                  endingLineNumber = "2522"
+                  offsetFromSymbolStart = "655">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+            timestampString = "585724558.736729"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2530"
+            endingLineNumber = "2530"
+            landmarkName = "toFloat(key:value:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toFloat(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.Optional&lt;Swift.Float&gt;"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724559.009558"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2530"
+                  endingLineNumber = "2530"
+                  offsetFromSymbolStart = "163">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toFloat(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.Optional&lt;Swift.Float&gt;"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724559.012756"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2530"
+                  endingLineNumber = "2530"
+                  offsetFromSymbolStart = "171">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toFloat(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.Optional&lt;Swift.Float&gt;"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724559.0162899"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2530"
+                  endingLineNumber = "2530"
+                  offsetFromSymbolStart = "332">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toFloat(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.Optional&lt;Swift.Float&gt;"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724559.018593"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2530"
+                  endingLineNumber = "2530"
+                  offsetFromSymbolStart = "502">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in NIOCodable):NIOCodable.CustomConvertible.toFloat(key: Swift.CodingKey, value: Swift.String) -&gt; Swift.Optional&lt;Swift.Float&gt;"
+                  moduleName = "NIOCodable"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chunyang.li.o/Desktop/NIOCodable/NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+                  timestampString = "585724559.021219"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "2530"
+                  endingLineNumber = "2530"
+                  offsetFromSymbolStart = "651">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NIOCodable/NIOCodable/NIODecoder/NIOKeyed.swift"
+            timestampString = "585724558.73678"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2339"
+            endingLineNumber = "2339"
+            landmarkName = "decode(value:type:forKey:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NIOCodable/NIOCodable/NIODecoder/NIOKeyed.swift"
+            timestampString = "585724558.736835"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
+            landmarkName = "decode(_:forKey:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NIOCodable/NIOCodable/NIODecoder/NIOKeyed.swift"
+            timestampString = "585724558.736885"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
+            landmarkName = "decodeIfPresent(_:forKey:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+            timestampString = "585724558.736985"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2699"
+            endingLineNumber = "2699"
+            landmarkName = "toString(key:value:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NIOCodable/NIOCodable/NIODecoder/NIOConvertible.swift"
+            timestampString = "585724558.7370321"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2706"
+            endingLineNumber = "2706"
+            landmarkName = "toString(key:value:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NIOCodableTests/NIOCodableTests.swift"
+            timestampString = "585724558.737129"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "527"
+            endingLineNumber = "527"
+            landmarkName = "testString()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
