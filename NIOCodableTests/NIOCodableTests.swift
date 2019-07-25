@@ -526,8 +526,8 @@ class NIOCodableTests: XCTestCase {
             }
             print(models[0].name)
             print(models[1].name)
-            XCTAssert(models[0].name == "1")
-            XCTAssert(models[1].name == "0")
+            XCTAssert(models[0].name == "true")
+            XCTAssert(models[1].name == "false")
         } catch {
             print(error)
         }
