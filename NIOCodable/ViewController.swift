@@ -14,11 +14,11 @@ class ViewController: UIViewController {
     @objc
     func handle(button: UIButton) {
         struct JSON: Codable {
-            var name: UInt8?
+            var name: Int
         }
         let data: Data = """
         [
-        {"name": -20},
+        {"name": "2342cdfdqe"},
         ]
         """.data(using: String.Encoding.utf8) ?? Data()
 
@@ -29,6 +29,5 @@ class ViewController: UIViewController {
         } catch {
             print(error)
         }
-
     }
 }

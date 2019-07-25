@@ -238,20 +238,20 @@ public protocol CustomConvertible {
     func toUInt(key: CodingKey, value: Bool) -> UInt
     func toUInt(key: CodingKey, value: Bool) -> UInt?
     
-    func toUInt(key: CodingKey, value: Int) -> UInt
-    func toUInt(key: CodingKey, value: Int) -> UInt?
+    func toUInt(key: CodingKey, value: Int) throws -> UInt
+    func toUInt(key: CodingKey, value: Int) throws -> UInt?
     
-    func toUInt(key: CodingKey, value: Int8) -> UInt
-    func toUInt(key: CodingKey, value: Int8) -> UInt?
+    func toUInt(key: CodingKey, value: Int8) throws -> UInt
+    func toUInt(key: CodingKey, value: Int8) throws-> UInt?
     
-    func toUInt(key: CodingKey, value: Int16) -> UInt
-    func toUInt(key: CodingKey, value: Int16) -> UInt?
+    func toUInt(key: CodingKey, value: Int16) throws -> UInt
+    func toUInt(key: CodingKey, value: Int16) throws -> UInt?
     
-    func toUInt(key: CodingKey, value: Int32) -> UInt
-    func toUInt(key: CodingKey, value: Int32) -> UInt?
+    func toUInt(key: CodingKey, value: Int32) throws -> UInt
+    func toUInt(key: CodingKey, value: Int32) throws -> UInt?
     
-    func toUInt(key: CodingKey, value: Int64) -> UInt
-    func toUInt(key: CodingKey, value: Int64) -> UInt?
+    func toUInt(key: CodingKey, value: Int64) throws -> UInt
+    func toUInt(key: CodingKey, value: Int64) throws -> UInt?
     
     func toUInt(key: CodingKey, value: UInt8) -> UInt
     func toUInt(key: CodingKey, value: UInt8) -> UInt?
@@ -265,11 +265,11 @@ public protocol CustomConvertible {
     func toUInt(key: CodingKey, value: UInt64) -> UInt
     func toUInt(key: CodingKey, value: UInt64) -> UInt?
     
-    func toUInt(key: CodingKey, value: Float) -> UInt
-    func toUInt(key: CodingKey, value: Float) -> UInt?
+    func toUInt(key: CodingKey, value: Float) throws -> UInt
+    func toUInt(key: CodingKey, value: Float) throws -> UInt?
     
-    func toUInt(key: CodingKey, value: Double) -> UInt
-    func toUInt(key: CodingKey, value: Double) -> UInt?
+    func toUInt(key: CodingKey, value: Double) throws -> UInt
+    func toUInt(key: CodingKey, value: Double) throws -> UInt?
     
     func toUInt(key: CodingKey, value: String) -> UInt
     func toUInt(key: CodingKey, value: String) -> UInt?
@@ -277,20 +277,20 @@ public protocol CustomConvertible {
     func toUInt8(key: CodingKey, value: Bool) -> UInt8
     func toUInt8(key: CodingKey, value: Bool) -> UInt8?
 
-    func toUInt8(key: CodingKey, value: Int) -> UInt8
-    func toUInt8(key: CodingKey, value: Int) -> UInt8?
+    func toUInt8(key: CodingKey, value: Int) throws -> UInt8
+    func toUInt8(key: CodingKey, value: Int) throws -> UInt8?
 
-    func toUInt8(key: CodingKey, value: Int8) -> UInt8
-    func toUInt8(key: CodingKey, value: Int8) -> UInt8?
+    func toUInt8(key: CodingKey, value: Int8) throws -> UInt8
+    func toUInt8(key: CodingKey, value: Int8) throws -> UInt8?
 
-    func toUInt8(key: CodingKey, value: Int16) -> UInt8
-    func toUInt8(key: CodingKey, value: Int16) -> UInt8?
+    func toUInt8(key: CodingKey, value: Int16) throws -> UInt8
+    func toUInt8(key: CodingKey, value: Int16) throws -> UInt8?
+    
+    func toUInt8(key: CodingKey, value: Int32) throws -> UInt8
+    func toUInt8(key: CodingKey, value: Int32) throws -> UInt8?
 
-    func toUInt8(key: CodingKey, value: Int32) -> UInt8
-    func toUInt8(key: CodingKey, value: Int32) -> UInt8?
-
-    func toUInt8(key: CodingKey, value: Int64) -> UInt8
-    func toUInt8(key: CodingKey, value: Int64) -> UInt8?
+    func toUInt8(key: CodingKey, value: Int64) throws -> UInt8
+    func toUInt8(key: CodingKey, value: Int64) throws -> UInt8?
 
     func toUInt8(key: CodingKey, value: UInt) -> UInt8
     func toUInt8(key: CodingKey, value: UInt) -> UInt8?
@@ -304,11 +304,11 @@ public protocol CustomConvertible {
     func toUInt8(key: CodingKey, value: UInt64) -> UInt8
     func toUInt8(key: CodingKey, value: UInt64) -> UInt8?
 
-    func toUInt8(key: CodingKey, value: Float) -> UInt8
-    func toUInt8(key: CodingKey, value: Float) -> UInt8?
+    func toUInt8(key: CodingKey, value: Float) throws -> UInt8
+    func toUInt8(key: CodingKey, value: Float) throws -> UInt8?
 
-    func toUInt8(key: CodingKey, value: Double) -> UInt8
-    func toUInt8(key: CodingKey, value: Double) -> UInt8?
+    func toUInt8(key: CodingKey, value: Double) throws -> UInt8
+    func toUInt8(key: CodingKey, value: Double) throws -> UInt8?
 
     func toUInt8(key: CodingKey, value: String) -> UInt8
     func toUInt8(key: CodingKey, value: String) -> UInt8?
@@ -316,20 +316,20 @@ public protocol CustomConvertible {
     func toUInt16(key: CodingKey, value: Bool) -> UInt16
     func toUInt16(key: CodingKey, value: Bool) -> UInt16?
 
-    func toUInt16(key: CodingKey, value: Int) -> UInt16
-    func toUInt16(key: CodingKey, value: Int) -> UInt16?
+    func toUInt16(key: CodingKey, value: Int) throws -> UInt16
+    func toUInt16(key: CodingKey, value: Int) throws -> UInt16?
 
-    func toUInt16(key: CodingKey, value: Int8) -> UInt16
-    func toUInt16(key: CodingKey, value: Int8) -> UInt16?
+    func toUInt16(key: CodingKey, value: Int8) throws -> UInt16
+    func toUInt16(key: CodingKey, value: Int8) throws -> UInt16?
 
-    func toUInt16(key: CodingKey, value: Int16) -> UInt16
-    func toUInt16(key: CodingKey, value: Int16) -> UInt16?
+    func toUInt16(key: CodingKey, value: Int16) throws -> UInt16
+    func toUInt16(key: CodingKey, value: Int16) throws -> UInt16?
 
-    func toUInt16(key: CodingKey, value: Int32) -> UInt16
-    func toUInt16(key: CodingKey, value: Int32) -> UInt16?
+    func toUInt16(key: CodingKey, value: Int32) throws -> UInt16
+    func toUInt16(key: CodingKey, value: Int32) throws -> UInt16?
 
-    func toUInt16(key: CodingKey, value: Int64) -> UInt16
-    func toUInt16(key: CodingKey, value: Int64) -> UInt16?
+    func toUInt16(key: CodingKey, value: Int64) throws -> UInt16
+    func toUInt16(key: CodingKey, value: Int64) throws -> UInt16?
 
     func toUInt16(key: CodingKey, value: UInt) -> UInt16
     func toUInt16(key: CodingKey, value: UInt) -> UInt16?
@@ -343,11 +343,11 @@ public protocol CustomConvertible {
     func toUInt16(key: CodingKey, value: UInt64) -> UInt16
     func toUInt16(key: CodingKey, value: UInt64) -> UInt16?
 
-    func toUInt16(key: CodingKey, value: Float) -> UInt16
-    func toUInt16(key: CodingKey, value: Float) -> UInt16?
+    func toUInt16(key: CodingKey, value: Float) throws -> UInt16
+    func toUInt16(key: CodingKey, value: Float) throws -> UInt16?
 
-    func toUInt16(key: CodingKey, value: Double) -> UInt16
-    func toUInt16(key: CodingKey, value: Double) -> UInt16?
+    func toUInt16(key: CodingKey, value: Double) throws -> UInt16
+    func toUInt16(key: CodingKey, value: Double) throws -> UInt16?
 
     func toUInt16(key: CodingKey, value: String) -> UInt16
     func toUInt16(key: CodingKey, value: String) -> UInt16?
@@ -355,20 +355,20 @@ public protocol CustomConvertible {
     func toUInt32(key: CodingKey, value: Bool) -> UInt32
     func toUInt32(key: CodingKey, value: Bool) -> UInt32?
 
-    func toUInt32(key: CodingKey, value: Int) -> UInt32
-    func toUInt32(key: CodingKey, value: Int) -> UInt32?
+    func toUInt32(key: CodingKey, value: Int) throws -> UInt32
+    func toUInt32(key: CodingKey, value: Int) throws -> UInt32?
 
-    func toUInt32(key: CodingKey, value: Int8) -> UInt32
-    func toUInt32(key: CodingKey, value: Int8) -> UInt32?
+    func toUInt32(key: CodingKey, value: Int8) throws -> UInt32
+    func toUInt32(key: CodingKey, value: Int8) throws -> UInt32?
 
-    func toUInt32(key: CodingKey, value: Int16) -> UInt32
-    func toUInt32(key: CodingKey, value: Int16) -> UInt32?
+    func toUInt32(key: CodingKey, value: Int16) throws -> UInt32
+    func toUInt32(key: CodingKey, value: Int16) throws -> UInt32?
 
-    func toUInt32(key: CodingKey, value: Int32) -> UInt32
-    func toUInt32(key: CodingKey, value: Int32) -> UInt32?
+    func toUInt32(key: CodingKey, value: Int32) throws -> UInt32
+    func toUInt32(key: CodingKey, value: Int32) throws -> UInt32?
 
-    func toUInt32(key: CodingKey, value: Int64) -> UInt32
-    func toUInt32(key: CodingKey, value: Int64) -> UInt32?
+    func toUInt32(key: CodingKey, value: Int64) throws -> UInt32
+    func toUInt32(key: CodingKey, value: Int64) throws-> UInt32?
 
     func toUInt32(key: CodingKey, value: UInt) -> UInt32
     func toUInt32(key: CodingKey, value: UInt) -> UInt32?
@@ -382,11 +382,11 @@ public protocol CustomConvertible {
     func toUInt32(key: CodingKey, value: UInt64) -> UInt32
     func toUInt32(key: CodingKey, value: UInt64) -> UInt32?
 
-    func toUInt32(key: CodingKey, value: Float) -> UInt32
-    func toUInt32(key: CodingKey, value: Float) -> UInt32?
+    func toUInt32(key: CodingKey, value: Float) throws -> UInt32
+    func toUInt32(key: CodingKey, value: Float) throws -> UInt32?
 
-    func toUInt32(key: CodingKey, value: Double) -> UInt32
-    func toUInt32(key: CodingKey, value: Double) -> UInt32?
+    func toUInt32(key: CodingKey, value: Double) throws -> UInt32
+    func toUInt32(key: CodingKey, value: Double) throws -> UInt32?
 
     func toUInt32(key: CodingKey, value: String) -> UInt32
     func toUInt32(key: CodingKey, value: String) -> UInt32?
@@ -394,20 +394,20 @@ public protocol CustomConvertible {
     func toUInt64(key: CodingKey, value: Bool) -> UInt64
     func toUInt64(key: CodingKey, value: Bool) -> UInt64?
 
-    func toUInt64(key: CodingKey, value: Int) -> UInt64
-    func toUInt64(key: CodingKey, value: Int) -> UInt64?
+    func toUInt64(key: CodingKey, value: Int) throws -> UInt64
+    func toUInt64(key: CodingKey, value: Int) throws -> UInt64?
 
-    func toUInt64(key: CodingKey, value: Int8) -> UInt64
-    func toUInt64(key: CodingKey, value: Int8) -> UInt64?
+    func toUInt64(key: CodingKey, value: Int8) throws -> UInt64
+    func toUInt64(key: CodingKey, value: Int8) throws -> UInt64?
 
-    func toUInt64(key: CodingKey, value: Int16) -> UInt64
-    func toUInt64(key: CodingKey, value: Int16) -> UInt64?
+    func toUInt64(key: CodingKey, value: Int16) throws -> UInt64
+    func toUInt64(key: CodingKey, value: Int16) throws -> UInt64?
 
-    func toUInt64(key: CodingKey, value: Int32) -> UInt64
-    func toUInt64(key: CodingKey, value: Int32) -> UInt64?
+    func toUInt64(key: CodingKey, value: Int32) throws -> UInt64
+    func toUInt64(key: CodingKey, value: Int32) throws -> UInt64?
 
-    func toUInt64(key: CodingKey, value: Int64) -> UInt64
-    func toUInt64(key: CodingKey, value: Int64) -> UInt64?
+    func toUInt64(key: CodingKey, value: Int64) throws -> UInt64
+    func toUInt64(key: CodingKey, value: Int64) throws -> UInt64?
 
     func toUInt64(key: CodingKey, value: UInt) -> UInt64
     func toUInt64(key: CodingKey, value: UInt) -> UInt64?
@@ -421,11 +421,11 @@ public protocol CustomConvertible {
     func toUInt64(key: CodingKey, value: UInt32) -> UInt64
     func toUInt64(key: CodingKey, value: UInt32) -> UInt64?
 
-    func toUInt64(key: CodingKey, value: Float) -> UInt64
-    func toUInt64(key: CodingKey, value: Float) -> UInt64?
+    func toUInt64(key: CodingKey, value: Float) throws -> UInt64
+    func toUInt64(key: CodingKey, value: Float) throws -> UInt64?
 
-    func toUInt64(key: CodingKey, value: Double) -> UInt64
-    func toUInt64(key: CodingKey, value: Double) -> UInt64?
+    func toUInt64(key: CodingKey, value: Double) throws -> UInt64
+    func toUInt64(key: CodingKey, value: Double) throws -> UInt64?
 
     func toUInt64(key: CodingKey, value: String) -> UInt64
     func toUInt64(key: CodingKey, value: String) -> UInt64?
@@ -925,7 +925,8 @@ extension CustomConvertible {
         switch value.lowercased() {
         case "true", "yes": return 1
         case "false", "no": return 0
-        default: return Int(value) ?? 0
+        default:
+            return Int(value) ?? 0
         }
     }
     
@@ -1585,64 +1586,64 @@ extension CustomConvertible {
 
 // MARK: Int转UInt
 extension CustomConvertible {
-    func toUInt(key: CodingKey, value: Int) -> UInt {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt(key: CodingKey, value: Int) throws -> UInt {
+        if value < 0 { throw DecodingError.typeMismatch(UInt.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
     }
     
-    func toUInt(key: CodingKey, value: Int) -> UInt? {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt(key: CodingKey, value: Int) throws -> UInt? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
     }
 }
 
 // MARK: Int8转UInt
 extension CustomConvertible {
-    func toUInt(key: CodingKey, value: Int8) -> UInt {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt(key: CodingKey, value: Int8) throws -> UInt {
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
     }
     
-    func toUInt(key: CodingKey, value: Int8) -> UInt? {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt(key: CodingKey, value: Int8) throws -> UInt? {
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
     }
 }
 
 // MARK: Int16转UInt
 extension CustomConvertible {
-    func toUInt(key: CodingKey, value: Int16) -> UInt {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt(key: CodingKey, value: Int16) throws -> UInt {
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
     }
     
-    func toUInt(key: CodingKey, value: Int16) -> UInt? {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt(key: CodingKey, value: Int16) throws -> UInt? {
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
     }
 }
 
 // MARK: Int32转UInt
 extension CustomConvertible {
-    func toUInt(key: CodingKey, value: Int32) -> UInt {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt(key: CodingKey, value: Int32) throws -> UInt {
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
     }
-    func toUInt(key: CodingKey, value: Int32) -> UInt? {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt(key: CodingKey, value: Int32) throws -> UInt? {
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
     }
 }
 
 // MARK: Int64转UInt
 extension CustomConvertible {
-    func toUInt(key: CodingKey, value: Int64) -> UInt {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt(key: CodingKey, value: Int64) throws -> UInt {
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
     }
     
-    func toUInt(key: CodingKey, value: Int64) -> UInt? {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt(key: CodingKey, value: Int64) throws -> UInt? {
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
     }
 }
@@ -1693,26 +1694,26 @@ extension CustomConvertible {
 
 // MARK: Float转UInt
 extension CustomConvertible {
-    func toUInt(key: CodingKey, value: Float) -> UInt {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt(key: CodingKey, value: Float) throws -> UInt {
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
     }
     
-    func toUInt(key: CodingKey, value: Float) -> UInt? {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt(key: CodingKey, value: Float) throws -> UInt? {
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
     }
 }
 
 // MARK: Double转UInt
 extension CustomConvertible {
-    func toUInt(key: CodingKey, value: Double) -> UInt {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt(key: CodingKey, value: Double) throws -> UInt {
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
     }
     
-    func toUInt(key: CodingKey, value: Double) -> UInt? {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt(key: CodingKey, value: Double) throws -> UInt? {
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
     }
 }
@@ -1755,65 +1756,65 @@ extension CustomConvertible {
 
 // MARK: Int转UInt8
 extension CustomConvertible {
-    func toUInt8(key: CodingKey, value: Int) -> UInt8 {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt8(key: CodingKey, value: Int) throws -> UInt8 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
     }
 
-    func toUInt8(key: CodingKey, value: Int) -> UInt8? {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt8(key: CodingKey, value: Int) throws -> UInt8? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
     }
 }
 
 // MARK: Int8转UInt8
 extension CustomConvertible {
-    func toUInt8(key: CodingKey, value: Int8) -> UInt8 {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt8(key: CodingKey, value: Int8) throws -> UInt8 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
     }
 
-    func toUInt8(key: CodingKey, value: Int8) -> UInt8? {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt8(key: CodingKey, value: Int8) throws -> UInt8? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
     }
 }
 
 // MARK: Int16转UInt8
 extension CustomConvertible {
-    func toUInt8(key: CodingKey, value: Int16) -> UInt8 {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt8(key: CodingKey, value: Int16) throws -> UInt8 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
     }
 
-    func toUInt8(key: CodingKey, value: Int16) -> UInt8? {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt8(key: CodingKey, value: Int16) throws -> UInt8? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
     }
 }
 
 // MARK: Int32转UInt8
 extension CustomConvertible {
-    func toUInt8(key: CodingKey, value: Int32) -> UInt8 {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt8(key: CodingKey, value: Int32) throws -> UInt8 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
     }
 
-    func toUInt8(key: CodingKey, value: Int32) -> UInt8? {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt8(key: CodingKey, value: Int32) throws -> UInt8? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
     }
 }
 
 // MARK: Int64转UInt8
 extension CustomConvertible {
-    func toUInt8(key: CodingKey, value: Int64) -> UInt8 {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt8(key: CodingKey, value: Int64) throws -> UInt8 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
     }
 
-    func toUInt8(key: CodingKey, value: Int64) -> UInt8? {
-        assert(value >= 0,  "UInt不能容纳负数")
+    func toUInt8(key: CodingKey, value: Int64) throws -> UInt8? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
     }
 }
@@ -1864,26 +1865,26 @@ extension CustomConvertible {
 
 // MARK: Float转UInt8
 extension CustomConvertible {
-    func toUInt8(key: CodingKey, value: Float) -> UInt8 {
-        assert(value >= 0, "UInt8不能容纳负数")
+    func toUInt8(key: CodingKey, value: Float) throws -> UInt8 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
     }
 
-    func toUInt8(key: CodingKey, value: Float) -> UInt8? {
-        assert(value >= 0, "UInt8不能容纳负数")
+    func toUInt8(key: CodingKey, value: Float) throws -> UInt8? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
     }
 }
 
 // MARK: Double转UInt8
 extension CustomConvertible {
-    func toUInt8(key: CodingKey, value: Double) -> UInt8 {
-        assert(value >= 0, "UInt8不能容纳负数")
+    func toUInt8(key: CodingKey, value: Double) throws -> UInt8 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
     }
 
-    func toUInt8(key: CodingKey, value: Double) -> UInt8? {
-        assert(value >= 0, "UInt8不能容纳负数")
+    func toUInt8(key: CodingKey, value: Double) throws -> UInt8? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
     }
 }
@@ -1926,65 +1927,65 @@ extension CustomConvertible {
 
 // MARK: Int转UInt16
 extension CustomConvertible {
-    func toUInt16(key: CodingKey, value: Int) -> UInt16 {
-        assert(value >= 0, "UInt16不能容纳负数")
+    func toUInt16(key: CodingKey, value: Int) throws -> UInt16 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
     }
 
-    func toUInt16(key: CodingKey, value: Int) -> UInt16? {
-        assert(value >= 0, "UInt16不能容纳负数")
+    func toUInt16(key: CodingKey, value: Int) throws -> UInt16? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
     }
 }
 
 // MARK: Int8转UInt16
 extension CustomConvertible {
-    func toUInt16(key: CodingKey, value: Int8) -> UInt16 {
-        assert(value >= 0, "UInt16不能容纳负数")
+    func toUInt16(key: CodingKey, value: Int8) throws -> UInt16 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
     }
 
-    func toUInt16(key: CodingKey, value: Int8) -> UInt16? {
-        assert(value >= 0, "UInt16不能容纳负数")
+    func toUInt16(key: CodingKey, value: Int8) throws -> UInt16? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
     }
 }
 
 // MARK: Int16转UInt16
 extension CustomConvertible {
-    func toUInt16(key: CodingKey, value: Int16) -> UInt16 {
-        assert(value >= 0, "UInt16不能容纳负数")
+    func toUInt16(key: CodingKey, value: Int16) throws -> UInt16 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
     }
 
-    func toUInt16(key: CodingKey, value: Int16) -> UInt16? {
-        assert(value >= 0, "UInt16不能容纳负数")
+    func toUInt16(key: CodingKey, value: Int16) throws -> UInt16? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
     }
 }
 
 // MARK: Int32转UInt16
 extension CustomConvertible {
-    func toUInt16(key: CodingKey, value: Int32) -> UInt16 {
-        assert(value >= 0, "UInt16不能容纳负数")
+    func toUInt16(key: CodingKey, value: Int32) throws -> UInt16 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
     }
 
-    func toUInt16(key: CodingKey, value: Int32) -> UInt16? {
-        assert(value >= 0, "UInt16不能容纳负数")
+    func toUInt16(key: CodingKey, value: Int32) throws -> UInt16? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
     }
 }
 
 // MARK: Int64转UInt16
 extension CustomConvertible {
-    func toUInt16(key: CodingKey, value: Int64) -> UInt16 {
-        assert(value >= 0, "UInt16不能容纳负数")
+    func toUInt16(key: CodingKey, value: Int64) throws -> UInt16 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
     }
 
-    func toUInt16(key: CodingKey, value: Int64) -> UInt16? {
-        assert(value >= 0, "UInt16不能容纳负数")
+    func toUInt16(key: CodingKey, value: Int64) throws -> UInt16? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
     }
 }
@@ -2035,26 +2036,26 @@ extension CustomConvertible {
 
 // MARK: Float转UInt16
 extension CustomConvertible {
-    func toUInt16(key: CodingKey, value: Float) -> UInt16 {
-        assert(value >= 0, "UInt16不能容纳负数")
+    func toUInt16(key: CodingKey, value: Float) throws -> UInt16 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
     }
 
-    func toUInt16(key: CodingKey, value: Float) -> UInt16? {
-        assert(value >= 0, "UInt16不能容纳负数")
+    func toUInt16(key: CodingKey, value: Float) throws -> UInt16? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
     }
 }
 
 // MARK: Double转UInt16
 extension CustomConvertible {
-    func toUInt16(key: CodingKey, value: Double) -> UInt16 {
-        assert(value >= 0, "UInt16不能容纳负数")
+    func toUInt16(key: CodingKey, value: Double) throws -> UInt16 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
     }
 
-    func toUInt16(key: CodingKey, value: Double) -> UInt16? {
-        assert(value >= 0, "UInt16不能容纳负数")
+    func toUInt16(key: CodingKey, value: Double) throws -> UInt16? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
     }
 }
@@ -2097,65 +2098,65 @@ extension CustomConvertible {
 
 // MARK: Int转UInt32
 extension CustomConvertible {
-    func toUInt32(key: CodingKey, value: Int) -> UInt32 {
-        assert(value >= 0, "UInt32不能容纳负数")
+    func toUInt32(key: CodingKey, value: Int) throws -> UInt32 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
     }
 
-    func toUInt32(key: CodingKey, value: Int) -> UInt32? {
-        assert(value >= 0, "UInt32不能容纳负数")
+    func toUInt32(key: CodingKey, value: Int) throws -> UInt32? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
     }
 }
 
 // MARK: Int8转UInt32
 extension CustomConvertible {
-    func toUInt32(key: CodingKey, value: Int8) -> UInt32 {
-        assert(value >= 0, "UInt32不能容纳负数")
+    func toUInt32(key: CodingKey, value: Int8) throws -> UInt32 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
     }
 
-    func toUInt32(key: CodingKey, value: Int8) -> UInt32? {
-        assert(value >= 0, "UInt32不能容纳负数")
+    func toUInt32(key: CodingKey, value: Int8) throws -> UInt32? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
     }
 }
 
 // MARK: Int16转UInt32
 extension CustomConvertible {
-    func toUInt32(key: CodingKey, value: Int16) -> UInt32 {
-        assert(value >= 0, "UInt32不能容纳负数")
+    func toUInt32(key: CodingKey, value: Int16) throws -> UInt32 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
     }
 
-    func toUInt32(key: CodingKey, value: Int16) -> UInt32? {
-        assert(value >= 0, "UInt32不能容纳负数")
+    func toUInt32(key: CodingKey, value: Int16) throws -> UInt32? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
     }
 }
 
 // MARK: Int32转UInt32
 extension CustomConvertible {
-    func toUInt32(key: CodingKey, value: Int32) -> UInt32 {
-        assert(value >= 0, "UInt32不能容纳负数")
+    func toUInt32(key: CodingKey, value: Int32) throws -> UInt32 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
     }
 
-    func toUInt32(key: CodingKey, value: Int32) -> UInt32? {
-        assert(value >= 0, "UInt32不能容纳负数")
+    func toUInt32(key: CodingKey, value: Int32) throws -> UInt32? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
     }
 }
 
 // MARK: Int64转UInt32
 extension CustomConvertible {
-    func toUInt32(key: CodingKey, value: Int64) -> UInt32 {
-        assert(value >= 0, "UInt32不能容纳负数")
+    func toUInt32(key: CodingKey, value: Int64) throws -> UInt32 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
     }
 
-    func toUInt32(key: CodingKey, value: Int64) -> UInt32? {
-        assert(value >= 0, "UInt32不能容纳负数")
+    func toUInt32(key: CodingKey, value: Int64) throws -> UInt32? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
     }
 }
@@ -2206,26 +2207,26 @@ extension CustomConvertible {
 
 // MARK: Float转UInt32
 extension CustomConvertible {
-    func toUInt32(key: CodingKey, value: Float) -> UInt32 {
-        assert(value >= 0, "UInt32不能容纳负数")
+    func toUInt32(key: CodingKey, value: Float) throws -> UInt32 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
     }
 
-    func toUInt32(key: CodingKey, value: Float) -> UInt32? {
-        assert(value >= 0, "UInt32不能容纳负数")
+    func toUInt32(key: CodingKey, value: Float) throws -> UInt32? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
     }
 }
 
 // MARK: Double转UInt32
 extension CustomConvertible {
-    func toUInt32(key: CodingKey, value: Double) -> UInt32 {
-        assert(value >= 0, "UInt32不能容纳负数")
+    func toUInt32(key: CodingKey, value: Double) throws -> UInt32 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
     }
 
-    func toUInt32(key: CodingKey, value: Double) -> UInt32? {
-        assert(value >= 0, "UInt32不能容纳负数")
+    func toUInt32(key: CodingKey, value: Double) throws -> UInt32? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
     }
 }
@@ -2268,65 +2269,65 @@ extension CustomConvertible {
 
 // MARK: Int转UInt64
 extension CustomConvertible {
-    func toUInt64(key: CodingKey, value: Int) -> UInt64 {
-        assert(value >= 0, "UInt64不能容纳负数")
+    func toUInt64(key: CodingKey, value: Int) throws -> UInt64 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
     }
 
-    func toUInt64(key: CodingKey, value: Int) -> UInt64? {
-        assert(value >= 0, "UInt64不能容纳负数")
+    func toUInt64(key: CodingKey, value: Int) throws -> UInt64? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
     }
 }
 
 // MARK: Int8转UInt64
 extension CustomConvertible {
-    func toUInt64(key: CodingKey, value: Int8) -> UInt64 {
-        assert(value >= 0, "UInt64不能容纳负数")
+    func toUInt64(key: CodingKey, value: Int8) throws -> UInt64 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
     }
 
-    func toUInt64(key: CodingKey, value: Int8) -> UInt64? {
-        assert(value >= 0, "UInt64不能容纳负数")
+    func toUInt64(key: CodingKey, value: Int8) throws -> UInt64? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
     }
 }
 
 // MARK: Int16转UInt64
 extension CustomConvertible {
-    func toUInt64(key: CodingKey, value: Int16) -> UInt64 {
-        assert(value >= 0, "UInt64不能容纳负数")
+    func toUInt64(key: CodingKey, value: Int16) throws -> UInt64 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
     }
 
-    func toUInt64(key: CodingKey, value: Int16) -> UInt64? {
-        assert(value >= 0, "UInt64不能容纳负数")
+    func toUInt64(key: CodingKey, value: Int16) throws -> UInt64? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
     }
 }
 
 // MARK: Int32转UInt64
 extension CustomConvertible {
-    func toUInt64(key: CodingKey, value: Int32) -> UInt64 {
-        assert(value >= 0, "UInt64不能容纳负数")
+    func toUInt64(key: CodingKey, value: Int32) throws -> UInt64 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
     }
 
-    func toUInt64(key: CodingKey, value: Int32) -> UInt64? {
-        assert(value >= 0, "UInt64不能容纳负数")
+    func toUInt64(key: CodingKey, value: Int32) throws -> UInt64? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
     }
 }
 
 // MARK: Int64转UInt64
 extension CustomConvertible {
-    func toUInt64(key: CodingKey, value: Int64) -> UInt64 {
-        assert(value >= 0, "UInt64不能容纳负数")
+    func toUInt64(key: CodingKey, value: Int64) throws -> UInt64 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
     }
 
-    func toUInt64(key: CodingKey, value: Int64) -> UInt64? {
-        assert(value >= 0, "UInt64不能容纳负数")
+    func toUInt64(key: CodingKey, value: Int64) throws -> UInt64? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
     }
 }
@@ -2377,26 +2378,26 @@ extension CustomConvertible {
 
 // MARK: Float转UInt64
 extension CustomConvertible {
-    func toUInt64(key: CodingKey, value: Float) -> UInt64 {
-        assert(value >= 0,  "UInt64不能容纳负数")
+    func toUInt64(key: CodingKey, value: Float) throws -> UInt64 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
     }
 
-    func toUInt64(key: CodingKey, value: Float) -> UInt64? {
-        assert(value >= 0,  "UInt64不能容纳负数")
+    func toUInt64(key: CodingKey, value: Float) throws -> UInt64? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
     }
 }
 
 // MARK: Double转UInt64
 extension CustomConvertible {
-    func toUInt64(key: CodingKey, value: Double) -> UInt64 {
-        assert(value >= 0,  "UInt64不能容纳负数")
+    func toUInt64(key: CodingKey, value: Double) throws -> UInt64 {
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
     }
 
-    func toUInt64(key: CodingKey, value: Double) -> UInt64? {
-        assert(value >= 0,  "UInt64不能容纳负数")
+    func toUInt64(key: CodingKey, value: Double) throws -> UInt64? {
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
     }
 }
