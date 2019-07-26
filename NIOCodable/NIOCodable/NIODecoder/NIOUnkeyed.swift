@@ -89,7 +89,7 @@ struct NIOUnkeyed: UnkeyedDecodingContainer {
     }
     
     mutating func decode<T>(_ type: T.Type) throws -> T where T : Decodable {
-        guard let model: T = try self.decoder.unbox(self.source[self.currentIndex], as: type) else {
+        guard let model: T = try self.decoder.unbox(value: self.source[self.currentIndex], as: type) else {
             fatalError()
         }
         self.currentIndex += 1

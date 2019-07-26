@@ -18,7 +18,7 @@ public final class NIOJSONDecoder {
         }
         let decoder: NIODecoder = NIODecoder(instance: self, source: source)
         do {
-            return try decoder.unbox(source, as: type)
+            return try decoder.unbox(value: source, as: type)
         } catch {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [], debugDescription: "无法解析\(type)", underlyingError: error))
         }

@@ -521,13 +521,43 @@ class NIOCodableTests: XCTestCase {
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
         do {
-            guard let models: [Example] = try decoder.decode(type: [Example].self, from: data) else {
-                return
-            }
+            guard let models: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
             print(models[0].name)
             print(models[1].name)
             XCTAssert(models[0].name == "true")
             XCTAssert(models[1].name == "false")
+        } catch {
+            print(error)
+        }
+    }
+    
+    func testDictionary() {
+        struct Example: Codable {
+            var name: String
+        }
+        let data: Data = """
+        {}
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder = NIOJSONDecoder()
+        do {
+            guard let model: Example = try decoder.decode(type: Example.self, from: data) else { return }
+            XCTAssert(model.name == "")
+        } catch {
+            print(error)
+        }
+    }
+    
+    func testArray() {
+        struct Example: Codable {
+            var name: String
+        }
+        let data: Data = """
+        [{"name": "2ddf"}, {"name": null}]
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder = NIOJSONDecoder()
+        do {
+            guard let models: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
+            XCTAssert(models.count == 2)
         } catch {
             print(error)
         }
