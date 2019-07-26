@@ -2883,3 +2883,7 @@ extension CustomConvertible {
         return "\(value)"
     }
 }
+
+protocol EmptyHandle {
+    init()
+}

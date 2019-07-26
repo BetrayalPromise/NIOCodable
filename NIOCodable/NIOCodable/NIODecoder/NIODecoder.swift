@@ -36,10 +36,7 @@ class NIODecoder: Decoder {
 extension NIODecoder {
     func unbox<T>(_ value: Any, as type: T.Type) throws -> T? where T: Decodable {
         self.storage.push(value)
-        defer {
-            self.storage.pop()
-        }
-        print(type)
+        defer { self.storage.pop() }
         do {
             return try type.init(from: self)
         } catch  {

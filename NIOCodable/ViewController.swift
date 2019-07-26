@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     @objc
     func handle(button: UIButton) {
         struct Book: Decodable {
-            var title: String
             var frontCover: BookCover?
             var backCover: BookCover?
         }
@@ -22,25 +21,21 @@ class ViewController: UIViewController {
         struct BookCover: Decodable {
             var text: String
             var image: String?
-            enum CodingKeys: String, CodingKey {
-                case text
-                case image
-            }
         }
         
         let data: Data = """
         {
-            "title": "Blah",
             "frontCover": {},
             "backCover": {
-                "image": "", "text": "It's good, read it"
+                "image": "",
+                "text": "It's good, read it"
             }
         }
         """.data(using: String.Encoding.utf8) ?? Data()
 
         do {
             let decoder: NIOJSONDecoder = NIOJSONDecoder()
-            let model = try decoder.decode(type: Book.self, from: data)
+            guard let model = try decoder.decode(type: Book.self, from: data) else { return }
             print(model)
         } catch {
             print(error)
