@@ -13,30 +13,22 @@ class ViewController: UIViewController {
     
     @objc
     func handle(button: UIButton) {
-        struct Book: Decodable {
-            var frontCover: BookCover?
-            var backCover: BookCover?
+        struct Example: Codable {
+            var name: String
         }
-        
-        struct BookCover: Decodable {
-            var text: String
-            var image: String?
-        }
-        
         let data: Data = """
-        {
-            "frontCover": {},
-            "backCover": {
-                "image": "",
-                "text": "It's good, read it"
-            }
-        }
+        [
+        {"name": 1},
+        {"name": 0},
+        ]
         """.data(using: String.Encoding.utf8) ?? Data()
-
+        let decoder = NIOJSONDecoder()
+        decoder.convertNumericalStrategy = .userNumerical
         do {
-            let decoder: NIOJSONDecoder = NIOJSONDecoder()
-            guard let model = try decoder.decode(type: Book.self, from: data) else { return }
-            print(model)
+            guard let models: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
+            
+            print(models[0].name)
+            print(models[1].name)
         } catch {
             print(error)
         }

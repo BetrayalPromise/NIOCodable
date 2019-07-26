@@ -6,11 +6,11 @@ import Foundation
  */
 
 public final class NIOJSONDecoder {
-    public enum TypeDecodingStrategy {
-        case `default`
-        case custom(CustomConvertible)
-    }
-    public var typeDecodingStrategy: NIOJSONDecoder.TypeDecodingStrategy = .default
+    /// 类型转换策略
+    public var decodingTypeStrategy: NIOJSONDecoder.DecodingTypeStrategy = .default
+    
+    /// json的弱类型会有默认转化并且不会失败的情况主要针对Bool转化String的处理策略
+    public var convertNumericalStrategy: NIOJSONDecoder.ConvertNumericalStrategy = .useOneself
     
     public func decode<T>(type: T.Type, from data: Data) throws -> T? where T: Decodable {
         guard let source: Any = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) else {
@@ -27,4 +27,17 @@ public final class NIOJSONDecoder {
     public init() {}
 }
 
-
+/// 配置策略
+public extension NIOJSONDecoder {
+    /// 类型定制策略
+    enum DecodingTypeStrategy {
+        case `default`
+        case custom(CustomConvertible)
+    }
+    
+    /// Bool转String处理策略
+    enum ConvertNumericalStrategy {
+        case useOneself // 使用"true"和"false"
+        case userNumerical // 使用"1"和"0"
+    }
+}

@@ -12,11 +12,13 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     let decoder: NIODecoder
     var source: [AnyHashable: Any]
     weak var instance: NIOJSONDecoder?
-    let typeDecodingStrategy: NIOJSONDecoder.TypeDecodingStrategy
+    let typeDecodingStrategy: NIOJSONDecoder.DecodingTypeStrategy
+    let convertNumericalStrategy: NIOJSONDecoder.ConvertNumericalStrategy
     
     init(instance: NIOJSONDecoder?, source: [AnyHashable: Any], decoder: NIODecoder) {
         self.instance = instance
-        self.typeDecodingStrategy = self.instance?.typeDecodingStrategy ?? .default
+        self.typeDecodingStrategy = self.instance?.decodingTypeStrategy ?? .default
+        self.convertNumericalStrategy = self.instance?.convertNumericalStrategy ?? .useOneself
         self.source = source
         self.decoder = decoder
         self.codingPath = decoder.codingPath
@@ -263,7 +265,6 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
         }
         self.decoder.storage.push(entry)
         defer { self.decoder.storage.pop() }
-        
         return try type.init(from: self.decoder)
     }
     
@@ -2441,8 +2442,16 @@ extension NIOKeyed {
             return value
         } else if let `value`: Bool = value as? Bool {
             switch self.typeDecodingStrategy {
-            case .default: return self.toString(key: key, value: value)
-            case .custom(let delegate): return delegate.toString(key: key, value: value)
+            case .default:
+                switch self.convertNumericalStrategy {
+                case .useOneself: return self.toString(key: key, value: value)
+                case .userNumerical: return self.toString(key: key, value: value) == "true" ? "1" : "0"
+                }
+            case .custom(let delegate):
+                switch self.convertNumericalStrategy {
+                case .useOneself: return delegate.toString(key: key, value: value)
+                case .userNumerical: return self.toString(key: key, value: value) == "true" ? "1" : "0"
+                }
             }
         } else if let `value`: Int = value as? Int {
             switch self.typeDecodingStrategy {
@@ -2521,8 +2530,16 @@ extension NIOKeyed {
             return value
         } else if let `value`: Bool = value as? Bool {
             switch self.typeDecodingStrategy {
-            case .default: return self.toString(key: key, value: value)
-            case .custom(let delegate): return delegate.toString(key: key, value: value)
+            case .default:
+                switch self.convertNumericalStrategy {
+                case .useOneself: return self.toString(key: key, value: value)
+                case .userNumerical: return self.toString(key: key, value: value) == "true" ? "1" : "0"
+                }
+            case .custom(let delegate):
+                switch self.convertNumericalStrategy {
+                case .useOneself: return delegate.toString(key: key, value: value)
+                case .userNumerical: return self.toString(key: key, value: value) == "true" ? "1" : "0"
+                }
             }
         } else if let `value`: Int = value as? Int {
             switch self.typeDecodingStrategy {

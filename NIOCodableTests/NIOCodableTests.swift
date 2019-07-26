@@ -520,6 +520,7 @@ class NIOCodableTests: XCTestCase {
         ]
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
+        decoder.convertNumericalStrategy = .useOneself
         do {
             guard let models: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
             print(models[0].name)
