@@ -14,21 +14,21 @@ class ViewController: UIViewController {
     @objc
     func handle(button: UIButton) {
         struct Example: Codable {
-            var name: String
+            var success: Bool
         }
         let data: Data = """
         [
-        {"name": 1},
-        {"name": 0},
+        {"success": "xdffdadf"},
+        {"success": "xdffdadf"},
+        {"success": "xdffdadf"},
+        {"success": "xdffdadf"},
+        {"success": "xdffdadf"},
         ]
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
-        decoder.convertNumericalStrategy = .userNumerical
         do {
-            guard let models: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
-            
-            print(models[0].name)
-            print(models[1].name)
+            guard let model: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
+            print(model)
         } catch {
             print(error)
         }
