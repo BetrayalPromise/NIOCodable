@@ -5,12 +5,13 @@ import Foundation
     'STRING', 'NUMBER', 'NULL', 'TRUE', 'FALSE', '{}', '[]'
  */
 
+/// 该操作为线程不安全操作 使用者可以自行加锁
 public final class NIOJSONDecoder {
     /// 类型转换策略
-    public var decodingTypeStrategy: NIOJSONDecoder.DecodingTypeStrategy = .default
+    public var baseDecodingTypeStrategy: NIOJSONDecoder.BaseConvertTypeStrategy = .default
     
     /// json的弱类型会有默认转化并且不会失败的情况主要针对Bool转化String的处理策略
-    public var convertNumericalStrategy: NIOJSONDecoder.ConvertNumericalStrategy = .useOneself
+    public var baseConvertNumericalStrategy: NIOJSONDecoder.BaseConvertNumericalStrategy = .useBoolean
     
     public func decode<T>(type: T.Type, from data: Data) throws -> T? where T: Decodable {
         guard let source: Any = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) else {
@@ -30,14 +31,14 @@ public final class NIOJSONDecoder {
 /// 配置策略
 public extension NIOJSONDecoder {
     /// 类型定制策略
-    enum DecodingTypeStrategy {
+    enum BaseConvertTypeStrategy {
         case `default`
-        case custom(CustomConvertible)
+        case base(BaseConvertible)
     }
     
     /// Bool转String处理策略
-    enum ConvertNumericalStrategy {
-        case useOneself // 使用"true"和"false"
-        case userNumerical // 使用"1"和"0"
+    enum BaseConvertNumericalStrategy {
+        case useBoolean // 使用"true"和"false"
+        case useNumerical // 使用"1"和"0"
     }
 }

@@ -520,7 +520,7 @@ class NIOCodableTests: XCTestCase {
         ]
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
-        decoder.convertNumericalStrategy = .useOneself
+        decoder.baseConvertNumericalStrategy = .useBoolean
         do {
             guard let models: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
             print(models[0].name)
@@ -559,6 +559,76 @@ class NIOCodableTests: XCTestCase {
         do {
             guard let models: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
             XCTAssert(models.count == 2)
+        } catch {
+            print(error)
+        }
+    }
+
+    func testCustom0() {
+        struct A: Codable {
+            var a: [B?]
+        }
+
+        struct B: Codable {
+            var gender: Gender?
+        }
+
+        enum Gender: Int, Codable {
+            case male = 0
+            case female = 1
+            case unknow = 2
+        }
+
+        let data: Data = """
+        {
+         "a": [{"gender": 0}, {"gender": 1}, {"gender": 2}]
+        }
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder = NIOJSONDecoder()
+        do {
+            guard let models: A = try decoder.decode(type: A.self, from: data) else { return }
+            XCTAssert((models.a[0]?.gender ?? Gender.unknow) == Gender.male)
+            XCTAssert((models.a[1]?.gender ?? Gender.unknow) == Gender.female)
+            XCTAssert((models.a[2]?.gender ?? Gender.unknow) == Gender.unknow)
+        } catch {
+            print(error)
+        }
+    }
+
+    func testCustom1() {
+        struct A: Codable {
+            var a: [B?]
+        }
+
+        struct B: Codable {
+            var gender: Gender?
+        }
+
+        enum Gender: Int, Codable, CustomConvertible {
+            typealias T = Int
+
+            case male = 0
+            case female = 1
+            case unknow = 2
+
+            func toType(value: Int) -> Gender.T {
+                if value > 2 {
+                    return Gender.unknow.rawValue
+                } else {
+                    return value
+                }
+            }
+        }
+
+        let data: Data = """
+        {
+         "a": [{"gender": 3.5}]
+        }
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder = NIOJSONDecoder()
+        do {
+            guard let models: A = try decoder.decode(type: A.self, from: data) else { return }
+            XCTAssert((models.a[0]?.gender ?? Gender.unknow) == Gender.unknow)
         } catch {
             print(error)
         }

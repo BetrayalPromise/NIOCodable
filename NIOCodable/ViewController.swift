@@ -23,10 +23,10 @@ class ViewController: UIViewController {
         ]
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
-        decoder.convertNumericalStrategy = .userNumerical
+        decoder.baseConvertNumericalStrategy = .useNumerical
         do {
             guard let models: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
-            
+
             print(models[0].name)
             print(models[1].name)
         } catch {

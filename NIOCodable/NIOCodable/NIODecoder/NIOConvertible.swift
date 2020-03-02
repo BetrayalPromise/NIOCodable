@@ -1,6 +1,7 @@
 import Foundation
 
-public protocol CustomConvertible {
+/// 基础类型转换处理
+public protocol BaseConvertible {
     func toBool(key: CodingKey, value: Int) -> Bool
     func toBool(key: CodingKey, value: Int) -> Bool?
     
@@ -549,7 +550,7 @@ public protocol CustomConvertible {
 }
 
 // MARK: Int转Bool
-extension CustomConvertible {
+extension BaseConvertible {
     func toBool(key: CodingKey, value: Int) -> Bool {
         switch value {
         case 1: return true
@@ -567,7 +568,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int8转Bool
-extension CustomConvertible {
+extension BaseConvertible {
     func toBool(key: CodingKey, value: Int8) -> Bool {
         switch value {
         case 1: return true
@@ -585,7 +586,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int16转Bool
-extension CustomConvertible {
+extension BaseConvertible {
     func toBool(key: CodingKey, value: Int16) -> Bool {
         switch value {
         case 1: return true
@@ -602,7 +603,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int32转Bool
-extension CustomConvertible {
+extension BaseConvertible {
     func toBool(key: CodingKey, value: Int32) -> Bool {
         switch value {
         case 1: return true
@@ -620,7 +621,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int64转Bool
-extension CustomConvertible {
+extension BaseConvertible {
     func toBool(key: CodingKey, value: Int64) -> Bool {
         switch value {
         case 1: return true
@@ -638,7 +639,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt转Bool
-extension CustomConvertible {
+extension BaseConvertible {
     func toBool(key: CodingKey, value: UInt) -> Bool {
         switch value {
         case 1: return true
@@ -656,7 +657,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt8转Bool
-extension CustomConvertible {
+extension BaseConvertible {
     func toBool(key: CodingKey, value: UInt8) -> Bool {
         switch value {
         case 1: return true
@@ -674,7 +675,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt16转Bool
-extension CustomConvertible {
+extension BaseConvertible {
     func toBool(key: CodingKey, value: UInt16) -> Bool {
         switch value {
         case 1: return true
@@ -691,7 +692,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt32转Bool
-extension CustomConvertible {
+extension BaseConvertible {
     func toBool(key: CodingKey, value: UInt32) -> Bool {
         switch value {
         case 1: return true
@@ -709,7 +710,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt64转Bool
-extension CustomConvertible {
+extension BaseConvertible {
     func toBool(key: CodingKey, value: UInt64) -> Bool {
         switch value {
         case 1: return true
@@ -727,7 +728,7 @@ extension CustomConvertible {
 }
 
 // MARK: Float转Bool
-extension CustomConvertible {
+extension BaseConvertible {
     func toBool(key: CodingKey, value: Float) -> Bool {
         switch value {
         case 1: return true
@@ -745,7 +746,7 @@ extension CustomConvertible {
 }
 
 // MARK: Double转Bool
-extension CustomConvertible {
+extension BaseConvertible {
     func toBool(key: CodingKey, value: Double) -> Bool {
         switch value {
         case 1: return true
@@ -763,7 +764,7 @@ extension CustomConvertible {
 }
 
 // MARK: String转Bool
-extension CustomConvertible {
+extension BaseConvertible {
     func toBool(key: CodingKey, value: String) -> Bool {
         switch value.lowercased() {
         case "true", "yes": return true
@@ -782,7 +783,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int转Bool
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt(key: CodingKey, value: Bool) -> Int {
         switch value {
         case true: return 1
@@ -799,7 +800,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int8转Int
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt(key: CodingKey, value: Int8) -> Int {
         return Int(value)
     }
@@ -810,7 +811,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int16转Int
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt(key: CodingKey, value: Int16) -> Int {
         return Int(value)
     }
@@ -821,7 +822,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int32转Int
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt(key: CodingKey, value: Int32) -> Int {
         return Int(value)
     }
@@ -832,7 +833,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int64转Int
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt(key: CodingKey, value: Int64) -> Int {
         return Int(value)
     }
@@ -843,7 +844,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt转Int
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt(key: CodingKey, value: UInt) -> Int {
         return Int(value)
     }
@@ -854,7 +855,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt8转Int
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt(key: CodingKey, value: UInt8) -> Int {
         return Int(value)
     }
@@ -865,7 +866,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt16转Int
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt(key: CodingKey, value: UInt16) -> Int {
         return Int(value)
     }
@@ -876,7 +877,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt32转Int
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt(key: CodingKey, value: UInt32) -> Int {
         return Int(value)
     }
@@ -887,7 +888,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt64转Int
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt(key: CodingKey, value: UInt64) -> Int {
         return Int(value)
     }
@@ -898,7 +899,7 @@ extension CustomConvertible {
 }
 
 // MARK: Float转Int
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt(key: CodingKey, value: Float) -> Int {
         return Int(value)
     }
@@ -909,7 +910,7 @@ extension CustomConvertible {
 }
 
 // MARK: Double转Int
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt(key: CodingKey, value: Double) -> Int {
         return Int(value)
     }
@@ -920,7 +921,7 @@ extension CustomConvertible {
 }
 
 // MARK: String转Int
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt(key: CodingKey, value: String) -> Int {
         switch value.lowercased() {
         case "true", "yes": return 1
@@ -940,7 +941,7 @@ extension CustomConvertible {
 }
 
 // MARK: Bool转Int8
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt8(key: CodingKey, value: Bool) -> Int8 {
         switch value {
         case true: return 1
@@ -957,7 +958,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int转Int8
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt8(key: CodingKey, value: Int) -> Int8 {
         return Int8(value)
     }
@@ -968,7 +969,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int16转Int8
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt8(key: CodingKey, value: Int16) -> Int8 {
         return Int8(value)
     }
@@ -979,7 +980,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int32转Int8
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt8(key: CodingKey, value: Int32) -> Int8 {
         return Int8(value)
     }
@@ -990,7 +991,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int64转Int8
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt8(key: CodingKey, value: Int64) -> Int8 {
         return Int8(value)
     }
@@ -1001,7 +1002,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt转Int8
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt8(key: CodingKey, value: UInt) -> Int8 {
         return Int8(value)
     }
@@ -1012,7 +1013,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt8转Int8
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt8(key: CodingKey, value: UInt8) -> Int8 {
         return Int8(value)
     }
@@ -1022,7 +1023,7 @@ extension CustomConvertible {
     }
 }
 
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt8(key: CodingKey, value: UInt16) -> Int8 {
         return Int8(value)
     }
@@ -1033,7 +1034,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt32转Int8
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt8(key: CodingKey, value: UInt32) -> Int8 {
         return Int8(value)
     }
@@ -1044,7 +1045,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt64转Int8
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt8(key: CodingKey, value: UInt64) -> Int8 {
         return Int8(value)
     }
@@ -1055,7 +1056,7 @@ extension CustomConvertible {
 }
 
 // MARK: Float转Int8
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt8(key: CodingKey, value: Float) -> Int8 {
         return Int8(value)
     }
@@ -1066,7 +1067,7 @@ extension CustomConvertible {
 }
 
 // MARK: Double转Int8
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt8(key: CodingKey, value: Double) -> Int8 {
         return Int8(value)
     }
@@ -1077,7 +1078,7 @@ extension CustomConvertible {
 }
 
 // MARK: String转Int8
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt8(key: CodingKey, value: String) -> Int8 {
         switch value.lowercased() {
         case "true", "yes": return 1
@@ -1096,7 +1097,7 @@ extension CustomConvertible {
 }
 
 // MARK: Bool转Int16
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt16(key: CodingKey, value: Bool) -> Int16 {
         switch value {
         case true: return 1
@@ -1113,7 +1114,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int转Int16
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt16(key: CodingKey, value: Int) -> Int16 {
         return Int16(value)
     }
@@ -1124,7 +1125,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int8转Int16
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt16(key: CodingKey, value: Int8) -> Int16 {
         return Int16(value)
     }
@@ -1135,7 +1136,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int32转Int16
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt16(key: CodingKey, value: Int32) -> Int16 {
         return Int16(value)
     }
@@ -1146,7 +1147,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int64转Int16
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt16(key: CodingKey, value: Int64) -> Int16 {
         return Int16(value)
     }
@@ -1157,7 +1158,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt转Int16
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt16(key: CodingKey, value: UInt) -> Int16 {
         return Int16(value)
     }
@@ -1168,7 +1169,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt8转Int16
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt16(key: CodingKey, value: UInt8) -> Int16 {
         return Int16(value)
     }
@@ -1179,7 +1180,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt16转Int16
-extension CustomConvertible  {
+extension BaseConvertible  {
     func toInt16(key: CodingKey, value: UInt16) -> Int16 {
         return Int16(value)
     }
@@ -1190,7 +1191,7 @@ extension CustomConvertible  {
 }
 
 // MARK: UInt32转Int16
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt16(key: CodingKey, value: UInt32) -> Int16 {
         return Int16(value)
     }
@@ -1201,7 +1202,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt64转Int16
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt16(key: CodingKey, value: UInt64) -> Int16 {
         return Int16(value)
     }
@@ -1212,7 +1213,7 @@ extension CustomConvertible {
 }
 
 // MARK: Float转Int16
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt16(key: CodingKey, value: Float) -> Int16 {
         return Int16(value)
     }
@@ -1223,7 +1224,7 @@ extension CustomConvertible {
 }
 
 // MARK: Double转Int16
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt16(key: CodingKey, value: Double) -> Int16 {
         return Int16(value)
     }
@@ -1234,7 +1235,7 @@ extension CustomConvertible {
 }
 
 // MARK: String转Int16
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt16(key: CodingKey, value: String) -> Int16 {
         switch value.lowercased() {
         case "true", "yes": return 1
@@ -1253,7 +1254,7 @@ extension CustomConvertible {
 }
 
 // MARK: Bool转Int32
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt32(key: CodingKey, value: Bool) -> Int32 {
         switch value {
         case true: return 1
@@ -1270,7 +1271,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int转Int32
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt32(key: CodingKey, value: Int) -> Int32 {
         return Int32(value)
     }
@@ -1281,7 +1282,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int8转Int32
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt32(key: CodingKey, value: Int8) -> Int32 {
         return Int32(value)
     }
@@ -1292,7 +1293,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int16转Int32
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt32(key: CodingKey, value: Int16) -> Int32 {
         return Int32(value)
     }
@@ -1303,7 +1304,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int64转Int32
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt32(key: CodingKey, value: Int64) -> Int32 {
         return Int32(value)
     }
@@ -1315,7 +1316,7 @@ extension CustomConvertible {
 
 
 // MARK: UInt转Int32
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt32(key: CodingKey, value: UInt) -> Int32 {
         return Int32(value)
     }
@@ -1326,7 +1327,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt8转Int32
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt32(key: CodingKey, value: UInt8) -> Int32 {
         return Int32(value)
     }
@@ -1337,7 +1338,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt16转Int32
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt32(key: CodingKey, value: UInt16) -> Int32 {
         return Int32(value)
     }
@@ -1348,7 +1349,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt32转Int32
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt32(key: CodingKey, value: UInt32) -> Int32 {
         return Int32(value)
     }
@@ -1359,7 +1360,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt64转Int32
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt32(key: CodingKey, value: UInt64) -> Int32 {
         return Int32(value)
     }
@@ -1370,7 +1371,7 @@ extension CustomConvertible {
 }
 
 // MARK: Float转Int32
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt32(key: CodingKey, value: Float) -> Int32 {
         return Int32(value)
     }
@@ -1381,7 +1382,7 @@ extension CustomConvertible {
 }
 
 // MARK: Double转Int32
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt32(key: CodingKey, value: Double) -> Int32 {
         return Int32(value)
     }
@@ -1392,7 +1393,7 @@ extension CustomConvertible {
 }
 
 // MARK: String转Int32
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt32(key: CodingKey, value: String) -> Int32 {
         switch value.lowercased() {
         case "true", "yes": return 1
@@ -1411,7 +1412,7 @@ extension CustomConvertible {
 }
 
 // MARK: Bool转Int64
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt64(key: CodingKey, value: Bool) -> Int64 {
         switch value {
         case true: return 1
@@ -1428,7 +1429,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int转Int64
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt64(key: CodingKey, value: Int) -> Int64 {
         return Int64(value)
     }
@@ -1439,7 +1440,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int8转Int64
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt64(key: CodingKey, value: Int8) -> Int64 {
         return Int64(value)
     }
@@ -1450,7 +1451,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int16转Int64
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt64(key: CodingKey, value: Int16) -> Int64 {
         return Int64(value)
     }
@@ -1461,7 +1462,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int32转Int64
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt64(key: CodingKey, value: Int32) -> Int64 {
         return Int64(value)
     }
@@ -1472,7 +1473,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt转Int64
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt64(key: CodingKey, value: UInt) -> Int64 {
         return Int64(value)
     }
@@ -1483,7 +1484,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt8转Int64
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt64(key: CodingKey, value: UInt8) -> Int64 {
         return Int64(value)
     }
@@ -1494,7 +1495,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt16转Int64
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt64(key: CodingKey, value: UInt16) -> Int64 {
         return Int64(value)
     }
@@ -1505,7 +1506,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt32转Int64
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt64(key: CodingKey, value: UInt32) -> Int64 {
         return Int64(value)
     }
@@ -1516,7 +1517,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt64转Int64
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt64(key: CodingKey, value: UInt64) -> Int64 {
         return Int64(value)
     }
@@ -1527,7 +1528,7 @@ extension CustomConvertible {
 }
 
 // MARK: Float转Int64
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt64(key: CodingKey, value: Float) -> Int64 {
         return Int64(value)
     }
@@ -1538,7 +1539,7 @@ extension CustomConvertible {
 }
 
 // MARK: Double转Int64
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt64(key: CodingKey, value: Double) -> Int64 {
         return Int64(value)
     }
@@ -1549,7 +1550,7 @@ extension CustomConvertible {
 }
 
 // MARK: String转Int64
-extension CustomConvertible {
+extension BaseConvertible {
     func toInt64(key: CodingKey, value: String) -> Int64 {
         switch value.lowercased() {
         case "true", "yes": return 1
@@ -1568,7 +1569,7 @@ extension CustomConvertible {
 }
 
 // MARK: Bool转UInt
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt(key: CodingKey, value: Bool) -> UInt {
         switch value {
         case true: return 1
@@ -1585,7 +1586,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int转UInt
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt(key: CodingKey, value: Int) throws -> UInt {
         if value < 0 { throw DecodingError.typeMismatch(UInt.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
@@ -1598,7 +1599,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int8转UInt
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt(key: CodingKey, value: Int8) throws -> UInt {
         if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
@@ -1611,7 +1612,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int16转UInt
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt(key: CodingKey, value: Int16) throws -> UInt {
         if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
@@ -1624,7 +1625,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int32转UInt
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt(key: CodingKey, value: Int32) throws -> UInt {
         if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
@@ -1636,7 +1637,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int64转UInt
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt(key: CodingKey, value: Int64) throws -> UInt {
         if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
@@ -1649,7 +1650,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt8转UInt
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt(key: CodingKey, value: UInt8) -> UInt {
         return UInt(value)
     }
@@ -1660,7 +1661,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt16转UInt
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt(key: CodingKey, value: UInt16) -> UInt {
         return UInt(value)
     }
@@ -1671,7 +1672,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt32转UInt
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt(key: CodingKey, value: UInt32) -> UInt {
         return UInt(value)
     }
@@ -1682,7 +1683,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt64转UInt
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt(key: CodingKey, value: UInt64) -> UInt {
         return UInt(value)
     }
@@ -1693,7 +1694,7 @@ extension CustomConvertible {
 }
 
 // MARK: Float转UInt
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt(key: CodingKey, value: Float) throws -> UInt {
         if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
@@ -1706,7 +1707,7 @@ extension CustomConvertible {
 }
 
 // MARK: Double转UInt
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt(key: CodingKey, value: Double) throws -> UInt {
         if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
@@ -1719,7 +1720,7 @@ extension CustomConvertible {
 }
 
 // MARK: String转UInt
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt(key: CodingKey, value: String) -> UInt {
         switch value.lowercased() {
         case "true", "yes": return 1
@@ -1738,7 +1739,7 @@ extension CustomConvertible {
 }
 
 // MARK: Bool转UInt8
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt8(key: CodingKey, value: Bool) -> UInt8 {
         switch value {
         case true: return 1
@@ -1755,7 +1756,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int转UInt8
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt8(key: CodingKey, value: Int) throws -> UInt8 {
         if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
@@ -1768,7 +1769,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int8转UInt8
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt8(key: CodingKey, value: Int8) throws -> UInt8 {
         if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
@@ -1781,7 +1782,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int16转UInt8
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt8(key: CodingKey, value: Int16) throws -> UInt8 {
         if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
@@ -1794,7 +1795,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int32转UInt8
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt8(key: CodingKey, value: Int32) throws -> UInt8 {
         if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
@@ -1807,7 +1808,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int64转UInt8
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt8(key: CodingKey, value: Int64) throws -> UInt8 {
         if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
@@ -1820,7 +1821,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt转UInt8
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt8(key: CodingKey, value: UInt) -> UInt8 {
         return UInt8(value)
     }
@@ -1831,7 +1832,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt16转UInt8
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt8(key: CodingKey, value: UInt16) -> UInt8 {
         return UInt8(value)
     }
@@ -1842,7 +1843,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt32转UInt8
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt8(key: CodingKey, value: UInt32) -> UInt8 {
         return UInt8(value)
     }
@@ -1853,7 +1854,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt64转UInt8
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt8(key: CodingKey, value: UInt64) -> UInt8 {
         return UInt8(value)
     }
@@ -1864,7 +1865,7 @@ extension CustomConvertible {
 }
 
 // MARK: Float转UInt8
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt8(key: CodingKey, value: Float) throws -> UInt8 {
         if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
@@ -1877,7 +1878,7 @@ extension CustomConvertible {
 }
 
 // MARK: Double转UInt8
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt8(key: CodingKey, value: Double) throws -> UInt8 {
         if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
         return UInt8(value)
@@ -1890,7 +1891,7 @@ extension CustomConvertible {
 }
 
 // MARK: String转UInt8
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt8(key: CodingKey, value: String) -> UInt8 {
         switch value.lowercased() {
         case "true", "yes": return 1
@@ -1909,7 +1910,7 @@ extension CustomConvertible {
 }
 
 // MARK: Bool转UInt16
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt16(key: CodingKey, value: Bool) -> UInt16 {
         switch value {
         case true: return 1
@@ -1926,7 +1927,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int转UInt16
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt16(key: CodingKey, value: Int) throws -> UInt16 {
         if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
@@ -1939,7 +1940,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int8转UInt16
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt16(key: CodingKey, value: Int8) throws -> UInt16 {
         if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
@@ -1952,7 +1953,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int16转UInt16
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt16(key: CodingKey, value: Int16) throws -> UInt16 {
         if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
@@ -1965,7 +1966,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int32转UInt16
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt16(key: CodingKey, value: Int32) throws -> UInt16 {
         if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
@@ -1978,7 +1979,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int64转UInt16
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt16(key: CodingKey, value: Int64) throws -> UInt16 {
         if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
@@ -1991,7 +1992,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt转UInt16
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt16(key: CodingKey, value: UInt) -> UInt16 {
         return UInt16(value)
     }
@@ -2002,7 +2003,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt8转UInt16
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt16(key: CodingKey, value: UInt8) -> UInt16 {
         return UInt16(value)
     }
@@ -2013,7 +2014,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt32转UInt16
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt16(key: CodingKey, value: UInt32) -> UInt16 {
         return UInt16(value)
     }
@@ -2024,7 +2025,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt64转UInt16
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt16(key: CodingKey, value: UInt64) -> UInt16 {
         return UInt16(value)
     }
@@ -2035,7 +2036,7 @@ extension CustomConvertible {
 }
 
 // MARK: Float转UInt16
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt16(key: CodingKey, value: Float) throws -> UInt16 {
         if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
@@ -2048,7 +2049,7 @@ extension CustomConvertible {
 }
 
 // MARK: Double转UInt16
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt16(key: CodingKey, value: Double) throws -> UInt16 {
         if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
         return UInt16(value)
@@ -2061,7 +2062,7 @@ extension CustomConvertible {
 }
 
 // MARK: String转UInt16
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt16(key: CodingKey, value: String) -> UInt16 {
         switch value.lowercased() {
         case "true", "yes": return 1
@@ -2080,7 +2081,7 @@ extension CustomConvertible {
 }
 
 // MARK: String转UInt32
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt32(key: CodingKey, value: Bool) -> UInt32 {
         switch value {
         case true: return 1
@@ -2097,7 +2098,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int转UInt32
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt32(key: CodingKey, value: Int) throws -> UInt32 {
         if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
@@ -2110,7 +2111,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int8转UInt32
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt32(key: CodingKey, value: Int8) throws -> UInt32 {
         if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
@@ -2123,7 +2124,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int16转UInt32
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt32(key: CodingKey, value: Int16) throws -> UInt32 {
         if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
@@ -2136,7 +2137,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int32转UInt32
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt32(key: CodingKey, value: Int32) throws -> UInt32 {
         if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
@@ -2149,7 +2150,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int64转UInt32
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt32(key: CodingKey, value: Int64) throws -> UInt32 {
         if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
@@ -2162,7 +2163,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt转UInt32
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt32(key: CodingKey, value: UInt) -> UInt32 {
         return UInt32(value)
     }
@@ -2173,7 +2174,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt8转UInt32
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt32(key: CodingKey, value: UInt8) -> UInt32 {
         return UInt32(value)
     }
@@ -2184,7 +2185,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt16转UInt32
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt32(key: CodingKey, value: UInt16) -> UInt32 {
         return UInt32(value)
     }
@@ -2195,7 +2196,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt64转UInt32
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt32(key: CodingKey, value: UInt64) -> UInt32 {
         return UInt32(value)
     }
@@ -2206,7 +2207,7 @@ extension CustomConvertible {
 }
 
 // MARK: Float转UInt32
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt32(key: CodingKey, value: Float) throws -> UInt32 {
         if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
@@ -2219,7 +2220,7 @@ extension CustomConvertible {
 }
 
 // MARK: Double转UInt32
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt32(key: CodingKey, value: Double) throws -> UInt32 {
         if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
         return UInt32(value)
@@ -2232,7 +2233,7 @@ extension CustomConvertible {
 }
 
 // MARK: String转UInt32
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt32(key: CodingKey, value: String) -> UInt32 {
         switch value.lowercased() {
         case "true", "yes": return 1
@@ -2251,7 +2252,7 @@ extension CustomConvertible {
 }
 
 // MARK: Bool转UInt64
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt64(key: CodingKey, value: Bool) -> UInt64 {
         switch value {
         case true: return 1
@@ -2268,7 +2269,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int转UInt64
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt64(key: CodingKey, value: Int) throws -> UInt64 {
         if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
@@ -2281,7 +2282,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int8转UInt64
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt64(key: CodingKey, value: Int8) throws -> UInt64 {
         if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
@@ -2294,7 +2295,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int16转UInt64
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt64(key: CodingKey, value: Int16) throws -> UInt64 {
         if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
@@ -2307,7 +2308,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int32转UInt64
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt64(key: CodingKey, value: Int32) throws -> UInt64 {
         if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
@@ -2320,7 +2321,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int64转UInt64
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt64(key: CodingKey, value: Int64) throws -> UInt64 {
         if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
@@ -2333,7 +2334,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt转UInt64
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt64(key: CodingKey, value: UInt) -> UInt64 {
         return UInt64(value)
     }
@@ -2344,7 +2345,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt8转UInt64
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt64(key: CodingKey, value: UInt8) -> UInt64 {
         return UInt64(value)
     }
@@ -2355,7 +2356,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt16转UInt64
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt64(key: CodingKey, value: UInt16) -> UInt64 {
         return UInt64(value)
     }
@@ -2366,7 +2367,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt32转UInt64
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt64(key: CodingKey, value: UInt32) -> UInt64 {
         return UInt64(value)
     }
@@ -2377,7 +2378,7 @@ extension CustomConvertible {
 }
 
 // MARK: Float转UInt64
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt64(key: CodingKey, value: Float) throws -> UInt64 {
         if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
@@ -2390,7 +2391,7 @@ extension CustomConvertible {
 }
 
 // MARK: Double转UInt64
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt64(key: CodingKey, value: Double) throws -> UInt64 {
         if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
         return UInt64(value)
@@ -2403,7 +2404,7 @@ extension CustomConvertible {
 }
 
 // MARK: String转UInt64
-extension CustomConvertible {
+extension BaseConvertible {
     func toUInt64(key: CodingKey, value: String) -> UInt64 {
         switch value.lowercased() {
         case "true", "yes": return 1
@@ -2422,7 +2423,7 @@ extension CustomConvertible {
 }
 
 // MARK: Bool转Float
-extension CustomConvertible {
+extension BaseConvertible {
     func toFloat(key: CodingKey, value: Bool) -> Float {
         switch value {
         case true: return 1
@@ -2439,7 +2440,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int转Float
-extension CustomConvertible {
+extension BaseConvertible {
     func toFloat(key: CodingKey, value: Int) -> Float {
         return Float(value)
     }
@@ -2450,7 +2451,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int8转Float
-extension CustomConvertible {
+extension BaseConvertible {
     func toFloat(key: CodingKey, value: Int8) -> Float {
         return Float(value)
     }
@@ -2461,7 +2462,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int16转Float
-extension CustomConvertible {
+extension BaseConvertible {
     func toFloat(key: CodingKey, value: Int16) -> Float {
         return Float(value)
     }
@@ -2472,7 +2473,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int32转Float
-extension CustomConvertible {
+extension BaseConvertible {
     func toFloat(key: CodingKey, value: Int32) -> Float {
         return Float(value)
     }
@@ -2483,7 +2484,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int64转Float
-extension CustomConvertible {
+extension BaseConvertible {
     func toFloat(key: CodingKey, value: Int64) -> Float {
         return Float(value)
     }
@@ -2494,7 +2495,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt转Float
-extension CustomConvertible {
+extension BaseConvertible {
     func toFloat(key: CodingKey, value: UInt) -> Float {
         return Float(value)
     }
@@ -2505,7 +2506,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt8转Float
-extension CustomConvertible {
+extension BaseConvertible {
     func toFloat(key: CodingKey, value: UInt8) -> Float {
         return Float(value)
     }
@@ -2516,7 +2517,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt16转Float
-extension CustomConvertible {
+extension BaseConvertible {
     func toFloat(key: CodingKey, value: UInt16) -> Float {
         return Float(value)
     }
@@ -2527,7 +2528,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt32转Float
-extension CustomConvertible {
+extension BaseConvertible {
     func toFloat(key: CodingKey, value: UInt32) -> Float {
         return Float(value)
     }
@@ -2538,7 +2539,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt64转Float
-extension CustomConvertible {
+extension BaseConvertible {
     func toFloat(key: CodingKey, value: UInt64) -> Float {
         return Float(value)
     }
@@ -2549,7 +2550,7 @@ extension CustomConvertible {
 }
 
 // MARK: Double转Float
-extension CustomConvertible {
+extension BaseConvertible {
     func toFloat(key: CodingKey, value: Double) -> Float {
         return Float(value)
     }
@@ -2560,7 +2561,7 @@ extension CustomConvertible {
 }
 
 // MARK: String转Float
-extension CustomConvertible {
+extension BaseConvertible {
     func toFloat(key: CodingKey, value: String) -> Float {
         switch value.lowercased() {
         case "true", "yes": return 1
@@ -2579,7 +2580,7 @@ extension CustomConvertible {
 }
 
 // MARK: Bool转Double
-extension CustomConvertible {
+extension BaseConvertible {
     func toDouble(key: CodingKey, value: Bool) -> Double {
         switch value {
         case true: return 1
@@ -2596,7 +2597,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int转Double
-extension CustomConvertible {
+extension BaseConvertible {
     func toDouble(key: CodingKey, value: Int) -> Double {
         return Double(value)
     }
@@ -2607,7 +2608,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int8转Double
-extension CustomConvertible {
+extension BaseConvertible {
     func toDouble(key: CodingKey, value: Int8) -> Double {
         return Double(value)
     }
@@ -2618,7 +2619,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int16转Double
-extension CustomConvertible {
+extension BaseConvertible {
     func toDouble(key: CodingKey, value: Int16) -> Double {
         return Double(value)
     }
@@ -2629,7 +2630,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int32转Double
-extension CustomConvertible {
+extension BaseConvertible {
     func toDouble(key: CodingKey, value: Int32) -> Double {
         return Double(value)
     }
@@ -2640,7 +2641,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int64转Double
-extension CustomConvertible {
+extension BaseConvertible {
     func toDouble(key: CodingKey, value: Int64) -> Double {
         return Double(value)
     }
@@ -2651,7 +2652,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt转Double
-extension CustomConvertible {
+extension BaseConvertible {
     func toDouble(key: CodingKey, value: UInt) -> Double {
         return Double(value)
     }
@@ -2662,7 +2663,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt8转Double
-extension CustomConvertible {
+extension BaseConvertible {
     func toDouble(key: CodingKey, value: UInt8) -> Double {
         return Double(value)
     }
@@ -2673,7 +2674,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt16转Double
-extension CustomConvertible {
+extension BaseConvertible {
     func toDouble(key: CodingKey, value: UInt16) -> Double {
           return Double(value)
     }
@@ -2684,7 +2685,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt32转Double
-extension CustomConvertible {
+extension BaseConvertible {
     func toDouble(key: CodingKey, value: UInt32) -> Double {
           return Double(value)
     }
@@ -2695,7 +2696,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt64转Double
-extension CustomConvertible {
+extension BaseConvertible {
     func toDouble(key: CodingKey, value: UInt64) -> Double {
           return Double(value)
     }
@@ -2706,7 +2707,7 @@ extension CustomConvertible {
 }
 
 // MARK: Float转Double
-extension CustomConvertible {
+extension BaseConvertible {
     func toDouble(key: CodingKey, value: Float) -> Double {
           return Double(value)
     }
@@ -2717,7 +2718,7 @@ extension CustomConvertible {
 }
 
 // MARK: String转Double
-extension CustomConvertible {
+extension BaseConvertible {
     func toDouble(key: CodingKey, value: String) -> Double {
         switch value.lowercased() {
         case "true", "yes": return 1
@@ -2736,7 +2737,7 @@ extension CustomConvertible {
 }
 
 // MARK: Bool转String
-extension CustomConvertible {
+extension BaseConvertible {
     func toString(key: CodingKey, value: Bool) -> String {
         switch value {
         case true: return "true"
@@ -2753,7 +2754,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int转String
-extension CustomConvertible {
+extension BaseConvertible {
     func toString(key: CodingKey, value: Int) -> String {
         return "\(value)"
     }
@@ -2764,7 +2765,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int8转String
-extension CustomConvertible {
+extension BaseConvertible {
     func toString(key: CodingKey, value: Int8) -> String {
         return "\(value)"
     }
@@ -2775,7 +2776,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int16转String
-extension CustomConvertible {
+extension BaseConvertible {
     func toString(key: CodingKey, value: Int16) -> String {
         return "\(value)"
     }
@@ -2786,7 +2787,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int32转String
-extension CustomConvertible {
+extension BaseConvertible {
     func toString(key: CodingKey, value: Int32) -> String {
         return "\(value)"
     }
@@ -2797,7 +2798,7 @@ extension CustomConvertible {
 }
 
 // MARK: Int64转String
-extension CustomConvertible {
+extension BaseConvertible {
     func toString(key: CodingKey, value: Int64) -> String {
         return "\(value)"
     }
@@ -2808,7 +2809,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt转String
-extension CustomConvertible {
+extension BaseConvertible {
     func toString(key: CodingKey, value: UInt) -> String {
         return "\(value)"
     }
@@ -2819,7 +2820,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt8转String
-extension CustomConvertible {
+extension BaseConvertible {
     func toString(key: CodingKey, value: UInt8) -> String {
         return "\(value)"
     }
@@ -2830,7 +2831,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt16转String
-extension CustomConvertible {
+extension BaseConvertible {
     func toString(key: CodingKey, value: UInt16) -> String {
         return "\(value)"
     }
@@ -2841,7 +2842,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt32转String
-extension CustomConvertible {
+extension BaseConvertible {
     func toString(key: CodingKey, value: UInt32) -> String {
         return "\(value)"
     }
@@ -2852,7 +2853,7 @@ extension CustomConvertible {
 }
 
 // MARK: UInt64转String
-extension CustomConvertible {
+extension BaseConvertible {
     func toString(key: CodingKey, value: UInt64) -> String {
         return "\(value)"
     }
@@ -2863,7 +2864,7 @@ extension CustomConvertible {
 }
 
 // MARK: Float转String
-extension CustomConvertible {
+extension BaseConvertible {
     func toString(key: CodingKey, value: Float) -> String {
         return "\(value)"
     }
@@ -2874,7 +2875,7 @@ extension CustomConvertible {
 }
 
 // MARK: Double转String
-extension CustomConvertible {
+extension BaseConvertible {
     func toString(key: CodingKey, value: Double) -> String {
         return "\(value)"
     }
@@ -2886,4 +2887,10 @@ extension CustomConvertible {
 
 protocol EmptyHandle {
     init()
+}
+
+/// 自定义类型转换处理
+public protocol CustomConvertible {
+    associatedtype T
+    func toType(value: Int) -> T
 }
