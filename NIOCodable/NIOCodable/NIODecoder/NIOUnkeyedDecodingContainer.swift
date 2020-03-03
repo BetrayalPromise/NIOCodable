@@ -103,8 +103,7 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
             fatalError()
         }
         self.currentIndex += 1
-        let container = NIOKeyedDecodingContainer<NestedKey>(instance: self.instance, source: dictionary, decoder: self.decoder)
-        return KeyedDecodingContainer(container)
+        return KeyedDecodingContainer(NIOKeyedDecodingContainer<NestedKey>(instance: self.instance, source: dictionary, decoder: self.decoder))
     }
     
     mutating func nestedUnkeyedContainer() throws -> UnkeyedDecodingContainer {

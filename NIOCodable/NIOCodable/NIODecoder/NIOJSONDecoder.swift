@@ -30,15 +30,15 @@ public final class NIOJSONDecoder {
 
 /// 配置策略
 public extension NIOJSONDecoder {
-    /// 类型定制策略
+    /// 类型不一致策略
     enum BaseConvertTypeStrategy {
-        case `default`
-        case base(BaseConvertible)
+        case `default`  // 默认处理
+        case base(BaseConvertible)  // 自定义处理
     }
     
-    /// Bool转String处理策略
+    /// Bool处理策略
     enum BaseConvertNumericalStrategy {
         case useBoolean // 使用"true"和"false"
-        case useNumerical // 使用"1"和"0"
+        case useNumerical   // 使用"1"和"0"
     }
 }

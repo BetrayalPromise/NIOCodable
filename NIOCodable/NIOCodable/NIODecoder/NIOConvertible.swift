@@ -2885,7 +2885,7 @@ extension BaseConvertible {
     }
 }
 
-/// 自定义类型转换处理
+/// 用以处理数值类型一致 但是取值超出f范围
 public protocol NIOSingleValueDecodingContainerExecptionControllable: RawRepresentable, Codable where RawValue: Codable {
     /// 单值容器 便于数值异常处理
     /// - Parameter value: 异常数值
