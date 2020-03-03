@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F6BDD72240E303A009A3E1F /* NIOCodableKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6BDD71240E303A009A3E1F /* NIOCodableKey.swift */; };
 		F7A549EA22E802A000EEB188 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A549E922E802A000EEB188 /* AppDelegate.swift */; };
 		F7A549EC22E802A000EEB188 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A549EB22E802A000EEB188 /* ViewController.swift */; };
 		F7A549F122E802A000EEB188 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7A549F022E802A000EEB188 /* Assets.xcassets */; };
@@ -14,9 +15,9 @@
 		F7A54A1122E802CF00EEB188 /* NIODecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A54A0B22E802CF00EEB188 /* NIODecoder.swift */; };
 		F7A54A1222E802CF00EEB188 /* NIOJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A54A0C22E802CF00EEB188 /* NIOJSONDecoder.swift */; };
 		F7A54A1322E802CF00EEB188 /* NIOConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A54A0D22E802CF00EEB188 /* NIOConvertible.swift */; };
-		F7A54A1F22E946FE00EEB188 /* NIOSingleValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A54A1C22E946FE00EEB188 /* NIOSingleValue.swift */; };
-		F7A54A2022E946FE00EEB188 /* NIOUnkeyed.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A54A1D22E946FE00EEB188 /* NIOUnkeyed.swift */; };
-		F7A54A2122E946FE00EEB188 /* NIOKeyed.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A54A1E22E946FE00EEB188 /* NIOKeyed.swift */; };
+		F7A54A1F22E946FE00EEB188 /* NIOSingleValueDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A54A1C22E946FE00EEB188 /* NIOSingleValueDecodingContainer.swift */; };
+		F7A54A2022E946FE00EEB188 /* NIOUnkeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A54A1D22E946FE00EEB188 /* NIOUnkeyedDecodingContainer.swift */; };
+		F7A54A2122E946FE00EEB188 /* NIOKeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A54A1E22E946FE00EEB188 /* NIOKeyedDecodingContainer.swift */; };
 		F7A54A2322E9475F00EEB188 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7A54A2222E9475F00EEB188 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F6BDD71240E303A009A3E1F /* NIOCodableKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIOCodableKey.swift; sourceTree = "<group>"; };
 		F7A549E622E8029F00EEB188 /* NIOCodable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NIOCodable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A549E922E802A000EEB188 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7A549EB22E802A000EEB188 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,9 +44,9 @@
 		F7A54A0B22E802CF00EEB188 /* NIODecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIODecoder.swift; sourceTree = "<group>"; };
 		F7A54A0C22E802CF00EEB188 /* NIOJSONDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIOJSONDecoder.swift; sourceTree = "<group>"; };
 		F7A54A0D22E802CF00EEB188 /* NIOConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIOConvertible.swift; sourceTree = "<group>"; };
-		F7A54A1C22E946FE00EEB188 /* NIOSingleValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIOSingleValue.swift; sourceTree = "<group>"; };
-		F7A54A1D22E946FE00EEB188 /* NIOUnkeyed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIOUnkeyed.swift; sourceTree = "<group>"; };
-		F7A54A1E22E946FE00EEB188 /* NIOKeyed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIOKeyed.swift; sourceTree = "<group>"; };
+		F7A54A1C22E946FE00EEB188 /* NIOSingleValueDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIOSingleValueDecodingContainer.swift; sourceTree = "<group>"; };
+		F7A54A1D22E946FE00EEB188 /* NIOUnkeyedDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIOUnkeyedDecodingContainer.swift; sourceTree = "<group>"; };
+		F7A54A1E22E946FE00EEB188 /* NIOKeyedDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NIOKeyedDecodingContainer.swift; sourceTree = "<group>"; };
 		F7A54A2222E9475F00EEB188 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,9 +123,10 @@
 				F7A54A0C22E802CF00EEB188 /* NIOJSONDecoder.swift */,
 				F7A54A0B22E802CF00EEB188 /* NIODecoder.swift */,
 				F7A54A0D22E802CF00EEB188 /* NIOConvertible.swift */,
-				F7A54A1E22E946FE00EEB188 /* NIOKeyed.swift */,
-				F7A54A1C22E946FE00EEB188 /* NIOSingleValue.swift */,
-				F7A54A1D22E946FE00EEB188 /* NIOUnkeyed.swift */,
+				F7A54A1E22E946FE00EEB188 /* NIOKeyedDecodingContainer.swift */,
+				F7A54A1C22E946FE00EEB188 /* NIOSingleValueDecodingContainer.swift */,
+				F7A54A1D22E946FE00EEB188 /* NIOUnkeyedDecodingContainer.swift */,
+				6F6BDD71240E303A009A3E1F /* NIOCodableKey.swift */,
 			);
 			path = NIODecoder;
 			sourceTree = "<group>";
@@ -236,12 +239,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7A54A1322E802CF00EEB188 /* NIOConvertible.swift in Sources */,
-				F7A54A2122E946FE00EEB188 /* NIOKeyed.swift in Sources */,
+				F7A54A2122E946FE00EEB188 /* NIOKeyedDecodingContainer.swift in Sources */,
 				F7A549EC22E802A000EEB188 /* ViewController.swift in Sources */,
 				F7A54A1222E802CF00EEB188 /* NIOJSONDecoder.swift in Sources */,
 				F7A549EA22E802A000EEB188 /* AppDelegate.swift in Sources */,
-				F7A54A2022E946FE00EEB188 /* NIOUnkeyed.swift in Sources */,
-				F7A54A1F22E946FE00EEB188 /* NIOSingleValue.swift in Sources */,
+				F7A54A2022E946FE00EEB188 /* NIOUnkeyedDecodingContainer.swift in Sources */,
+				F7A54A1F22E946FE00EEB188 /* NIOSingleValueDecodingContainer.swift in Sources */,
+				6F6BDD72240E303A009A3E1F /* NIOCodableKey.swift in Sources */,
 				F7A54A1122E802CF00EEB188 /* NIODecoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,7 +6,7 @@ class NIODecoder: Decoder {
     var source: Any
     var storage: OperationData = OperationData()
     weak var instance: NIOJSONDecoder?
-    
+
     init(instance: NIOJSONDecoder, source: Any, codingPath: [CodingKey] = [], userInfo: [CodingUserInfoKey : Any] = [:]) {
         self.instance = instance
         self.source = source
@@ -16,20 +16,20 @@ class NIODecoder: Decoder {
     
     func container<Key>(keyedBy type: Key.Type) throws -> KeyedDecodingContainer<Key> where Key : CodingKey {
         guard let dictionary: [AnyHashable: Any] = self.storage.currentValue as? [AnyHashable: Any] else {
-            return KeyedDecodingContainer<Key>(NIOKeyed(instance: self.instance, source: [:], decoder: self))
+            return KeyedDecodingContainer<Key>(NIOKeyedDecodingContainer(instance: self.instance, source: [:], decoder: self))
         }
-        return KeyedDecodingContainer<Key>(NIOKeyed(instance: self.instance, source: dictionary, decoder: self))
+        return KeyedDecodingContainer<Key>(NIOKeyedDecodingContainer(instance: self.instance, source: dictionary, decoder: self))
     }
     
     func unkeyedContainer() throws -> UnkeyedDecodingContainer {
         guard let array: [Any] = self.storage.currentValue as? [Any] else {
-            return NIOUnkeyed(instance: self.instance, source: [], decoder: self)
+            return NIOUnkeyedDecodingContainer(instance: self.instance, source: [], decoder: self)
         }
-        return NIOUnkeyed(instance: self.instance, source: array, decoder: self)
+        return NIOUnkeyedDecodingContainer(instance: self.instance, source: array, decoder: self)
     }
     
     func singleValueContainer() throws -> SingleValueDecodingContainer {
-        return NIOSingleValue(source: self.source, decoder: self)
+        return NIOSingleValueDecodingContainer(source: self.source, decoder: self)
     }
 }
 

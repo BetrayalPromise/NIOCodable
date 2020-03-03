@@ -1,7 +1,7 @@
 import Foundation
 
 /// 针对自定义处理
-struct NIOSingleValue: SingleValueDecodingContainer {
+struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
     var codingPath: [CodingKey] = []
     
     let decoder: NIODecoder
@@ -45,8 +45,10 @@ struct NIOSingleValue: SingleValueDecodingContainer {
     }
     
     func decode(_ type: Int.Type) throws -> Int {
+//        print(self.decoder.storage.currentValue)
         guard let value = self.decoder.storage.currentValue as? Int else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [], debugDescription: "无法解析\(type)", underlyingError: nil))
+            //  TODO: 类型不匹配问题
         }
         return value
     }
@@ -115,6 +117,12 @@ struct NIOSingleValue: SingleValueDecodingContainer {
     }
     
     func decode<T>(_ type: T.Type) throws -> T where T : Decodable {
+        guard let value: Any = self.decoder.storage.currentValue else {
+            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [], debugDescription: "无法取值\(type)", underlyingError: nil))
+        }
+        print(value)
         return try type.init(from: self.decoder)
     }
 }
+
+extension NIOSingleValueDecodingContainer: BaseConvertible {}

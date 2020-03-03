@@ -596,39 +596,35 @@ class NIOCodableTests: XCTestCase {
     }
 
     func testCustom1() {
-        struct A: Codable {
-            var a: [B?]
-        }
-
-        struct B: Codable {
+        struct Human: Codable {
             var gender: Gender?
         }
 
-        enum Gender: Int, Codable, CustomConvertible {
-            typealias T = Int
-
+        enum Gender: Int, Codable, SingleValueDefaultValue {
             case male = 0
             case female = 1
             case unknow = 2
 
-            func toType(value: Int) -> Gender.T {
-                if value > 2 {
-                    return Gender.unknow.rawValue
-                } else {
-                    return value
-                }
+            enum CodingKeys: CodingKey {
+                case male
+                case female
+                case unknow
+            }
+
+            init(with value: Decodable) {
+                print(value)
+                self = .unknow
+                
             }
         }
 
         let data: Data = """
-        {
-         "a": [{"gender": 3.5}]
-        }
+         {"gender": 3.5}
         """.data(using: String.Encoding.utf8) ?? Data()
-        let decoder = NIOJSONDecoder()
+        let decoder: NIOJSONDecoder = NIOJSONDecoder()
         do {
-            guard let models: A = try decoder.decode(type: A.self, from: data) else { return }
-            XCTAssert((models.a[0]?.gender ?? Gender.unknow) == Gender.unknow)
+            guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
+            XCTAssert(models.gender == Gender.unknow)
         } catch {
             print(error)
         }

@@ -1,7 +1,7 @@
 import Foundation
 
 /// 针对数组处理
-struct NIOUnkeyed: UnkeyedDecodingContainer {
+struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     public var isAtEnd: Bool {
         return self.currentIndex >= self.count!
     }
@@ -103,12 +103,12 @@ struct NIOUnkeyed: UnkeyedDecodingContainer {
             fatalError()
         }
         self.currentIndex += 1
-        let container = NIOKeyed<NestedKey>(instance: self.instance, source: dictionary, decoder: self.decoder)
+        let container = NIOKeyedDecodingContainer<NestedKey>(instance: self.instance, source: dictionary, decoder: self.decoder)
         return KeyedDecodingContainer(container)
     }
     
     mutating func nestedUnkeyedContainer() throws -> UnkeyedDecodingContainer {
-        return NIOUnkeyed(instance: self.instance, source: self.source, decoder: self.decoder)
+        return NIOUnkeyedDecodingContainer(instance: self.instance, source: self.source, decoder: self.decoder)
     }
     
     mutating func superDecoder() throws -> Decoder {

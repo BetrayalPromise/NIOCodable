@@ -1,7 +1,7 @@
 import Foundation
 
 /// 针对字典处理
-struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
+struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     typealias Key = K
     var codingPath: [CodingKey]
     var allKeys: [Key] {
@@ -286,9 +286,9 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
         }
 
         guard let dictionary: [AnyHashable: Any] = self.source[key.stringValue] as? [AnyHashable: Any] else {
-            return KeyedDecodingContainer(NIOKeyed<NestedKey>(instance: self.instance, source: [:], decoder: self.decoder))
+            return KeyedDecodingContainer(NIOKeyedDecodingContainer<NestedKey>(instance: self.instance, source: [:], decoder: self.decoder))
         }
-        return KeyedDecodingContainer(NIOKeyed<NestedKey>(instance: self.instance, source: dictionary, decoder: self.decoder))
+        return KeyedDecodingContainer(NIOKeyedDecodingContainer<NestedKey>(instance: self.instance, source: dictionary, decoder: self.decoder))
     }
     
     func nestedUnkeyedContainer(forKey key: K) throws -> UnkeyedDecodingContainer {
@@ -297,9 +297,9 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
             self.decoder.codingPath.removeLast()
         }
         guard let array: [Any] = self.source[key.stringValue] as? [Any] else {
-            return NIOUnkeyed(instance: self.instance, source: [], decoder: self.decoder)
+            return NIOUnkeyedDecodingContainer(instance: self.instance, source: [], decoder: self.decoder)
         }
-        return NIOUnkeyed(instance: self.instance, source: array, decoder: self.decoder)
+        return NIOUnkeyedDecodingContainer(instance: self.instance, source: array, decoder: self.decoder)
     }
     
     func superDecoder() throws -> Decoder {
@@ -311,10 +311,10 @@ struct NIOKeyed<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     }
 }
 
-extension NIOKeyed: BaseConvertible {}
+extension NIOKeyedDecodingContainer: BaseConvertible {}
 
 // MARK: - 处理Bool和Bool?类型
-extension NIOKeyed {
+extension NIOKeyedDecodingContainer {
     func decode<K>(value: inout Any, type: Bool.Type, forKey key: K) throws -> Bool where K: CodingKey {
         self.decoder.codingPath.append(key)
         self.decoder.storage.push(value)
@@ -477,7 +477,7 @@ extension NIOKeyed {
 }
 
 // MARK: - 处理Int和Int?类型
-extension NIOKeyed {
+extension NIOKeyedDecodingContainer {
     func decode<K>(value: inout Any, type: Int.Type, forKey key: K) throws -> Int where K: CodingKey {
         self.decoder.codingPath.append(key)
         self.decoder.storage.push(value)
@@ -640,7 +640,7 @@ extension NIOKeyed {
 }
 
 // MARK: - 处理Int8和Int8?类型
-extension NIOKeyed {
+extension NIOKeyedDecodingContainer {
     func decode<K>(value: inout Any, type: Int8.Type, forKey key: K) throws -> Int8 where K: CodingKey {
         self.decoder.codingPath.append(key)
         self.decoder.storage.push(value)
@@ -803,7 +803,7 @@ extension NIOKeyed {
 }
 
 // MARK: - 处理Int16和Int16?类型
-extension NIOKeyed {
+extension NIOKeyedDecodingContainer {
     func decode<K>(value: inout Any, type: Int16.Type, forKey key: K) throws -> Int16 where K: CodingKey {
         self.decoder.codingPath.append(key)
         self.decoder.storage.push(value)
@@ -966,7 +966,7 @@ extension NIOKeyed {
 }
 
 // MARK: - 处理Int32和Int32?类型
-extension NIOKeyed {
+extension NIOKeyedDecodingContainer {
     func decode<K>(value: inout Any, type: Int32.Type, forKey key: K) throws -> Int32 where K: CodingKey {
         self.decoder.codingPath.append(key)
         self.decoder.storage.push(value)
@@ -1129,7 +1129,7 @@ extension NIOKeyed {
 }
 
 // MARK: - 处理Int64和Int64?类型
-extension NIOKeyed {
+extension NIOKeyedDecodingContainer {
     func decode<K>(value: inout Any, type: Int64.Type, forKey key: K) throws -> Int64 where K: CodingKey {
         self.decoder.codingPath.append(key)
         self.decoder.storage.push(value)
@@ -1292,7 +1292,7 @@ extension NIOKeyed {
 }
 
 // MARK: - 处理UInt和UInt?类型
-extension NIOKeyed {
+extension NIOKeyedDecodingContainer {
     func decode<K>(value: inout Any, type: UInt.Type, forKey key: K) throws -> UInt where K: CodingKey {
         self.decoder.codingPath.append(key)
         self.decoder.storage.push(value)
@@ -1455,7 +1455,7 @@ extension NIOKeyed {
 }
 
 // MARK: - 处理UInt8和UInt8?类型
-extension NIOKeyed {
+extension NIOKeyedDecodingContainer {
     func decode<K>(value: inout Any, type: UInt8.Type, forKey key: K) throws -> UInt8 where K: CodingKey {
         self.decoder.codingPath.append(key)
         self.decoder.storage.push(value)
@@ -1618,7 +1618,7 @@ extension NIOKeyed {
 }
 
 // MARK: - 处理UInt16和UInt16?类型
-extension NIOKeyed {
+extension NIOKeyedDecodingContainer {
     func decode<K>(value: inout Any, type: UInt16.Type, forKey key: K) throws -> UInt16 where K: CodingKey {
         self.decoder.codingPath.append(key)
         self.decoder.storage.push(value)
@@ -1781,7 +1781,7 @@ extension NIOKeyed {
 }
 
 // MARK: - 处理UInt32和UInt32?类型
-extension NIOKeyed {
+extension NIOKeyedDecodingContainer {
     func decode<K>(value: inout Any, type: UInt32.Type, forKey key: K) throws -> UInt32 where K: CodingKey {
         self.decoder.codingPath.append(key)
         self.decoder.storage.push(value)
@@ -1944,7 +1944,7 @@ extension NIOKeyed {
 }
 
 // MARK: - 处理UInt64和UInt64?类型
-extension NIOKeyed {
+extension NIOKeyedDecodingContainer {
     func decode<K>(value: inout Any, type: UInt64.Type, forKey key: K) throws -> UInt64 where K: CodingKey {
         self.decoder.codingPath.append(key)
         self.decoder.storage.push(value)
@@ -2107,7 +2107,7 @@ extension NIOKeyed {
 }
 
 // MARK: - 处理Float和Float?类型
-extension NIOKeyed {
+extension NIOKeyedDecodingContainer {
     func decode<K>(value: inout Any, type: Float.Type, forKey key: K) throws -> Float where K: CodingKey {
         self.decoder.codingPath.append(key)
         self.decoder.storage.push(value)
@@ -2270,7 +2270,7 @@ extension NIOKeyed {
 }
 
 // MARK: - 处理Double和Double?类型
-extension NIOKeyed {
+extension NIOKeyedDecodingContainer {
     func decode<K>(value: inout Any, type: Double.Type, forKey key: K) throws -> Double where K: CodingKey {
         self.decoder.codingPath.append(key)
         self.decoder.storage.push(value)
@@ -2430,7 +2430,7 @@ extension NIOKeyed {
 }
 
 // MARK: - 处理String和String?类型
-extension NIOKeyed {
+extension NIOKeyedDecodingContainer {
     func decode<K>(value: inout Any, type: String.Type, forKey key: K) throws -> String where K: CodingKey {
         self.decoder.codingPath.append(key)
         self.decoder.storage.push(value)

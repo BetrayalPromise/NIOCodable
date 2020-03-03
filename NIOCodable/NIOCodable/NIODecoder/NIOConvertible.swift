@@ -2885,12 +2885,23 @@ extension BaseConvertible {
     }
 }
 
-protocol EmptyHandle {
-    init()
+/// 自定义类型转换处理
+protocol SingleValueDefaultValue: RawRepresentable, Codable where RawValue: Codable {
+    /// 单值容器 便于数值异常处理
+    /// - Parameter value: 异常数值
+    init(with value: Decodable)
 }
 
-/// 自定义类型转换处理
-public protocol CustomConvertible {
-    associatedtype T
-    func toType(value: Int) -> T
+extension SingleValueDefaultValue {
+    init(from decoder: Decoder) throws {
+        let container: SingleValueDecodingContainer = try decoder.singleValueContainer()
+        do {
+            let decoded = try container.decode(RawValue.self)
+            self = Self.init(rawValue: decoded) ?? Self.init(with: decoded)
+        } catch {
+            print(error)
+            self = Self.init(with: 0)
+        }
+    }
 }
+
