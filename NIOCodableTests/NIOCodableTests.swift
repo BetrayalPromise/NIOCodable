@@ -520,7 +520,7 @@ class NIOCodableTests: XCTestCase {
         ]
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
-        decoder.baseConvertNumericalStrategy = .useBoolean
+        decoder.booleanStrategy = .useBoolean
         do {
             guard let models: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
             print(models[0].name)
@@ -626,7 +626,7 @@ class NIOCodableTests: XCTestCase {
          {"gender": 4}
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder: NIOJSONDecoder = NIOJSONDecoder()
-        decoder.baseDecodingTypeStrategy = .base(Gender.male)
+        decoder.typeStrategy = .base(Gender.male)
         do {
             guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
             XCTAssert(models.gender == Gender.unknow)
@@ -667,10 +667,53 @@ class NIOCodableTests: XCTestCase {
          {"gender": 3.5}
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder: NIOJSONDecoder = NIOJSONDecoder()
-        decoder.baseDecodingTypeStrategy = .base(Gender.male)
+        decoder.typeStrategy = .base(Gender.male)
         do {
             guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
             XCTAssert(models.gender == Gender.unknow)
+        } catch {
+            print(error)
+        }
+    }
+
+    func testNull() {
+        let data: Data = """
+          {
+            "array": "null"
+          }
+          """.data(using: String.Encoding.utf8) ?? Data()
+
+        class ESRootClass: Codable {
+            var array: [List]?
+        }
+
+        class List: Codable {
+            var a: String?
+        }
+
+        let decoder = NIOJSONDecoder()
+        decoder.containerStrategy = .useEmpty
+        do {
+            guard let models: ESRootClass = try decoder.decode(type: ESRootClass.self, from: data) else { return }
+            print(models)
+            XCTAssert(models.array != nil)
+        } catch {
+            print(error)
+        }
+    }
+
+    func testArray0() {
+        struct Example: Codable {
+            var name: Int64
+        }
+        let data: Data = """
+        [
+        ]
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder = NIOJSONDecoder()
+        do {
+            let models: [Example]? = try decoder.decode(type: [Example].self, from: data)
+            XCTAssert(models?.count == 0)
         } catch {
             print(error)
         }

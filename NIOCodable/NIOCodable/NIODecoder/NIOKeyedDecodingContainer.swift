@@ -13,18 +13,18 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     let decoder: NIODecoder
     var source: [AnyHashable: Any] = [:]
     weak var instance: NIOJSONDecoder?
-    var baseTypeDecodingStrategy: NIOJSONDecoder.BaseConvertTypeStrategy = .default
-    var baseConvertNumericalStrategy: NIOJSONDecoder.BaseConvertNumericalStrategy = .useBoolean
+    var typeConvertStrategy: NIOJSONDecoder.TypeConvertStrategy = .default
+    var booleanConvertStrategy: NIOJSONDecoder.BooleanConvertStrategy = .useBoolean
     var handle: CodableHandle!
     
     init(instance: NIOJSONDecoder?, source: [AnyHashable: Any], decoder: NIODecoder) {
         self.instance = instance
-        self.baseTypeDecodingStrategy = self.instance?.baseDecodingTypeStrategy ?? .default
-        self.baseConvertNumericalStrategy = self.instance?.baseConvertNumericalStrategy ?? .useBoolean
+        self.typeConvertStrategy = self.instance?.typeStrategy ?? .default
+        self.booleanConvertStrategy = self.instance?.booleanStrategy ?? .useBoolean
         self.source = source
         self.decoder = decoder
         self.codingPath = decoder.codingPath
-        self.handle = CodableHandle(baseTypeDecodingStrategy: decoder.instance?.baseDecodingTypeStrategy, baseConvertNumericalStrategy: decoder.instance?.baseConvertNumericalStrategy)
+        self.handle = CodableHandle(typeStrategy: decoder.instance?.typeStrategy, booleanStrategy: decoder.instance?.booleanStrategy)
     }
 
     init(decoder: NIODecoder) {
@@ -338,6 +338,29 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
         guard let entry = self.source[key.stringValue] else {
             return nil
         }
+        if entry is NSNull {
+            switch self.decoder.instance?.containerStrategy {
+            case .useNull:
+                return nil
+            default:
+                return [] as? T
+            }
+        }
+        guard let value: String = entry as? String else {
+            self.decoder.storage.push(entry)
+            defer { self.decoder.storage.pop() }
+            return try type.init(from: self.decoder)
+        }
+
+        if value == "null" {
+            switch self.decoder.instance?.containerStrategy {
+            case .useNull:
+                return nil
+            default:
+                return [] as? T
+            }
+        }
+
         self.decoder.storage.push(entry)
         defer { self.decoder.storage.pop() }
         return try type.init(from: self.decoder)
