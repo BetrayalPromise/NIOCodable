@@ -600,7 +600,7 @@ class NIOCodableTests: XCTestCase {
             var gender: Gender?
         }
 
-        enum Gender: Int, Codable, SingleValueDefaultValue {
+        enum Gender: Int, Codable, NIOSingleValueDecodingContainerExecptionControllable {
             case male = 0
             case female = 1
             case unknow = 2

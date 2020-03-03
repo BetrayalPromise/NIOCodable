@@ -2886,13 +2886,13 @@ extension BaseConvertible {
 }
 
 /// 自定义类型转换处理
-protocol SingleValueDefaultValue: RawRepresentable, Codable where RawValue: Codable {
+public protocol NIOSingleValueDecodingContainerExecptionControllable: RawRepresentable, Codable where RawValue: Codable {
     /// 单值容器 便于数值异常处理
     /// - Parameter value: 异常数值
     init(with value: Decodable)
 }
 
-extension SingleValueDefaultValue {
+extension NIOSingleValueDecodingContainerExecptionControllable {
     init(from decoder: Decoder) throws {
         let container: SingleValueDecodingContainer = try decoder.singleValueContainer()
         do {

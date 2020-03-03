@@ -1,5 +1,6 @@
 import Foundation
 
+/// 实际使用的解码器
 class NIODecoder: Decoder {
     var codingPath: [CodingKey] = []
     var userInfo: [CodingUserInfoKey : Any] = [:]
@@ -21,7 +22,7 @@ class NIODecoder: Decoder {
         return KeyedDecodingContainer<Key>(NIOKeyedDecodingContainer(instance: self.instance, source: dictionary, decoder: self))
     }
     
-    func unkeyedContainer() throws -> UnkeyedDecodingContainer {
+    func unkeyedContainer() throws -> UnkeyedDecodingContainer {   
         guard let array: [Any] = self.storage.currentValue as? [Any] else {
             return NIOUnkeyedDecodingContainer(instance: self.instance, source: [], decoder: self)
         }
@@ -29,7 +30,7 @@ class NIODecoder: Decoder {
     }
     
     func singleValueContainer() throws -> SingleValueDecodingContainer {
-        return NIOSingleValueDecodingContainer(source: self.source, decoder: self)
+        return NIOSingleValueDecodingContainer(decoder: self)
     }
 }
 

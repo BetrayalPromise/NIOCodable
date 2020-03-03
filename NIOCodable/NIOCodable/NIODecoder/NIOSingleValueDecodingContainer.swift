@@ -5,10 +5,8 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
     var codingPath: [CodingKey] = []
     
     let decoder: NIODecoder
-    var source: Any
     
-    init(source: Any, decoder: NIODecoder) {
-        self.source = source
+    init(decoder: NIODecoder) {
         self.decoder = decoder
     }
     

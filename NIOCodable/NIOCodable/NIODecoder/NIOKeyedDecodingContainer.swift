@@ -3,7 +3,7 @@ import Foundation
 /// 针对字典处理
 struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: CodingKey {
     typealias Key = K
-    var codingPath: [CodingKey]
+    var codingPath: [CodingKey] = []
     var allKeys: [Key] {
         return self.source.keys.compactMap({ (hash) -> Key? in
             guard let `hash`: String = hash as? String else { return Key(stringValue: "") }
@@ -11,10 +11,10 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
         })
     }
     let decoder: NIODecoder
-    var source: [AnyHashable: Any]
+    var source: [AnyHashable: Any] = [:]
     weak var instance: NIOJSONDecoder?
-    let baseTypeDecodingStrategy: NIOJSONDecoder.BaseConvertTypeStrategy
-    let baseConvertNumericalStrategy: NIOJSONDecoder.BaseConvertNumericalStrategy
+    var baseTypeDecodingStrategy: NIOJSONDecoder.BaseConvertTypeStrategy = .default
+    var baseConvertNumericalStrategy: NIOJSONDecoder.BaseConvertNumericalStrategy = .useBoolean
     
     init(instance: NIOJSONDecoder?, source: [AnyHashable: Any], decoder: NIODecoder) {
         self.instance = instance
@@ -23,6 +23,10 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
         self.source = source
         self.decoder = decoder
         self.codingPath = decoder.codingPath
+    }
+
+    init(decoder: NIODecoder) {
+        self.decoder = decoder
     }
     
     func contains(_ key: K) -> Bool {
@@ -39,6 +43,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: Bool
     func decode(_ type: Bool.Type, forKey key: K) throws -> Bool {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return false
         }
@@ -47,6 +53,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: Bool?
     func decodeIfPresent(_ type: Bool.Type, forKey key: K) throws -> Bool? {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return nil
         }
@@ -55,6 +63,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: Int
     func decode(_ type: Int.Type, forKey key: K) throws -> Int {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return 0
         }
@@ -63,6 +73,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: Int?
     func decodeIfPresent(_ type: Int.Type, forKey key: K) throws -> Int? {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return nil
         }
@@ -71,6 +83,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: Int8
     func decode(_ type: Int8.Type, forKey key: K) throws -> Int8 {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return 0
         }
@@ -79,6 +93,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: Int8?
     func decodeIfPresent(_ type: Int8.Type, forKey key: K) throws -> Int8? {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return nil
         }
@@ -87,6 +103,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: Int16
     func decode(_ type: Int16.Type, forKey key: K) throws -> Int16 {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return 0
         }
@@ -95,6 +113,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: Int16?
     func decodeIfPresent(_ type: Int16.Type, forKey key: K) throws -> Int16? {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return nil
         }
@@ -103,6 +123,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: Int32
     func decode(_ type: Int32.Type, forKey key: K) throws -> Int32 {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return 0
         }
@@ -111,6 +133,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: Int32?
     func decodeIfPresent(_ type: Int32.Type, forKey key: K) throws -> Int32? {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return nil
         }
@@ -119,6 +143,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: Int64
     func decode(_ type: Int64.Type, forKey key: K) throws -> Int64 {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return 0
         }
@@ -127,6 +153,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: Int64?
     func decodeIfPresent(_ type: Int64.Type, forKey key: K) throws -> Int64? {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return nil
         }
@@ -135,6 +163,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: UInt
     func decode(_ type: UInt.Type, forKey key: K) throws -> UInt {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return 0
         }
@@ -143,6 +173,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: UInt?
     func decodeIfPresent(_ type: UInt.Type, forKey key: K) throws -> UInt? {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return nil
         }
@@ -159,6 +191,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: UInt8?
     func decodeIfPresent(_ type: UInt8.Type, forKey key: K) throws -> UInt8? {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return nil
         }
@@ -167,6 +201,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: UInt16
     func decode(_ type: UInt16.Type, forKey key: K) throws -> UInt16 {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return 0
         }
@@ -175,6 +211,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: UInt16?
     func decodeIfPresent(_ type: UInt16.Type, forKey key: K) throws -> UInt16? {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return nil
         }
@@ -183,6 +221,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: UInt32
     func decode(_ type: UInt32.Type, forKey key: K) throws -> UInt32 {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return 0
         }
@@ -191,6 +231,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: UInt32?
     func decodeIfPresent(_ type: UInt32.Type, forKey key: K) throws -> UInt32? {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return nil
         }
@@ -199,6 +241,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
 
     // MARK: UInt64
     func decode(_ type: UInt64.Type, forKey key: K) throws -> UInt64 {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return 0
         }
@@ -207,6 +251,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: UInt64?
     func decodeIfPresent(_ type: UInt64.Type, forKey key: K) throws -> UInt64? {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return nil
         }
@@ -215,6 +261,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: T
     func decode(_ type: Float.Type, forKey key: K) throws -> Float {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return 0
         }
@@ -223,6 +271,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: T?
     func decodeIfPresent(_ type: Float.Type, forKey key: K) throws -> Float? {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return nil
         }
@@ -230,6 +280,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     }
     
     func decode(_ type: Double.Type, forKey key: K) throws -> Double {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return 0
         }
@@ -237,6 +289,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     }
     
     func decodeIfPresent(_ type: Double.Type, forKey key: K) throws -> Double? {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return nil
         }
@@ -245,6 +299,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: String
     func decode(_ type: String.Type, forKey key: K) throws -> String {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return ""
         }
@@ -253,6 +309,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: String?
     func decodeIfPresent(_ type: String.Type, forKey key: K) throws -> String? {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
             return nil
         }
@@ -261,6 +319,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: T
     func decode<T>(_ type: T.Type, forKey key: K) throws -> T where T : Decodable {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard let entry = self.source[key.stringValue] else {
             return try T.init(from: self.decoder)
         }
@@ -271,6 +331,8 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     
     // MARK: T?
     func decodeIfPresent<T>(_ type: T.Type, forKey key: K) throws -> T? where T : Decodable {
+        self.decoder.codingPath.append(key)
+        defer { self.decoder.codingPath.removeLast() }
         guard let entry = self.source[key.stringValue] else {
             return nil
         }
