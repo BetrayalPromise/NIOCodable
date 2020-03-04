@@ -18,7 +18,7 @@ public final class NIOJSONDecoder {
         guard let source: Any = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) else {
             throw DecodingError.typeMismatch(type, DecodingError.Context(codingPath: [], debugDescription: "非JSON结构"))
         }
-        let decoder: NIODecoder = NIODecoder(instance: self, source: source)
+        let decoder: NIODecoder = NIODecoder(wrapper: self, source: source)
         do {
             return try decoder.unbox(value: source, as: type)
         } catch {

@@ -12,19 +12,19 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     }
     let decoder: NIODecoder
     var source: [AnyHashable: Any] = [:]
-    weak var instance: NIOJSONDecoder?
+    weak var wrapper: NIOJSONDecoder?
     var typeConvertStrategy: NIOJSONDecoder.TypeConvertStrategy = .default
     var booleanConvertStrategy: NIOJSONDecoder.BooleanConvertStrategy = .useBoolean
     var handle: CodableHandle!
     
-    init(instance: NIOJSONDecoder?, source: [AnyHashable: Any], decoder: NIODecoder) {
-        self.instance = instance
-        self.typeConvertStrategy = self.instance?.typeStrategy ?? .default
-        self.booleanConvertStrategy = self.instance?.booleanStrategy ?? .useBoolean
+    init(wrapper: NIOJSONDecoder?, source: [AnyHashable: Any], decoder: NIODecoder) {
+        self.wrapper = wrapper
+        self.typeConvertStrategy = self.wrapper?.typeStrategy ?? .default
+        self.booleanConvertStrategy = self.wrapper?.booleanStrategy ?? .useBoolean
         self.source = source
         self.decoder = decoder
         self.codingPath = decoder.codingPath
-        self.handle = CodableHandle(typeStrategy: decoder.instance?.typeStrategy, booleanStrategy: decoder.instance?.booleanStrategy)
+        self.handle = CodableHandle(typeStrategy: decoder.wrapper?.typeStrategy, booleanStrategy: decoder.wrapper?.booleanStrategy)
     }
 
     init(decoder: NIODecoder) {
@@ -339,7 +339,7 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
             return nil
         }
         if entry is NSNull {
-            switch self.decoder.instance?.containerStrategy {
+            switch self.decoder.wrapper?.containerStrategy {
             case .useNull:
                 return nil
             default:
@@ -353,7 +353,7 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
         }
 
         if value == "null" {
-            switch self.decoder.instance?.containerStrategy {
+            switch self.decoder.wrapper?.containerStrategy {
             case .useNull:
                 return nil
             default:
@@ -373,9 +373,9 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
         }
 
         guard let dictionary: [AnyHashable: Any] = self.source[key.stringValue] as? [AnyHashable: Any] else {
-            return KeyedDecodingContainer(NIOKeyedDecodingContainer<NestedKey>(instance: self.instance, source: [:], decoder: self.decoder))
+            return KeyedDecodingContainer(NIOKeyedDecodingContainer<NestedKey>(wrapper: self.wrapper, source: [:], decoder: self.decoder))
         }
-        return KeyedDecodingContainer(NIOKeyedDecodingContainer<NestedKey>(instance: self.instance, source: dictionary, decoder: self.decoder))
+        return KeyedDecodingContainer(NIOKeyedDecodingContainer<NestedKey>(wrapper: self.wrapper, source: dictionary, decoder: self.decoder))
     }
     
     func nestedUnkeyedContainer(forKey key: K) throws -> UnkeyedDecodingContainer {
@@ -384,9 +384,9 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
             self.decoder.codingPath.removeLast()
         }
         guard let array: [Any] = self.source[key.stringValue] as? [Any] else {
-            return NIOUnkeyedDecodingContainer(instance: self.instance, source: [], decoder: self.decoder)
+            return NIOUnkeyedDecodingContainer(wrapper: self.wrapper, source: [], decoder: self.decoder)
         }
-        return NIOUnkeyedDecodingContainer(instance: self.instance, source: array, decoder: self.decoder)
+        return NIOUnkeyedDecodingContainer(wrapper: self.wrapper, source: array, decoder: self.decoder)
     }
     
     func superDecoder() throws -> Decoder {
