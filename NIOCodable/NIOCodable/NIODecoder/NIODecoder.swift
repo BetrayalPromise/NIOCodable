@@ -38,6 +38,20 @@ extension NIODecoder {
     func unbox<T>(value: Any, as type: T.Type) throws -> T? where T: Decodable {
         self.storage.push(value)
         defer { self.storage.pop() }
+        if (value as? [AnyHashable: Any]) != nil {
+            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable : Any]  else {
+                fatalError()
+            }
+            if value.keys.count == 0 {
+                switch self.instance?.containerStrategy {
+                case .useNull:
+                    return nil
+                default:
+                    return [:] as? T
+                }
+            }
+        }
+
         do {
             return try type.init(from: self)
         } catch  {

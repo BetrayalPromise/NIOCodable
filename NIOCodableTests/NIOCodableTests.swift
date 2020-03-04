@@ -540,9 +540,10 @@ class NIOCodableTests: XCTestCase {
         {}
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
+        decoder.containerStrategy = .useNull
         do {
-            guard let model: Example = try decoder.decode(type: Example.self, from: data) else { return }
-            XCTAssert(model.name == "")
+            let model: Example? = try decoder.decode(type: Example.self, from: data)
+            XCTAssert(model == nil)
         } catch {
             print(error)
         }
@@ -711,6 +712,7 @@ class NIOCodableTests: XCTestCase {
         ]
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
+        decoder.containerStrategy = .useNull
         do {
             let models: [Example]? = try decoder.decode(type: [Example].self, from: data)
             XCTAssert(models?.count == 0)
