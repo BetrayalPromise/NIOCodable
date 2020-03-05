@@ -28,8 +28,16 @@ class NIOCodableTests: XCTestCase {
         数值 只支持 0 == false 1 == true 其他均为 false
      */
     func testBool() {
-        struct Example: Codable {
+        struct Example: Codable, BooleanAcceptConvertible {
             var name: Bool
+
+            func `true`() -> Set<AnyHashable> {
+                return [true, 0]
+            }
+
+            func `false`() -> Set<AnyHashable> {
+                return [false]
+            }
         }
         let data: Data = """
         [
@@ -47,6 +55,7 @@ class NIOCodableTests: XCTestCase {
         ]
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
+        decoder.typeStrategy = .custom(<#T##TypeConvertible#>)
         do {
             let models: [Example]? = try decoder.decode(type: [Example].self, from: data)
             XCTAssert(models?[0].name == true)
@@ -745,7 +754,7 @@ class NIOCodableTests: XCTestCase {
             var gender: Gender?
         }
 
-        enum Gender: Int, Codable, NIOSingleValueDecodingScopeExecptionConvertible, BaseConvertible {
+        enum Gender: Int, Codable, NIOSingleValueDecodingScopeExecptionConvertible, TypeConvertible {
             case male = 0
             case female = 1
             case unknow = 2
@@ -771,7 +780,7 @@ class NIOCodableTests: XCTestCase {
          {"gender": 4}
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder: NIOJSONDecoder = NIOJSONDecoder()
-        decoder.typeStrategy = .base(Gender.male)
+        decoder.typeStrategy = .custom(Gender.male)
         do {
             guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
             XCTAssert(models.gender == Gender.unknow)
@@ -786,7 +795,7 @@ class NIOCodableTests: XCTestCase {
             var gender: Gender?
         }
 
-        enum Gender: Int, Codable, NIOSingleValueDecodingScopeExecptionConvertible, BaseConvertible {
+        enum Gender: Int, Codable, NIOSingleValueDecodingScopeExecptionConvertible, TypeConvertible {
             case male = 0
             case female = 1
             case unknow = 2
@@ -812,7 +821,7 @@ class NIOCodableTests: XCTestCase {
          {"gender": 3.5}
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder: NIOJSONDecoder = NIOJSONDecoder()
-        decoder.typeStrategy = .base(Gender.male)
+        decoder.typeStrategy = .custom(Gender.male)
         do {
             guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
             XCTAssert(models.gender == Gender.unknow)
@@ -873,16 +882,17 @@ class NIOCodableTests: XCTestCase {
             let level: Level
             let location: Location
 
+            /// 计算属性不参与codable过程
             var debugDescription: String {
                 return """
                 {
-                "name": \(name),
-                "pop": \(pop),
-                "level": \(level.rawValue),
-                "location": {
-                "latitude": \(location.latitude),
-                "longitude": \(location.longitude)
-                }
+                    "name": \(name),
+                    "pop": \(pop),
+                    "level": \(level.rawValue),
+                    "location": {
+                        "latitude": \(location.latitude),
+                        "longitude": \(location.longitude)
+                    }
                 }
                 """
             }

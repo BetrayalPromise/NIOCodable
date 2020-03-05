@@ -31,10 +31,16 @@ public final class NIOJSONDecoder {
 
 /// 配置策略
 public extension NIOJSONDecoder {
+    /// Bool处理策略
+    enum BooleanStrategy {
+        case `default`
+        case custom(BooleanConvertible)
+    }
+
     /// 类型不一致策略
     enum TypeConvertStrategy {
         case `default`  // 默认处理
-        case base(BaseConvertible)  // 自定义处理
+        case custom(TypeConvertible)  // 自定义处理
     }
     
     /// Bool处理策略
