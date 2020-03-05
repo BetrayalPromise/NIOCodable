@@ -13,22 +13,21 @@
 #### 2.自定义映射
 ```Swift
 struct Example: Codable {
-var name: Bool
+    var name: Bool
 }
 struct Adapter: TypeConvertible {
 func toBool(key: CodingKey, value: Int) -> Bool {
-if 根据自己的需要处理 {
-return true
-}
-return false
+    if 根据自己的需要处理 {
+        return true
+    }
+    return false
 }
 
 func toBool(key: CodingKey, value: Float) -> Bool {
-if 根据自己的需要处理 {
-return true
-}
-return false
-}
+    if 根据自己的需要处理 {
+        return true
+    }
+    return false
 }
 let data: Data = """
 [
@@ -39,12 +38,11 @@ let data: Data = """
 let decoder = NIOJSONDecoder()
 decoder.convertTypeStrategy = .custom(Adapter())
 do {
-guard let models: [Example]? = try decoder.decode(type: [Example].self, from: data) else { assert(false) }
-assert(models[0] == true)
-assert(models[1] == true)
+    guard let models: [Example]? = try decoder.decode(type: [Example].self, from: data) else { assert(false) }
+    assert(models[0] == true)
+    assert(models[1] == true)
 } catch {
-print(error)
-}
+    print(error)
 }
 ```
 
