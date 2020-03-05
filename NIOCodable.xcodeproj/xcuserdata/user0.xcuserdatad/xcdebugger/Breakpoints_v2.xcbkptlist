@@ -215,38 +215,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FF1DAB89-F422-40F0-926D-9F9C06877450"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NIOCodable/NIOCodable/NIODecoder/NIOUnkeyedDecodingContainer.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "nestedUnkeyedContainer()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E907113D-508C-4991-878E-6D7537CC6955"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NIOCodable/NIOCodable/NIODecoder/NIOUnkeyedDecodingContainer.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "superDecoder()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "A06B72BF-9AF8-4D17-9D7A-C92BC11DB8AC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -273,22 +241,6 @@
             startingLineNumber = "670"
             endingLineNumber = "670"
             landmarkName = "testArray2()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "86D4136E-6BC6-4AB4-8CE9-AEF80CD63EA2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NIOCodable/NIOCodable/NIODecoder/NIOUnkeyedDecodingContainer.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "decodeNil()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -369,38 +321,6 @@
             startingLineNumber = "620"
             endingLineNumber = "620"
             landmarkName = "testDictionary2()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "59B4BED7-E728-40FC-87E2-4EC1FE673FE8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NIOCodable/NIOCodable/NIODecoder/NIOKeyedDecodingContainer.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "391"
-            endingLineNumber = "391"
-            landmarkName = "superDecoder(forKey:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6A594D9A-1693-42BA-9E10-75FF1C318FC9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NIOCodable/NIOCodable/NIODecoder/NIOKeyedDecodingContainer.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "387"
-            endingLineNumber = "387"
-            landmarkName = "superDecoder()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

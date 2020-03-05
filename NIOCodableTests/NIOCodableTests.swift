@@ -764,18 +764,18 @@ class NIOCodableTests: XCTestCase {
             print(error)
         }
     }
-    // 测试取值异常
+    // 测试范围不一致
     func testCustom1() {
         struct Human: Codable {
             var gender: Gender?
         }
 
-        enum Gender: Int, Codable, NIOSingleValueDecodingScopeControllable {
-            func limit(key: CodingKey) -> Set<AnyHashable> {
+        enum Gender: Int, Codable, SingleValueDecodingScopeControllable {
+            func scope(key: CodingKey) -> Set<AnyHashable> {
                 return [0, 1, 2]
             }
 
-            func execption(key: CodingKey) -> AnyHashable {
+            func execption(key: CodingKey, source: AnyHashable) -> AnyHashable {
                 return 2
             }
 
@@ -809,20 +809,14 @@ class NIOCodableTests: XCTestCase {
             var gender: Gender?
         }
 
-        enum Gender: Int, Codable, NIOSingleValueDecodingScopeExecptionConvertible, TypeConvertible {
+        enum Gender: Int, Codable, TypeConvertible {
             case male = 0
             case female = 1
             case unknow = 2
-
             enum CodingKeys: CodingKey {
                 case male
                 case female
                 case unknow
-            }
-
-            init(with value: Decodable) {
-                print(value)
-                self = .unknow
             }
 
             func toInt(key: CodingKey, value: Float) -> Int {

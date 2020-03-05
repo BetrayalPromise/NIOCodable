@@ -87,18 +87,14 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     }
     
     mutating func decode<T>(_ type: T.Type) throws -> T where T : Decodable {
-        guard let model: T = try self.decoder.unbox(value: self.source[self.currentIndex], as: type) else {
-            fatalError()
-        }
+        guard let model: T = try self.decoder.unbox(value: self.source[self.currentIndex], as: type) else { fatalError() }
         self.currentIndex += 1
         return model
     }
     
     mutating func nestedContainer<NestedKey>(keyedBy type: NestedKey.Type) throws -> KeyedDecodingContainer<NestedKey> where NestedKey : CodingKey {
         let value = self.source[self.currentIndex]
-        guard let dictionary = value as? [AnyHashable: Any] else {
-            fatalError()
-        }
+        guard let dictionary = value as? [AnyHashable: Any] else { fatalError() }
         self.currentIndex += 1
         return KeyedDecodingContainer(NIOKeyedDecodingContainer<NestedKey>(decoder: self.decoder, source: dictionary))
     }

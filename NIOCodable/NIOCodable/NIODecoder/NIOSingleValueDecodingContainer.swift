@@ -47,7 +47,6 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
     func decode(_ type: Int.Type) throws -> Int {
         guard var value = self.decoder.storage.currentValue, let key = NIOCodableKey(stringValue: "\(value)") else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [], debugDescription: "无法解析\(type)", underlyingError: nil))
-            //  TODO: 类型不匹配问题
         }
         return try self.handle.decode(value: &value, type: Int.self, forKey: key)
     }

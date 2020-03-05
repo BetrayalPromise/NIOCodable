@@ -2907,6 +2907,7 @@ extension NIOSingleValueDecodingScopeExecptionConvertible {
 }
 #endif
 
+/// 针对单值取值异常处理
 public protocol SingleValueDecodingScopeControllable {
     func scope(key: CodingKey) -> Set<AnyHashable>
     func execption(key: CodingKey, source: AnyHashable) -> AnyHashable
