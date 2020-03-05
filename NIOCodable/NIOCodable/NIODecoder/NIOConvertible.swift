@@ -2885,18 +2885,18 @@ extension BaseConvertible {
     }
 }
 
-/// 用以处理数值类型一致 但是取值超出f范围
-public protocol NIOSingleValueDecodingContainerExecptionControllable: RawRepresentable, Codable where RawValue: Codable {
+/// 用以处理数值类型一致 但是取值超出范围
+public protocol NIOSingleValueDecodingScopeExecptionConvertible: RawRepresentable, Codable where RawValue: Codable {
     /// 单值容器 便于数值异常处理
     /// - Parameter value: 异常数值
     init(with value: Decodable)
 }
 
-extension NIOSingleValueDecodingContainerExecptionControllable {
+extension NIOSingleValueDecodingScopeExecptionConvertible {
     init(from decoder: Decoder) throws {
-        let container: SingleValueDecodingContainer = try decoder.singleValueContainer()
+        let singleValueContainer: SingleValueDecodingContainer = try decoder.singleValueContainer()
         do {
-            let decoded = try container.decode(RawValue.self)
+            let decoded = try singleValueContainer.decode(RawValue.self)
             self = Self.init(rawValue: decoded) ?? Self.init(with: decoded)
         } catch {
             print(error)

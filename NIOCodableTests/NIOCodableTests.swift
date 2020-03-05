@@ -532,7 +532,7 @@ class NIOCodableTests: XCTestCase {
         }
     }
     
-    func testDictionary() {
+    func testDictionary0() {
         struct Example: Codable {
             var name: String
         }
@@ -544,6 +544,56 @@ class NIOCodableTests: XCTestCase {
         do {
             let model: Example? = try decoder.decode(type: Example.self, from: data)
             XCTAssert(model == nil)
+        } catch {
+            print(error)
+        }
+    }
+
+    func testDictionary1() {
+        let data: Data = """
+        {"key": [{"info": "b"}]}
+        """.data(using: String.Encoding.utf8) ?? Data()
+
+        class ESRootClass: Codable {
+            var key: [Key]?
+        }
+
+        class Key: Codable {
+            var info: String?
+        }
+        let decoder = NIOJSONDecoder()
+        decoder.containerStrategy = .useNull
+        do {
+            let model: ESRootClass? = try decoder.decode(type: ESRootClass.self, from: data)
+            XCTAssert(model?.key != nil)
+            XCTAssert(model?.key?[0].info == "b")
+        } catch {
+            print(error)
+        }
+    }
+
+    func testDictionary2() {
+        let data: Data = """
+        {"key": {"key": {"key": "key"}}}
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder = NIOJSONDecoder()
+        decoder.containerStrategy = .useNull
+
+        class ESRootClass: Codable {
+            var key: Key0?
+            enum CodingKeys: String, CodingKey {
+                case key = "key"
+            }
+        }
+        class Key0: Codable {
+            var key: Key1?
+        }
+        class Key1: Codable {
+            var key: String?
+        }
+        do {
+            let model: ESRootClass? = try decoder.decode(type: ESRootClass.self, from: data)
+            XCTAssert(model?.key?.key?.key == "key")
         } catch {
             print(error)
         }
@@ -624,13 +674,40 @@ class NIOCodableTests: XCTestCase {
                 XCTAssert(false)
                 return
             }
-            print(models)
-//            XCTAssert(models.count == 1)
-//            XCTAssert(models[0] == true)
+            XCTAssert(models.a?.count == 1)
+            XCTAssert(models.a?[0].b == "c")
         } catch {
             print(error)
         }
     }
+
+    func testArray4() {
+            let data: Data = """
+            [[
+            {"name": true}
+            ]]
+            """.data(using: String.Encoding.utf8) ?? Data()
+
+            class ESRootClass: Codable {
+                var a: [[A]]
+            }
+            class A: Codable {
+                var name: String?
+            }
+
+            let decoder = NIOJSONDecoder()
+            decoder.containerStrategy = .useNull
+            do {
+                guard let models: ESRootClass = try decoder.decode(type: ESRootClass.self, from: data) else {
+                    XCTAssert(false)
+                    return
+                }
+                XCTAssert(models.a.count == 1)
+                XCTAssert(models.a[0][0].name == "true")
+            } catch {
+                print(error)
+            }
+        }
 
     func testCustom0() {
         struct A: Codable {
@@ -668,7 +745,7 @@ class NIOCodableTests: XCTestCase {
             var gender: Gender?
         }
 
-        enum Gender: Int, Codable, NIOSingleValueDecodingContainerExecptionControllable, BaseConvertible {
+        enum Gender: Int, Codable, NIOSingleValueDecodingScopeExecptionConvertible, BaseConvertible {
             case male = 0
             case female = 1
             case unknow = 2
@@ -709,7 +786,7 @@ class NIOCodableTests: XCTestCase {
             var gender: Gender?
         }
 
-        enum Gender: Int, Codable, NIOSingleValueDecodingContainerExecptionControllable, BaseConvertible {
+        enum Gender: Int, Codable, NIOSingleValueDecodingScopeExecptionConvertible, BaseConvertible {
             case male = 0
             case female = 1
             case unknow = 2
@@ -741,6 +818,92 @@ class NIOCodableTests: XCTestCase {
             XCTAssert(models.gender == Gender.unknow)
         } catch {
             print(error)
+        }
+    }
+
+    /// 继承问题
+    func testCustom3()  {
+        class Wine: Codable {
+            var abv: Float?
+        }
+        class Beer: Wine {
+            var name: String?
+            var brewery: String?
+            enum CodingKeys: String, CodingKey {
+                case name
+                case brewery
+            }
+
+            required init(from decoder: Decoder) throws {
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                self.name = try container.decode(String.self, forKey: .name)
+                self.brewery = try container.decode(String.self, forKey: .brewery)
+                try super.init(from: decoder)
+            }
+        }
+
+        let jsonDic = ["name": "beer", "brewery": "100", "abv": 10.0] as [String : Any]
+
+        let jsonData = try! JSONSerialization.data(withJSONObject: jsonDic, options: .prettyPrinted)
+        let decode = NIOJSONDecoder()
+        do {
+            let beer = try decode.decode(type: Beer.self, from: jsonData)
+            print("解析成功:\(beer.debugDescription)")
+        } catch  {
+            print("解析失败:\(error)")
+        }
+    }
+
+    func testCustom4() {
+        enum Level: String, Codable {
+            case large
+            case medium
+            case small
+        }
+
+        struct Location: Codable {
+            let latitude: Double
+            let longitude: Double
+        }
+
+        // CustomDebugStringConvertible只是为了更好打印
+        class City: Codable, CustomDebugStringConvertible {
+            let name: String
+            let pop: UInt
+            let level: Level
+            let location: Location
+
+            var debugDescription: String {
+                return """
+                {
+                "name": \(name),
+                "pop": \(pop),
+                "level": \(level.rawValue),
+                "location": {
+                "latitude": \(location.latitude),
+                "longitude": \(location.longitude)
+                }
+                }
+                """
+            }
+        }
+
+        let jsonData = """
+                {
+                "name": "Shanghai",
+                "pop": 21000000,
+                "level": "large",
+                "location": {
+                  "latitude": 30.40,
+                  "longitude": 120.51
+                }
+                }
+                """.data(using: .utf8)!
+        do {
+            let city = try JSONDecoder().decode(City.self, from: jsonData)
+            print("city:", city)
+        } catch {
+            print(error.localizedDescription)
         }
     }
 

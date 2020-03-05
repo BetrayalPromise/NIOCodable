@@ -14,11 +14,8 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     public var count: Int? {
         return self.source.count
     }
-    
-    weak var wrapper: NIOJSONDecoder?
-    
-    init(wrapper: NIOJSONDecoder?, source: [Any], decoder: NIODecoder) {
-        self.wrapper = wrapper
+
+    init(decoder: NIODecoder, source: [Any]) {
         self.decoder = decoder
         self.source = source
         self.codingPath = decoder.codingPath
@@ -103,11 +100,11 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
             fatalError()
         }
         self.currentIndex += 1
-        return KeyedDecodingContainer(NIOKeyedDecodingContainer<NestedKey>(wrapper: self.wrapper, source: dictionary, decoder: self.decoder))
+        return KeyedDecodingContainer(NIOKeyedDecodingContainer<NestedKey>(decoder: self.decoder, source: dictionary))
     }
     
     mutating func nestedUnkeyedContainer() throws -> UnkeyedDecodingContainer {
-        return NIOUnkeyedDecodingContainer(wrapper: self.wrapper, source: self.source, decoder: self.decoder)
+        return NIOUnkeyedDecodingContainer(decoder: self.decoder, source: self.source)
     }
     
     mutating func superDecoder() throws -> Decoder {

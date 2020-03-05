@@ -12,17 +12,11 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     }
     let decoder: NIODecoder
     var source: [AnyHashable: Any] = [:]
-    weak var wrapper: NIOJSONDecoder?
-    var typeConvertStrategy: NIOJSONDecoder.TypeConvertStrategy = .default
-    var booleanConvertStrategy: NIOJSONDecoder.BooleanConvertStrategy = .useBoolean
     var handle: CodableHandle!
     
-    init(wrapper: NIOJSONDecoder?, source: [AnyHashable: Any], decoder: NIODecoder) {
-        self.wrapper = wrapper
-        self.typeConvertStrategy = self.wrapper?.typeStrategy ?? .default
-        self.booleanConvertStrategy = self.wrapper?.booleanStrategy ?? .useBoolean
-        self.source = source
+    init(decoder: NIODecoder, source: [AnyHashable: Any]) {
         self.decoder = decoder
+        self.source = source
         self.codingPath = decoder.codingPath
         self.handle = CodableHandle(typeStrategy: decoder.wrapper?.typeStrategy, booleanStrategy: decoder.wrapper?.booleanStrategy)
     }
@@ -373,9 +367,9 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
         }
 
         guard let dictionary: [AnyHashable: Any] = self.source[key.stringValue] as? [AnyHashable: Any] else {
-            return KeyedDecodingContainer(NIOKeyedDecodingContainer<NestedKey>(wrapper: self.wrapper, source: [:], decoder: self.decoder))
+            return KeyedDecodingContainer(NIOKeyedDecodingContainer<NestedKey>(decoder: self.decoder, source: [:]))
         }
-        return KeyedDecodingContainer(NIOKeyedDecodingContainer<NestedKey>(wrapper: self.wrapper, source: dictionary, decoder: self.decoder))
+        return KeyedDecodingContainer(NIOKeyedDecodingContainer<NestedKey>(decoder: self.decoder, source: dictionary))
     }
     
     func nestedUnkeyedContainer(forKey key: K) throws -> UnkeyedDecodingContainer {
@@ -384,9 +378,9 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
             self.decoder.codingPath.removeLast()
         }
         guard let array: [Any] = self.source[key.stringValue] as? [Any] else {
-            return NIOUnkeyedDecodingContainer(wrapper: self.wrapper, source: [], decoder: self.decoder)
+            return NIOUnkeyedDecodingContainer(decoder: self.decoder, source: [])
         }
-        return NIOUnkeyedDecodingContainer(wrapper: self.wrapper, source: array, decoder: self.decoder)
+        return NIOUnkeyedDecodingContainer(decoder: self.decoder, source: array)
     }
     
     func superDecoder() throws -> Decoder {

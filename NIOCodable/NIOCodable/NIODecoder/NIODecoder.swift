@@ -17,16 +17,16 @@ class NIODecoder: Decoder {
     
     func container<Key>(keyedBy type: Key.Type) throws -> KeyedDecodingContainer<Key> where Key : CodingKey {
         guard let dictionary: [AnyHashable: Any] = self.storage.currentValue as? [AnyHashable: Any] else {
-            return KeyedDecodingContainer<Key>(NIOKeyedDecodingContainer(wrapper: self.wrapper, source: [:], decoder: self))
+            return KeyedDecodingContainer<Key>(NIOKeyedDecodingContainer(decoder: self, source: [:]))
         }
-        return KeyedDecodingContainer<Key>(NIOKeyedDecodingContainer(wrapper: self.wrapper, source: dictionary, decoder: self))
+        return KeyedDecodingContainer<Key>(NIOKeyedDecodingContainer(decoder: self, source: dictionary))
     }
     
     func unkeyedContainer() throws -> UnkeyedDecodingContainer {   
         guard let array: [Any] = self.storage.currentValue as? [Any] else {
-            return NIOUnkeyedDecodingContainer(wrapper: self.wrapper, source: [], decoder: self)
+            return NIOUnkeyedDecodingContainer(decoder: self, source: [])
         }
-        return NIOUnkeyedDecodingContainer(wrapper: self.wrapper, source: array, decoder: self)
+        return NIOUnkeyedDecodingContainer(decoder: self, source: array)
     }
     
     func singleValueContainer() throws -> SingleValueDecodingContainer {
