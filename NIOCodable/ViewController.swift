@@ -26,7 +26,6 @@ class ViewController: UIViewController {
         ]
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
-        decoder.booleanStrategy = .useNumerical
         do {
             guard let model: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
             print(model)

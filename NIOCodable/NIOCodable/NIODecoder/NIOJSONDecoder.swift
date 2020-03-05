@@ -8,11 +8,11 @@ import Foundation
 /// 该操作为线程不安全操作 使用者可以自行加锁
 public final class NIOJSONDecoder {
     /// 类型转换策略
-    public var typeStrategy: NIOJSONDecoder.TypeConvertStrategy = .default
-    /// json的弱类型会有默认转化并且不会失败的情况主要针对Bool转化String的处理策略 也属于类型策略但是优先级高于类型策略
-    public var booleanStrategy: NIOJSONDecoder.BooleanConvertStrategy = .useBoolean
+    public var convertTypeStrategy: NIOJSONDecoder.ConvertTypeStrategy = .default
     /// 容器使用策略
     public var containerStrategy: NIOJSONDecoder.OptionalContainerStrategy = .useEmpty
+    /// 单值范围异常策略
+    public var scopeExecptionStrategy: NIOJSONDecoder.ScopeExecptionStrategy = .default
     
     public func decode<T>(type: T.Type, from data: Data) throws -> T? where T: Decodable {
         guard let source: Any = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) else {
@@ -31,22 +31,15 @@ public final class NIOJSONDecoder {
 
 /// 配置策略
 public extension NIOJSONDecoder {
-    /// Bool处理策略
-    enum BooleanStrategy {
+    enum ScopeExecptionStrategy {
         case `default`
-        case custom(BooleanConvertible)
+        case custom(NIOSingleValueDecodingScopeLimitable)
     }
 
     /// 类型不一致策略
-    enum TypeConvertStrategy {
+    enum ConvertTypeStrategy {
         case `default`  // 默认处理
         case custom(TypeConvertible)  // 自定义处理
-    }
-    
-    /// Bool处理策略
-    enum BooleanConvertStrategy {
-        case useBoolean // 使用"true"和"false"
-        case useNumerical   // 使用"1"和"0"
     }
 
     /// 无数据时(null, 数据量为0)可选容器策略

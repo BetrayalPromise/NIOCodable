@@ -18,7 +18,7 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
         self.decoder = decoder
         self.source = source
         self.codingPath = decoder.codingPath
-        self.handle = CodableHandle(typeStrategy: decoder.wrapper?.typeStrategy, booleanStrategy: decoder.wrapper?.booleanStrategy)
+        self.handle = CodableHandle(decoder: decoder)
     }
 
     init(decoder: NIODecoder) {

@@ -9,7 +9,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
     
     init(decoder: NIODecoder) {
         self.decoder = decoder
-        self.handle = CodableHandle(typeStrategy: decoder.wrapper?.typeStrategy, booleanStrategy: decoder.wrapper?.booleanStrategy)
+        self.handle = CodableHandle(decoder: decoder)
     }
     
     func decodeNil() -> Bool {

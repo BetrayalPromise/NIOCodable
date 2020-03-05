@@ -28,34 +28,49 @@ class NIOCodableTests: XCTestCase {
         数值 只支持 0 == false 1 == true 其他均为 false
      */
     func testBool() {
-        struct Example: Codable, BooleanAcceptConvertible {
+        struct Example: Codable {
             var name: Bool
+        }
 
-            func `true`() -> Set<AnyHashable> {
-                return [true, 0]
+        struct Adapter: TypeConvertible {
+            func toBool(key: CodingKey, value: Int) -> Bool {
+                if value == 1 {
+                    return true
+                }
+                return false
             }
 
-            func `false`() -> Set<AnyHashable> {
-                return [false]
+            func toBool(key: CodingKey, value: Float) -> Bool {
+                if value == 0.5 {
+                    return true
+                }
+                return false
             }
         }
+
+
         let data: Data = """
         [
         {"name": true},
         {"name": false},
+
         {"name": "true"},
         {"name": "false"},
         {"name": "yes"},
         {"name": "no"},
+
         {"name": 2},
         {"name": 1},
         {"name": 0},
         {"name": -1},
         {"name": -2},
+
+        {"name": 0.5},
+        {"name": 1.5},
         ]
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
-        decoder.typeStrategy = .custom(<#T##TypeConvertible#>)
+        decoder.convertTypeStrategy = .custom(Adapter())
         do {
             let models: [Example]? = try decoder.decode(type: [Example].self, from: data)
             XCTAssert(models?[0].name == true)
@@ -66,9 +81,11 @@ class NIOCodableTests: XCTestCase {
             XCTAssert(models?[5].name == false)
             XCTAssert(models?[6].name == false)
             XCTAssert(models?[7].name == true)
-            XCTAssert(models?[5].name == false)
-            XCTAssert(models?[5].name == false)
-            XCTAssert(models?[5].name == false)
+            XCTAssert(models?[8].name == false)
+            XCTAssert(models?[9].name == false)
+            XCTAssert(models?[10].name == false)
+            XCTAssert(models?[11].name == true)
+            XCTAssert(models?[12].name == false)
         } catch {
             print(error)
         }
@@ -529,7 +546,6 @@ class NIOCodableTests: XCTestCase {
         ]
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
-        decoder.booleanStrategy = .useBoolean
         do {
             guard let models: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
             print(models[0].name)
@@ -754,7 +770,16 @@ class NIOCodableTests: XCTestCase {
             var gender: Gender?
         }
 
-        enum Gender: Int, Codable, NIOSingleValueDecodingScopeExecptionConvertible, TypeConvertible {
+        enum Gender: Int, Codable, NIOSingleValueDecodingScopeLimitable, TypeConvertible {
+            func limit(key: CodingKey) -> Set<AnyHashable> {
+                return [0, 1, 2]
+            }
+
+            func execption(key: CodingKey) -> AnyHashable {
+                return 2
+            }
+
+
             case male = 0
             case female = 1
             case unknow = 2
@@ -780,7 +805,6 @@ class NIOCodableTests: XCTestCase {
          {"gender": 4}
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder: NIOJSONDecoder = NIOJSONDecoder()
-        decoder.typeStrategy = .custom(Gender.male)
         do {
             guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
             XCTAssert(models.gender == Gender.unknow)
@@ -821,7 +845,7 @@ class NIOCodableTests: XCTestCase {
          {"gender": 3.5}
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder: NIOJSONDecoder = NIOJSONDecoder()
-        decoder.typeStrategy = .custom(Gender.male)
+        decoder.convertTypeStrategy = .custom(Gender.male)
         do {
             guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
             XCTAssert(models.gender == Gender.unknow)
