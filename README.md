@@ -16,19 +16,22 @@ struct Example: Codable {
     var name: Bool
 }
 struct Adapter: TypeConvertible {
-func toBool(key: CodingKey, value: Int) -> Bool {
-    if 根据自己的需要处理 {
-        return true
+    func toBool(key: CodingKey, value: Int) -> Bool {
+        if 根据自己的需要处理 {
+            return true
+        }
+        return false
     }
-    return false
+
+    func toBool(key: CodingKey, value: Float) -> Bool {
+        if 根据自己的需要处理 {
+            return true
+        }   
+        return false
+    }
 }
 
-func toBool(key: CodingKey, value: Float) -> Bool {
-    if 根据自己的需要处理 {
-        return true
-    }
-    return false
-}
+
 let data: Data = """
 [
 {"name": 8},
