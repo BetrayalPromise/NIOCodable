@@ -11,7 +11,7 @@ public final class NIOJSONDecoder {
     public var convertTypeStrategy: NIOJSONDecoder.ConvertTypeStrategy = .default
     /// 容器使用策略
     public var containerStrategy: NIOJSONDecoder.OptionalContainerStrategy = .useEmpty
-    /// 单值范围异常策略
+    /// 单值范围异常策略不支持可选类型
     public var scopeExecptionStrategy: NIOJSONDecoder.ScopeExecptionStrategy = .default
     
     public func decode<T>(type: T.Type, from data: Data) throws -> T? where T: Decodable {
@@ -33,7 +33,7 @@ public final class NIOJSONDecoder {
 public extension NIOJSONDecoder {
     enum ScopeExecptionStrategy {
         case `default`
-        case custom(NIOSingleValueDecodingScopeLimitable)
+        case custom(SingleValueDecodingScopeControllable)
     }
 
     /// 类型不一致策略

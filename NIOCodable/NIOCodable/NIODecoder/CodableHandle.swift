@@ -167,7 +167,16 @@ extension CodableHandle {
 extension CodableHandle {
     func decode<K>(value: inout Any, type: Int.Type, forKey key: K) throws -> Int where K: CodingKey {
         if let `value`: Int = value as? Int {
-            return value
+            switch self.scopeExecptionStrategy {
+            case .custom(let delegate):
+                let scope: Set<AnyHashable> = delegate.scope(key: key)
+                if scope.contains(value) {
+                    return value
+                } else {
+                    return delegate.execption(key: key, source: value) as? Int ?? 0
+                }
+            default: return value
+            }
         } else if let `value`: Bool = value as? Bool {
             switch self.convertTypeStrategy {
             case .default: return self.toInt(key: key, value: value)
@@ -316,7 +325,16 @@ extension CodableHandle {
 extension CodableHandle {
     func decode<K>(value: inout Any, type: Int8.Type, forKey key: K) throws -> Int8 where K: CodingKey {
         if let `value`: Int8 = value as? Int8 {
-            return value
+            switch self.scopeExecptionStrategy {
+            case .custom(let delegate):
+                let scope: Set<AnyHashable> = delegate.scope(key: key)
+                if scope.contains(value) {
+                    return value
+                } else {
+                    return delegate.execption(key: key, source: value) as? Int8 ?? 0
+                }
+            default: return value
+            }
         } else if let `value`: Bool = value as? Bool {
             switch self.convertTypeStrategy {
             case .default: return self.toInt8(key: key, value: value)
@@ -465,7 +483,16 @@ extension CodableHandle {
 extension CodableHandle {
     func decode<K>(value: inout Any, type: Int16.Type, forKey key: K) throws -> Int16 where K: CodingKey {
         if let `value`: Int16 = value as? Int16 {
-            return value
+            switch self.scopeExecptionStrategy {
+            case .custom(let delegate):
+                let scope: Set<AnyHashable> = delegate.scope(key: key)
+                if scope.contains(value) {
+                    return value
+                } else {
+                    return delegate.execption(key: key, source: value) as? Int16 ?? 0
+                }
+            default: return value
+            }
         } else if let `value`: Bool = value as? Bool {
             switch self.convertTypeStrategy {
             case .default: return self.toInt16(key: key, value: value)
@@ -614,7 +641,16 @@ extension CodableHandle {
 extension CodableHandle {
     func decode<K>(value: inout Any, type: Int32.Type, forKey key: K) throws -> Int32 where K: CodingKey {
         if let `value`: Int32 = value as? Int32 {
-            return value
+            switch self.scopeExecptionStrategy {
+            case .custom(let delegate):
+                let scope: Set<AnyHashable> = delegate.scope(key: key)
+                if scope.contains(value) {
+                    return value
+                } else {
+                    return delegate.execption(key: key, source: value) as? Int32 ?? 0
+                }
+            default: return value
+            }
         } else if let `value`: Bool = value as? Bool {
             switch self.convertTypeStrategy {
             case .default: return self.toInt32(key: key, value: value)
@@ -763,7 +799,16 @@ extension CodableHandle {
 extension CodableHandle {
     func decode<K>(value: inout Any, type: Int64.Type, forKey key: K) throws -> Int64 where K: CodingKey {
         if let `value`: Int64 = value as? Int64 {
-            return value
+            switch self.scopeExecptionStrategy {
+            case .custom(let delegate):
+                let scope: Set<AnyHashable> = delegate.scope(key: key)
+                if scope.contains(value) {
+                    return value
+                } else {
+                    return delegate.execption(key: key, source: value) as? Int64 ?? 0
+                }
+            default: return value
+            }
         } else if let `value`: Bool = value as? Bool {
             switch self.convertTypeStrategy {
             case .default: return self.toInt64(key: key, value: value)
@@ -912,7 +957,16 @@ extension CodableHandle {
 extension CodableHandle {
     func decode<K>(value: inout Any, type: UInt.Type, forKey key: K) throws -> UInt where K: CodingKey {
         if let `value`: UInt = value as? UInt {
-            return value
+            switch self.scopeExecptionStrategy {
+            case .custom(let delegate):
+                let scope: Set<AnyHashable> = delegate.scope(key: key)
+                if scope.contains(value) {
+                    return value
+                } else {
+                    return delegate.execption(key: key, source: value) as? UInt ?? 0
+                }
+            default: return value
+            }
         } else if let `value`: Bool = value as? Bool {
             switch self.convertTypeStrategy {
             case .default: return self.toUInt(key: key, value: value)
@@ -1061,7 +1115,16 @@ extension CodableHandle {
 extension CodableHandle {
     func decode<K>(value: inout Any, type: UInt8.Type, forKey key: K) throws -> UInt8 where K: CodingKey {
         if let `value`: UInt8 = value as? UInt8 {
-            return value
+            switch self.scopeExecptionStrategy {
+            case .custom(let delegate):
+                let scope: Set<AnyHashable> = delegate.scope(key: key)
+                if scope.contains(value) {
+                    return value
+                } else {
+                    return delegate.execption(key: key, source: value) as? UInt8 ?? 0
+                }
+            default: return value
+            }
         } else if let `value`: Bool = value as? Bool {
             switch self.convertTypeStrategy {
             case .default: return self.toUInt8(key: key, value: value)
@@ -1210,7 +1273,16 @@ extension CodableHandle {
 extension CodableHandle {
     func decode<K>(value: inout Any, type: UInt16.Type, forKey key: K) throws -> UInt16 where K: CodingKey {
         if let `value`: UInt16 = value as? UInt16 {
-            return value
+            switch self.scopeExecptionStrategy {
+            case .custom(let delegate):
+                let scope: Set<AnyHashable> = delegate.scope(key: key)
+                if scope.contains(value) {
+                    return value
+                } else {
+                    return delegate.execption(key: key, source: value) as? UInt16 ?? 0
+                }
+            default: return value
+            }
         } else if let `value`: Bool = value as? Bool {
             switch self.convertTypeStrategy {
             case .default: return self.toUInt16(key: key, value: value)
@@ -1359,7 +1431,16 @@ extension CodableHandle {
 extension CodableHandle {
     func decode<K>(value: inout Any, type: UInt32.Type, forKey key: K) throws -> UInt32 where K: CodingKey {
         if let `value`: UInt32 = value as? UInt32 {
-            return value
+            switch self.scopeExecptionStrategy {
+            case .custom(let delegate):
+                let scope: Set<AnyHashable> = delegate.scope(key: key)
+                if scope.contains(value) {
+                    return value
+                } else {
+                    return delegate.execption(key: key, source: value) as? UInt32 ?? 0
+                }
+            default: return value
+            }
         } else if let `value`: Bool = value as? Bool {
             switch self.convertTypeStrategy {
             case .default: return self.toUInt32(key: key, value: value)
@@ -1508,7 +1589,16 @@ extension CodableHandle {
 extension CodableHandle {
     func decode<K>(value: inout Any, type: UInt64.Type, forKey key: K) throws -> UInt64 where K: CodingKey {
         if let `value`: UInt64 = value as? UInt64 {
-            return value
+            switch self.scopeExecptionStrategy {
+            case .custom(let delegate):
+                let scope: Set<AnyHashable> = delegate.scope(key: key)
+                if scope.contains(value) {
+                    return value
+                } else {
+                    return delegate.execption(key: key, source: value) as? UInt64 ?? 0
+                }
+            default: return value
+            }
         } else if let `value`: Bool = value as? Bool {
             switch self.convertTypeStrategy {
             case .default: return self.toUInt64(key: key, value: value)
@@ -1657,7 +1747,16 @@ extension CodableHandle {
 extension CodableHandle {
     func decode<K>(value: inout Any, type: Float.Type, forKey key: K) throws -> Float where K: CodingKey {
         if let `value`: Float = value as? Float {
-            return value
+            switch self.scopeExecptionStrategy {
+            case .custom(let delegate):
+                let scope: Set<AnyHashable> = delegate.scope(key: key)
+                if scope.contains(value) {
+                    return value
+                } else {
+                    return delegate.execption(key: key, source: value) as? Float ?? 0.0
+                }
+            default: return value
+            }
         } else if let `value`: Bool = value as? Bool {
             switch self.convertTypeStrategy {
             case .default: return self.toFloat(key: key, value: value)
@@ -1806,7 +1905,16 @@ extension CodableHandle {
 extension CodableHandle {
     func decode<K>(value: inout Any, type: Double.Type, forKey key: K) throws -> Double where K: CodingKey {
         if let `value`: Double = value as? Double {
-            return value
+            switch self.scopeExecptionStrategy {
+            case .custom(let delegate):
+                let scope: Set<AnyHashable> = delegate.scope(key: key)
+                if scope.contains(value) {
+                    return value
+                } else {
+                    return delegate.execption(key: key, source: value) as? Double ?? 0.0
+                }
+            default: return value
+            }
         } else if let `value`: Bool = value as? Bool {
             switch self.convertTypeStrategy {
             case .default: return self.toDouble(key: key, value: value)
@@ -1952,7 +2060,16 @@ extension CodableHandle {
 extension CodableHandle {
     func decode<K>(value: inout Any, type: String.Type, forKey key: K) throws -> String where K: CodingKey {
         if let `value`: String = value as? String {
-            return value
+            switch self.scopeExecptionStrategy {
+            case .custom(let delegate):
+                let scope: Set<AnyHashable> = delegate.scope(key: key)
+                if scope.contains(value) {
+                    return value
+                } else {
+                    return delegate.execption(key: key, source: value) as? String ?? ""
+                }
+            default: return value
+            }
         } else if let `value`: Bool = value as? Bool {
             switch self.convertTypeStrategy {
             case .default: return self.toString(key: key, value: value)

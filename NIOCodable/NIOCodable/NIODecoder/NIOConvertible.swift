@@ -2885,6 +2885,7 @@ extension TypeConvertible {
     }
 }
 
+#if false
 /// 用以处理数值类型一致 但是取值超出范围
 protocol NIOSingleValueDecodingScopeExecptionConvertible: RawRepresentable, Codable where RawValue: Codable {
     /// 单值容器 便于数值异常处理
@@ -2904,11 +2905,9 @@ extension NIOSingleValueDecodingScopeExecptionConvertible {
         }
     }
 }
+#endif
 
-public protocol NIOSingleValueDecodingScopeLimitable {
-//    associatedtype T: Hashable
-//    func limit(key: CodingKey) -> Set<T>
-//    func execption(key: CodingKey) -> T
-    func limit(key: CodingKey) -> Set<AnyHashable>
-    func execption(key: CodingKey) -> AnyHashable
+public protocol SingleValueDecodingScopeControllable {
+    func scope(key: CodingKey) -> Set<AnyHashable>
+    func execption(key: CodingKey, source: AnyHashable) -> AnyHashable
 }

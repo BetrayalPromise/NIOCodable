@@ -770,7 +770,7 @@ class NIOCodableTests: XCTestCase {
             var gender: Gender?
         }
 
-        enum Gender: Int, Codable, NIOSingleValueDecodingScopeLimitable, TypeConvertible {
+        enum Gender: Int, Codable, NIOSingleValueDecodingScopeControllable {
             func limit(key: CodingKey) -> Set<AnyHashable> {
                 return [0, 1, 2]
             }
@@ -778,7 +778,6 @@ class NIOCodableTests: XCTestCase {
             func execption(key: CodingKey) -> AnyHashable {
                 return 2
             }
-
 
             case male = 0
             case female = 1
@@ -789,22 +788,13 @@ class NIOCodableTests: XCTestCase {
                 case female
                 case unknow
             }
-
-            init(with value: Decodable) {
-                print(value)
-                self = .unknow
-            }
-
-            func toInt(key: CodingKey, value: Float) -> Int {
-                print(value)
-                return 3
-            }
         }
 
         let data: Data = """
          {"gender": 4}
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder: NIOJSONDecoder = NIOJSONDecoder()
+        decoder.scopeExecptionStrategy = .custom(Gender.unknow)
         do {
             guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
             XCTAssert(models.gender == Gender.unknow)
