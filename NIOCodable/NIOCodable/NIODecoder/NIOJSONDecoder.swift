@@ -14,9 +14,9 @@ public final class NIOJSONDecoder {
     /// 单值范围异常策略不支持可选类型
     public var scopeExecptionStrategy: NIOJSONDecoder.ScopeExecptionStrategy = .default
 
-    /// 非可选选类型
+    /// 非可选基本类型
     public var nonOptionalKeyNotFoundStrategy: NIOJSONDecoder.NonOptionalKeyNotFoundStrategy = .throwExecption
-    /// 可选选类型
+    /// 可选基本类型
     public var optionalKeyNotFoundStrategy: NIOJSONDecoder.OptionalKeyNotFoundStrategy = .throwExecption
 
     /// codable内建类型(Bool, Int, Int8, Int16, Int32, Int64, UInt, UInt8, UInt16, UInt32, UInt64, Float, Double, String)默认值自定义
