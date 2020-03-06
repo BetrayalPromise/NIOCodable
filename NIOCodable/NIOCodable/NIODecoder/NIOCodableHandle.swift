@@ -1,6 +1,6 @@
 import Foundation
 
-struct CodableHandle {
+struct NIOCodableHandle {
     var convertTypeStrategy: NIOJSONDecoder.ConvertTypeStrategy = .default
     var scopeExecptionStrategy: NIOJSONDecoder.ScopeExecptionStrategy = .default
     var decoder: NIODecoder
@@ -12,13 +12,22 @@ struct CodableHandle {
     }
 }
 
-extension CodableHandle: TypeConvertible {}
+extension NIOCodableHandle: TypeConvertible {}
 
 // MARK: - 处理Bool和Bool?类型
-extension CodableHandle {
+extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Bool.Type, forKey key: K) throws -> Bool where K: CodingKey {
         if let `value`: Bool = value as? Bool {
-            return value
+            switch self.scopeExecptionStrategy {
+            case .custom(let delegate):
+                let scope: Set<AnyHashable> = delegate.scope(key: key)
+                if scope.contains(value) {
+                    return value
+                } else {
+                    return delegate.execption(key: key, source: value) as? Bool ?? false
+                }
+            default: return value
+            }
         } else if let `value`: Int = value as? Int {
             switch self.convertTypeStrategy {
             case .default: return self.toBool(key: key, value: value)
@@ -164,7 +173,7 @@ extension CodableHandle {
 }
 
 // MARK: - 处理Int和Int?类型
-extension CodableHandle {
+extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Int.Type, forKey key: K) throws -> Int where K: CodingKey {
         if let `value`: Int = value as? Int {
             switch self.scopeExecptionStrategy {
@@ -322,7 +331,7 @@ extension CodableHandle {
 }
 
 // MARK: - 处理Int8和Int8?类型
-extension CodableHandle {
+extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Int8.Type, forKey key: K) throws -> Int8 where K: CodingKey {
         if let `value`: Int8 = value as? Int8 {
             switch self.scopeExecptionStrategy {
@@ -480,7 +489,7 @@ extension CodableHandle {
 }
 
 // MARK: - 处理Int16和Int16?类型
-extension CodableHandle {
+extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Int16.Type, forKey key: K) throws -> Int16 where K: CodingKey {
         if let `value`: Int16 = value as? Int16 {
             switch self.scopeExecptionStrategy {
@@ -638,7 +647,7 @@ extension CodableHandle {
 }
 
 // MARK: - 处理Int32和Int32?类型
-extension CodableHandle {
+extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Int32.Type, forKey key: K) throws -> Int32 where K: CodingKey {
         if let `value`: Int32 = value as? Int32 {
             switch self.scopeExecptionStrategy {
@@ -796,7 +805,7 @@ extension CodableHandle {
 }
 
 // MARK: - 处理Int64和Int64?类型
-extension CodableHandle {
+extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Int64.Type, forKey key: K) throws -> Int64 where K: CodingKey {
         if let `value`: Int64 = value as? Int64 {
             switch self.scopeExecptionStrategy {
@@ -954,7 +963,7 @@ extension CodableHandle {
 }
 
 // MARK: - 处理UInt和UInt?类型
-extension CodableHandle {
+extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: UInt.Type, forKey key: K) throws -> UInt where K: CodingKey {
         if let `value`: UInt = value as? UInt {
             switch self.scopeExecptionStrategy {
@@ -1112,7 +1121,7 @@ extension CodableHandle {
 }
 
 // MARK: - 处理UInt8和UInt8?类型
-extension CodableHandle {
+extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: UInt8.Type, forKey key: K) throws -> UInt8 where K: CodingKey {
         if let `value`: UInt8 = value as? UInt8 {
             switch self.scopeExecptionStrategy {
@@ -1270,7 +1279,7 @@ extension CodableHandle {
 }
 
 // MARK: - 处理UInt16和UInt16?类型
-extension CodableHandle {
+extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: UInt16.Type, forKey key: K) throws -> UInt16 where K: CodingKey {
         if let `value`: UInt16 = value as? UInt16 {
             switch self.scopeExecptionStrategy {
@@ -1428,7 +1437,7 @@ extension CodableHandle {
 }
 
 // MARK: - 处理UInt32和UInt32?类型
-extension CodableHandle {
+extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: UInt32.Type, forKey key: K) throws -> UInt32 where K: CodingKey {
         if let `value`: UInt32 = value as? UInt32 {
             switch self.scopeExecptionStrategy {
@@ -1586,7 +1595,7 @@ extension CodableHandle {
 }
 
 // MARK: - 处理UInt64和UInt64?类型
-extension CodableHandle {
+extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: UInt64.Type, forKey key: K) throws -> UInt64 where K: CodingKey {
         if let `value`: UInt64 = value as? UInt64 {
             switch self.scopeExecptionStrategy {
@@ -1744,7 +1753,7 @@ extension CodableHandle {
 }
 
 // MARK: - 处理Float和Float?类型
-extension CodableHandle {
+extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Float.Type, forKey key: K) throws -> Float where K: CodingKey {
         if let `value`: Float = value as? Float {
             switch self.scopeExecptionStrategy {
@@ -1902,7 +1911,7 @@ extension CodableHandle {
 }
 
 // MARK: - 处理Double和Double?类型
-extension CodableHandle {
+extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Double.Type, forKey key: K) throws -> Double where K: CodingKey {
         if let `value`: Double = value as? Double {
             switch self.scopeExecptionStrategy {
@@ -2057,7 +2066,7 @@ extension CodableHandle {
 }
 
 // MARK: - 处理String和String?类型
-extension CodableHandle {
+extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: String.Type, forKey key: K) throws -> String where K: CodingKey {
         if let `value`: String = value as? String {
             switch self.scopeExecptionStrategy {

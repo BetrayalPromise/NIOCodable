@@ -13,4 +13,9 @@ struct NIOCodableKey: CodingKey {
         self.stringValue = "\(intValue)"
         self.intValue = intValue
     }
+
+    init(unkeyedIndex: Int) {
+        self.stringValue = "unkeyedIndex \(unkeyedIndex)"
+        self.intValue = unkeyedIndex
+    }
 }

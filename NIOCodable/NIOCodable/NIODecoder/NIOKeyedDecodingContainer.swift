@@ -12,13 +12,13 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
     }
     let decoder: NIODecoder
     var source: [AnyHashable: Any] = [:]
-    var handle: CodableHandle!
+    var handle: NIOCodableHandle!
     
     init(decoder: NIODecoder, source: [AnyHashable: Any]) {
         self.decoder = decoder
         self.source = source
         self.codingPath = decoder.codingPath
-        self.handle = CodableHandle(decoder: decoder)
+        self.handle = NIOCodableHandle(decoder: decoder)
     }
 
     init(decoder: NIODecoder) {
@@ -330,6 +330,7 @@ struct NIOKeyedDecodingContainer<K> : KeyedDecodingContainerProtocol where K: Co
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard let entry = self.source[key.stringValue] else {
+// TODO: KeyNoFound
             return nil
         }
         if entry is NSNull {
