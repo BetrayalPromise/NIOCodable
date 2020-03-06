@@ -29,7 +29,7 @@ class NIOCodableTests: XCTestCase {
      */
     func testBool() {
         struct Example: Codable {
-            var name: Bool
+            var modelName: Bool
         }
 
         struct Adapter: TypeConvertible {
@@ -71,21 +71,22 @@ class NIOCodableTests: XCTestCase {
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
         decoder.convertTypeStrategy = .custom(Adapter())
+        decoder.nonOptionalKeyNotFoundStrategy = .useDefaultValue
         do {
             let models: [Example]? = try decoder.decode(type: [Example].self, from: data)
-            XCTAssert(models?[0].name == true)
-            XCTAssert(models?[1].name == false)
-            XCTAssert(models?[2].name == true)
-            XCTAssert(models?[3].name == false)
-            XCTAssert(models?[4].name == true)
-            XCTAssert(models?[5].name == false)
-            XCTAssert(models?[6].name == false)
-            XCTAssert(models?[7].name == true)
-            XCTAssert(models?[8].name == false)
-            XCTAssert(models?[9].name == false)
-            XCTAssert(models?[10].name == false)
-            XCTAssert(models?[11].name == true)
-            XCTAssert(models?[12].name == false)
+            XCTAssert(models?[0].modelName == true)
+            XCTAssert(models?[1].modelName == false)
+            XCTAssert(models?[2].modelName == true)
+            XCTAssert(models?[3].modelName == false)
+            XCTAssert(models?[4].modelName == true)
+            XCTAssert(models?[5].modelName == false)
+            XCTAssert(models?[6].modelName == false)
+            XCTAssert(models?[7].modelName == true)
+            XCTAssert(models?[8].modelName == false)
+            XCTAssert(models?[9].modelName == false)
+            XCTAssert(models?[10].modelName == false)
+            XCTAssert(models?[11].modelName == true)
+            XCTAssert(models?[12].modelName == false)
         } catch {
             print(error)
         }

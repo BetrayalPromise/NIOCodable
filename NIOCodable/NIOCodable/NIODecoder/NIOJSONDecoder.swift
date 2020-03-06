@@ -13,6 +13,14 @@ public final class NIOJSONDecoder {
     public var containerStrategy: NIOJSONDecoder.OptionalContainerStrategy = .useEmpty
     /// 单值范围异常策略不支持可选类型
     public var scopeExecptionStrategy: NIOJSONDecoder.ScopeExecptionStrategy = .default
+
+    /// 非可选选类型
+    public var nonOptionalKeyNotFoundStrategy: NIOJSONDecoder.NonOptionalKeyNotFoundStrategy = .throwExecption
+    /// 可选选类型
+    public var optionalKeyNotFoundStrategy: NIOJSONDecoder.OptionalKeyNotFoundStrategy = .throwExecption
+
+    /// codable内建类型(Bool, Int, Int8, Int16, Int32, Int64, UInt, UInt8, UInt16, UInt32, UInt64, Float, Double, String)默认值自定义
+    public var boxBaseValue: BoxBaseValue = BoxBaseValue()
     
     public func decode<T>(type: T.Type, from data: Data) throws -> T? where T: Decodable {
         guard let source: Any = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) else {
@@ -46,5 +54,18 @@ public extension NIOJSONDecoder {
     enum OptionalContainerStrategy {
         case useNull    // 使用null
         case useEmpty   // 使用空容器
+    }
+
+    /// 非可选类型key不对应策略
+    enum NonOptionalKeyNotFoundStrategy {
+        case throwExecption
+        case useDefaultValue
+    }
+
+    /// 可选类型key不对应策略
+    enum OptionalKeyNotFoundStrategy {
+        case throwExecption
+        case useDefaultValue
+        case useNull
     }
 }

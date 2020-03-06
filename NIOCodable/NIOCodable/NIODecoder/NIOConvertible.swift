@@ -2912,3 +2912,7 @@ public protocol SingleValueDecodingScopeControllable {
     func scope(key: CodingKey) -> Set<AnyHashable>
     func execption(key: CodingKey, source: AnyHashable) -> AnyHashable
 }
+
+public protocol TypeDefaultValueControllable {
+    init(by key: CodingKey)
+}
