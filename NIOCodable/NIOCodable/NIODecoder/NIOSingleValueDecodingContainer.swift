@@ -8,6 +8,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
     var handle: NIOCodableHandle!
     
     init(decoder: NIODecoder) {
+        print("NIOSingleValueDecodingContainer init")
         self.decoder = decoder
         self.handle = NIOCodableHandle(decoder: decoder)
     }
@@ -19,7 +20,6 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
     func decode(_ type: Bool.Type) throws -> Bool {
         guard var value = self.decoder.storage.currentValue, let key = NIOCodableKey(stringValue: "\(value)") else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [], debugDescription: "无法解析\(type)", underlyingError: nil))
-//            throw DecodingError.keyNotFound(CodingKey, <#T##DecodingError.Context#>)
         }
         return try self.handle.decode(value: &value, type: Bool.self, forKey: key)
     }

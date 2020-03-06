@@ -29,7 +29,7 @@ class NIOCodableTests: XCTestCase {
      */
     func testBool() {
         struct Example: Codable {
-            var modelName: Bool
+            var name: Bool
         }
 
         struct Adapter: TypeConvertible {
@@ -67,28 +67,30 @@ class NIOCodableTests: XCTestCase {
 
         {"name": 0.5},
         {"name": 1.5},
+        {"name": {"name": false}},
+        {}
         ]
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
         decoder.convertTypeStrategy = .custom(Adapter())
-        decoder.nonOptionalKeyNotFoundStrategy = .useDefaultValue
+        decoder.nonOptionalKeyNotFoundStrategy = .throwExecption
         do {
             let models: [Example]? = try decoder.decode(type: [Example].self, from: data)
-            XCTAssert(models?[0].modelName == true)
-            XCTAssert(models?[1].modelName == false)
-            XCTAssert(models?[2].modelName == true)
-            XCTAssert(models?[3].modelName == false)
-            XCTAssert(models?[4].modelName == true)
-            XCTAssert(models?[5].modelName == false)
-            XCTAssert(models?[6].modelName == false)
-            XCTAssert(models?[7].modelName == true)
-            XCTAssert(models?[8].modelName == false)
-            XCTAssert(models?[9].modelName == false)
-            XCTAssert(models?[10].modelName == false)
-            XCTAssert(models?[11].modelName == true)
-            XCTAssert(models?[12].modelName == false)
+            XCTAssert(models?[0].name == true)
+            XCTAssert(models?[1].name == false)
+            XCTAssert(models?[2].name == false)
+            XCTAssert(models?[3].name == true)
+            XCTAssert(models?[4].name == false)
+            XCTAssert(models?[5].name == true)
+            XCTAssert(models?[6].name == false)
+            XCTAssert(models?[7].name == false)
+            XCTAssert(models?[8].name == true)
+            XCTAssert(models?[9].name == false)
+            XCTAssert(models?[10].name == false)
+            XCTAssert(models?[11].name == false)
+            XCTAssert(models?[12].name == true)
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
     
@@ -126,7 +128,7 @@ class NIOCodableTests: XCTestCase {
             XCTAssert(models?[9].name == -1)
             XCTAssert(models?[10].name == -2)
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
     
@@ -164,7 +166,7 @@ class NIOCodableTests: XCTestCase {
             XCTAssert(models?[9].name == -1)
             XCTAssert(models?[10].name == -2)
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
     
@@ -202,7 +204,7 @@ class NIOCodableTests: XCTestCase {
             XCTAssert(models?[9].name == -1)
             XCTAssert(models?[10].name == -2)
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
     
@@ -240,7 +242,7 @@ class NIOCodableTests: XCTestCase {
             XCTAssert(models?[9].name == -1)
             XCTAssert(models?[10].name == -2)
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
     
@@ -278,7 +280,7 @@ class NIOCodableTests: XCTestCase {
             XCTAssert(models?[9].name == -1)
             XCTAssert(models?[10].name == -2)
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
     
@@ -314,7 +316,7 @@ class NIOCodableTests: XCTestCase {
 //            XCTAssert(models?[9].name == UInt("-1"))
 //            XCTAssert(models?[10].name == UInt("-2"))
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
     
@@ -350,7 +352,7 @@ class NIOCodableTests: XCTestCase {
 //            XCTAssert(models?[9].name == UInt8("-1"))
 //            XCTAssert(models?[10].name == UInt8("-2"))
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
     
@@ -386,7 +388,7 @@ class NIOCodableTests: XCTestCase {
             //            XCTAssert(models?[9].name == UInt8("-1"))
             //            XCTAssert(models?[10].name == UInt8("-2"))
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
     
@@ -422,7 +424,7 @@ class NIOCodableTests: XCTestCase {
             //            XCTAssert(models?[9].name == UInt8("-1"))
             //            XCTAssert(models?[10].name == UInt8("-2"))
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
     
@@ -456,7 +458,7 @@ class NIOCodableTests: XCTestCase {
             XCTAssert(models?[7].name == 1)
             XCTAssert(models?[8].name == 0)
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
     
@@ -494,7 +496,7 @@ class NIOCodableTests: XCTestCase {
             XCTAssert(models?[9].name == -1)
             XCTAssert(models?[10].name == -2)
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
     
@@ -532,7 +534,7 @@ class NIOCodableTests: XCTestCase {
             XCTAssert(models?[9].name == -1)
             XCTAssert(models?[10].name == -2)
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
     
@@ -554,7 +556,7 @@ class NIOCodableTests: XCTestCase {
             XCTAssert(models[0].name == "true")
             XCTAssert(models[1].name == "false")
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
     
@@ -571,7 +573,7 @@ class NIOCodableTests: XCTestCase {
             let model: Example? = try decoder.decode(type: Example.self, from: data)
             XCTAssert(model == nil)
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
 
@@ -594,7 +596,7 @@ class NIOCodableTests: XCTestCase {
             XCTAssert(model?.key != nil)
             XCTAssert(model?.key?[0].info == "b")
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
 
@@ -621,7 +623,7 @@ class NIOCodableTests: XCTestCase {
             let model: ESRootClass? = try decoder.decode(type: ESRootClass.self, from: data)
             XCTAssert(model?.key?.key?.key == "key")
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
     
@@ -630,14 +632,14 @@ class NIOCodableTests: XCTestCase {
             var name: String
         }
         let data: Data = """
-        [{"name": "2ddf"}, {"name": null}]
+        [{"namef": "2ddf"}, {"namef": null}]
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
         do {
             guard let models: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
             XCTAssert(models.count == 2)
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
 
@@ -655,7 +657,7 @@ class NIOCodableTests: XCTestCase {
             let models: [Example]? = try decoder.decode(type: [Example].self, from: data)
             XCTAssert(models?.count == 0)
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
 
@@ -675,7 +677,7 @@ class NIOCodableTests: XCTestCase {
             XCTAssert(models.count == 2)
             XCTAssert(models[0] == true)
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
 
@@ -703,7 +705,7 @@ class NIOCodableTests: XCTestCase {
             XCTAssert(models.a?.count == 1)
             XCTAssert(models.a?[0].b == "c")
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
 
@@ -731,7 +733,7 @@ class NIOCodableTests: XCTestCase {
                 XCTAssert(models.a.count == 1)
                 XCTAssert(models.a[0][0].name == "true")
             } catch {
-                print(error)
+                XCTAssertNil(error, error.localizedDescription)
             }
         }
 
@@ -762,7 +764,7 @@ class NIOCodableTests: XCTestCase {
             XCTAssert((models.a[1]?.gender ?? Gender.unknow) == Gender.female)
             XCTAssert((models.a[2]?.gender ?? Gender.unknow) == Gender.unknow)
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
     // 测试范围不一致
@@ -800,7 +802,7 @@ class NIOCodableTests: XCTestCase {
             guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
             XCTAssert(models.gender == Gender.unknow)
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
 
@@ -835,7 +837,7 @@ class NIOCodableTests: XCTestCase {
             guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
             XCTAssert(models.gender == Gender.unknow)
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
 
@@ -868,7 +870,7 @@ class NIOCodableTests: XCTestCase {
             let beer = try decode.decode(type: Beer.self, from: jsonData)
             print("解析成功:\(beer.debugDescription)")
         } catch  {
-            print("解析失败:\(error)")
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
 
@@ -922,8 +924,12 @@ class NIOCodableTests: XCTestCase {
             let city = try JSONDecoder().decode(City.self, from: jsonData)
             print("city:", city)
         } catch {
-            print(error.localizedDescription)
+            XCTAssertNil(error, error.localizedDescription)
         }
+    }
+
+    func testCustom5() {
+
     }
 
     func testNull() {
@@ -948,16 +954,14 @@ class NIOCodableTests: XCTestCase {
             print(models)
             XCTAssert(models.array != nil)
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
 
     func testKeyNoFound0() {
         let data: Data = """
-          {
-            "key": "abc"
-          }
-          """.data(using: String.Encoding.utf8) ?? Data()
+            {"key": "abc"}
+        """.data(using: String.Encoding.utf8) ?? Data()
 
         class Root: Codable {
             var array: String?
@@ -965,12 +969,13 @@ class NIOCodableTests: XCTestCase {
 
         let decoder = NIOJSONDecoder()
         decoder.containerStrategy = .useEmpty
+        decoder.optionalKeyNotFoundStrategy = .useNull
         do {
             guard let models: Root = try decoder.decode(type: Root.self, from: data) else { return }
             print(models)
-            XCTAssert(models.array != nil)
+            XCTAssert(models.array == nil)
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
 
@@ -992,7 +997,28 @@ class NIOCodableTests: XCTestCase {
             guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
             XCTAssert(models.gender.rawValue == "male")
         } catch {
-            print(error)
+            XCTAssertNil(error, error.localizedDescription)
+        }
+    }
+
+    func testUnkeyed() {
+        struct UnkeyedContainer: Codable {
+            let nestedUnkeyed: [Container]
+            struct Container: Codable {
+                let nested: Nested
+                struct Nested: Codable {
+                    let string: String
+                }
+            }
+        }
+        let data = #"""
+            {"nestedUnkeyed": ["1", "2", "3"]}
+        """#.data(using: .utf8)!
+        do {
+            let model = try NIOJSONDecoder().decode(type: UnkeyedContainer.self, from: data)
+            XCTAssertEqual(model?.nestedUnkeyed.count, 3)
+        } catch {
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
 }

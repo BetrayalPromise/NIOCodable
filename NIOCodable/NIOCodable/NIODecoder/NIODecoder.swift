@@ -69,7 +69,6 @@ extension NIODecoder {
         do {
             return try type.init(from: self)
         } catch  {
-            print(error)
             throw error
         }
     }

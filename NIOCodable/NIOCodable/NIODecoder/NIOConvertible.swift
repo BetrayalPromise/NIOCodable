@@ -2900,7 +2900,6 @@ extension NIOSingleValueDecodingScopeExecptionConvertible {
             let decoded = try singleValueContainer.decode(RawValue.self)
             self = Self.init(rawValue: decoded) ?? Self.init(with: decoded)
         } catch {
-            print(error)
             self = Self.init(with: 0)
         }
     }

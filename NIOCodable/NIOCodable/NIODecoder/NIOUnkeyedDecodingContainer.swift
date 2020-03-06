@@ -16,6 +16,7 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     }
 
     init(decoder: NIODecoder, source: [Any]) {
+        print("NIOUnkeyedDecodingContainer init")
         self.decoder = decoder
         self.source = source
         self.codingPath = decoder.codingPath
@@ -89,7 +90,9 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     mutating func decode<T>(_ type: T.Type) throws -> T where T : Decodable {
         self.decoder.codingPath.append(NIOCodableKey(unkeyedIndex: self.currentIndex))
         defer { self.decoder.codingPath.removeLast() }
-        guard let model: T = try self.decoder.unbox(value: self.source[self.currentIndex], as: type) else { fatalError() }
+        guard let model: T = try self.decoder.unbox(value: self.source[self.currentIndex], as: type) else {
+            return try T.init(from: self.decoder)
+        }
         self.currentIndex += 1
         return model
     }
