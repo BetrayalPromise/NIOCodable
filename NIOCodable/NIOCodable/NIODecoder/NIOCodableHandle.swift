@@ -17,7 +17,15 @@ extension NIOCodableHandle: TypeConvertible {}
 // MARK: - 处理Bool和Bool?类型
 extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Bool.Type, forKey key: K) throws -> Bool where K: CodingKey {
-        if let `value`: Bool = value as? Bool {
+        if value is NSNull {
+            guard let `value`: NSNull = value as? NSNull else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toBool(key: key, value: value)
+            case .useCustom(let delegate): return delegate.toBool(key: key, value: value)
+            }
+        } else if let `value`: Bool = value as? Bool {
             switch self.scopeExecptionStrategy {
             case .useCustom(let delegate):
                 let scope: Set<AnyHashable> = delegate.scope(key: key)
@@ -26,7 +34,11 @@ extension NIOCodableHandle {
                 } else {
                     return delegate.execption(key: key, source: value) as? Bool ?? false
                 }
-            default: return value
+            default:
+                switch self.convertTypeStrategy {
+                case .useDefaultable: return self.toBool(key: key, value: value == true ? 1: 0)
+                case .useCustom(let delegate): return delegate.toBool(key: key, value: value == true ? 1: 0)
+                }
             }
         } else if let `value`: Int = value as? Int {
             switch self.convertTypeStrategy {
@@ -92,6 +104,22 @@ extension NIOCodableHandle {
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toBool(key: key, value: value)
             case .useCustom(let delegate): return delegate.toBool(key: key, value: value)
+            }
+        } else if value is [AnyHashable: Any] {
+            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toBool(key: NIOCodableKey(value: value), value: value)
+            case .useCustom(let delegate): return delegate.toBool(key: NIOCodableKey(value: value), value: value)
+            }
+        } else if value is [Any] {
+            guard let `value`: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toBool(key: NIOCodableKey(value: value), value: value)
+            case .useCustom(let delegate): return delegate.toBool(key: NIOCodableKey(value: value), value: value)
             }
         } else {
             return false

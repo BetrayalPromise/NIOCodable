@@ -2,6 +2,9 @@ import Foundation
 
 /// 基础类型转换处理
 public protocol TypeConvertible {
+    func toBool(key: CodingKey, value: NSNull) -> Bool
+    func toBool(key: CodingKey, value: NSNull) -> Bool?
+
     func toBool(key: CodingKey, value: Int) -> Bool
     func toBool(key: CodingKey, value: Int) -> Bool?
     
@@ -40,6 +43,12 @@ public protocol TypeConvertible {
     
     func toBool(key: CodingKey, value: String) -> Bool
     func toBool(key: CodingKey, value: String) -> Bool?
+
+    func toBool(key: CodingKey, value: [AnyHashable: Any]) -> Bool
+    func toBool(key: CodingKey, value: [AnyHashable: Any]) -> Bool?
+
+    func toBool(key: CodingKey, value: [Any]) -> Bool
+    func toBool(key: CodingKey, value: [Any]) -> Bool?
     
     func toInt(key: CodingKey, value: Bool) -> Int
     func toInt(key: CodingKey, value: Bool) -> Int?
@@ -549,6 +558,16 @@ public protocol TypeConvertible {
     func toString(key: CodingKey, value: Double) -> String?
 }
 
+extension TypeConvertible {
+    func toBool(key: CodingKey, value: NSNull) -> Bool {
+        return false
+    }
+
+    func toBool(key: CodingKey, value: NSNull) -> Bool? {
+        return nil
+    }
+}
+
 // MARK: Int转Bool
 extension TypeConvertible {
     func toBool(key: CodingKey, value: Int) -> Bool {
@@ -767,18 +786,38 @@ extension TypeConvertible {
 extension TypeConvertible {
     func toBool(key: CodingKey, value: String) -> Bool {
         switch value.lowercased() {
-        case "true", "yes": return true
-        case "false", "no": return false
+        case "true": return true
+        case "false": return false
         default: return false
         }
     }
     
     func toBool(key: CodingKey, value: String) -> Bool? {
         switch value.lowercased() {
-        case "true", "yes": return true
-        case "false", "no": return false
+        case "true": return true
+        case "false": return false
         default: return nil
         }
+    }
+}
+
+extension TypeConvertible {
+    func toBool(key: CodingKey, value: [AnyHashable: Any]) -> Bool {
+        return false
+    }
+
+    func toBool(key: CodingKey, value: [AnyHashable: Any]) -> Bool? {
+        return nil
+    }
+}
+
+extension TypeConvertible {
+    func toBool(key: CodingKey, value: [Any]) -> Bool {
+        return false
+    }
+
+    func toBool(key: CodingKey, value: [Any]) -> Bool? {
+        return nil
     }
 }
 
@@ -2906,12 +2945,20 @@ extension NIOSingleValueDecodingScopeExecptionConvertible {
 }
 #endif
 
+// MARK: - 处理单值去值异常问题
 /// 针对单值取值异常处理
 public protocol SingleValueDecodingScopeControllable {
     func scope(key: CodingKey) -> Set<AnyHashable>
     func execption(key: CodingKey, source: AnyHashable) -> AnyHashable
 }
 
-public protocol TypeDefaultValueControllable {
-    init(by key: CodingKey)
+// MARK: - 处理模型与数据结构不匹配问题
+/// 模型解析失败时 使用的构造器 在可能解析失败的模型中实现该协议
+public protocol DefaultValueControllable {
+    init(by key: CodingKey, source: Any)
+}
+
+/// 模型解析失败时 用以防御处理的 自定义结构中(enum, struc, class)中实现该协议
+public protocol HandleTypeDefaultValueControllable {
+    func handle(key: CodingKey, source: Any) -> DefaultValueControllable
 }

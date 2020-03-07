@@ -18,4 +18,10 @@ struct NIOCodableKey: CodingKey {
         self.stringValue = "unkeyedIndex \(unkeyedIndex)"
         self.intValue = unkeyedIndex
     }
+
+    var value: Any?
+    init(value: Any?) {
+        self.value = value
+        self.stringValue = "\(type(of: value))不能匹配Bool类型"
+    }
 }

@@ -8,7 +8,6 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
     var handle: NIOCodableHandle!
     
     init(decoder: NIODecoder) {
-        print("NIOSingleValueDecodingContainer init")
         self.decoder = decoder
         self.handle = NIOCodableHandle(decoder: decoder)
     }

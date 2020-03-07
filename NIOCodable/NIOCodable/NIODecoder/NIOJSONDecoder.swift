@@ -76,12 +76,14 @@ public extension NIOJSONDecoder {
 
     enum NonOptionalValueNotFoundStrategy {
         case useExecption
-        case useDefaultValue
+        case useCustom(HandleTypeDefaultValueControllable)
+        case useDefaultable
     }
 
     enum OptionalValueNotFoundStrategy {
         case useExecption
-        case useDefaultValue
+        case useCustom(HandleTypeDefaultValueControllable)
+        case useDefaultable
         case useNull
     }
 }

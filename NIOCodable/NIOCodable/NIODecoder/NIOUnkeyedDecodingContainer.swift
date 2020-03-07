@@ -3,7 +3,7 @@ import Foundation
 /// 针对数组处理
 struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     public var isAtEnd: Bool {
-        return self.currentIndex >= self.count!
+        return self.currentIndex >= self.count ?? 0
     }
     
     let decoder: NIODecoder
@@ -14,12 +14,13 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     public var count: Int? {
         return self.source.count
     }
+    var handle: NIOCodableHandle!
 
     init(decoder: NIODecoder, source: [Any]) {
-        print("NIOUnkeyedDecodingContainer init")
         self.decoder = decoder
         self.source = source
         self.codingPath = decoder.codingPath
+        self.handle = NIOCodableHandle(decoder: decoder)
     }
     
     mutating func decodeNil() throws -> Bool {
@@ -90,8 +91,27 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     mutating func decode<T>(_ type: T.Type) throws -> T where T : Decodable {
         self.decoder.codingPath.append(NIOCodableKey(unkeyedIndex: self.currentIndex))
         defer { self.decoder.codingPath.removeLast() }
-        guard let model: T = try self.decoder.unbox(value: self.source[self.currentIndex], as: type) else {
-            return try T.init(from: self.decoder)
+
+        let currentValue: Any = self.source[self.currentIndex]
+        if currentValue is [AnyHashable: Any] {
+            print("Dictionary")
+        } else if currentValue is [Any] {
+            print("Array")
+        } else {
+            print("\(type)")
+        }
+
+        guard let model: T = try self.decoder.unbox(value: currentValue, as: type) else {
+            switch self.decoder.wrapper?.nonOptionalValueNotFoundStrategy {
+            case .useCustom(let delegate):
+                guard let `model`: T = delegate.handle(key: NIOCodableKey(unkeyedIndex: self.currentIndex), source: self.source[self.currentIndex]) as? T else {
+                    throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Value Execption"))
+                }
+                self.currentIndex += 1
+                return model
+            default:
+                throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Value Execption"))
+            }
         }
         self.currentIndex += 1
         return model
