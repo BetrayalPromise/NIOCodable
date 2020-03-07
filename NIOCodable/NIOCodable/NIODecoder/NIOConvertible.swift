@@ -5,6 +5,9 @@ public protocol TypeConvertible {
     func toBool(key: CodingKey, value: NSNull) -> Bool
     func toBool(key: CodingKey, value: NSNull) -> Bool?
 
+    func toBool(key: CodingKey, value: Bool) -> Bool
+    func toBool(key: CodingKey, value: Bool) -> Bool?
+
     func toBool(key: CodingKey, value: Int) -> Bool
     func toBool(key: CodingKey, value: Int) -> Bool?
     
@@ -52,6 +55,9 @@ public protocol TypeConvertible {
     
     func toInt(key: CodingKey, value: Bool) -> Int
     func toInt(key: CodingKey, value: Bool) -> Int?
+
+    func toInt(key: CodingKey, value: Int) -> Int
+    func toInt(key: CodingKey, value: Int) -> Int?
     
     func toInt(key: CodingKey, value: Int8) -> Int
     func toInt(key: CodingKey, value: Int8) -> Int?
@@ -94,6 +100,9 @@ public protocol TypeConvertible {
     
     func toInt8(key: CodingKey, value: Int) -> Int8
     func toInt8(key: CodingKey, value: Int) -> Int8?
+
+    func toInt8(key: CodingKey, value: Int8) -> Int8
+    func toInt8(key: CodingKey, value: Int8) -> Int8?
     
     func toInt8(key: CodingKey, value: Int16) -> Int8
     func toInt8(key: CodingKey, value: Int16) -> Int8?
@@ -136,6 +145,9 @@ public protocol TypeConvertible {
     
     func toInt16(key: CodingKey, value: Int8) -> Int16
     func toInt16(key: CodingKey, value: Int8) -> Int16?
+
+    func toInt16(key: CodingKey, value: Int16) -> Int16
+    func toInt16(key: CodingKey, value: Int16) -> Int16?
     
     func toInt16(key: CodingKey, value: Int32) -> Int16
     func toInt16(key: CodingKey, value: Int32) -> Int16?
@@ -178,6 +190,9 @@ public protocol TypeConvertible {
     
     func toInt32(key: CodingKey, value: Int16) -> Int32
     func toInt32(key: CodingKey, value: Int16) -> Int32?
+
+    func toInt32(key: CodingKey, value: Int32) -> Int32
+    func toInt32(key: CodingKey, value: Int32) -> Int32?
     
     func toInt32(key: CodingKey, value: Int64) -> Int32
     func toInt32(key: CodingKey, value: Int64) -> Int32?
@@ -220,6 +235,9 @@ public protocol TypeConvertible {
     
     func toInt64(key: CodingKey, value: Int32) -> Int64
     func toInt64(key: CodingKey, value: Int32) -> Int64?
+
+    func toInt64(key: CodingKey, value: Int64) -> Int64
+    func toInt64(key: CodingKey, value: Int64) -> Int64?
     
     func toInt64(key: CodingKey, value: UInt) -> Int64
     func toInt64(key: CodingKey, value: UInt) -> Int64?
@@ -262,6 +280,9 @@ public protocol TypeConvertible {
     
     func toUInt(key: CodingKey, value: Int64) throws -> UInt
     func toUInt(key: CodingKey, value: Int64) throws -> UInt?
+
+    func toUInt(key: CodingKey, value: UInt) -> UInt
+    func toUInt(key: CodingKey, value: UInt) -> UInt?
     
     func toUInt(key: CodingKey, value: UInt8) -> UInt
     func toUInt(key: CodingKey, value: UInt8) -> UInt?
@@ -305,6 +326,9 @@ public protocol TypeConvertible {
     func toUInt8(key: CodingKey, value: UInt) -> UInt8
     func toUInt8(key: CodingKey, value: UInt) -> UInt8?
 
+    func toUInt8(key: CodingKey, value: UInt8) -> UInt8
+    func toUInt8(key: CodingKey, value: UInt8) -> UInt8?
+
     func toUInt8(key: CodingKey, value: UInt16) -> UInt8
     func toUInt8(key: CodingKey, value: UInt16) -> UInt8?
 
@@ -346,6 +370,9 @@ public protocol TypeConvertible {
 
     func toUInt16(key: CodingKey, value: UInt8) -> UInt16
     func toUInt16(key: CodingKey, value: UInt8) -> UInt16?
+
+    func toUInt16(key: CodingKey, value: UInt16) -> UInt16
+    func toUInt16(key: CodingKey, value: UInt16) -> UInt16?
 
     func toUInt16(key: CodingKey, value: UInt32) -> UInt16
     func toUInt16(key: CodingKey, value: UInt32) -> UInt16?
@@ -389,6 +416,9 @@ public protocol TypeConvertible {
     func toUInt32(key: CodingKey, value: UInt16) -> UInt32
     func toUInt32(key: CodingKey, value: UInt16) -> UInt32?
 
+    func toUInt32(key: CodingKey, value: UInt32) -> UInt32
+    func toUInt32(key: CodingKey, value: UInt32) -> UInt32?
+
     func toUInt32(key: CodingKey, value: UInt64) -> UInt32
     func toUInt32(key: CodingKey, value: UInt64) -> UInt32?
 
@@ -430,6 +460,9 @@ public protocol TypeConvertible {
 
     func toUInt64(key: CodingKey, value: UInt32) -> UInt64
     func toUInt64(key: CodingKey, value: UInt32) -> UInt64?
+
+    func toUInt64(key: CodingKey, value: UInt64) -> UInt64
+    func toUInt64(key: CodingKey, value: UInt64) -> UInt64?
 
     func toUInt64(key: CodingKey, value: Float) throws -> UInt64
     func toUInt64(key: CodingKey, value: Float) throws -> UInt64?
@@ -473,6 +506,9 @@ public protocol TypeConvertible {
     func toFloat(key: CodingKey, value: UInt64) -> Float
     func toFloat(key: CodingKey, value: UInt64) -> Float?
 
+    func toFloat(key: CodingKey, value: Float) -> Float
+    func toFloat(key: CodingKey, value: Float) -> Float?
+
     func toFloat(key: CodingKey, value: Double) -> Float
     func toFloat(key: CodingKey, value: Double) -> Float?
 
@@ -515,6 +551,9 @@ public protocol TypeConvertible {
     func toDouble(key: CodingKey, value: Float) -> Double
     func toDouble(key: CodingKey, value: Float) -> Double?
 
+    func toDouble(key: CodingKey, value: Double) -> Double
+    func toDouble(key: CodingKey, value: Double) -> Double?
+
     func toDouble(key: CodingKey, value: String) -> Double
     func toDouble(key: CodingKey, value: String) -> Double?
 
@@ -556,8 +595,12 @@ public protocol TypeConvertible {
 
     func toString(key: CodingKey, value: Double) -> String
     func toString(key: CodingKey, value: Double) -> String?
+
+    func toString(key: CodingKey, value: String) -> String
+    func toString(key: CodingKey, value: String) -> String?
 }
 
+// MARK: NSNull转Bool
 extension TypeConvertible {
     func toBool(key: CodingKey, value: NSNull) -> Bool {
         return false
@@ -565,6 +608,17 @@ extension TypeConvertible {
 
     func toBool(key: CodingKey, value: NSNull) -> Bool? {
         return nil
+    }
+}
+
+// MARK: Bool转Bool
+extension TypeConvertible {
+    func toBool(key: CodingKey, value: Bool) -> Bool {
+        return value
+    }
+
+    func toBool(key: CodingKey, value: Bool) -> Bool? {
+        return value
     }
 }
 
@@ -801,23 +855,25 @@ extension TypeConvertible {
     }
 }
 
+// MARK: Dictionary转Bool
 extension TypeConvertible {
     func toBool(key: CodingKey, value: [AnyHashable: Any]) -> Bool {
         return false
     }
 
     func toBool(key: CodingKey, value: [AnyHashable: Any]) -> Bool? {
-        return nil
+        return false
     }
 }
 
+// MARK: Array转Bool
 extension TypeConvertible {
     func toBool(key: CodingKey, value: [Any]) -> Bool {
         return false
     }
 
     func toBool(key: CodingKey, value: [Any]) -> Bool? {
-        return nil
+        return false
     }
 }
 
@@ -835,6 +891,17 @@ extension TypeConvertible {
         case true: return 1
         default: return 0
         }
+    }
+}
+
+// MARK: Int转Int
+extension TypeConvertible {
+    func toInt(key: CodingKey, value: Int) -> Int {
+        return value
+    }
+
+    func toInt(key: CodingKey, value: Int) -> Int? {
+        return value
     }
 }
 
@@ -1004,6 +1071,17 @@ extension TypeConvertible {
     
     func toInt8(key: CodingKey, value: Int) -> Int8? {
         return Int8(value)
+    }
+}
+
+// MARK: Int8转Int8
+extension TypeConvertible {
+    func toInt8(key: CodingKey, value: Int8) -> Int8 {
+        return value
+    }
+
+    func toInt8(key: CodingKey, value: Int8) -> Int8? {
+        return value
     }
 }
 
@@ -1218,6 +1296,16 @@ extension TypeConvertible {
     }
 }
 
+extension TypeConvertible {
+    func toInt16(key: CodingKey, value: Int16) -> Int16 {
+        return value
+    }
+
+    func toInt16(key: CodingKey, value: Int16) -> Int16? {
+        return value
+    }
+}
+
 // MARK: UInt16转Int16
 extension TypeConvertible  {
     func toInt16(key: CodingKey, value: UInt16) -> Int16 {
@@ -1339,6 +1427,16 @@ extension TypeConvertible {
     
     func toInt32(key: CodingKey, value: Int16) -> Int32? {
         return Int32(value)
+    }
+}
+
+extension TypeConvertible {
+    func toInt32(key: CodingKey, value: Int32) -> Int32 {
+        return value
+    }
+
+    func toInt32(key: CodingKey, value: Int32) -> Int32? {
+        return value
     }
 }
 
@@ -1508,6 +1606,17 @@ extension TypeConvertible {
     
     func toInt64(key: CodingKey, value: Int32) -> Int64? {
         return Int64(value)
+    }
+}
+
+// MARK: Int64转Int64
+extension TypeConvertible {
+    func toInt64(key: CodingKey, value: Int64) -> Int64 {
+        return value
+    }
+
+    func toInt64(key: CodingKey, value: Int64) -> Int64? {
+        return value
     }
 }
 
@@ -1685,6 +1794,17 @@ extension TypeConvertible {
     func toUInt(key: CodingKey, value: Int64) throws -> UInt? {
         if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
         return UInt(value)
+    }
+}
+
+// MARK: UInt转UInt
+extension TypeConvertible {
+    func toUInt(key: CodingKey, value: UInt) -> UInt {
+        return value
+    }
+
+    func toUInt(key: CodingKey, value: UInt) -> UInt? {
+        return value
     }
 }
 
@@ -1870,6 +1990,17 @@ extension TypeConvertible {
     }
 }
 
+// MARK: UInt8转UInt8
+extension TypeConvertible {
+    func toUInt8(key: CodingKey, value: UInt8) -> UInt8 {
+        return UInt8(value)
+    }
+
+    func toUInt8(key: CodingKey, value: UInt8) -> UInt8? {
+        return value
+    }
+}
+
 // MARK: UInt16转UInt8
 extension TypeConvertible {
     func toUInt8(key: CodingKey, value: UInt16) -> UInt8 {
@@ -2049,6 +2180,17 @@ extension TypeConvertible {
 
     func toUInt16(key: CodingKey, value: UInt8) -> UInt16? {
         return UInt16(value)
+    }
+}
+
+// MARK: UInt16转UInt16
+extension TypeConvertible {
+    func toUInt16(key: CodingKey, value: UInt16) -> UInt16 {
+        return value
+    }
+
+    func toUInt16(key: CodingKey, value: UInt16) -> UInt16? {
+        return value
     }
 }
 
@@ -2234,6 +2376,17 @@ extension TypeConvertible {
     }
 }
 
+// MARK: UInt32转UInt32
+extension TypeConvertible {
+    func toUInt32(key: CodingKey, value: UInt32) -> UInt32 {
+        return value
+    }
+
+    func toUInt32(key: CodingKey, value: UInt32) -> UInt32? {
+        return value
+    }
+}
+
 // MARK: UInt64转UInt32
 extension TypeConvertible {
     func toUInt32(key: CodingKey, value: UInt64) -> UInt32 {
@@ -2416,6 +2569,17 @@ extension TypeConvertible {
     }
 }
 
+// MARK: UInt64转UInt64
+extension TypeConvertible {
+    func toUInt64(key: CodingKey, value: UInt64) -> UInt64 {
+        return value
+    }
+
+    func toUInt64(key: CodingKey, value: UInt64) -> UInt64? {
+        return value
+    }
+}
+
 // MARK: Float转UInt64
 extension TypeConvertible {
     func toUInt64(key: CodingKey, value: Float) throws -> UInt64 {
@@ -2588,6 +2752,17 @@ extension TypeConvertible {
     }
 }
 
+// MARK: Float转Float
+extension TypeConvertible {
+    func toFloat(key: CodingKey, value: Float) -> Float {
+        return value
+    }
+
+    func toFloat(key: CodingKey, value: Float) -> Float? {
+        return value
+    }
+}
+
 // MARK: Double转Float
 extension TypeConvertible {
     func toFloat(key: CodingKey, value: Double) -> Float {
@@ -2756,6 +2931,17 @@ extension TypeConvertible {
     }
 }
 
+// MARK: Float转Double
+extension TypeConvertible {
+    func toDouble(key: CodingKey, value: Double) -> Double {
+          return value
+    }
+
+    func toDouble(key: CodingKey, value: Double) -> Double? {
+          return value
+    }
+}
+
 // MARK: String转Double
 extension TypeConvertible {
     func toDouble(key: CodingKey, value: String) -> Double {
@@ -2921,6 +3107,17 @@ extension TypeConvertible {
 
     func toString(key: CodingKey, value: Double) -> String? {
         return "\(value)"
+    }
+}
+
+// MARK: String转String
+extension TypeConvertible {
+    func toString(key: CodingKey, value: String) -> String {
+        return value
+    }
+
+    func toString(key: CodingKey, value: String) -> String? {
+        return value
     }
 }
 

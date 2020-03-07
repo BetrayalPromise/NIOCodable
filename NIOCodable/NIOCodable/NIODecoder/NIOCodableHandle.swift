@@ -36,8 +36,8 @@ extension NIOCodableHandle {
                 }
             default:
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toBool(key: key, value: value == true ? 1: 0)
-                case .useCustom(let delegate): return delegate.toBool(key: key, value: value == true ? 1: 0)
+                case .useDefaultable: return self.toBool(key: key, value: value)
+                case .useCustom(let delegate): return delegate.toBool(key: key, value: value)
                 }
             }
         } else if let `value`: Int = value as? Int {
@@ -212,7 +212,11 @@ extension NIOCodableHandle {
                 } else {
                     return delegate.execption(key: key, source: value) as? Int ?? 0
                 }
-            default: return value
+            default:
+                switch self.convertTypeStrategy {
+                case .useDefaultable: return self.toInt(key: key, value: value == 1 ? true: false)
+                case .useCustom(let delegate): return delegate.toInt(key: key, value: value == 1 ? true: false)
+                }
             }
         } else if let `value`: Bool = value as? Bool {
             switch self.convertTypeStrategy {
