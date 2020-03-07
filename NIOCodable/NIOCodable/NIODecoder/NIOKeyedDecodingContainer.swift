@@ -42,7 +42,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.nonOptionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.bool ?? BoxBaseValue().bool
             default:
@@ -58,7 +58,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.optionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.bool ?? BoxBaseValue().bool
             case .useNull:
@@ -75,7 +75,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.nonOptionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.int ?? BoxBaseValue().int
             default:
@@ -90,7 +90,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.optionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.int ?? BoxBaseValue().int
             case .useNull:
@@ -107,7 +107,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.nonOptionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.int8 ?? BoxBaseValue().int8
             default:
@@ -122,7 +122,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.optionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.int8 ?? BoxBaseValue().int8
             case .useNull:
@@ -139,7 +139,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.nonOptionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.int16 ?? BoxBaseValue().int16
             default:
@@ -154,7 +154,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.optionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.int16 ?? BoxBaseValue().int16
             case .useNull:
@@ -171,7 +171,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.nonOptionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.int32 ?? BoxBaseValue().int32
             default:
@@ -186,7 +186,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.optionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.int32 ?? BoxBaseValue().int32
             case .useNull:
@@ -203,7 +203,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.nonOptionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.int64 ?? BoxBaseValue().int64
             default:
@@ -218,7 +218,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.optionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.int64 ?? BoxBaseValue().int64
             case .useNull:
@@ -235,7 +235,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.nonOptionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.uint ?? BoxBaseValue().uint
             default:
@@ -250,7 +250,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.optionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.uint ?? BoxBaseValue().uint
             case .useNull:
@@ -265,7 +265,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
     // MARK: UInt8
     func decode(_ type: UInt8.Type, forKey key: K) throws -> UInt8 {
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.nonOptionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.uint8 ?? BoxBaseValue().uint8
             default:
@@ -280,7 +280,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.optionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.uint8 ?? BoxBaseValue().uint8
             case .useNull:
@@ -297,7 +297,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.nonOptionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.uint16 ?? BoxBaseValue().uint16
             default:
@@ -312,7 +312,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.optionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.uint16 ?? BoxBaseValue().uint16
             case .useNull:
@@ -329,7 +329,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.nonOptionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.uint32 ?? BoxBaseValue().uint32
             default:
@@ -344,7 +344,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.optionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.uint32 ?? BoxBaseValue().uint32
             case .useNull:
@@ -361,7 +361,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.nonOptionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.uint64 ?? BoxBaseValue().uint64
             default:
@@ -376,7 +376,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.optionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.uint64 ?? BoxBaseValue().uint64
             case .useNull:
@@ -393,7 +393,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.nonOptionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.float ?? BoxBaseValue().float
             default:
@@ -408,7 +408,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.optionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.float ?? BoxBaseValue().float
             case .useNull:
@@ -425,7 +425,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.nonOptionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.double ?? BoxBaseValue().double
             default:
@@ -440,7 +440,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.optionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.double ?? BoxBaseValue().double
             case .useNull:
@@ -457,7 +457,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.nonOptionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.string ?? BoxBaseValue().string
             default:
@@ -472,7 +472,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {
-            switch self.decoder.wrapper?.optionalKeyNotFoundStrategy {
+            switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.string ?? BoxBaseValue().string
             case .useNull:

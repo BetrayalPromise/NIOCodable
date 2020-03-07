@@ -13,16 +13,10 @@ public final class NIOJSONDecoder {
     public var containerStrategy: NIOJSONDecoder.OptionalContainerStrategy = .useEmpty
     /// 单值范围异常策略不支持可选类型
     public var scopeExecptionStrategy: NIOJSONDecoder.ScopeExecptionStrategy = .useDefaultable
-
-    /// 非可选基本类型
-    public var nonOptionalKeyNotFoundStrategy: NIOJSONDecoder.NonOptionalKeyNotFoundStrategy = .useExecption
-    /// 可选基本类型
-    public var optionalKeyNotFoundStrategy: NIOJSONDecoder.OptionalKeyNotFoundStrategy = .useExecption
-
-    /// 非可选基本类型
-    public var nonOptionalValueNotFoundStrategy: NIOJSONDecoder.NonOptionalValueNotFoundStrategy = .useExecption
-    /// 可选基本类型
-    public var optionalValueNotFoundStrategy: NIOJSONDecoder.OptionalKeyNotFoundStrategy = .useExecption
+    /// KeyNotFound策略
+    public var keyNotFoundStrategy: NIOJSONDecoder.KeyNotFoundStrategy = .useExecption
+    /// ValueNotFound策略
+    public var valueNotFoundStrategy: NIOJSONDecoder.ValueNotFoundStrategy = .useExecption
 
     /// codable内建类型(Bool, Int, Int8, Int16, Int32, Int64, UInt, UInt8, UInt16, UInt32, UInt64, Float, Double, String)默认值自定义
     public var boxBaseValue: BoxBaseValue = BoxBaseValue()
@@ -61,26 +55,14 @@ public extension NIOJSONDecoder {
         case useEmpty   // 使用空容器
     }
 
-    /// 非可选类型key不对应策略
-    enum NonOptionalKeyNotFoundStrategy {
-        case useExecption
-        case useDefaultable
-    }
-
     /// 可选类型key不对应策略
-    enum OptionalKeyNotFoundStrategy {
+    enum KeyNotFoundStrategy {
         case useExecption
         case useDefaultable
         case useNull
     }
 
-    enum NonOptionalValueNotFoundStrategy {
-        case useExecption
-        case useCustom(HandleTypeDefaultValueControllable)
-        case useDefaultable
-    }
-
-    enum OptionalValueNotFoundStrategy {
+    enum ValueNotFoundStrategy {
         case useExecption
         case useCustom(HandleTypeDefaultValueControllable)
         case useDefaultable

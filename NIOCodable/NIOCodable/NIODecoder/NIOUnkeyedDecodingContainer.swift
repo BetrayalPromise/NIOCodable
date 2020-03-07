@@ -102,7 +102,7 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
         }
 
         guard let model: T = try self.decoder.unbox(value: currentValue, as: type) else {
-            switch self.decoder.wrapper?.nonOptionalValueNotFoundStrategy {
+            switch self.decoder.wrapper?.valueNotFoundStrategy {
             case .useCustom(let delegate):
                 guard let `model`: T = delegate.handle(key: NIOCodableKey(unkeyedIndex: self.currentIndex), source: self.source[self.currentIndex]) as? T else {
                     throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Value Execption"))
