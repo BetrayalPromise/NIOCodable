@@ -12,7 +12,9 @@ struct NIOCodableHandle {
     }
 }
 
-extension NIOCodableHandle: TypeConvertible {}
+extension NIOCodableHandle: TypeConvertible {
+
+}
 
 // MARK: - 处理Bool和Bool?类型
 extension NIOCodableHandle {
@@ -127,7 +129,15 @@ extension NIOCodableHandle {
     }
 
     func decodeIfPresent<K>(value: inout Any, type: Bool.Type, forKey key: K) throws -> Bool? where K: CodingKey {
-        if let `value`: Bool = value as? Bool {
+        if value is NSNull {
+            guard let `value`: NSNull = value as? NSNull else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toBool(key: key, value: value)
+            case .useCustom(let delegate): return delegate.toBool(key: key, value: value)
+            }
+        } else if let `value`: Bool = value as? Bool {
             return value
         } else if let `value`: Int = value as? Int {
             switch self.convertTypeStrategy {
@@ -194,6 +204,22 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toBool(key: key, value: value)
             case .useCustom(let delegate): return delegate.toBool(key: key, value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toBool(key: NIOCodableKey(value: value), value: value)
+            case .useCustom(let delegate): return delegate.toBool(key: NIOCodableKey(value: value), value: value)
+            }
+        } else if value is [Any] {
+            guard let `value`: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toBool(key: NIOCodableKey(value: value), value: value)
+            case .useCustom(let delegate): return delegate.toBool(key: NIOCodableKey(value: value), value: value)
+            }
         } else {
             return nil
         }
@@ -203,7 +229,15 @@ extension NIOCodableHandle {
 // MARK: - 处理Int和Int?类型
 extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Int.Type, forKey key: K) throws -> Int where K: CodingKey {
-        if let `value`: Int = value as? Int {
+        if value is NSNull {
+            guard let `value`: NSNull = value as? NSNull else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt(key: key, value: value)
+            case .useCustom(let delegate): return delegate.toInt(key: key, value: value)
+            }
+        } else if let `value`: Int = value as? Int {
             switch self.scopeExecptionStrategy {
             case .useCustom(let delegate):
                 let scope: Set<AnyHashable> = delegate.scope(key: key)
@@ -214,8 +248,8 @@ extension NIOCodableHandle {
                 }
             default:
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toInt(key: key, value: value == 1 ? true: false)
-                case .useCustom(let delegate): return delegate.toInt(key: key, value: value == 1 ? true: false)
+                case .useDefaultable: return self.toInt(key: key, value: value)
+                case .useCustom(let delegate): return delegate.toInt(key: key, value: value)
                 }
             }
         } else if let `value`: Bool = value as? Bool {
@@ -283,13 +317,37 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toInt(key: key, value: value)
             case .useCustom(let delegate): return delegate.toInt(key: key, value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt(key: NIOCodableKey(value: value), value: value)
+            case .useCustom(let delegate): return delegate.toInt(key: NIOCodableKey(value: value), value: value)
+            }
+        } else if value is [Any] {
+            guard let `value`: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt(key: NIOCodableKey(value: value), value: value)
+            case .useCustom(let delegate): return delegate.toInt(key: NIOCodableKey(value: value), value: value)
+            }
         } else {
             return 0
         }
     }
 
     func decodeIfPresent<K>(value: inout Any, type: Int.Type, forKey key: K) throws -> Int? where K: CodingKey {
-        if let `value`: Int = value as? Int {
+        if value is NSNull {
+            guard let `value`: NSNull = value as? NSNull else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt(key: key, value: value)
+            case .useCustom(let delegate): return delegate.toInt(key: key, value: value)
+            }
+        } else if let `value`: Int = value as? Int {
             return value
         } else if let `value`: Bool = value as? Bool {
             switch self.convertTypeStrategy {
@@ -356,6 +414,22 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toInt(key: key, value: value)
             case .useCustom(let delegate): return delegate.toInt(key: key, value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt(key: NIOCodableKey(value: value), value: value)
+            case .useCustom(let delegate): return delegate.toInt(key: NIOCodableKey(value: value), value: value)
+            }
+        } else if value is [Any] {
+            guard let `value`: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt(key: NIOCodableKey(value: value), value: value)
+            case .useCustom(let delegate): return delegate.toInt(key: NIOCodableKey(value: value), value: value)
+            }
         } else {
             return nil
         }
@@ -365,7 +439,15 @@ extension NIOCodableHandle {
 // MARK: - 处理Int8和Int8?类型
 extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Int8.Type, forKey key: K) throws -> Int8 where K: CodingKey {
-        if let `value`: Int8 = value as? Int8 {
+        if value is NSNull {
+            guard let `value`: NSNull = value as? NSNull else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt8(key: key, value: value)
+            case .useCustom(let delegate): return delegate.toInt8(key: key, value: value)
+            }
+        } else if let `value`: Int8 = value as? Int8 {
             switch self.scopeExecptionStrategy {
             case .useCustom(let delegate):
                 let scope: Set<AnyHashable> = delegate.scope(key: key)
@@ -441,13 +523,37 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toInt8(key: key, value: value)
             case .useCustom(let delegate): return delegate.toInt8(key: key, value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt8(key: NIOCodableKey(value: value), value: value)
+            case .useCustom(let delegate): return delegate.toInt8(key: NIOCodableKey(value: value), value: value)
+            }
+        } else if value is [Any] {
+            guard let `value`: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt8(key: NIOCodableKey(value: value), value: value)
+            case .useCustom(let delegate): return delegate.toInt8(key: NIOCodableKey(value: value), value: value)
+            }
         } else {
             return 0
         }
     }
 
     func decodeIfPresent<K>(value: inout Any, type: Int8.Type, forKey key: K) throws -> Int8? where K: CodingKey {
-        if let `value`: Int8 = value as? Int8 {
+        if value is NSNull {
+            guard let `value`: NSNull = value as? NSNull else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt8(key: key, value: value)
+            case .useCustom(let delegate): return delegate.toInt8(key: key, value: value)
+            }
+        } else if let `value`: Int8 = value as? Int8 {
             return value
         } else if let `value`: Bool = value as? Bool {
             switch self.convertTypeStrategy {
@@ -514,6 +620,22 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toInt8(key: key, value: value)
             case .useCustom(let delegate): return delegate.toInt8(key: key, value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt8(key: NIOCodableKey(value: value), value: value)
+            case .useCustom(let delegate): return delegate.toInt8(key: NIOCodableKey(value: value), value: value)
+            }
+        } else if value is [Any] {
+            guard let `value`: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt8(key: NIOCodableKey(value: value), value: value)
+            case .useCustom(let delegate): return delegate.toInt8(key: NIOCodableKey(value: value), value: value)
+            }
         } else {
             return nil
         }
@@ -523,7 +645,15 @@ extension NIOCodableHandle {
 // MARK: - 处理Int16和Int16?类型
 extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Int16.Type, forKey key: K) throws -> Int16 where K: CodingKey {
-        if let `value`: Int16 = value as? Int16 {
+        if value is NSNull {
+            guard let `value`: NSNull = value as? NSNull else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Bool"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt16(key: key, value: value)
+            case .useCustom(let delegate): return delegate.toInt16(key: key, value: value)
+            }
+        } else if let `value`: Int16 = value as? Int16 {
             switch self.scopeExecptionStrategy {
             case .useCustom(let delegate):
                 let scope: Set<AnyHashable> = delegate.scope(key: key)
