@@ -7,6 +7,7 @@ class NIODecoder: Decoder {
     var source: Any
     var storage: OperationData = OperationData()
     weak var wrapper: NIOJSONDecoder?
+    let inner: Inner = Inner()
 
     init(wrapper: NIOJSONDecoder, source: Any, codingPath: [CodingKey] = [], userInfo: [CodingUserInfoKey : Any] = [:]) {
         self.wrapper = wrapper

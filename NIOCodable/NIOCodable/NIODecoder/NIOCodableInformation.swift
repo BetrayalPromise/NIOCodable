@@ -22,3 +22,16 @@ public struct BoxBaseValue {
     var string: String = ""
 }
 
+struct Inner {
+
+}
+
+extension Inner: TypeConvertible {
+    func toBool(key: CodingKey, value: [Any]) -> Bool {
+        return false
+    }
+
+    func toBool(key: CodingKey, value: [AnyHashable: Any]) -> Bool {
+        return false
+    }
+}
