@@ -234,7 +234,7 @@ extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Int.Type, forKey key: K) throws -> Int where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int"))
+                throw DecodingError.typeMismatch(Int.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt(key: key, value: value)
@@ -322,7 +322,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int"))
+                throw DecodingError.typeMismatch(Int.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt(key: NIOCodableKey(value: value), value: value)
@@ -330,7 +330,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int"))
+                throw DecodingError.typeMismatch(Int.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt(key: NIOCodableKey(value: value), value: value)
@@ -344,7 +344,7 @@ extension NIOCodableHandle {
     func decodeIfPresent<K>(value: inout Any, type: Int.Type, forKey key: K) throws -> Int? where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int"))
+                throw DecodingError.typeMismatch(Int.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt(key: key, value: value)
@@ -422,7 +422,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int"))
+                throw DecodingError.typeMismatch(Int.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt(key: NIOCodableKey(value: value), value: value)
@@ -430,7 +430,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int"))
+                throw DecodingError.typeMismatch(Int.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt(key: NIOCodableKey(value: value), value: value)
@@ -447,7 +447,7 @@ extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Int8.Type, forKey key: K) throws -> Int8 where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int8"))
+                throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int8"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt8(key: key, value: value)
@@ -531,7 +531,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int8"))
+                throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int8"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt8(key: NIOCodableKey(value: value), value: value)
@@ -539,7 +539,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int8"))
+                throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int8"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt8(key: NIOCodableKey(value: value), value: value)
@@ -553,7 +553,7 @@ extension NIOCodableHandle {
     func decodeIfPresent<K>(value: inout Any, type: Int8.Type, forKey key: K) throws -> Int8? where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int8"))
+                throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int8"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt8(key: key, value: value)
@@ -631,7 +631,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int8"))
+                throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int8"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt8(key: NIOCodableKey(value: value), value: value)
@@ -639,7 +639,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int8"))
+                throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int8"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt8(key: NIOCodableKey(value: value), value: value)
@@ -656,7 +656,7 @@ extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Int16.Type, forKey key: K) throws -> Int16 where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int16"))
+                throw DecodingError.typeMismatch(Int16.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int16"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt16(key: key, value: value)
@@ -740,7 +740,7 @@ extension NIOCodableHandle {
             }
         }  else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int16"))
+                throw DecodingError.typeMismatch(Int16.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int16"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt16(key: NIOCodableKey(value: value), value: value)
@@ -748,7 +748,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int16"))
+                throw DecodingError.typeMismatch(Int16.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int16"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt16(key: NIOCodableKey(value: value), value: value)
@@ -762,7 +762,7 @@ extension NIOCodableHandle {
     func decodeIfPresent<K>(value: inout Any, type: Int16.Type, forKey key: K) throws -> Int16? where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int16"))
+                throw DecodingError.typeMismatch(Int16.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int16"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt16(key: key, value: value)
@@ -840,7 +840,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int16"))
+                throw DecodingError.typeMismatch(Int16.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int16"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt16(key: NIOCodableKey(value: value), value: value)
@@ -848,7 +848,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int16"))
+                throw DecodingError.typeMismatch(Int16.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int16"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt16(key: NIOCodableKey(value: value), value: value)
@@ -865,7 +865,7 @@ extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Int32.Type, forKey key: K) throws -> Int32 where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int32"))
+                throw DecodingError.typeMismatch(Int32.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int32"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt32(key: key, value: value)
@@ -949,7 +949,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int32"))
+                throw DecodingError.typeMismatch(Int32.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int32"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt32(key: NIOCodableKey(value: value), value: value)
@@ -957,7 +957,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int32"))
+                throw DecodingError.typeMismatch(Int32.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int32"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt32(key: NIOCodableKey(value: value), value: value)
@@ -971,7 +971,7 @@ extension NIOCodableHandle {
     func decodeIfPresent<K>(value: inout Any, type: Int32.Type, forKey key: K) throws -> Int32? where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int32"))
+                throw DecodingError.typeMismatch(Int32.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int32"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt32(key: key, value: value)
@@ -1049,7 +1049,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int32"))
+                throw DecodingError.typeMismatch(Int32.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int32"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt32(key: NIOCodableKey(value: value), value: value)
@@ -1057,7 +1057,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int32"))
+                throw DecodingError.typeMismatch(Int32.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int32"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt32(key: NIOCodableKey(value: value), value: value)
@@ -1074,7 +1074,7 @@ extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Int64.Type, forKey key: K) throws -> Int64 where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int64"))
+                throw DecodingError.typeMismatch(Int64.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int64"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt64(key: key, value: value)
@@ -1158,7 +1158,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int64"))
+                throw DecodingError.typeMismatch(Int64.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int64"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt64(key: NIOCodableKey(value: value), value: value)
@@ -1166,7 +1166,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int64"))
+                throw DecodingError.typeMismatch(Int64.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int64"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt64(key: NIOCodableKey(value: value), value: value)
@@ -1180,7 +1180,7 @@ extension NIOCodableHandle {
     func decodeIfPresent<K>(value: inout Any, type: Int64.Type, forKey key: K) throws -> Int64? where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int64"))
+                throw DecodingError.typeMismatch(Int64.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Int64"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt64(key: key, value: value)
@@ -1258,7 +1258,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int64"))
+                throw DecodingError.typeMismatch(Int64.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为Int64"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt64(key: NIOCodableKey(value: value), value: value)
@@ -1266,7 +1266,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int64"))
+                throw DecodingError.typeMismatch(Int64.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为Int64"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt64(key: NIOCodableKey(value: value), value: value)
@@ -1283,7 +1283,7 @@ extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: UInt.Type, forKey key: K) throws -> UInt where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt"))
+                throw DecodingError.typeMismatch(UInt.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt(key: key, value: value)
@@ -1367,7 +1367,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt"))
+                throw DecodingError.typeMismatch(UInt.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt(key: NIOCodableKey(value: value), value: value)
@@ -1375,7 +1375,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt"))
+                throw DecodingError.typeMismatch(UInt.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt(key: NIOCodableKey(value: value), value: value)
@@ -1389,7 +1389,7 @@ extension NIOCodableHandle {
     func decodeIfPresent<K>(value: inout Any, type: UInt.Type, forKey key: K) throws -> UInt? where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt"))
+                throw DecodingError.typeMismatch(UInt.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt(key: key, value: value)
@@ -1467,7 +1467,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt"))
+                throw DecodingError.typeMismatch(UInt.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt(key: NIOCodableKey(value: value), value: value)
@@ -1475,7 +1475,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt"))
+                throw DecodingError.typeMismatch(UInt.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt(key: NIOCodableKey(value: value), value: value)
@@ -1492,7 +1492,7 @@ extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: UInt8.Type, forKey key: K) throws -> UInt8 where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt8"))
+                throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt8"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt8(key: key, value: value)
@@ -1576,7 +1576,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt8"))
+                throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt8"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt8(key: NIOCodableKey(value: value), value: value)
@@ -1584,7 +1584,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt8"))
+                throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt8"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt8(key: NIOCodableKey(value: value), value: value)
@@ -1598,7 +1598,7 @@ extension NIOCodableHandle {
     func decodeIfPresent<K>(value: inout Any, type: UInt8.Type, forKey key: K) throws -> UInt8? where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt8"))
+                throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt8"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt8(key: key, value: value)
@@ -1676,7 +1676,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt8"))
+                throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt8"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt8(key: NIOCodableKey(value: value), value: value)
@@ -1684,7 +1684,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt8"))
+                throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt8"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt8(key: NIOCodableKey(value: value), value: value)
@@ -1701,7 +1701,7 @@ extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: UInt16.Type, forKey key: K) throws -> UInt16 where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt16"))
+                throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt16"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt16(key: key, value: value)
@@ -1785,7 +1785,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt16"))
+                throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt16"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt16(key: NIOCodableKey(value: value), value: value)
@@ -1793,7 +1793,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt16"))
+                throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt16"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt16(key: NIOCodableKey(value: value), value: value)
@@ -1807,7 +1807,7 @@ extension NIOCodableHandle {
     func decodeIfPresent<K>(value: inout Any, type: UInt16.Type, forKey key: K) throws -> UInt16? where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt16"))
+                throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt16"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt16(key: key, value: value)
@@ -1885,7 +1885,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt16"))
+                throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt16"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt16(key: NIOCodableKey(value: value), value: value)
@@ -1893,7 +1893,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt16"))
+                throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt16"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt16(key: NIOCodableKey(value: value), value: value)
@@ -1910,7 +1910,7 @@ extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: UInt32.Type, forKey key: K) throws -> UInt32 where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt32"))
+                throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt32"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt32(key: key, value: value)
@@ -1994,7 +1994,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt32"))
+                throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt32"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt32(key: NIOCodableKey(value: value), value: value)
@@ -2002,7 +2002,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt32"))
+                throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt32"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt32(key: NIOCodableKey(value: value), value: value)
@@ -2016,7 +2016,7 @@ extension NIOCodableHandle {
     func decodeIfPresent<K>(value: inout Any, type: UInt32.Type, forKey key: K) throws -> UInt32? where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt32"))
+                throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt32"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt32(key: key, value: value)
@@ -2094,7 +2094,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt32"))
+                throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt32"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt32(key: NIOCodableKey(value: value), value: value)
@@ -2102,7 +2102,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt32"))
+                throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt32"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt32(key: NIOCodableKey(value: value), value: value)
@@ -2119,7 +2119,7 @@ extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: UInt64.Type, forKey key: K) throws -> UInt64 where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt64"))
+                throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt64"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt64(key: key, value: value)
@@ -2203,7 +2203,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt64"))
+                throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt64"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt64(key: NIOCodableKey(value: value), value: value)
@@ -2211,7 +2211,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt64"))
+                throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt64"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt64(key: NIOCodableKey(value: value), value: value)
@@ -2225,7 +2225,7 @@ extension NIOCodableHandle {
     func decodeIfPresent<K>(value: inout Any, type: UInt64.Type, forKey key: K) throws -> UInt64? where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt64"))
+                throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为UInt64"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt64(key: key, value: value)
@@ -2303,7 +2303,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt64"))
+                throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [], debugDescription: "Dictionary无法转化为UInt64"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt64(key: NIOCodableKey(value: value), value: value)
@@ -2311,7 +2311,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt64"))
+                throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [], debugDescription: "Array无法转化为UInt64"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt64(key: NIOCodableKey(value: value), value: value)
@@ -2328,7 +2328,7 @@ extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Float.Type, forKey key: K) throws -> Float where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Float"))
+                throw DecodingError.typeMismatch(Float.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Float"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toFloat(key: key, value: value)
@@ -2412,7 +2412,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: [], debugDescription: "Dictionary无法转化为Float"))
+                throw DecodingError.typeMismatch(Float.self, DecodingError.Context(codingPath: [], debugDescription: "Dictionary无法转化为Float"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toFloat(key: NIOCodableKey(value: value), value: value)
@@ -2420,7 +2420,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: [], debugDescription: "Array无法转化为Float"))
+                throw DecodingError.typeMismatch(Float.self, DecodingError.Context(codingPath: [], debugDescription: "Array无法转化为Float"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toFloat(key: NIOCodableKey(value: value), value: value)
@@ -2434,7 +2434,7 @@ extension NIOCodableHandle {
     func decodeIfPresent<K>(value: inout Any, type: Float.Type, forKey key: K) throws -> Float? where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Float"))
+                throw DecodingError.typeMismatch(Float.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Float"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toFloat(key: key, value: value)
@@ -2512,7 +2512,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: [], debugDescription: "Dictionary无法转化为Float"))
+                throw DecodingError.typeMismatch(Float.self, DecodingError.Context(codingPath: [], debugDescription: "Dictionary无法转化为Float"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toFloat(key: NIOCodableKey(value: value), value: value)
@@ -2520,7 +2520,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: [], debugDescription: "Array无法转化为Float"))
+                throw DecodingError.typeMismatch(Float.self, DecodingError.Context(codingPath: [], debugDescription: "Array无法转化为Float"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toFloat(key: NIOCodableKey(value: value), value: value)
@@ -2537,7 +2537,7 @@ extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: Double.Type, forKey key: K) throws -> Double where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Double"))
+                throw DecodingError.typeMismatch(Double.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Double"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toDouble(key: key, value: value)
@@ -2621,7 +2621,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: [], debugDescription: "Dictionary无法转化为Double"))
+                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: [], debugDescription: "Dictionary无法转化为Double"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toDouble(key: NIOCodableKey(value: value), value: value)
@@ -2629,7 +2629,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: [], debugDescription: "Array无法转化为Double"))
+                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: [], debugDescription: "Array无法转化为Double"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toDouble(key: NIOCodableKey(value: value), value: value)
@@ -2643,7 +2643,7 @@ extension NIOCodableHandle {
     func decodeIfPresent<K>(value: inout Any, type: Double.Type, forKey key: K) throws -> Double? where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Double"))
+                throw DecodingError.typeMismatch(Double.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为Double"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toDouble(key: key, value: value)
@@ -2721,7 +2721,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: [], debugDescription: "Dictionary无法转化为Double"))
+                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: [], debugDescription: "Dictionary无法转化为Double"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toDouble(key: NIOCodableKey(value: value), value: value)
@@ -2729,7 +2729,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: [], debugDescription: "Array无法转化为Double"))
+                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: [], debugDescription: "Array无法转化为Double"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toDouble(key: NIOCodableKey(value: value), value: value)
@@ -2746,7 +2746,7 @@ extension NIOCodableHandle {
     func decode<K>(value: inout Any, type: String.Type, forKey key: K) throws -> String where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为String"))
+                throw DecodingError.typeMismatch(String.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为String"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toString(key: key, value: value)
@@ -2830,7 +2830,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: [], debugDescription: "Dictionary无法转化为String"))
+                throw DecodingError.typeMismatch(String.self, DecodingError.Context(codingPath: [], debugDescription: "Dictionary无法转化为String"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toString(key: NIOCodableKey(value: value), value: value)
@@ -2838,7 +2838,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: [], debugDescription: "Array无法转化为String"))
+                throw DecodingError.typeMismatch(String.self, DecodingError.Context(codingPath: [], debugDescription: "Array无法转化为String"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toString(key: NIOCodableKey(value: value), value: value)
@@ -2852,7 +2852,7 @@ extension NIOCodableHandle {
     func decodeIfPresent<K>(value: inout Any, type: String.Type, forKey key: K) throws -> String? where K: CodingKey {
         if value is NSNull {
             guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为String"))
+                throw DecodingError.typeMismatch(String.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull无法转化为String"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toString(key: key, value: value)
@@ -2930,7 +2930,7 @@ extension NIOCodableHandle {
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: [], debugDescription: "Dictionary无法转化为String"))
+                throw DecodingError.typeMismatch(String.self, DecodingError.Context(codingPath: [], debugDescription: "Dictionary无法转化为String"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toString(key: NIOCodableKey(value: value), value: value)
@@ -2938,7 +2938,7 @@ extension NIOCodableHandle {
             }
         } else if value is [Any] {
             guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: [], debugDescription: "Array无法转化为String"))
+                throw DecodingError.typeMismatch(String.self, DecodingError.Context(codingPath: [], debugDescription: "Array无法转化为String"))
             }
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toString(key: NIOCodableKey(value: value), value: value)
