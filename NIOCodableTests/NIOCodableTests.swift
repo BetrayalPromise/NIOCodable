@@ -489,13 +489,434 @@ class NIOCodableTests: XCTestCase {
     }
 
     func testBoolToInt32() {
+        let data: Data = """
+        [true, false]
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder = NIOJSONDecoder()
+        do {
+            guard let models: [Int32] = try decoder.decode(type: [Int32].self, from: data) else {
+                XCTAssertNil(nil)
+                return
+            }
+            XCTAssertEqual(models[0], 1)
+            XCTAssertEqual(models[1], 0)
+        } catch {
+            XCTAssertNil(error, error.localizedDescription)
+        }
+    }
 
+    func testHandleBoolToInt32() {
+        struct Adapter: TypeConvertible {
+            func toInt32(key: CodingKey, value: Bool) -> Int32 {
+                if value {
+                    return 0
+                }
+                return 1
+            }
+        }
+        let data: Data = """
+        [true, false]
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder = NIOJSONDecoder()
+        decoder.convertTypeStrategy = .useCustom(Adapter())
+        do {
+            guard let models: [Int32] = try decoder.decode(type: [Int32].self, from: data) else {
+                XCTAssertNil(nil)
+                return
+            }
+            XCTAssertEqual(models[0], 0)
+            XCTAssertEqual(models[1], 1)
+        } catch {
+            XCTAssertNil(error, error.localizedDescription)
+        }
     }
 
     func testBoolToInt64() {
-
+        let data: Data = """
+        [true, false]
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder = NIOJSONDecoder()
+        do {
+            guard let models: [Int64] = try decoder.decode(type: [Int64].self, from: data) else {
+                XCTAssertNil(nil)
+                return
+            }
+            XCTAssertEqual(models[0], 1)
+            XCTAssertEqual(models[1], 0)
+        } catch {
+            XCTAssertNil(error, error.localizedDescription)
+        }
     }
 
+    func testHandleBoolToInt64() {
+        struct Adapter: TypeConvertible {
+            func toInt64(key: CodingKey, value: Bool) -> Int64 {
+                if value {
+                    return 0
+                }
+                return 1
+            }
+        }
+        let data: Data = """
+        [true, false]
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder = NIOJSONDecoder()
+        decoder.convertTypeStrategy = .useCustom(Adapter())
+        do {
+            guard let models: [Int64] = try decoder.decode(type: [Int64].self, from: data) else {
+                XCTAssertNil(nil)
+                return
+            }
+            XCTAssertEqual(models[0], 0)
+            XCTAssertEqual(models[1], 1)
+        } catch {
+            XCTAssertNil(error, error.localizedDescription)
+        }
+    }
+
+    func testBoolToUInt() {
+        let data: Data = """
+        [true, false]
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder = NIOJSONDecoder()
+        do {
+            guard let models: [UInt] = try decoder.decode(type: [UInt].self, from: data) else {
+                XCTAssertNil(nil)
+                return
+            }
+            XCTAssertEqual(models[0], 1)
+            XCTAssertEqual(models[1], 0)
+        } catch {
+            XCTAssertNil(error, error.localizedDescription)
+        }
+    }
+
+    func testHandleBoolToUInt() {
+        struct Adapter: TypeConvertible {
+            func toUInt(key: CodingKey, value: Bool) -> UInt {
+                if value {
+                    return 0
+                }
+                return 1
+            }
+        }
+        let data: Data = """
+        [true, false]
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder = NIOJSONDecoder()
+        decoder.convertTypeStrategy = .useCustom(Adapter())
+        do {
+            guard let models: [UInt] = try decoder.decode(type: [UInt].self, from: data) else {
+                XCTAssertNil(nil)
+                return
+            }
+            XCTAssertEqual(models[0], 0)
+            XCTAssertEqual(models[1], 1)
+        } catch {
+            XCTAssertNil(error, error.localizedDescription)
+        }
+    }
+
+    func testBoolToUInt8() {
+        let data: Data = """
+        [true, false]
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder = NIOJSONDecoder()
+        do {
+            guard let models: [UInt8] = try decoder.decode(type: [UInt8].self, from: data) else {
+                XCTAssertNil(nil)
+                return
+            }
+            XCTAssertEqual(models[0], 1)
+            XCTAssertEqual(models[1], 0)
+        } catch {
+            XCTAssertNil(error, error.localizedDescription)
+        }
+    }
+
+    func testHandleBoolToUInt8() {
+         struct Adapter: TypeConvertible {
+            func toUInt8(key: CodingKey, value: Bool) -> UInt8 {
+                if value {
+                    return 0
+                }
+                return 1
+            }
+         }
+         let data: Data = """
+         [true, false]
+         """.data(using: String.Encoding.utf8) ?? Data()
+         let decoder = NIOJSONDecoder()
+         decoder.convertTypeStrategy = .useCustom(Adapter())
+         do {
+             guard let models: [UInt8] = try decoder.decode(type: [UInt8].self, from: data) else {
+                 XCTAssertNil(nil)
+                 return
+             }
+             XCTAssertEqual(models[0], 0)
+             XCTAssertEqual(models[1], 1)
+         } catch {
+             XCTAssertNil(error, error.localizedDescription)
+         }
+     }
+
+    func testBoolToUInt16() {
+        let data: Data = """
+        [true, false]
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder = NIOJSONDecoder()
+        do {
+            guard let models: [UInt16] = try decoder.decode(type: [UInt16].self, from: data) else {
+                XCTAssertNil(nil)
+                return
+            }
+            XCTAssertEqual(models[0], 1)
+            XCTAssertEqual(models[1], 0)
+        } catch {
+            XCTAssertNil(error, error.localizedDescription)
+        }
+    }
+
+    func testHandleBoolToUInt16() {
+         struct Adapter: TypeConvertible {
+            func toUInt16(key: CodingKey, value: Bool) -> UInt16 {
+                if value {
+                    return 0
+                }
+                return 1
+            }
+         }
+         let data: Data = """
+         [true, false]
+         """.data(using: String.Encoding.utf8) ?? Data()
+         let decoder = NIOJSONDecoder()
+         decoder.convertTypeStrategy = .useCustom(Adapter())
+         do {
+             guard let models: [UInt16] = try decoder.decode(type: [UInt16].self, from: data) else {
+                 XCTAssertNil(nil)
+                 return
+             }
+             XCTAssertEqual(models[0], 0)
+             XCTAssertEqual(models[1], 1)
+         } catch {
+             XCTAssertNil(error, error.localizedDescription)
+         }
+     }
+
+    func testBoolToUInt32() {
+        let data: Data = """
+        [true, false]
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder = NIOJSONDecoder()
+        do {
+            guard let models: [UInt32] = try decoder.decode(type: [UInt32].self, from: data) else {
+                XCTAssertNil(nil)
+                return
+            }
+            XCTAssertEqual(models[0], 1)
+            XCTAssertEqual(models[1], 0)
+        } catch {
+            XCTAssertNil(error, error.localizedDescription)
+        }
+    }
+
+    func testHandleBoolToUInt32() {
+         struct Adapter: TypeConvertible {
+            func toUInt32(key: CodingKey, value: Bool) -> UInt32 {
+                if value {
+                    return 0
+                }
+                return 1
+            }
+         }
+         let data: Data = """
+         [true, false]
+         """.data(using: String.Encoding.utf8) ?? Data()
+         let decoder = NIOJSONDecoder()
+         decoder.convertTypeStrategy = .useCustom(Adapter())
+         do {
+             guard let models: [UInt32] = try decoder.decode(type: [UInt32].self, from: data) else {
+                 XCTAssertNil(nil)
+                 return
+             }
+             XCTAssertEqual(models[0], 0)
+             XCTAssertEqual(models[1], 1)
+         } catch {
+             XCTAssertNil(error, error.localizedDescription)
+         }
+     }
+
+    func testBoolToUInt64() {
+        let data: Data = """
+        [true, false]
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder = NIOJSONDecoder()
+        do {
+            guard let models: [UInt64] = try decoder.decode(type: [UInt64].self, from: data) else {
+                XCTAssertNil(nil)
+                return
+            }
+            XCTAssertEqual(models[0], 1)
+            XCTAssertEqual(models[1], 0)
+        } catch {
+            XCTAssertNil(error, error.localizedDescription)
+        }
+    }
+
+    func testHandleBoolToUInt64() {
+         struct Adapter: TypeConvertible {
+            func toUInt64(key: CodingKey, value: Bool) -> UInt64 {
+                if value {
+                    return 0
+                }
+                return 1
+            }
+         }
+         let data: Data = """
+         [true, false]
+         """.data(using: String.Encoding.utf8) ?? Data()
+         let decoder = NIOJSONDecoder()
+         decoder.convertTypeStrategy = .useCustom(Adapter())
+         do {
+             guard let models: [UInt64] = try decoder.decode(type: [UInt64].self, from: data) else {
+                 XCTAssertNil(nil)
+                 return
+             }
+             XCTAssertEqual(models[0], 0)
+             XCTAssertEqual(models[1], 1)
+         } catch {
+             XCTAssertNil(error, error.localizedDescription)
+         }
+     }
+
+    func testBoolToFloat() {
+          let data: Data = """
+          [true, false]
+          """.data(using: String.Encoding.utf8) ?? Data()
+          let decoder = NIOJSONDecoder()
+          do {
+              guard let models: [Float] = try decoder.decode(type: [Float].self, from: data) else {
+                  XCTAssertNil(nil)
+                  return
+              }
+              XCTAssertEqual(models[0], 1)
+              XCTAssertEqual(models[1], 0)
+          } catch {
+              XCTAssertNil(error, error.localizedDescription)
+          }
+      }
+
+      func testHandleBoolToFloat() {
+           struct Adapter: TypeConvertible {
+            func toFloat(key: CodingKey, value: Bool) -> Float {
+                  if value {
+                      return 0
+                  }
+                  return 1
+              }
+           }
+           let data: Data = """
+           [true, false]
+           """.data(using: String.Encoding.utf8) ?? Data()
+           let decoder = NIOJSONDecoder()
+           decoder.convertTypeStrategy = .useCustom(Adapter())
+           do {
+               guard let models: [Float] = try decoder.decode(type: [Float].self, from: data) else {
+                   XCTAssertNil(nil)
+                   return
+               }
+               XCTAssertEqual(models[0], 0)
+               XCTAssertEqual(models[1], 1)
+           } catch {
+               XCTAssertNil(error, error.localizedDescription)
+           }
+       }
+
+    func testBoolToDouble() {
+          let data: Data = """
+          [true, false]
+          """.data(using: String.Encoding.utf8) ?? Data()
+          let decoder = NIOJSONDecoder()
+          do {
+              guard let models: [Double] = try decoder.decode(type: [Double].self, from: data) else {
+                  XCTAssertNil(nil)
+                  return
+              }
+              XCTAssertEqual(models[0], 1)
+              XCTAssertEqual(models[1], 0)
+          } catch {
+              XCTAssertNil(error, error.localizedDescription)
+          }
+      }
+
+      func testHandleBoolToDouble() {
+           struct Adapter: TypeConvertible {
+            func toDouble(key: CodingKey, value: Bool) -> Double {
+                  if value {
+                      return 0
+                  }
+                  return 1
+              }
+           }
+           let data: Data = """
+           [true, false]
+           """.data(using: String.Encoding.utf8) ?? Data()
+           let decoder = NIOJSONDecoder()
+           decoder.convertTypeStrategy = .useCustom(Adapter())
+           do {
+               guard let models: [Double] = try decoder.decode(type: [Double].self, from: data) else {
+                   XCTAssertNil(nil)
+                   return
+               }
+               XCTAssertEqual(models[0], 0)
+               XCTAssertEqual(models[1], 1)
+           } catch {
+               XCTAssertNil(error, error.localizedDescription)
+           }
+       }
+
+    func testBoolToString() {
+          let data: Data = """
+          [true, false]
+          """.data(using: String.Encoding.utf8) ?? Data()
+          let decoder = NIOJSONDecoder()
+          do {
+              guard let models: [String] = try decoder.decode(type: [String].self, from: data) else {
+                  XCTAssertNil(nil)
+                  return
+              }
+              XCTAssertEqual(models[0], "true")
+              XCTAssertEqual(models[1], "false")
+          } catch {
+              XCTAssertNil(error, error.localizedDescription)
+          }
+      }
+
+      func testHandleBoolToString() {
+           struct Adapter: TypeConvertible {
+                func toString(key: CodingKey, value: Bool) -> String {
+                    if value {
+                        return "1"
+                    }
+                    return "0"
+                }
+           }
+           let data: Data = """
+           [true, false]
+           """.data(using: String.Encoding.utf8) ?? Data()
+           let decoder = NIOJSONDecoder()
+           decoder.convertTypeStrategy = .useCustom(Adapter())
+           do {
+               guard let models: [String] = try decoder.decode(type: [String].self, from: data) else {
+                   XCTAssertNil(nil)
+                   return
+               }
+               XCTAssertEqual(models[0], "1")
+               XCTAssertEqual(models[1], "0")
+           } catch {
+               XCTAssertNil(error, error.localizedDescription)
+           }
+       }
 
 //    func testNumberToBool() {
 //        struct Example: Codable, DefaultValueControllable {
