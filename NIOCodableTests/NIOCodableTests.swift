@@ -62,7 +62,6 @@ class NIOCodableTests: XCTestCase {
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Adapter())
-            decoder.optionalTypeStrategy = .useTypeConvertable
             do {
                 guard let models: [Bool?] = try decoder.decode(type: [Bool?].self, from: data) else {
                     XCTAssertNil(nil)
@@ -359,7 +358,7 @@ class NIOCodableTests: XCTestCase {
     /// 默认true映射为1 false 映射为0
     func testBoolToInt() {
         let data: Data = """
-        [true, false]
+        [true, false, 0, 1, 2]
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
         do {
