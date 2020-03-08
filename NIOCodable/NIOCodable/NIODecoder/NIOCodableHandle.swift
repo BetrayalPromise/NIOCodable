@@ -3049,76 +3049,94 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toDouble(key: key, value: value)
             case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
             }
-        } else if let `value`: Double = value as? Double {
-            switch self.scopeExecptionStrategy {
-            case .useCustom(let delegate):
-                let scope: Set<AnyHashable> = delegate.scope(key: key)
-                if scope.contains(value) {
-                    return value
-                } else {
-                    return delegate.execption(key: key, source: value) as? Double ?? 0.0
+        } else if value is NSNumber {
+            guard let value: NSNumber = value as? NSNumber else {
+                throw DecodingError.typeMismatch(Int.self, DecodingError.Context.init(codingPath: [], debugDescription: "can't convert to NSNumber"))
+            }
+            if value === kCFBooleanTrue || value === kCFBooleanFalse {
+                guard let value: Bool = value as? Bool else {
+                    throw DecodingError.typeMismatch(Int.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNumber cant't convert to Int32"))
                 }
-            default: return value
-            }
-        } else if let `value`: Bool = value as? Bool {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: Int = value as? Int {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: Int8 = value as? Int8 {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: Int16 = value as? Int16 {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: Int32 = value as? Int32 {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: Int64 = value as? Int64 {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: UInt = value as? UInt {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: UInt8 = value as? UInt8 {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: UInt16 = value as? UInt16 {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: UInt32 = value as? UInt32 {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: UInt64 = value as? UInt64 {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: Float = value as? Float {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                switch self.convertTypeStrategy {
+                case .useDefaultable: return self.toDouble(key: key, value: value)
+                case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                }
+            } else {
+                if let `value`: Double = value as? Double {
+                    switch self.scopeExecptionStrategy {
+                    case .useCustom(let delegate):
+                        let scope: Set<AnyHashable> = delegate.scope(key: key)
+                        if scope.contains(value) {
+                            return value
+                        } else {
+                            return delegate.execption(key: key, source: value) as? Double ?? 0.0
+                        }
+                    default: return value
+                    }
+                } else if let `value`: Bool = value as? Bool {
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toDouble(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                    }
+                } else if let `value`: Int = value as? Int {
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toDouble(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                    }
+                } else if let `value`: Int8 = value as? Int8 {
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toDouble(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                    }
+                } else if let `value`: Int16 = value as? Int16 {
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toDouble(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                    }
+                } else if let `value`: Int32 = value as? Int32 {
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toDouble(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                    }
+                } else if let `value`: Int64 = value as? Int64 {
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toDouble(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                    }
+                } else if let `value`: UInt = value as? UInt {
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toDouble(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                    }
+                } else if let `value`: UInt8 = value as? UInt8 {
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toDouble(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                    }
+                } else if let `value`: UInt16 = value as? UInt16 {
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toDouble(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                    }
+                } else if let `value`: UInt32 = value as? UInt32 {
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toDouble(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                    }
+                } else if let `value`: UInt64 = value as? UInt64 {
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toDouble(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                    }
+                } else if let `value`: Float = value as? Float {
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toDouble(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                    }
+                } else {
+                    debugPrint("Double type unsupport :\(value), set default 0.0")
+                    return 0.0
+                }
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
@@ -3142,109 +3160,135 @@ extension NIOCodableHandle {
             case .useCustom(let delegate): return delegate.toDouble(key: NIOCodableKey(value: value), value: value)
             }
         } else {
-            return 0
+            debugPrint("Double type unsupport :\(value), set default 0.0")
+            return 0.0
         }
     }
 
-    func decodeIfPresent<K>(value: inout Any, type: Double.Type, forKey key: K) throws -> Double? where K: CodingKey {
-        if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Double.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull can't convert to Double"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: Double = value as? Double {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: Bool = value as? Bool {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: Int = value as? Int {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: Int8 = value as? Int8 {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: Int16 = value as? Int16 {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: Int32 = value as? Int32 {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: Int64 = value as? Int64 {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: UInt = value as? UInt {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: UInt8 = value as? UInt8 {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: UInt16 = value as? UInt16 {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: UInt32 = value as? UInt32 {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: UInt64 = value as? UInt64 {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: Float = value as? Float {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if let `value`: String = value as? String {
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
-            }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: [], debugDescription: "Dictionary can't convert to Double"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: NIOCodableKey(value: value), value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: NIOCodableKey(value: value), value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: [], debugDescription: "Array can't convert to Double"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: NIOCodableKey(value: value), value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: NIOCodableKey(value: value), value: value)
-            }
-        } else {
-            return nil
-        }
-    }
+    func decodeIfPresent<K>(value: inout Any, type: Double.Type, forKey key: K) throws -> Double? where K: CodingKey  {
+           if value is NSNull {
+               guard let `value`: NSNull = value as? NSNull else {
+                   throw DecodingError.typeMismatch(Double.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNull can't convert to Double"))
+               }
+               switch self.convertTypeStrategy {
+               case .useDefaultable: return self.toDouble(key: key, value: value)
+               case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+               }
+           } else if value is NSNumber {
+               guard let value: NSNumber = value as? NSNumber else {
+                   throw DecodingError.typeMismatch(Int.self, DecodingError.Context.init(codingPath: [], debugDescription: "can't convert to NSNumber"))
+               }
+               if value === kCFBooleanTrue || value === kCFBooleanFalse {
+                   guard let value: Bool = value as? Bool else {
+                       throw DecodingError.typeMismatch(Int.self, DecodingError.Context.init(codingPath: [], debugDescription: "NSNumber cant't convert to Int32"))
+                   }
+                   switch self.convertTypeStrategy {
+                   case .useDefaultable: return self.toDouble(key: key, value: value)
+                   case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                   }
+               } else {
+                   if let `value`: Double = value as? Double {
+                       switch self.scopeExecptionStrategy {
+                       case .useCustom(let delegate):
+                           let scope: Set<AnyHashable> = delegate.scope(key: key)
+                           if scope.contains(value) {
+                               return value
+                           } else {
+                               return delegate.execption(key: key, source: value) as? Double ?? 0.0
+                           }
+                       default: return value
+                       }
+                   } else if let `value`: Bool = value as? Bool {
+                       switch self.convertTypeStrategy {
+                       case .useDefaultable: return self.toDouble(key: key, value: value)
+                       case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                       }
+                   } else if let `value`: Int = value as? Int {
+                       switch self.convertTypeStrategy {
+                       case .useDefaultable: return self.toDouble(key: key, value: value)
+                       case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                       }
+                   } else if let `value`: Int8 = value as? Int8 {
+                       switch self.convertTypeStrategy {
+                       case .useDefaultable: return self.toDouble(key: key, value: value)
+                       case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                       }
+                   } else if let `value`: Int16 = value as? Int16 {
+                       switch self.convertTypeStrategy {
+                       case .useDefaultable: return self.toDouble(key: key, value: value)
+                       case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                       }
+                   } else if let `value`: Int32 = value as? Int32 {
+                       switch self.convertTypeStrategy {
+                       case .useDefaultable: return self.toDouble(key: key, value: value)
+                       case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                       }
+                   } else if let `value`: Int64 = value as? Int64 {
+                       switch self.convertTypeStrategy {
+                       case .useDefaultable: return self.toDouble(key: key, value: value)
+                       case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                       }
+                   } else if let `value`: UInt = value as? UInt {
+                       switch self.convertTypeStrategy {
+                       case .useDefaultable: return self.toDouble(key: key, value: value)
+                       case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                       }
+                   } else if let `value`: UInt8 = value as? UInt8 {
+                       switch self.convertTypeStrategy {
+                       case .useDefaultable: return self.toDouble(key: key, value: value)
+                       case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                       }
+                   } else if let `value`: UInt16 = value as? UInt16 {
+                       switch self.convertTypeStrategy {
+                       case .useDefaultable: return self.toDouble(key: key, value: value)
+                       case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                       }
+                   } else if let `value`: UInt32 = value as? UInt32 {
+                       switch self.convertTypeStrategy {
+                       case .useDefaultable: return self.toDouble(key: key, value: value)
+                       case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                       }
+                   } else if let `value`: UInt64 = value as? UInt64 {
+                       switch self.convertTypeStrategy {
+                       case .useDefaultable: return self.toDouble(key: key, value: value)
+                       case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                       }
+                   } else if let `value`: Float = value as? Float {
+                       switch self.convertTypeStrategy {
+                       case .useDefaultable: return self.toDouble(key: key, value: value)
+                       case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+                       }
+                   } else {
+                       debugPrint("Double type unsupport :\(value), set default nil")
+                       return nil
+                   }
+               }
+           } else if let `value`: String = value as? String {
+               switch self.convertTypeStrategy {
+               case .useDefaultable: return self.toDouble(key: key, value: value)
+               case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
+               }
+           } else if value is [AnyHashable: Any] {
+               guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                   throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: [], debugDescription: "Dictionary can't convert to Double"))
+               }
+               switch self.convertTypeStrategy {
+               case .useDefaultable: return self.toDouble(key: NIOCodableKey(value: value), value: value)
+               case .useCustom(let delegate): return delegate.toDouble(key: NIOCodableKey(value: value), value: value)
+               }
+           } else if value is [Any] {
+               guard let `value`: [Any] = value as? [Any] else {
+                   throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: [], debugDescription: "Array can't convert to Double"))
+               }
+               switch self.convertTypeStrategy {
+               case .useDefaultable: return self.toDouble(key: NIOCodableKey(value: value), value: value)
+               case .useCustom(let delegate): return delegate.toDouble(key: NIOCodableKey(value: value), value: value)
+               }
+           } else {
+               debugPrint("Double type unsupport :\(value), set default nil")
+               return nil
+           }
+       }
 }
 
 // MARK: - 处理String和String?类型
