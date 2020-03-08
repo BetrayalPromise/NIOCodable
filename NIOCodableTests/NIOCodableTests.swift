@@ -127,7 +127,7 @@ class NIOCodableTests: XCTestCase {
             }
         }
         let data: Data = """
-        [0, 1, 2, 3, 4.5, 5.9, 100, 150]
+        [0, 1, 2, 3, 4.5, 5.9, 100, 150, null]
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
         decoder.convertTypeStrategy = .useCustom(Adapter())
@@ -918,58 +918,6 @@ class NIOCodableTests: XCTestCase {
            }
        }
 
-//    func testNumberToBool() {
-//        struct Example: Codable, DefaultValueControllable {
-//            var name: Bool
-//            init(by key: CodingKey, source: Any) {
-//                self.name = true
-//            }
-//        }
-//
-//        struct A: HandleTypeDefaultValueControllable {
-//            func handle(key: CodingKey, source: Any) -> DefaultValueControllable {
-//                return Example(by: key, source: source)
-//            }
-//        }
-//
-//        let data: Data = """
-//        [
-//        {"name": true},
-//        {"name": {"show": false}},
-//        {},
-//        {"name": null},
-//        {"name": "null"},
-//        {"name": [{"show": false}]}
-//        ]
-//        """.data(using: String.Encoding.utf8) ?? Data()
-
-//        let data: Data = """
-//        [
-//        [{"name": true}],
-//        [{"name": {"show": false}}],
-//        [{}],
-//        [{"name": null}],
-//        [{"name": "null"}],
-//        [{"name": [{"show": false}]}]
-//        ]
-//        """.data(using: String.Encoding.utf8) ?? Data()
-//
-//
-//        let decoder = NIOJSONDecoder()
-//        decoder.nonOptionalKeyNotFoundStrategy = .useExecption
-//        decoder.nonOptionalValueNotFoundStrategy = .useCustom(A())
-//        do {
-//            let models0: [Bool]? = try decoder.decode(type: [Bool].self, from: data)
-//            print(models0)
-//
-//            let models: [Example]? = try decoder.decode(type: [Example].self, from: data)
-//            XCTAssert(models?[0].name == true)
-//            XCTAssert(models?[1].name == true)
-//            XCTAssert(models?[2].name == true)
-//        } catch {
-//            XCTAssertNil(error, error.localizedDescription)
-//        }
-//    }
     
     func testInt() {
         struct Example: Codable {
@@ -988,22 +936,24 @@ class NIOCodableTests: XCTestCase {
         {"name": 0},
         {"name": -1},
         {"name": -2},
+        {"name": null}
         ]
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
         do {
             let models: [Example]? = try decoder.decode(type: [Example].self, from: data)
-            XCTAssert(models?[0].name == 1)
-            XCTAssert(models?[1].name == 0)
-            XCTAssert(models?[2].name == 1)
-            XCTAssert(models?[3].name == 0)
-            XCTAssert(models?[4].name == 1)
-            XCTAssert(models?[5].name == 0)
-            XCTAssert(models?[6].name == 2)
-            XCTAssert(models?[7].name == 1)
-            XCTAssert(models?[8].name == 0)
-            XCTAssert(models?[9].name == -1)
-            XCTAssert(models?[10].name == -2)
+            XCTAssertEqual(models?[0].name, 1)
+            XCTAssertEqual(models?[1].name, 0)
+            XCTAssertEqual(models?[2].name, 1)
+            XCTAssertEqual(models?[3].name, 0)
+            XCTAssertEqual(models?[4].name, 1)
+            XCTAssertEqual(models?[5].name, 0)
+            XCTAssertEqual(models?[6].name, 2)
+            XCTAssertEqual(models?[7].name, 1)
+            XCTAssertEqual(models?[8].name, 0)
+            XCTAssertEqual(models?[9].name, -1)
+            XCTAssertEqual(models?[10].name, -2)
+            XCTAssertEqual(models?[11].name, 0)
         } catch {
             XCTAssertNil(error, error.localizedDescription)
         }
