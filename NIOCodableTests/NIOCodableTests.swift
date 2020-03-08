@@ -31,23 +31,49 @@ class NIOCodableTests: XCTestCase {
 // MARK: - Bool -
     // MARK: Bool -> Bool
     func testBoolToBool() {
-        let data: Data = """
-        [true, false, true, false, true, false]
-        """.data(using: String.Encoding.utf8) ?? Data()
-        let decoder = NIOJSONDecoder()
-        do {
-            guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else {
-                XCTAssertNil(nil)
-                return
+        if true {
+            let data: Data = """
+            [true, false, null]
+            """.data(using: String.Encoding.utf8) ?? Data()
+            let decoder = NIOJSONDecoder()
+            do {
+                guard let models: [Bool?] = try decoder.decode(type: [Bool?].self, from: data) else {
+                    XCTAssertNil(nil)
+                    return
+                }
+                XCTAssertEqual(models[0], true)
+                XCTAssertEqual(models[1], false)
+                XCTAssertEqual(models[2], nil)
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
             }
-            XCTAssertEqual(models[0], true)
-            XCTAssertEqual(models[1], false)
-            XCTAssertEqual(models[2], true)
-            XCTAssertEqual(models[3], false)
-            XCTAssertEqual(models[4], true)
-            XCTAssertEqual(models[5], false)
-        } catch {
-            XCTAssertNil(error, error.localizedDescription)
+        }
+    }
+
+    func testHandleBoolToBool() {
+        if true {
+            struct Adapter: TypeConvertible {
+                func toBool(key: CodingKey, value: NSNull) -> Bool {
+                    return true
+                }
+            }
+            let data: Data = """
+            [true, false, null]
+            """.data(using: String.Encoding.utf8) ?? Data()
+            let decoder = NIOJSONDecoder()
+            decoder.convertTypeStrategy = .useCustom(Adapter())
+            decoder.optionalTypeStrategy = .useTypeConvertable
+            do {
+                guard let models: [Bool?] = try decoder.decode(type: [Bool?].self, from: data) else {
+                    XCTAssertNil(nil)
+                    return
+                }
+                XCTAssertEqual(models[0], true)
+                XCTAssertEqual(models[1], false)
+                XCTAssertEqual(models[2], nil)
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
+            }
         }
     }
 
@@ -55,11 +81,11 @@ class NIOCodableTests: XCTestCase {
     /// 默认处理 数字映射 1为 true 非1为false
     func testNumberToBool() {
         let data: Data = """
-        [0, 1, 2, 3, 4.5, 5.9, 100, 150]
+        [0, 1, 2, 3, 4.5, 5.9, 100, 150, null]
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
         do {
-            guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else {
+            guard let models: [Bool?] = try decoder.decode(type: [Bool?].self, from: data) else {
                 XCTAssertNil(nil)
                 return
             }
@@ -69,6 +95,9 @@ class NIOCodableTests: XCTestCase {
             XCTAssertEqual(models[3], false)
             XCTAssertEqual(models[4], false)
             XCTAssertEqual(models[5], false)
+            XCTAssertEqual(models[6], false)
+            XCTAssertEqual(models[7], false)
+            XCTAssertEqual(models[8], nil)
         } catch {
             XCTAssertNil(error, error.localizedDescription)
         }
@@ -355,7 +384,7 @@ class NIOCodableTests: XCTestCase {
             }
         }
         let data: Data = """
-        [true, false]
+        [true, false, 0, 1, 2]
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder = NIOJSONDecoder()
         decoder.convertTypeStrategy = .useCustom(Adapter())
@@ -366,6 +395,9 @@ class NIOCodableTests: XCTestCase {
             }
             XCTAssertEqual(models[0], 0)
             XCTAssertEqual(models[1], 1)
+            XCTAssertEqual(models[2], 0)
+            XCTAssertEqual(models[3], 1)
+            XCTAssertEqual(models[4], 2)
         } catch {
             XCTAssertNil(error, error.localizedDescription)
         }
@@ -415,7 +447,46 @@ class NIOCodableTests: XCTestCase {
     }
 
     func testBoolToInt16() {
+        let data: Data = """
+        [true, false]
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder = NIOJSONDecoder()
+        do {
+            guard let models: [Int16] = try decoder.decode(type: [Int16].self, from: data) else {
+                XCTAssertNil(nil)
+                return
+            }
+            XCTAssertEqual(models[0], 1)
+            XCTAssertEqual(models[1], 0)
+        } catch {
+            XCTAssertNil(error, error.localizedDescription)
+        }
+    }
 
+    func testHandleBoolToInt16() {
+        struct Adapter: TypeConvertible {
+            func toInt16(key: CodingKey, value: Bool) -> Int {
+                if value {
+                    return 0
+                }
+                return 1
+            }
+        }
+        let data: Data = """
+        [true, false]
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder = NIOJSONDecoder()
+        decoder.convertTypeStrategy = .useCustom(Adapter())
+        do {
+            guard let models: [Int16] = try decoder.decode(type: [Int16].self, from: data) else {
+                XCTAssertNil(nil)
+                return
+            }
+            XCTAssertEqual(models[0], 0)
+            XCTAssertEqual(models[1], 1)
+        } catch {
+            XCTAssertNil(error, error.localizedDescription)
+        }
     }
 
     func testBoolToInt32() {

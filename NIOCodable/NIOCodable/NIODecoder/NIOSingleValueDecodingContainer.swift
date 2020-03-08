@@ -13,7 +13,12 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
     }
     
     func decodeNil() -> Bool {
-        return false
+        switch self.decoder.wrapper?.optionalTypeStrategy {
+        case .useDefaultable, .none:
+            return self.decoder.storage.currentValue is NSNull ? true : false
+        case .useTypeConvertable:
+            return false
+        }
     }
     // MARK: - Bool
     func decode(_ type: Bool.Type) throws -> Bool {
