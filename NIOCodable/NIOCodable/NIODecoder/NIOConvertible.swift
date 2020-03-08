@@ -1651,7 +1651,7 @@ extension TypeConvertible {
         return 0
     }
 
-    // MARK: Dictionary -> Int32
+    // MARK: Array -> Int32
     func toInt32(key: CodingKey, value: [Any]) -> Int32 {
         return 0
     }
@@ -1994,6 +1994,7 @@ extension TypeConvertible {
         }
     }
 
+    // MARK: Dictionary -> UInt
     func toUInt(key: CodingKey, value: [AnyHashable: Any]) -> UInt {
         return 0
     }
@@ -2002,6 +2003,7 @@ extension TypeConvertible {
         return 0
     }
 
+    // MARK: Array -> UInt
     func toUInt(key: CodingKey, value: [Any]) -> UInt {
         return 0
     }
@@ -2013,6 +2015,7 @@ extension TypeConvertible {
 
 // MARK: - UInt8 -
 extension TypeConvertible {
+    // MARK: NSNull -> UInt8
     func toUInt8(key: CodingKey, value: NSNull) -> UInt8 {
         return 0
     }
@@ -2357,6 +2360,7 @@ extension TypeConvertible {
         }
     }
 
+    // MARK: Dictionary -> UInt16
     func toUInt16(key: CodingKey, value: [AnyHashable: Any]) -> UInt16 {
         return 0
     }
@@ -2365,6 +2369,7 @@ extension TypeConvertible {
         return 0
     }
 
+    // MARK: Array -> UInt16
     func toUInt16(key: CodingKey, value: [Any]) -> UInt16 {
         return 0
     }
@@ -2539,6 +2544,7 @@ extension TypeConvertible {
         }
     }
 
+    // MARK: Dictionary -> UInt32
     func toUInt32(key: CodingKey, value: [AnyHashable: Any]) -> UInt32 {
         return 0
     }
@@ -2547,6 +2553,7 @@ extension TypeConvertible {
         return 0
     }
 
+    // MARK: Array -> UInt32
     func toUInt32(key: CodingKey, value: [Any]) -> UInt32 {
         return 0
     }
@@ -2719,13 +2726,16 @@ extension TypeConvertible {
         }
     }
 
+    // MARK: Dictionary -> UInt64
     func toUInt64(key: CodingKey, value: [AnyHashable: Any]) -> UInt64 {
         return 0
     }
+
     func toUInt64(key: CodingKey, value: [AnyHashable: Any]) -> UInt64? {
         return 0
     }
 
+    // MARK: Array -> UInt64
     func toUInt64(key: CodingKey, value: [Any]) -> UInt64 {
         return 0
     }
@@ -2885,6 +2895,7 @@ extension TypeConvertible {
         }
     }
 
+    // MARK: Dictionary -> Float
     func toFloat(key: CodingKey, value: [AnyHashable: Any]) ->  Float {
         return 0.0
     }
@@ -2892,6 +2903,7 @@ extension TypeConvertible {
         return 0.0
     }
 
+    // MARK: Array -> Float
     func toFloat(key: CodingKey, value: [Any]) ->  Float {
         return 0.0
     }
@@ -3025,7 +3037,7 @@ extension TypeConvertible {
           return Double(value)
     }
 
-    // MARK: Float -> Double
+    // MARK: Double -> Double
     func toDouble(key: CodingKey, value: Double) -> Double {
           return value
     }
@@ -3051,6 +3063,7 @@ extension TypeConvertible {
         }
     }
 
+    // MARK: Dictionary -> Double
     func toDouble(key: CodingKey, value: [AnyHashable: Any]) ->  Double {
         return 0.0
     }
@@ -3058,6 +3071,7 @@ extension TypeConvertible {
         return 0.0
     }
 
+    // MARK: Array -> Double
     func toDouble(key: CodingKey, value: [Any]) ->  Double {
         return 0.0
     }
@@ -3069,7 +3083,7 @@ extension TypeConvertible {
 
 // MARK: - String -
 extension TypeConvertible {
-    // MARK: Bool -> String
+    // MARK: NSNull -> String
     func toString(key: CodingKey, value: NSNull) -> String {
         return ""
     }
@@ -3077,6 +3091,7 @@ extension TypeConvertible {
         return ""
     }
 
+    // MARK: Bool -> String
     func toString(key: CodingKey, value: Bool) -> String {
         switch value {
         case true: return "true"
@@ -3208,6 +3223,7 @@ extension TypeConvertible {
         return value
     }
 
+    // MARK: Dictionary -> String
     func toString(key: CodingKey, value: [AnyHashable: Any]) -> String {
         return ""
     }
@@ -3216,6 +3232,7 @@ extension TypeConvertible {
         return ""
     }
 
+    // MARK: Array -> String
     func toString(key: CodingKey, value: [Any]) -> String {
         return ""
     }
