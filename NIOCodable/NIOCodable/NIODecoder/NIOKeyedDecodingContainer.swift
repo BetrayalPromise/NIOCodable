@@ -460,7 +460,8 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.string ?? BoxBaseValue().string
-            default:
+                return String()
+            case .useExecption, .useNull, .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }

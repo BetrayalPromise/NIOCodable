@@ -1858,55 +1858,55 @@ extension TypeConvertible {
 
     // MARK: Int -> UInt
     func toUInt(key: CodingKey, value: Int) throws -> UInt {
-        if value < 0 { throw DecodingError.typeMismatch(UInt.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt cant't transform to negative")) }
         return UInt(value)
     }
     
     func toUInt(key: CodingKey, value: Int) throws -> UInt? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt cant't transform to negative")) }
         return UInt(value)
     }
 
     // MARK: Int8 -> UInt
     func toUInt(key: CodingKey, value: Int8) throws -> UInt {
-        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt cant't transform to negative")) }
         return UInt(value)
     }
     
     func toUInt(key: CodingKey, value: Int8) throws -> UInt? {
-        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt cant't transform to negative")) }
         return UInt(value)
     }
 
     // MARK: Int16 -> UInt
     func toUInt(key: CodingKey, value: Int16) throws -> UInt {
-        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt cant't transform to negative")) }
         return UInt(value)
     }
     
     func toUInt(key: CodingKey, value: Int16) throws -> UInt? {
-        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt cant't transform to negative")) }
         return UInt(value)
     }
 
     // MARK: Int32 -> UInt
     func toUInt(key: CodingKey, value: Int32) throws -> UInt {
-        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt cant't transform to negative")) }
         return UInt(value)
     }
     func toUInt(key: CodingKey, value: Int32) throws -> UInt? {
-        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt cant't transform to negative")) }
         return UInt(value)
     }
 
     // MARK: Int64 -> UInt
     func toUInt(key: CodingKey, value: Int64) throws -> UInt {
-        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt cant't transform to negative")) }
         return UInt(value)
     }
     
     func toUInt(key: CodingKey, value: Int64) throws -> UInt? {
-        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt cant't transform to negative")) }
         return UInt(value)
     }
 
@@ -1957,23 +1957,23 @@ extension TypeConvertible {
 
     // MARK: Float -> UInt
     func toUInt(key: CodingKey, value: Float) throws -> UInt {
-        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt cant't transform to negative")) }
         return UInt(value)
     }
     
     func toUInt(key: CodingKey, value: Float) throws -> UInt? {
-        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt cant't transform to negative")) }
         return UInt(value)
     }
 
     // MARK: Double -> UInt
     func toUInt(key: CodingKey, value: Double) throws -> UInt {
-        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt cant't transform to negative")) }
         return UInt(value)
     }
     
     func toUInt(key: CodingKey, value: Double) throws -> UInt? {
-        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(Int8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt cant't transform to negative")) }
         return UInt(value)
     }
 
@@ -2040,55 +2040,55 @@ extension TypeConvertible {
 
     // MARK: Int -> UInt8
     func toUInt8(key: CodingKey, value: Int) throws -> UInt8 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8 cant't transform to negative")) }
         return UInt8(value)
     }
 
     func toUInt8(key: CodingKey, value: Int) throws -> UInt8? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8 cant't transform to negative")) }
         return UInt8(value)
     }
 
     // MARK: Int8 -> UInt8
     func toUInt8(key: CodingKey, value: Int8) throws -> UInt8 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8 cant't transform to negative")) }
         return UInt8(value)
     }
 
     func toUInt8(key: CodingKey, value: Int8) throws -> UInt8? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8 cant't transform to negative")) }
         return UInt8(value)
     }
 
     // MARK: Int16 -> UInt8
     func toUInt8(key: CodingKey, value: Int16) throws -> UInt8 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8 cant't transform to negative")) }
         return UInt8(value)
     }
 
     func toUInt8(key: CodingKey, value: Int16) throws -> UInt8? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8 cant't transform to negative")) }
         return UInt8(value)
     }
 
     // MARK: Int32 -> UInt8
     func toUInt8(key: CodingKey, value: Int32) throws -> UInt8 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8 cant't transform to negative")) }
         return UInt8(value)
     }
 
     func toUInt8(key: CodingKey, value: Int32) throws -> UInt8? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8 cant't transform to negative")) }
         return UInt8(value)
     }
     // MARK: Int64 -> UInt8
     func toUInt8(key: CodingKey, value: Int64) throws -> UInt8 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8 cant't transform to negative")) }
         return UInt8(value)
     }
 
     func toUInt8(key: CodingKey, value: Int64) throws -> UInt8? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8 cant't transform to negative")) }
         return UInt8(value)
     }
 
@@ -2139,23 +2139,23 @@ extension TypeConvertible {
 
     // MARK: Float -> UInt8
     func toUInt8(key: CodingKey, value: Float) throws -> UInt8 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8 cant't transform to negative")) }
         return UInt8(value)
     }
 
     func toUInt8(key: CodingKey, value: Float) throws -> UInt8? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8 cant't transform to negative")) }
         return UInt8(value)
     }
 
     // MARK: Double -> UInt8
     func toUInt8(key: CodingKey, value: Double) throws -> UInt8 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8 cant't transform to negative")) }
         return UInt8(value)
     }
 
     func toUInt8(key: CodingKey, value: Double) throws -> UInt8? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt8 cant't transform to negative")) }
         return UInt8(value)
     }
 
@@ -2223,56 +2223,56 @@ extension TypeConvertible {
 
     // MARK: Int -> UInt16
     func toUInt16(key: CodingKey, value: Int) throws -> UInt16 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16 cant't transform to negative")) }
         return UInt16(value)
     }
 
     func toUInt16(key: CodingKey, value: Int) throws -> UInt16? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16 cant't transform to negative")) }
         return UInt16(value)
     }
 
     // MARK: Int8 -> UInt16
     func toUInt16(key: CodingKey, value: Int8) throws -> UInt16 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16 cant't transform to negative")) }
         return UInt16(value)
     }
 
     func toUInt16(key: CodingKey, value: Int8) throws -> UInt16? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16 cant't transform to negative")) }
         return UInt16(value)
     }
 
     // MARK: Int16 -> UInt16
     func toUInt16(key: CodingKey, value: Int16) throws -> UInt16 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16 cant't transform to negative")) }
         return UInt16(value)
     }
 
     func toUInt16(key: CodingKey, value: Int16) throws -> UInt16? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16 cant't transform to negative")) }
         return UInt16(value)
     }
 
     // MARK: Int32 -> UInt16
     func toUInt16(key: CodingKey, value: Int32) throws -> UInt16 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16 cant't transform to negative")) }
         return UInt16(value)
     }
 
     func toUInt16(key: CodingKey, value: Int32) throws -> UInt16? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16 cant't transform to negative")) }
         return UInt16(value)
     }
 
     // MARK: Int64 -> UInt16
     func toUInt16(key: CodingKey, value: Int64) throws -> UInt16 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16 cant't transform to negative")) }
         return UInt16(value)
     }
 
     func toUInt16(key: CodingKey, value: Int64) throws -> UInt16? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16 cant't transform to negative")) }
         return UInt16(value)
     }
 
@@ -2323,23 +2323,23 @@ extension TypeConvertible {
 
     // MARK: Float -> UInt16
     func toUInt16(key: CodingKey, value: Float) throws -> UInt16 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16 cant't transform to negative")) }
         return UInt16(value)
     }
 
     func toUInt16(key: CodingKey, value: Float) throws -> UInt16? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16 cant't transform to negative")) }
         return UInt16(value)
     }
 
 // MARK: Double -> UInt16
     func toUInt16(key: CodingKey, value: Double) throws -> UInt16 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16 cant't transform to negative")) }
         return UInt16(value)
     }
 
     func toUInt16(key: CodingKey, value: Double) throws -> UInt16? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt16 cant't transform to negative")) }
         return UInt16(value)
     }
 
@@ -2407,56 +2407,56 @@ extension TypeConvertible {
 
     // MARK: Int -> UInt32
     func toUInt32(key: CodingKey, value: Int) throws -> UInt32 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32 cant't transform to negative")) }
         return UInt32(value)
     }
 
     func toUInt32(key: CodingKey, value: Int) throws -> UInt32? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32 cant't transform to negative")) }
         return UInt32(value)
     }
 
     // MARK: Int8 -> UInt32
     func toUInt32(key: CodingKey, value: Int8) throws -> UInt32 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32 cant't transform to negative")) }
         return UInt32(value)
     }
 
     func toUInt32(key: CodingKey, value: Int8) throws -> UInt32? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32 cant't transform to negative")) }
         return UInt32(value)
     }
 
     // MARK: Int16 -> UInt32
     func toUInt32(key: CodingKey, value: Int16) throws -> UInt32 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32 cant't transform to negative")) }
         return UInt32(value)
     }
 
     func toUInt32(key: CodingKey, value: Int16) throws -> UInt32? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32 cant't transform to negative")) }
         return UInt32(value)
     }
 
     // MARK: Int32 -> UInt32
     func toUInt32(key: CodingKey, value: Int32) throws -> UInt32 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32 cant't transform to negative")) }
         return UInt32(value)
     }
 
     func toUInt32(key: CodingKey, value: Int32) throws -> UInt32? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32 cant't transform to negative")) }
         return UInt32(value)
     }
 
     // MARK: Int64 -> UInt32
     func toUInt32(key: CodingKey, value: Int64) throws -> UInt32 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32 cant't transform to negative")) }
         return UInt32(value)
     }
 
     func toUInt32(key: CodingKey, value: Int64) throws -> UInt32? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32 cant't transform to negative")) }
         return UInt32(value)
     }
 
@@ -2507,23 +2507,23 @@ extension TypeConvertible {
 
     // MARK: Float -> UInt32
     func toUInt32(key: CodingKey, value: Float) throws -> UInt32 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32 cant't transform to negative")) }
         return UInt32(value)
     }
 
     func toUInt32(key: CodingKey, value: Float) throws -> UInt32? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32 cant't transform to negative")) }
         return UInt32(value)
     }
 
     // MARK: Double -> UInt32
     func toUInt32(key: CodingKey, value: Double) throws -> UInt32 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32 cant't transform to negative")) }
         return UInt32(value)
     }
 
     func toUInt32(key: CodingKey, value: Double) throws -> UInt32? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt32 cant't transform to negative")) }
         return UInt32(value)
     }
 
@@ -2590,55 +2590,55 @@ extension TypeConvertible {
 
     // MARK: Int -> UInt64
     func toUInt64(key: CodingKey, value: Int) throws -> UInt64 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64 cant't transform to negative")) }
         return UInt64(value)
     }
 
     func toUInt64(key: CodingKey, value: Int) throws -> UInt64? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64 cant't transform to negative")) }
         return UInt64(value)
     }
 
     // MARK: Int8 -> UInt64
     func toUInt64(key: CodingKey, value: Int8) throws -> UInt64 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64 cant't transform to negative")) }
         return UInt64(value)
     }
 
     func toUInt64(key: CodingKey, value: Int8) throws -> UInt64? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64 cant't transform to negative")) }
         return UInt64(value)
     }
 
 // MARK: Int16 -> UInt64
     func toUInt64(key: CodingKey, value: Int16) throws -> UInt64 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64 cant't transform to negative")) }
         return UInt64(value)
     }
 
     func toUInt64(key: CodingKey, value: Int16) throws -> UInt64? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64 cant't transform to negative")) }
         return UInt64(value)
     }
 
     // MARK: Int32 -> UInt64
     func toUInt64(key: CodingKey, value: Int32) throws -> UInt64 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64 cant't transform to negative")) }
         return UInt64(value)
     }
 
     func toUInt64(key: CodingKey, value: Int32) throws -> UInt64? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64 cant't transform to negative")) }
         return UInt64(value)
     }
     // MARK: Int64 -> UInt64
     func toUInt64(key: CodingKey, value: Int64) throws -> UInt64 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64 cant't transform to negative")) }
         return UInt64(value)
     }
 
     func toUInt64(key: CodingKey, value: Int64) throws -> UInt64? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64 cant't transform to negative")) }
         return UInt64(value)
     }
 
@@ -2689,23 +2689,23 @@ extension TypeConvertible {
 
     // MARK: Float -> UInt64
     func toUInt64(key: CodingKey, value: Float) throws -> UInt64 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64 cant't transform to negative")) }
         return UInt64(value)
     }
 
     func toUInt64(key: CodingKey, value: Float) throws -> UInt64? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64 cant't transform to negative")) }
         return UInt64(value)
     }
 
     // MARK: Double -> UInt64
     func toUInt64(key: CodingKey, value: Double) throws -> UInt64 {
-        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64 cant't transform to negative")) }
         return UInt64(value)
     }
 
     func toUInt64(key: CodingKey, value: Double) throws -> UInt64? {
-        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64不能容纳负数")) }
+        if value < 0 { throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context.init(codingPath: [key], debugDescription: "UInt64 cant't transform to negative")) }
         return UInt64(value)
     }
 
@@ -3264,19 +3264,29 @@ extension NIOSingleValueDecodingScopeExecptionConvertible {
 #endif
 
 // MARK: - 处理单值去值异常问题
-/// 针对单值取值异常处理
-public protocol SingleValueDecodingScopeControllable {
+/// 单值转换处理
+public protocol MappingControllable {
     func scope(key: CodingKey) -> Set<AnyHashable>
     func execption(key: CodingKey, source: AnyHashable) -> AnyHashable
 }
 
 // MARK: - 处理模型与数据结构不匹配问题
 /// 模型解析失败时 使用的构造器 在可能解析失败的模型中实现该协议
-public protocol DefaultValueControllable {
+public protocol Initalizable {
     init(by key: CodingKey, source: Any)
 }
 
 /// 模型解析失败时 用以防御处理的 自定义结构中(enum, struc, class)中实现该协议
-public protocol HandleTypeDefaultValueControllable {
-    func handle(key: CodingKey, source: Any) -> DefaultValueControllable
+public protocol DefaultValueControllable {
+    func handle(key: CodingKey, source: Any) -> Initalizable
 }
+
+//extension String: Initalizable, DefaultValueControllable {
+//    public init(by key: CodingKey, source: Any) {
+//        self.init()
+//    }
+//
+//    public func handle(key: CodingKey, source: Any) -> Initalizable {
+//        return Self.init(by: key, source: source)
+//    }
+//}

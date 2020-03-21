@@ -11,14 +11,14 @@ public final class NIOJSONDecoder {
     public var convertTypeStrategy: NIOJSONDecoder.ConvertTypeStrategy = .useDefaultable
     /// 容器使用策略
     public var containerStrategy: NIOJSONDecoder.OptionalContainerStrategy = .useEmpty
-    /// 单值范围异常策略不支持可选类型
-    public var scopeExecptionStrategy: NIOJSONDecoder.ScopeExecptionStrategy = .useDefaultable
+    /// 单值映射策略
+    public var mappingStrategy: NIOJSONDecoder.MappingStrategy = .useDefaultable
     /// KeyNotFound策略
     public var keyNotFoundStrategy: NIOJSONDecoder.KeyNotFoundStrategy = .useExecption
     /// ValueNotFound策略
     public var valueNotFoundStrategy: NIOJSONDecoder.ValueNotFoundStrategy = .useExecption
 
-    /// codable内建类型(Bool, Int, Int8, Int16, Int32, Int64, UInt, UInt8, UInt16, UInt32, UInt64, Float, Double, String)默认值自定义
+    /// 内建类型(Bool, Int, Int8, Int16, Int32, Int64, UInt, UInt8, UInt16, UInt32, UInt64, Float, Double, String)默认值自定义
     public var boxBaseValue: BoxBaseValue = BoxBaseValue()
     
     public func decode<T>(type: T.Type, from data: Data) throws -> T? where T: Decodable {
@@ -38,9 +38,10 @@ public final class NIOJSONDecoder {
 
 /// 配置策略
 public extension NIOJSONDecoder {
-    enum ScopeExecptionStrategy {
+    /// 处理类型转枚举值
+    enum MappingStrategy {
         case useDefaultable
-        case useCustom(SingleValueDecodingScopeControllable)
+        case useCustom(MappingControllable)
     }
 
     /// 类型不一致策略
@@ -64,7 +65,7 @@ public extension NIOJSONDecoder {
 
     enum ValueNotFoundStrategy {
         case useExecption
-        case useCustom(HandleTypeDefaultValueControllable)
+        case useCustom(DefaultValueControllable)
         case useDefaultable
         case useNull
     }

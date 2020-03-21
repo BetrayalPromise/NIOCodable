@@ -1596,11 +1596,7 @@ class NIOCodableTests: XCTestCase {
     }
     // 测试范围不一致
     func testCustom1() {
-        struct Human: Codable {
-            var gender: Gender?
-        }
-
-        enum Gender: Int, Codable, SingleValueDecodingScopeControllable {
+        struct Adapter: MappingControllable {
             func scope(key: CodingKey) -> Set<AnyHashable> {
                 return [0, 1, 2]
             }
@@ -1608,7 +1604,12 @@ class NIOCodableTests: XCTestCase {
             func execption(key: CodingKey, source: AnyHashable) -> AnyHashable {
                 return 2
             }
-
+        }
+        
+        struct Human: Codable {
+            var gender: Gender?
+        }
+        enum Gender: Int, Codable {
             case male = 0
             case female = 1
             case unknow = 2
@@ -1624,7 +1625,7 @@ class NIOCodableTests: XCTestCase {
          {"gender": 4}
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder: NIOJSONDecoder = NIOJSONDecoder()
-        decoder.scopeExecptionStrategy = .useCustom(Gender.unknow)
+        decoder.mappingStrategy = .useCustom(Adapter())
         do {
             guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
             XCTAssert(models.gender == Gender.unknow)
@@ -1656,7 +1657,7 @@ class NIOCodableTests: XCTestCase {
         }
 
         let data: Data = """
-         {"genderj": 3.5}
+         {"gender": 3.5}
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder: NIOJSONDecoder = NIOJSONDecoder()
         decoder.convertTypeStrategy = .useCustom(Gender.male)
@@ -1823,6 +1824,29 @@ class NIOCodableTests: XCTestCase {
         do {
             guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
             XCTAssert(models.gender.rawValue == "male")
+        } catch {
+            XCTAssertNil(error, error.localizedDescription)
+        }
+    }
+
+    func testKeyNoFound2() {
+        struct Root: Codable {
+            let lastName: String
+            let firstName: String
+        }
+        let data: Data = """
+         {
+             "firstNameM": "John",
+             "lastNameM": "Smith"
+         }
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder: NIOJSONDecoder = NIOJSONDecoder()
+        do {
+            guard let model: Root = try decoder.decode(type: Root.self, from: data) else {
+                XCTAssertNil(nil)
+                return
+            }
+            XCTAssertEqual(model.firstName, "male")
         } catch {
             XCTAssertNil(error, error.localizedDescription)
         }

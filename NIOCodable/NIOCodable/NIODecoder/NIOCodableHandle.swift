@@ -2,13 +2,13 @@ import Foundation
 
 struct NIOCodableHandle {
     var convertTypeStrategy: NIOJSONDecoder.ConvertTypeStrategy = .useDefaultable
-    var scopeExecptionStrategy: NIOJSONDecoder.ScopeExecptionStrategy = .useDefaultable
+    var mappingStrategy: NIOJSONDecoder.MappingStrategy = .useDefaultable
     var decoder: NIODecoder
 
     init(decoder: NIODecoder) {
         self.decoder = decoder
         self.convertTypeStrategy = decoder.wrapper?.convertTypeStrategy ?? .useDefaultable
-        self.scopeExecptionStrategy = decoder.wrapper?.scopeExecptionStrategy ?? .useDefaultable
+        self.mappingStrategy = decoder.wrapper?.mappingStrategy ?? .useDefaultable
     }
 }
 
@@ -272,7 +272,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Int = value as? Int {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -399,7 +399,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Int = value as? Int {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -529,7 +529,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Int8 = value as? Int8 {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -652,7 +652,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Int8 = value as? Int8 {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -788,7 +788,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toInt16(key: key, value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -908,7 +908,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toInt16(key: key, value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -1021,7 +1021,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Int32 = value as? Int32 {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -1144,7 +1144,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Int32 = value as? Int32 {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -1270,7 +1270,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Int64 = value as? Int64 {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -1390,7 +1390,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Int64 = value as? Int64 {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -1513,7 +1513,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt = value as? UInt {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -1633,7 +1633,7 @@ extension NIOCodableHandle {
                    }
                } else {
                    if let `value`: UInt = value as? UInt {
-                       switch self.scopeExecptionStrategy {
+                       switch self.mappingStrategy {
                        case .useCustom(let delegate):
                            let scope: Set<AnyHashable> = delegate.scope(key: key)
                            if scope.contains(value) {
@@ -1756,7 +1756,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt8 = value as? UInt8 {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -1876,7 +1876,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt8 = value as? UInt8 {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -1999,7 +1999,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt16 = value as? UInt16 {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -2119,7 +2119,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt16 = value as? UInt16 {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -2242,7 +2242,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt32 = value as? UInt32 {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -2362,7 +2362,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt32 = value as? UInt32 {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -2485,7 +2485,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt64 = value as? UInt64 {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -2605,7 +2605,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt64 = value as? UInt64 {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -2728,7 +2728,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Float = value as? Float {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -2848,7 +2848,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Float = value as? Float {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -2971,7 +2971,7 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Double = value as? Double {
-                    switch self.scopeExecptionStrategy {
+                    switch self.mappingStrategy {
                     case .useCustom(let delegate):
                         let scope: Set<AnyHashable> = delegate.scope(key: key)
                         if scope.contains(value) {
@@ -3091,7 +3091,7 @@ extension NIOCodableHandle {
                    }
                } else {
                    if let `value`: Double = value as? Double {
-                       switch self.scopeExecptionStrategy {
+                       switch self.mappingStrategy {
                        case .useCustom(let delegate):
                            let scope: Set<AnyHashable> = delegate.scope(key: key)
                            if scope.contains(value) {
@@ -3279,7 +3279,7 @@ extension NIOCodableHandle {
                 }
             }
         } else if let `value`: String = value as? String {
-            switch self.scopeExecptionStrategy {
+            switch self.mappingStrategy {
             case .useCustom(let delegate):
                 let scope: Set<AnyHashable> = delegate.scope(key: key)
                 if scope.contains(value) {
@@ -3399,7 +3399,7 @@ extension NIOCodableHandle {
                 }
             }
         } else if let `value`: String = value as? String {
-            switch self.scopeExecptionStrategy {
+            switch self.mappingStrategy {
             case .useCustom(let delegate):
                 let scope: Set<AnyHashable> = delegate.scope(key: key)
                 if scope.contains(value) {
