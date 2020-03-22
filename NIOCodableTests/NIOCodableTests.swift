@@ -1650,9 +1650,9 @@ class NIOCodableTests: XCTestCase {
                 case unknow
             }
 
-            func toInt(key: CodingKey, value: Float) -> Int {
+            func toInt(key: CodingKey, value: Double) -> Int {
                 print(value)
-                return 3
+                return 2
             }
         }
 
@@ -1841,12 +1841,13 @@ class NIOCodableTests: XCTestCase {
          }
         """.data(using: String.Encoding.utf8) ?? Data()
         let decoder: NIOJSONDecoder = NIOJSONDecoder()
+        decoder.keyNotFoundStrategy = .useDefaultable
         do {
             guard let model: Root = try decoder.decode(type: Root.self, from: data) else {
                 XCTAssertNil(nil)
                 return
             }
-            XCTAssertEqual(model.firstName, "male")
+            XCTAssertEqual(model.firstName, "")
         } catch {
             XCTAssertNil(error, error.localizedDescription)
         }

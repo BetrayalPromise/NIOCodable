@@ -49,7 +49,6 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
-        print(self.checkoutTree(value: entry))
         return try self.handle.decode(value: &entry, type: Bool.self, forKey: key)
     }
     
@@ -460,7 +459,6 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.string ?? BoxBaseValue().string
-                return String()
             case .useExecption, .useNull, .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
@@ -562,17 +560,5 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
     
     func superDecoder(forKey key: K) throws -> Decoder {
         return self.decoder
-    }
-}
-
-extension NIOKeyedDecodingContainer {
-    func checkoutTree(value: Any) -> Bool {
-        if (value as? [AnyHashable: Any]) != nil {
-            return false
-        }
-        if (value as? [Any]) != nil {
-            return false
-        }
-        return true
     }
 }
