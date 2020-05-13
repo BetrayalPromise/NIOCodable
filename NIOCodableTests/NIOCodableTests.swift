@@ -1422,180 +1422,184 @@ class NIOCodableTests: XCTestCase {
         }
     }
     
-    func testDictionary0() {
-        struct Example: Codable {
-            var name: String
-        }
-        let data: Data = """
-        {}
-        """.data(using: String.Encoding.utf8) ?? Data()
-        let decoder = NIOJSONDecoder()
-        decoder.containerStrategy = .useNull
-        do {
-            let model: Example? = try decoder.decode(type: Example.self, from: data)
-            XCTAssert(model == nil)
-        } catch {
-            XCTAssertNil(error, error.localizedDescription)
-        }
-    }
-
-    func testDictionary1() {
-        let data: Data = """
-        {"key": [{"info": "b"}]}
-        """.data(using: String.Encoding.utf8) ?? Data()
-
-        class ESRootClass: Codable {
-            var key: [Key]?
-        }
-
-        class Key: Codable {
-            var info: String?
-        }
-        let decoder = NIOJSONDecoder()
-        decoder.containerStrategy = .useNull
-        do {
-            let model: ESRootClass? = try decoder.decode(type: ESRootClass.self, from: data)
-            XCTAssert(model?.key != nil)
-            XCTAssert(model?.key?[0].info == "b")
-        } catch {
-            XCTAssertNil(error, error.localizedDescription)
-        }
-    }
-
-    func testDictionary2() {
-        let data: Data = """
-        {"key": {"key": {"key": "key"}}}
-        """.data(using: String.Encoding.utf8) ?? Data()
-        let decoder = NIOJSONDecoder()
-        decoder.containerStrategy = .useNull
-
-        class ESRootClass: Codable {
-            var key: Key0?
-            enum CodingKeys: String, CodingKey {
-                case key = "key"
+    func testDictionary() {
+        if true {
+            struct Example: Codable {
+                var name: String
+            }
+            let data: Data = """
+            {}
+            """.data(using: String.Encoding.utf8) ?? Data()
+            let decoder = NIOJSONDecoder()
+            decoder.containerStrategy = .useNull
+            do {
+                let model: Example? = try decoder.decode(type: Example.self, from: data)
+                XCTAssert(model == nil)
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
             }
         }
-        class Key0: Codable {
-            var key: Key1?
+
+        if true {
+            let data: Data = """
+            {"key": [{"info": "b"}]}
+            """.data(using: String.Encoding.utf8) ?? Data()
+
+            class ESRootClass: Codable {
+                var key: [Key]?
+            }
+
+            class Key: Codable {
+                var info: String?
+            }
+            let decoder = NIOJSONDecoder()
+            decoder.containerStrategy = .useNull
+            do {
+                let model: ESRootClass? = try decoder.decode(type: ESRootClass.self, from: data)
+                XCTAssert(model?.key != nil)
+                XCTAssert(model?.key?[0].info == "b")
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
+            }
         }
-        class Key1: Codable {
-            var key: String?
-        }
-        do {
-            let model: ESRootClass? = try decoder.decode(type: ESRootClass.self, from: data)
-            XCTAssert(model?.key?.key?.key == "key")
-        } catch {
-            XCTAssertNil(error, error.localizedDescription)
+
+        if true {
+            let data: Data = """
+            {"key": {"key": {"key": "key"}}}
+            """.data(using: String.Encoding.utf8) ?? Data()
+            let decoder = NIOJSONDecoder()
+            decoder.containerStrategy = .useNull
+
+            class ESRootClass: Codable {
+                var key: Key0?
+                enum CodingKeys: String, CodingKey {
+                    case key = "key"
+                }
+            }
+            class Key0: Codable {
+                var key: Key1?
+            }
+            class Key1: Codable {
+                var key: String?
+            }
+            do {
+                let model: ESRootClass? = try decoder.decode(type: ESRootClass.self, from: data)
+                XCTAssert(model?.key?.key?.key == "key")
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
+            }
         }
     }
     
-    func testArray0() {
-        struct Example: Codable {
-            var name: String
-        }
-        let data: Data = """
-        [{"namef": "2ddf"}, {"namef": null}]
-        """.data(using: String.Encoding.utf8) ?? Data()
-        let decoder = NIOJSONDecoder()
-        do {
-            guard let models: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
-            XCTAssert(models.count == 2)
-        } catch {
-            XCTAssertNil(error, error.localizedDescription)
-        }
-    }
-
-    func testArray1() {
-        struct Example: Codable {
-            var name: Int64
-        }
-        let data: Data = """
-        [
-        ]
-        """.data(using: String.Encoding.utf8) ?? Data()
-        let decoder = NIOJSONDecoder()
-        decoder.containerStrategy = .useEmpty
-        do {
-            let models: [Example]? = try decoder.decode(type: [Example].self, from: data)
-            XCTAssert(models?.count == 0)
-        } catch {
-            XCTAssertNil(error, error.localizedDescription)
-        }
-    }
-
-    func testArray2() {
-        let data: Data = """
-        [
-            true, false
-        ]
-        """.data(using: String.Encoding.utf8) ?? Data()
-        let decoder = NIOJSONDecoder()
-        decoder.containerStrategy = .useNull
-        do {
-            guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else {
-                XCTAssert(false)
-                return
+    func testArray() {
+        if true {
+            struct Example: Codable {
+                var name: String
             }
-            XCTAssert(models.count == 2)
-            XCTAssert(models[0] == true)
-        } catch {
-            XCTAssertNil(error, error.localizedDescription)
-        }
-    }
-
-    func testArray3() {
-        let data: Data = """
-        {
-            "a": [{"b": "c"}]
-        }
-        """.data(using: String.Encoding.utf8) ?? Data()
-
-        class ESRootClass: Codable {
-            var a: [A]?
-        }
-        class A: Codable {
-            var b: String?
-        }
-
-        let decoder = NIOJSONDecoder()
-        decoder.containerStrategy = .useNull
-        do {
-            guard let models: ESRootClass = try decoder.decode(type: ESRootClass.self, from: data) else {
-                XCTAssert(false)
-                return
+            let data: Data = """
+            [{"namef": "2ddf"}, {"namef": null}]
+            """.data(using: String.Encoding.utf8) ?? Data()
+            let decoder = NIOJSONDecoder()
+            do {
+                guard let models: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
+                XCTAssert(models.count == 2)
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
             }
-            XCTAssert(models.a?.count == 1)
-            XCTAssert(models.a?[0].b == "c")
-        } catch {
-            XCTAssertNil(error, error.localizedDescription)
         }
-    }
 
-    func testArray4() {
-        let data: Data = """
-            [[
-            {"name": true}
-            ]]
+        if true {
+            struct Example: Codable {
+                var name: Int64
+            }
+            let data: Data = """
+            [
+            ]
+            """.data(using: String.Encoding.utf8) ?? Data()
+            let decoder = NIOJSONDecoder()
+            decoder.containerStrategy = .useEmpty
+            do {
+                let models: [Example]? = try decoder.decode(type: [Example].self, from: data)
+                XCTAssert(models?.count == 0)
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
+            }
+        }
+
+        if true {
+            let data: Data = """
+            [
+                true, false
+            ]
+            """.data(using: String.Encoding.utf8) ?? Data()
+            let decoder = NIOJSONDecoder()
+            decoder.containerStrategy = .useNull
+            do {
+                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else {
+                    XCTAssert(false)
+                    return
+                }
+                XCTAssert(models.count == 2)
+                XCTAssert(models[0] == true)
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
+            }
+        }
+
+        if true {
+            let data: Data = """
+            {
+                "a": [{"b": "c"}]
+            }
             """.data(using: String.Encoding.utf8) ?? Data()
 
-        class ESRootClass: Codable {
-            var a: [[A]]
-        }
-        class A: Codable {
-            var name: String?
+            class ESRootClass: Codable {
+                var a: [A]?
+            }
+            class A: Codable {
+                var b: String?
+            }
+
+            let decoder = NIOJSONDecoder()
+            decoder.containerStrategy = .useNull
+            do {
+                guard let models: ESRootClass = try decoder.decode(type: ESRootClass.self, from: data) else {
+                    XCTAssert(false)
+                    return
+                }
+                XCTAssert(models.a?.count == 1)
+                XCTAssert(models.a?[0].b == "c")
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
+            }
         }
 
-        let decoder = NIOJSONDecoder()
-        decoder.containerStrategy = .useNull
-        do {
-            guard let models: ESRootClass = try decoder.decode(type: ESRootClass.self, from: data) else {
-                XCTAssert(false)
-                return
+        if true {
+            let data: Data = """
+                [[
+                {"name": true}
+                ]]
+                """.data(using: String.Encoding.utf8) ?? Data()
+
+            class ESRootClass: Codable {
+                var a: [[A]]
             }
-            XCTAssert(models.a.count == 1)
-            XCTAssert(models.a[0][0].name == "true")
-        } catch {
-            XCTAssertNil(error, error.localizedDescription)
+            class A: Codable {
+                var name: String?
+            }
+
+            let decoder = NIOJSONDecoder()
+            decoder.containerStrategy = .useNull
+            do {
+                guard let models: ESRootClass = try decoder.decode(type: ESRootClass.self, from: data) else {
+                    XCTAssert(false)
+                    return
+                }
+                XCTAssert(models.a.count == 1)
+                XCTAssert(models.a[0][0].name == "true")
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
+            }
         }
     }
 
