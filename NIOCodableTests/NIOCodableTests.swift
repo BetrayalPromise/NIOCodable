@@ -1852,4 +1852,29 @@ class NIOCodableTests: XCTestCase {
             XCTAssertNil(error, error.localizedDescription)
         }
     }
+
+    func testToBool() {
+        struct Root: Codable {
+            struct A: Codable {
+                struct B: Codable {
+                    let C: String
+                }
+                let B: [B]
+            }
+            let A: [A]
+        }
+        let data: Data = """
+        {
+            "A": [{"B": [{"C": "D"}]}]
+        }
+        """.data(using: String.Encoding.utf8) ?? Data()
+        let decoder: NIOJSONDecoder = NIOJSONDecoder()
+        do {
+            guard let models: Root = try decoder.decode(type: Root.self, from: data) else { return }
+            print(models)
+
+        } catch {
+            XCTAssertNil(error, error.localizedDescription)
+        }
+    }
 }

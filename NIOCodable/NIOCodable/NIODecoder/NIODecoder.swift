@@ -23,7 +23,7 @@ class NIODecoder: Decoder {
         return KeyedDecodingContainer<Key>(NIOKeyedDecodingContainer(decoder: self, source: dictionary))
     }
     
-    func unkeyedContainer() throws -> UnkeyedDecodingContainer {   
+    func unkeyedContainer() throws -> UnkeyedDecodingContainer {
         guard let array: [Any] = self.storage.currentValue as? [Any] else {
             return NIOUnkeyedDecodingContainer(decoder: self, source: [])
         }

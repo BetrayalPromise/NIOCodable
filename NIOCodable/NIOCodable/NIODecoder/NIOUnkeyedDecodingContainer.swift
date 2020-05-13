@@ -93,13 +93,6 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
         defer { self.decoder.codingPath.removeLast() }
 
         let value: Any = self.source[self.currentIndex]
-        if value is [AnyHashable: Any] {
-            print("Dictionary")
-        } else if value is [Any] {
-            print("Array")
-        } else {
-            print("\(type)")
-        }
 
         guard let model: T = try self.decoder.unbox(value: value, as: type) else {
             switch self.decoder.wrapper?.valueNotFoundStrategy {
