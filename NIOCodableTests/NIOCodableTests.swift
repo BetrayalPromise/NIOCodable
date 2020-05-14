@@ -1642,7 +1642,7 @@ class NIOCodableTests: XCTestCase {
                 }
 
                 func execption(key: CodingKey, source: AnyHashable) -> AnyHashable {
-                    return 2
+                    return 0
                 }
             }
 
@@ -1650,9 +1650,9 @@ class NIOCodableTests: XCTestCase {
                 var gender: Gender?
             }
             enum Gender: Int, Codable {
-                case male = 0
-                case female = 1
-                case unknow = 2
+                case unknow = 0
+                case male = 1
+                case female = 2
 
                 enum CodingKeys: CodingKey {
                     case male
@@ -1680,9 +1680,10 @@ class NIOCodableTests: XCTestCase {
             }
 
             enum Gender: Int, Codable, TypeConvertible {
-                case male = 0
-                case female = 1
-                case unknow = 2
+                case unknow = 0
+                case male = 1
+                case female = 2
+
                 enum CodingKeys: CodingKey {
                     case male
                     case female
@@ -1691,7 +1692,7 @@ class NIOCodableTests: XCTestCase {
 
                 func toInt(key: CodingKey, value: Double) -> Int {
                     print(value)
-                    return 2
+                    return 0
                 }
             }
 
@@ -1700,6 +1701,58 @@ class NIOCodableTests: XCTestCase {
                    """.data(using: String.Encoding.utf8) ?? Data()
             let decoder: NIOJSONDecoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Gender.male)
+            do {
+                guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
+                XCTAssert(models.gender == Gender.unknow)
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
+            }
+        }
+
+        if true {
+            struct Human: Codable {
+                var gender: Gender?
+                var name: Int
+                var age: Int
+            }
+
+            enum Gender: Int, Codable {
+                case unknow = 0
+                case male = 1
+                case female = 2
+
+                enum CodingKeys: CodingKey {
+                    case male
+                    case female
+                    case unknow
+                }
+            }
+
+            let data: Data = """
+                    {"gender": 1,
+                    "name": 3,
+                    "age": 4
+                    }
+            """.data(using: String.Encoding.utf8) ?? Data()
+
+            struct Adapter: MappingControllable, TypeConvertible {
+                func toInt(key: CodingKey, value: Double) -> Int {
+                    print(value)
+                    return 0
+                }
+
+                func scope(key: CodingKey) -> Set<AnyHashable> {
+                    return [0, 1, 2]
+                }
+
+                func execption(key: CodingKey, source: AnyHashable) -> AnyHashable {
+                    return 0
+                }
+            }
+
+            let decoder: NIOJSONDecoder = NIOJSONDecoder()
+            decoder.mappingStrategy = .useCustom(Adapter())
+            decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
                 guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
                 XCTAssert(models.gender == Gender.unknow)
