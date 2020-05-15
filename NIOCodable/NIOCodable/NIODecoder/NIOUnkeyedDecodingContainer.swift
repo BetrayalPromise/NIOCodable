@@ -3,6 +3,9 @@ import Foundation
 /// 针对数组处理
 struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     public var isAtEnd: Bool {
+        if self.currentIndex == self.count {
+            self.decoder.codingPath.removeLast()
+        }
         return self.currentIndex >= self.count ?? 0
     }
     
@@ -89,8 +92,10 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     }
     
     mutating func decode<T>(_ type: T.Type) throws -> T where T : Decodable {
-        self.decoder.codingPath.append(NIOCodableKey(int: self.currentIndex))
-        defer { self.decoder.codingPath.removeLast() }
+//        self.decoder.codingPath.append(NIOCodableKey(int: self.currentIndex))
+//        defer { self.decoder.codingPath.removeLast() }
+
+        self.decoder.codingPath.append(NIOCodableKey(arrayIndex: self.currentIndex))
 
         let value: Any = self.source[self.currentIndex]
 

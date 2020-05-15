@@ -24,6 +24,7 @@ public final class NIOJSONDecoder {
             throw DecodingError.typeMismatch(type, DecodingError.Context(codingPath: [], debugDescription: "非JSON结构"))
         }
         let decoder: NIODecoder = NIODecoder(wrapper: self, source: source)
+        defer { decoder.cleanup() }
         do {
             return try decoder.unbox(value: source, as: type)
         } catch {

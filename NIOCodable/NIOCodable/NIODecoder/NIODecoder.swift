@@ -17,7 +17,6 @@ class NIODecoder: Decoder {
     }
     
     func container<Key>(keyedBy type: Key.Type) throws -> KeyedDecodingContainer<Key> where Key : CodingKey {
-        self.codingPath.append(NIOCodableKey(string: "[:]"))
         guard let dictionary: [AnyHashable: Any] = self.storage.currentValue as? [AnyHashable: Any] else {
             return KeyedDecodingContainer<Key>(NIOKeyedDecodingContainer(decoder: self, source: [:]))
         }
@@ -25,7 +24,6 @@ class NIODecoder: Decoder {
     }
     
     func unkeyedContainer() throws -> UnkeyedDecodingContainer {
-        self.codingPath.append(NIOCodableKey(string: "[]"))
         guard let array: [Any] = self.storage.currentValue as? [Any] else {
             return NIOUnkeyedDecodingContainer(decoder: self, source: [])
         }
@@ -34,6 +32,14 @@ class NIODecoder: Decoder {
     
     func singleValueContainer() throws -> SingleValueDecodingContainer {
         return NIOSingleValueDecodingContainer(decoder: self)
+    }
+}
+
+extension NIODecoder {
+    func cleanup() {
+        self.codingPath.removeAll()
+        self.storage.container.removeAll()
+        self.source = Empty()
     }
 }
 
@@ -78,13 +84,13 @@ extension NIODecoder {
 }
 
 struct OperationData {
-    private(set) var container: [Any] = []
-    
+    var container: [Any] = []
     var count: Int { return self.container.count }
-    
     var currentValue: Any? { return self.container.last }
-    
     mutating func push(_ value: Any) { self.container.append(value) }
-    
     mutating func pop() { if self.container.count > 0 { self.container.removeLast() } }
+}
+
+struct Empty {
+
 }

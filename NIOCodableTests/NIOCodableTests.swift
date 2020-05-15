@@ -31,41 +31,57 @@ class NIOCodableTests: XCTestCase {
     // MARK: - Bool -
     // MARK: Bool -> Bool
     func testBoolToBool() {
-        if true {
-            let data: Data = """
-            [true, false, null]
-            """.data(using: String.Encoding.utf8) ?? Data()
-            let decoder = NIOJSONDecoder()
-            do {
-                guard let models: [Bool?] = try decoder.decode(type: [Bool?].self, from: data) else { return }
-                XCTAssertEqual(models[0], true)
-                XCTAssertEqual(models[1], false)
-                XCTAssertEqual(models[2], nil)
-            } catch {
-                XCTAssertNil(error, error.localizedDescription)
-            }
-        }
+//        if true {
+//            let data: Data = """
+//            [true, false, null]
+//            """.data(using: String.Encoding.utf8) ?? Data()
+//            let decoder = NIOJSONDecoder()
+//            do {
+//                guard let models: [Bool?] = try decoder.decode(type: [Bool?].self, from: data) else { return }
+//                XCTAssertEqual(models[0], true)
+//                XCTAssertEqual(models[1], false)
+//                XCTAssertEqual(models[2], nil)
+//            } catch {
+//                XCTAssertNil(error, error.localizedDescription)
+//            }
+//        }
+//
+//        if true {
+//            struct Adapter: TypeConvertible {
+//                func toBool(key: CodingKey, value: NSNull) -> Bool {
+//                    return true
+//                }
+//            }
+//            let data: Data = """
+//            [true, false, null]
+//            """.data(using: String.Encoding.utf8) ?? Data()
+//            let decoder = NIOJSONDecoder()
+//            decoder.convertTypeStrategy = .useCustom(Adapter())
+//            do {
+//                guard let models: [Bool?] = try decoder.decode(type: [Bool?].self, from: data) else { return }
+//                XCTAssertEqual(models[0], true)
+//                XCTAssertEqual(models[1], false)
+//                XCTAssertEqual(models[2], true)
+//            } catch {
+//                XCTAssertNil(error, error.localizedDescription)
+//            }
+//        }
 
-        if true {
-            struct Adapter: TypeConvertible {
-                func toBool(key: CodingKey, value: NSNull) -> Bool {
-                    return true
-                }
-            }
-            let data: Data = """
-            [true, false, null]
-            """.data(using: String.Encoding.utf8) ?? Data()
-            let decoder = NIOJSONDecoder()
-            decoder.convertTypeStrategy = .useCustom(Adapter())
-            do {
-                guard let models: [Bool?] = try decoder.decode(type: [Bool?].self, from: data) else { return }
-                XCTAssertEqual(models[0], true)
-                XCTAssertEqual(models[1], false)
-                XCTAssertEqual(models[2], true)
-            } catch {
-                XCTAssertNil(error, error.localizedDescription)
-            }
-        }
+//        if true {
+//            struct Root: Codable {
+//                let value: Bool
+//            }
+//            let data: Data = """
+//            [[{"value": true}], [{"value": false}]]
+//            """.data(using: String.Encoding.utf8) ?? Data()
+//            let decoder = NIOJSONDecoder()
+//            do {
+//                guard let models: [[Root]] = try decoder.decode(type: [[Root]].self, from: data) else { return }
+//                print(models)
+//            } catch {
+//                XCTAssertNil(error, error.localizedDescription)
+//            }
+//        }
     }
 
     // MARK: - Number -> Bool
@@ -1842,6 +1858,41 @@ class NIOCodableTests: XCTestCase {
         let decoder: NIOJSONDecoder = NIOJSONDecoder()
         decoder.keyNotFoundStrategy = .useDefaultable
         decoder.valueNotFoundStrategy = .useDefaultable
+        do {
+            guard let model: Root = try decoder.decode(type: Root.self, from: data) else { return }
+            print(model)
+        } catch {
+            XCTAssertNil(error, error.localizedDescription)
+        }
+    }
+
+    func testSame() {
+        struct Root: Codable {
+            struct Info: Codable {
+                let name: String
+            }
+            let info: Info
+            let name: String
+        }
+
+        struct Adapter: TypeConvertible {
+            func toString(key: CodingKey, value: String) -> String {
+                print(key.stringValue)
+
+                return ""
+            }
+        }
+
+        let data: Data = #"""
+            {
+                "name": "ABC",
+                "info": {
+                    "name": "abc"
+                }
+            }
+        """#.data(using: String.Encoding.utf8) ?? Data()
+        let decoder: NIOJSONDecoder = NIOJSONDecoder()
+        decoder.convertTypeStrategy = .useCustom(Adapter())
         do {
             guard let model: Root = try decoder.decode(type: Root.self, from: data) else { return }
             print(model)
