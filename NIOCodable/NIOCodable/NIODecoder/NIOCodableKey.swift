@@ -14,14 +14,19 @@ struct NIOCodableKey: CodingKey {
         self.intValue = intValue
     }
 
-    init(unkeyedIndex: Int) {
-        self.stringValue = "unkeyedIndex \(unkeyedIndex)"
-        self.intValue = unkeyedIndex
+    init(int: Int) {
+        self.stringValue = "unkeyedIndex \(int)"
+        self.intValue = int
     }
 
+    init(string: String) {
+        self.stringValue = string
+    }
+
+    // 处理字典和数组
     var value: Any?
     init(value: Any?) {
         self.value = value
-        self.stringValue = "\(type(of: value))不能匹配Bool类型"
+        self.stringValue = "不能匹配\(type(of: value))类型"
     }
 }

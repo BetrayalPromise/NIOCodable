@@ -11,8 +11,6 @@ public final class NIOJSONDecoder {
     public var convertTypeStrategy: NIOJSONDecoder.ConvertTypeStrategy = .useDefaultable
     /// 容器使用策略
     public var containerStrategy: NIOJSONDecoder.OptionalContainerStrategy = .useEmpty
-    /// 单值映射策略
-    public var mappingStrategy: NIOJSONDecoder.MappingStrategy = .useDefaultable
     /// KeyNotFound策略
     public var keyNotFoundStrategy: NIOJSONDecoder.KeyNotFoundStrategy = .useExecption
     /// ValueNotFound策略

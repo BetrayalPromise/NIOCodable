@@ -89,7 +89,7 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     }
     
     mutating func decode<T>(_ type: T.Type) throws -> T where T : Decodable {
-        self.decoder.codingPath.append(NIOCodableKey(unkeyedIndex: self.currentIndex))
+        self.decoder.codingPath.append(NIOCodableKey(int: self.currentIndex))
         defer { self.decoder.codingPath.removeLast() }
 
         let value: Any = self.source[self.currentIndex]
@@ -97,7 +97,7 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
         guard let model: T = try self.decoder.unbox(value: value, as: type) else {
             switch self.decoder.wrapper?.valueNotFoundStrategy {
             case .useCustom(let delegate):
-                guard let `model`: T = delegate.handle(key: NIOCodableKey(unkeyedIndex: self.currentIndex), source: self.source[self.currentIndex]) as? T else {
+                guard let `model`: T = delegate.handle(key: NIOCodableKey(int: self.currentIndex), source: self.source[self.currentIndex]) as? T else {
                     throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Value Execption"))
                 }
                 self.currentIndex += 1
@@ -107,7 +107,7 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
                     guard let value: [Any] = value as? [Any] else {
                         throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Value Execption"))
                     }
-                    guard let model: T = self.decoder.inner.toBool(key: NIOCodableKey(unkeyedIndex: self.currentIndex), value: value) as? T else {
+                    guard let model: T = self.decoder.inner.toBool(key: NIOCodableKey(int: self.currentIndex), value: value) as? T else {
                         throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Value Execption"))
                     }
                     self.currentIndex += 1
@@ -117,7 +117,7 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
                     guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
                         throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Value Execption"))
                     }
-                    guard let model: T = self.decoder.inner.toBool(key: NIOCodableKey(unkeyedIndex: self.currentIndex), value: value) as? T else {
+                    guard let model: T = self.decoder.inner.toBool(key: NIOCodableKey(int: self.currentIndex), value: value) as? T else {
                         throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Value Execption"))
                     }
                     self.currentIndex += 1

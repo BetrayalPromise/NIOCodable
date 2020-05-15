@@ -2,13 +2,11 @@ import Foundation
 
 struct NIOCodableHandle {
     var convertTypeStrategy: NIOJSONDecoder.ConvertTypeStrategy = .useDefaultable
-    var mappingStrategy: NIOJSONDecoder.MappingStrategy = .useDefaultable
     var decoder: NIODecoder
 
     init(decoder: NIODecoder) {
         self.decoder = decoder
         self.convertTypeStrategy = decoder.wrapper?.convertTypeStrategy ?? .useDefaultable
-        self.mappingStrategy = decoder.wrapper?.mappingStrategy ?? .useDefaultable
     }
 }
 
@@ -272,19 +270,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Int = value as? Int {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? Int ?? 0
-                        }
-                    default:
-                        switch self.convertTypeStrategy {
-                        case .useDefaultable: return self.toInt(key: key, value: value)
-                        case .useCustom(let delegate): return delegate.toInt(key: key, value: value)
-                        }
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toInt(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toInt(key: key, value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
@@ -399,19 +387,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Int = value as? Int {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? Int ?? 0
-                        }
-                    default:
-                        switch self.convertTypeStrategy {
-                        case .useDefaultable: return self.toInt(key: key, value: value)
-                        case .useCustom(let delegate): return delegate.toInt(key: key, value: value)
-                        }
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toInt(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toInt(key: key, value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
@@ -529,15 +507,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Int8 = value as? Int8 {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? Int8 ?? 0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toInt8(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toInt8(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -652,15 +624,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Int8 = value as? Int8 {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? Int8 ?? 0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toInt8(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toInt8(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -788,15 +754,9 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toInt16(key: key, value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? Int16 ?? 0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toInt16(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toInt16(key: key, value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
@@ -908,15 +868,9 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toInt16(key: key, value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? Int16 ?? 0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toInt16(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toInt16(key: key, value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
@@ -1021,15 +975,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Int32 = value as? Int32 {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? Int32 ?? 0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toInt32(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toInt32(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -1144,15 +1092,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Int32 = value as? Int32 {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? Int32 ?? 0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toInt32(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toInt32(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -1270,15 +1212,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Int64 = value as? Int64 {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? Int64 ?? 0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toInt64(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toInt64(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -1390,15 +1326,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Int64 = value as? Int64 {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? Int64 ?? 0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toInt64(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toInt64(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -1513,15 +1443,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt = value as? UInt {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? UInt ?? 0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toUInt(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toUInt(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -1633,15 +1557,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt = value as? UInt {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? UInt ?? 0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toUInt(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toUInt(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -1756,15 +1674,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt8 = value as? UInt8 {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? UInt8 ?? 0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toUInt8(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toUInt8(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -1876,15 +1788,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt8 = value as? UInt8 {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? UInt8 ?? 0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toUInt8(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toUInt8(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -1999,15 +1905,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt16 = value as? UInt16 {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? UInt16 ?? 0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toUInt16(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toUInt16(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -2119,15 +2019,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt16 = value as? UInt16 {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? UInt16 ?? 0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toUInt16(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toUInt16(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -2242,15 +2136,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt32 = value as? UInt32 {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? UInt32 ?? 0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toUInt32(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toUInt32(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -2362,15 +2250,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt32 = value as? UInt32 {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? UInt32 ?? 0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toUInt32(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toUInt32(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -2485,15 +2367,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt64 = value as? UInt64 {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? UInt64 ?? 0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toUInt64(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toUInt64(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -2605,15 +2481,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: UInt64 = value as? UInt64 {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? UInt64 ?? 0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toUInt64(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toUInt64(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -2728,15 +2598,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Float = value as? Float {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? Float ?? 0.0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                        case .useDefaultable: return self.toFloat(key: key, value: value)
+                        case .useCustom(let delegate): return delegate.toFloat(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -2848,15 +2712,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Float = value as? Float {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? Float ?? 0.0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toFloat(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toFloat(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -2971,15 +2829,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Double = value as? Double {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? Double ?? 0.0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toDouble(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -3091,15 +2943,9 @@ extension NIOCodableHandle {
                 }
             } else {
                 if let `value`: Double = value as? Double {
-                    switch self.mappingStrategy {
-                    case .useCustom(let delegate):
-                        let scope: Set<AnyHashable> = delegate.scope(key: key)
-                        if scope.contains(value) {
-                            return value
-                        } else {
-                            return delegate.execption(key: key, source: value) as? Double ?? 0.0
-                        }
-                    default: return value
+                    switch self.convertTypeStrategy {
+                    case .useDefaultable: return self.toDouble(key: key, value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(key: key, value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
@@ -3279,15 +3125,9 @@ extension NIOCodableHandle {
                 }
             }
         } else if let `value`: String = value as? String {
-            switch self.mappingStrategy {
-            case .useCustom(let delegate):
-                let scope: Set<AnyHashable> = delegate.scope(key: key)
-                if scope.contains(value) {
-                    return value
-                } else {
-                    return delegate.execption(key: key, source: value) as? String ?? ""
-                }
-            default: return value
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toString(key: key, value: value)
+            case .useCustom(let delegate): return delegate.toString(key: key, value: value)
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
@@ -3399,15 +3239,9 @@ extension NIOCodableHandle {
                 }
             }
         } else if let `value`: String = value as? String {
-            switch self.mappingStrategy {
-            case .useCustom(let delegate):
-                let scope: Set<AnyHashable> = delegate.scope(key: key)
-                if scope.contains(value) {
-                    return value
-                } else {
-                    return delegate.execption(key: key, source: value) as? String ?? ""
-                }
-            default: return value
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toString(key: key, value: value)
+            case .useCustom(let delegate): return delegate.toString(key: key, value: value)
             }
         } else if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {

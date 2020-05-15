@@ -37,10 +37,7 @@ class NIOCodableTests: XCTestCase {
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             do {
-                guard let models: [Bool?] = try decoder.decode(type: [Bool?].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Bool?] = try decoder.decode(type: [Bool?].self, from: data) else { return }
                 XCTAssertEqual(models[0], true)
                 XCTAssertEqual(models[1], false)
                 XCTAssertEqual(models[2], nil)
@@ -61,13 +58,10 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [Bool?] = try decoder.decode(type: [Bool?].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Bool?] = try decoder.decode(type: [Bool?].self, from: data) else { return }
                 XCTAssertEqual(models[0], true)
                 XCTAssertEqual(models[1], false)
-                XCTAssertEqual(models[2], nil)
+                XCTAssertEqual(models[2], true)
             } catch {
                 XCTAssertNil(error, error.localizedDescription)
             }
@@ -83,10 +77,7 @@ class NIOCodableTests: XCTestCase {
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             do {
-                guard let models: [Bool?] = try decoder.decode(type: [Bool?].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Bool?] = try decoder.decode(type: [Bool?].self, from: data) else { return }
                 XCTAssertEqual(models[0], false)
                 XCTAssertEqual(models[1], true)
                 XCTAssertEqual(models[2], false)
@@ -129,10 +120,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else { return }
                 XCTAssertEqual(models[0], false)
                 XCTAssertEqual(models[1], false)
                 XCTAssertEqual(models[2], false)
@@ -166,10 +154,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else { return }
                 XCTAssertEqual(models[0], false)
                 XCTAssertEqual(models[1], false)
                 XCTAssertEqual(models[2], false)
@@ -194,10 +179,7 @@ class NIOCodableTests: XCTestCase {
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             do {
-                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else { return }
                 XCTAssertEqual(models[0], false)
                 XCTAssertEqual(models[1], false)
                 XCTAssertEqual(models[2], false)
@@ -226,10 +208,7 @@ class NIOCodableTests: XCTestCase {
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             do {
-                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else { return }
                 XCTAssertEqual(models[0], false)
                 XCTAssertEqual(models[1], false)
                 XCTAssertEqual(models[2], false)
@@ -250,10 +229,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else { return }
                 XCTAssertEqual(models[0], true)
                 XCTAssertEqual(models[1], true)
                 XCTAssertEqual(models[2], true)
@@ -272,10 +248,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.valueNotFoundStrategy = .useDefaultable
             do {
-                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else { return }
                 XCTAssertEqual(models[0], false)
                 XCTAssertEqual(models[1], false)
                 XCTAssertEqual(models[2], false)
@@ -298,10 +271,7 @@ class NIOCodableTests: XCTestCase {
             decoder.valueNotFoundStrategy = .useDefaultable
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else { return }
                 XCTAssertEqual(models[0], false)
                 XCTAssertEqual(models[1], false)
                 XCTAssertEqual(models[2], false)
@@ -322,10 +292,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.valueNotFoundStrategy = .useDefaultable
             do {
-                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else { return }
                 XCTAssertEqual(models[0], false)
                 XCTAssertEqual(models[1], false)
                 XCTAssertEqual(models[2], false)
@@ -348,10 +315,7 @@ class NIOCodableTests: XCTestCase {
             decoder.valueNotFoundStrategy = .useDefaultable
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else { return }
                 XCTAssertEqual(models[0], false)
                 XCTAssertEqual(models[1], false)
                 XCTAssertEqual(models[2], false)
@@ -371,10 +335,7 @@ class NIOCodableTests: XCTestCase {
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             do {
-                guard let models: [Int] = try decoder.decode(type: [Int].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Int] = try decoder.decode(type: [Int].self, from: data) else { return }
                 XCTAssertEqual(models[0], 1)
                 XCTAssertEqual(models[1], 0)
             } catch {
@@ -397,10 +358,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [Int] = try decoder.decode(type: [Int].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Int] = try decoder.decode(type: [Int].self, from: data) else { return }
                 XCTAssertEqual(models[0], 0)
                 XCTAssertEqual(models[1], 1)
                 XCTAssertEqual(models[2], 0)
@@ -419,10 +377,7 @@ class NIOCodableTests: XCTestCase {
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             do {
-                guard let models: [Int8] = try decoder.decode(type: [Int8].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Int8] = try decoder.decode(type: [Int8].self, from: data) else { return }
                 XCTAssertEqual(models[0], 1)
                 XCTAssertEqual(models[1], 0)
             } catch {
@@ -445,10 +400,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [Int8] = try decoder.decode(type: [Int8].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Int8] = try decoder.decode(type: [Int8].self, from: data) else { return }
                 XCTAssertEqual(models[0], 0)
                 XCTAssertEqual(models[1], 1)
             } catch {
@@ -464,10 +416,7 @@ class NIOCodableTests: XCTestCase {
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             do {
-                guard let models: [Int16] = try decoder.decode(type: [Int16].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Int16] = try decoder.decode(type: [Int16].self, from: data) else { return }
                 XCTAssertEqual(models[0], 1)
                 XCTAssertEqual(models[1], 0)
             } catch {
@@ -490,10 +439,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [Int16] = try decoder.decode(type: [Int16].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Int16] = try decoder.decode(type: [Int16].self, from: data) else { return }
                 XCTAssertEqual(models[0], 0)
                 XCTAssertEqual(models[1], 1)
             } catch {
@@ -509,10 +455,7 @@ class NIOCodableTests: XCTestCase {
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             do {
-                guard let models: [Int32] = try decoder.decode(type: [Int32].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Int32] = try decoder.decode(type: [Int32].self, from: data) else { return }
                 XCTAssertEqual(models[0], 1)
                 XCTAssertEqual(models[1], 0)
             } catch {
@@ -535,10 +478,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [Int32] = try decoder.decode(type: [Int32].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Int32] = try decoder.decode(type: [Int32].self, from: data) else { return }
                 XCTAssertEqual(models[0], 0)
                 XCTAssertEqual(models[1], 1)
             } catch {
@@ -555,10 +495,7 @@ class NIOCodableTests: XCTestCase {
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             do {
-                guard let models: [Int64] = try decoder.decode(type: [Int64].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Int64] = try decoder.decode(type: [Int64].self, from: data) else { return }
                 XCTAssertEqual(models[0], 1)
                 XCTAssertEqual(models[1], 0)
             } catch {
@@ -581,10 +518,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [Int64] = try decoder.decode(type: [Int64].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Int64] = try decoder.decode(type: [Int64].self, from: data) else { return }
                 XCTAssertEqual(models[0], 0)
                 XCTAssertEqual(models[1], 1)
             } catch {
@@ -600,10 +534,7 @@ class NIOCodableTests: XCTestCase {
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             do {
-                guard let models: [UInt] = try decoder.decode(type: [UInt].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [UInt] = try decoder.decode(type: [UInt].self, from: data) else { return }
                 XCTAssertEqual(models[0], 1)
                 XCTAssertEqual(models[1], 0)
             } catch {
@@ -621,15 +552,12 @@ class NIOCodableTests: XCTestCase {
                 }
             }
             let data: Data = """
-                   [true, false]
-                   """.data(using: String.Encoding.utf8) ?? Data()
+                [true, false]
+            """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [UInt] = try decoder.decode(type: [UInt].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [UInt] = try decoder.decode(type: [UInt].self, from: data) else { return }
                 XCTAssertEqual(models[0], 0)
                 XCTAssertEqual(models[1], 1)
             } catch {
@@ -645,10 +573,7 @@ class NIOCodableTests: XCTestCase {
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             do {
-                guard let models: [UInt8] = try decoder.decode(type: [UInt8].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [UInt8] = try decoder.decode(type: [UInt8].self, from: data) else { return }
                 XCTAssertEqual(models[0], 1)
                 XCTAssertEqual(models[1], 0)
             } catch {
@@ -671,10 +596,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [UInt8] = try decoder.decode(type: [UInt8].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [UInt8] = try decoder.decode(type: [UInt8].self, from: data) else { return }
                 XCTAssertEqual(models[0], 0)
                 XCTAssertEqual(models[1], 1)
             } catch {
@@ -690,10 +612,7 @@ class NIOCodableTests: XCTestCase {
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             do {
-                guard let models: [UInt16] = try decoder.decode(type: [UInt16].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [UInt16] = try decoder.decode(type: [UInt16].self, from: data) else { return }
                 XCTAssertEqual(models[0], 1)
                 XCTAssertEqual(models[1], 0)
             } catch {
@@ -716,10 +635,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [UInt16] = try decoder.decode(type: [UInt16].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [UInt16] = try decoder.decode(type: [UInt16].self, from: data) else { return }
                 XCTAssertEqual(models[0], 0)
                 XCTAssertEqual(models[1], 1)
             } catch {
@@ -735,10 +651,7 @@ class NIOCodableTests: XCTestCase {
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             do {
-                guard let models: [UInt32] = try decoder.decode(type: [UInt32].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [UInt32] = try decoder.decode(type: [UInt32].self, from: data) else { return }
                 XCTAssertEqual(models[0], 1)
                 XCTAssertEqual(models[1], 0)
             } catch {
@@ -761,10 +674,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [UInt32] = try decoder.decode(type: [UInt32].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [UInt32] = try decoder.decode(type: [UInt32].self, from: data) else { return }
                 XCTAssertEqual(models[0], 0)
                 XCTAssertEqual(models[1], 1)
             } catch {
@@ -780,10 +690,7 @@ class NIOCodableTests: XCTestCase {
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             do {
-                guard let models: [UInt64] = try decoder.decode(type: [UInt64].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [UInt64] = try decoder.decode(type: [UInt64].self, from: data) else { return }
                 XCTAssertEqual(models[0], 1)
                 XCTAssertEqual(models[1], 0)
             } catch {
@@ -806,10 +713,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [UInt64] = try decoder.decode(type: [UInt64].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [UInt64] = try decoder.decode(type: [UInt64].self, from: data) else { return }
                 XCTAssertEqual(models[0], 0)
                 XCTAssertEqual(models[1], 1)
             } catch {
@@ -825,10 +729,7 @@ class NIOCodableTests: XCTestCase {
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             do {
-                guard let models: [Float] = try decoder.decode(type: [Float].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Float] = try decoder.decode(type: [Float].self, from: data) else { return }
                 XCTAssertEqual(models[0], 1)
                 XCTAssertEqual(models[1], 0)
             } catch {
@@ -851,10 +752,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [Float] = try decoder.decode(type: [Float].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Float] = try decoder.decode(type: [Float].self, from: data) else { return }
                 XCTAssertEqual(models[0], 0)
                 XCTAssertEqual(models[1], 1)
             } catch {
@@ -871,10 +769,7 @@ class NIOCodableTests: XCTestCase {
               """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             do {
-                guard let models: [Double] = try decoder.decode(type: [Double].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Double] = try decoder.decode(type: [Double].self, from: data) else { return }
                 XCTAssertEqual(models[0], 1)
                 XCTAssertEqual(models[1], 0)
             } catch {
@@ -897,10 +792,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [Double] = try decoder.decode(type: [Double].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [Double] = try decoder.decode(type: [Double].self, from: data) else { return }
                 XCTAssertEqual(models[0], 0)
                 XCTAssertEqual(models[1], 1)
             } catch {
@@ -916,10 +808,7 @@ class NIOCodableTests: XCTestCase {
               """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             do {
-                guard let models: [String] = try decoder.decode(type: [String].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [String] = try decoder.decode(type: [String].self, from: data) else { return }
                 XCTAssertEqual(models[0], "true")
                 XCTAssertEqual(models[1], "false")
             } catch {
@@ -942,10 +831,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [String] = try decoder.decode(type: [String].self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let models: [String] = try decoder.decode(type: [String].self, from: data) else { return }
                 XCTAssertEqual(models[0], "1")
                 XCTAssertEqual(models[1], "0")
             } catch {
@@ -1096,7 +982,7 @@ class NIOCodableTests: XCTestCase {
             XCTAssert(models?[1].name == 0)
             XCTAssert(models?[2].name == 1)
             XCTAssert(models?[3].name == 0)
-            XCTAssert(models?[4].name == 1)
+            XCTAssert(models?[4].name == 0)
             XCTAssert(models?[5].name == 0)
             XCTAssert(models?[6].name == 2)
             XCTAssert(models?[7].name == 1)
@@ -1604,110 +1490,110 @@ class NIOCodableTests: XCTestCase {
     }
 
     func testMapping() {
-        if true {
-            struct A: Codable {
-                var a: [B?]
-            }
+//        if true {
+//            struct A: Codable {
+//                var a: [B?]
+//            }
+//
+//            struct B: Codable {
+//                var gender: Gender?
+//            }
+//
+//            enum Gender: Int, Codable {
+//                case male = 0
+//                case female = 1
+//                case unknow = 2
+//            }
+//
+//            let data: Data = """
+//            {
+//             "a": [{"gender": 0}, {"gender": 1}, {"gender": 2}]
+//            }
+//            """.data(using: String.Encoding.utf8) ?? Data()
+//            let decoder = NIOJSONDecoder()
+//            do {
+//                guard let models: A = try decoder.decode(type: A.self, from: data) else { return }
+//                XCTAssert((models.a[0]?.gender ?? Gender.unknow) == Gender.male)
+//                XCTAssert((models.a[1]?.gender ?? Gender.unknow) == Gender.female)
+//                XCTAssert((models.a[2]?.gender ?? Gender.unknow) == Gender.unknow)
+//            } catch {
+//                XCTAssertNil(error, error.localizedDescription)
+//            }
+//        }
 
-            struct B: Codable {
-                var gender: Gender?
-            }
+//        if true {
+//            struct Adapter: MappingControllable {
+//                func scope(key: CodingKey) -> Set<AnyHashable> {
+//                    return [0, 1, 2]
+//                }
+//
+//                func execption(key: CodingKey, source: AnyHashable) -> AnyHashable {
+//                    return 0
+//                }
+//            }
+//
+//            struct Human: Codable {
+//                var gender: Gender?
+//            }
+//            enum Gender: Int, Codable {
+//                case unknow = 0
+//                case male = 1
+//                case female = 2
+//
+//                enum CodingKeys: CodingKey {
+//                    case male
+//                    case female
+//                    case unknow
+//                }
+//            }
+//
+//            let data: Data = """
+//             {"gender": 4}
+//            """.data(using: String.Encoding.utf8) ?? Data()
+//            let decoder: NIOJSONDecoder = NIOJSONDecoder()
+//            decoder.mappingStrategy = .useCustom(Adapter())
+//            do {
+//                guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
+//                XCTAssert(models.gender == Gender.unknow)
+//            } catch {
+//                XCTAssertNil(error, error.localizedDescription)
+//            }
+//        }
 
-            enum Gender: Int, Codable {
-                case male = 0
-                case female = 1
-                case unknow = 2
-            }
-
-            let data: Data = """
-            {
-             "a": [{"gender": 0}, {"gender": 1}, {"gender": 2}]
-            }
-            """.data(using: String.Encoding.utf8) ?? Data()
-            let decoder = NIOJSONDecoder()
-            do {
-                guard let models: A = try decoder.decode(type: A.self, from: data) else { return }
-                XCTAssert((models.a[0]?.gender ?? Gender.unknow) == Gender.male)
-                XCTAssert((models.a[1]?.gender ?? Gender.unknow) == Gender.female)
-                XCTAssert((models.a[2]?.gender ?? Gender.unknow) == Gender.unknow)
-            } catch {
-                XCTAssertNil(error, error.localizedDescription)
-            }
-        }
-
-        if true {
-            struct Adapter: MappingControllable {
-                func scope(key: CodingKey) -> Set<AnyHashable> {
-                    return [0, 1, 2]
-                }
-
-                func execption(key: CodingKey, source: AnyHashable) -> AnyHashable {
-                    return 0
-                }
-            }
-
-            struct Human: Codable {
-                var gender: Gender?
-            }
-            enum Gender: Int, Codable {
-                case unknow = 0
-                case male = 1
-                case female = 2
-
-                enum CodingKeys: CodingKey {
-                    case male
-                    case female
-                    case unknow
-                }
-            }
-
-            let data: Data = """
-             {"gender": 4}
-            """.data(using: String.Encoding.utf8) ?? Data()
-            let decoder: NIOJSONDecoder = NIOJSONDecoder()
-            decoder.mappingStrategy = .useCustom(Adapter())
-            do {
-                guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
-                XCTAssert(models.gender == Gender.unknow)
-            } catch {
-                XCTAssertNil(error, error.localizedDescription)
-            }
-        }
-
-        if true {
-            struct Human: Codable {
-                var gender: Gender?
-            }
-
-            enum Gender: Int, Codable, TypeConvertible {
-                case unknow = 0
-                case male = 1
-                case female = 2
-
-                enum CodingKeys: CodingKey {
-                    case male
-                    case female
-                    case unknow
-                }
-
-                func toInt(key: CodingKey, value: Double) -> Int {
-                    print(value)
-                    return 0
-                }
-            }
-
-            let data: Data = """
-                    {"gender": 3.5}
-                   """.data(using: String.Encoding.utf8) ?? Data()
-            let decoder: NIOJSONDecoder = NIOJSONDecoder()
-            decoder.convertTypeStrategy = .useCustom(Gender.male)
-            do {
-                guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
-                XCTAssert(models.gender == Gender.unknow)
-            } catch {
-                XCTAssertNil(error, error.localizedDescription)
-            }
-        }
+//        if true {
+//            struct Human: Codable {
+//                var gender: Gender?
+//            }
+//
+//            enum Gender: Int, Codable, TypeConvertible {
+//                case unknow = 0
+//                case male = 1
+//                case female = 2
+//
+//                enum CodingKeys: CodingKey {
+//                    case male
+//                    case female
+//                    case unknow
+//                }
+//
+//                func toInt(key: CodingKey, value: Double) -> Int {
+//                    print(value)
+//                    return 0
+//                }
+//            }
+//
+//            let data: Data = """
+//                    {"gender": 3.5}
+//                   """.data(using: String.Encoding.utf8) ?? Data()
+//            let decoder: NIOJSONDecoder = NIOJSONDecoder()
+//            decoder.convertTypeStrategy = .useCustom(Gender.male)
+//            do {
+//                guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
+//                XCTAssert(models.gender == Gender.unknow)
+//            } catch {
+//                XCTAssertNil(error, error.localizedDescription)
+//            }
+//        }
 
         if true {
             struct Human: Codable {
@@ -1722,9 +1608,9 @@ class NIOCodableTests: XCTestCase {
                 case female = 2
 
                 enum CodingKeys: CodingKey {
+                    case unknow
                     case male
                     case female
-                    case unknow
                 }
             }
 
@@ -1735,27 +1621,18 @@ class NIOCodableTests: XCTestCase {
                     }
             """.data(using: String.Encoding.utf8) ?? Data()
 
-            struct Adapter: MappingControllable, TypeConvertible {
-                func toInt(key: CodingKey, value: Double) -> Int {
-                    print(value)
-                    return 0
-                }
-
-                func scope(key: CodingKey) -> Set<AnyHashable> {
-                    return [0, 1, 2]
-                }
-
-                func execption(key: CodingKey, source: AnyHashable) -> AnyHashable {
-                    return 0
+            struct Adapter: TypeConvertible {
+                func toInt(key: CodingKey, value: Int) -> Int {
+                    print(key.stringValue)
+                    return value
                 }
             }
 
             let decoder: NIOJSONDecoder = NIOJSONDecoder()
-            decoder.mappingStrategy = .useCustom(Adapter())
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
                 guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
-                XCTAssert(models.gender == Gender.unknow)
+                XCTAssert(models.gender == Gender.male)
             } catch {
                 XCTAssertNil(error, error.localizedDescription)
             }
@@ -1934,10 +1811,7 @@ class NIOCodableTests: XCTestCase {
             let decoder: NIOJSONDecoder = NIOJSONDecoder()
             decoder.keyNotFoundStrategy = .useDefaultable
             do {
-                guard let model: Root = try decoder.decode(type: Root.self, from: data) else {
-                    XCTAssertNil(nil)
-                    return
-                }
+                guard let model: Root = try decoder.decode(type: Root.self, from: data) else { return }
                 XCTAssertEqual(model.firstName, "")
             } catch {
                 XCTAssertNil(error, error.localizedDescription)

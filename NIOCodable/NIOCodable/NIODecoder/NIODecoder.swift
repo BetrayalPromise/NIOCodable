@@ -17,6 +17,7 @@ class NIODecoder: Decoder {
     }
     
     func container<Key>(keyedBy type: Key.Type) throws -> KeyedDecodingContainer<Key> where Key : CodingKey {
+        self.codingPath.append(NIOCodableKey(string: "dictionary"))
         guard let dictionary: [AnyHashable: Any] = self.storage.currentValue as? [AnyHashable: Any] else {
             return KeyedDecodingContainer<Key>(NIOKeyedDecodingContainer(decoder: self, source: [:]))
         }
@@ -24,6 +25,7 @@ class NIODecoder: Decoder {
     }
     
     func unkeyedContainer() throws -> UnkeyedDecodingContainer {
+        self.codingPath.append(NIOCodableKey(string: "array"))
         guard let array: [Any] = self.storage.currentValue as? [Any] else {
             return NIOUnkeyedDecodingContainer(decoder: self, source: [])
         }
