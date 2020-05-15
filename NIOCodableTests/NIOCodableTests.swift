@@ -1631,15 +1631,18 @@ class NIOCodableTests: XCTestCase {
             }
 
             let data: Data = """
-                    {"gender": 1,
+                    {"gender": 3,
                     "name": 3,
                     "age": 4
                     }
             """.data(using: String.Encoding.utf8) ?? Data()
 
             struct Adapter: TypeConvertible {
-                func toInt(key: CodingKey, value: Int) -> Int {
-                    print(key.stringValue)
+                func toInt(key: CodingKey, path: CodingPath, value: Int) -> Int {
+                    print(path)
+                    if path == "[:]gender" && value > 2 {
+                        return 0
+                    }
                     return value
                 }
             }
@@ -1876,16 +1879,18 @@ class NIOCodableTests: XCTestCase {
         }
 
         struct Adapter: TypeConvertible {
-            func toString(key: CodingKey, value: String) -> String {
-                print(key.stringValue)
-
-                return ""
+            func toString(key: CodingKey, path: CodingPath, value: String) -> String {
+                print(path)
+                if path == "[:]name" {
+                    return "XXXX"
+                }
+                return value
             }
         }
 
         let data: Data = #"""
             {
-                "name": "ABC",
+                "name": "abc",
                 "info": {
                     "name": "abc"
                 }
@@ -1895,7 +1900,8 @@ class NIOCodableTests: XCTestCase {
         decoder.convertTypeStrategy = .useCustom(Adapter())
         do {
             guard let model: Root = try decoder.decode(type: Root.self, from: data) else { return }
-            print(model)
+            XCTAssertEqual(model.name, "XXXX")
+            XCTAssertEqual(model.info.name, "abc")
         } catch {
             XCTAssertNil(error, error.localizedDescription)
         }
