@@ -504,7 +504,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             return nil
         }
         if entry is NSNull {
-            switch self.decoder.wrapper?.containerStrategy {
+            switch self.decoder.wrapper?.optionalContainerStrategy {
             case .useNull:
                 return nil
             default:
@@ -518,7 +518,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
         }
 
         if value == "null" {
-            switch self.decoder.wrapper?.containerStrategy {
+            switch self.decoder.wrapper?.optionalContainerStrategy {
             case .useNull:
                 return nil
             default:

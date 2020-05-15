@@ -17,7 +17,7 @@ class NIODecoder: Decoder {
     }
     
     func container<Key>(keyedBy type: Key.Type) throws -> KeyedDecodingContainer<Key> where Key : CodingKey {
-        self.codingPath.append(NIOCodableKey(string: "dictionary"))
+        self.codingPath.append(NIOCodableKey(string: "[:]"))
         guard let dictionary: [AnyHashable: Any] = self.storage.currentValue as? [AnyHashable: Any] else {
             return KeyedDecodingContainer<Key>(NIOKeyedDecodingContainer(decoder: self, source: [:]))
         }
@@ -25,7 +25,7 @@ class NIODecoder: Decoder {
     }
     
     func unkeyedContainer() throws -> UnkeyedDecodingContainer {
-        self.codingPath.append(NIOCodableKey(string: "array"))
+        self.codingPath.append(NIOCodableKey(string: "[]"))
         guard let array: [Any] = self.storage.currentValue as? [Any] else {
             return NIOUnkeyedDecodingContainer(decoder: self, source: [])
         }
@@ -46,7 +46,7 @@ extension NIODecoder {
                 fatalError()
             }
             if value.keys.count == 0 {
-                switch self.wrapper?.containerStrategy {
+                switch self.wrapper?.optionalContainerStrategy {
                 case .useNull:
                     return nil
                 default:
@@ -60,7 +60,7 @@ extension NIODecoder {
                 fatalError()
             }
             if value.count == 0 {
-                switch self.wrapper?.containerStrategy {
+                switch self.wrapper?.optionalContainerStrategy {
                 case .useNull:
                     return nil
                 default:

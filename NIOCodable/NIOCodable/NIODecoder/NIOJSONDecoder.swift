@@ -10,7 +10,7 @@ public final class NIOJSONDecoder {
     /// 类型转换策略
     public var convertTypeStrategy: NIOJSONDecoder.ConvertTypeStrategy = .useDefaultable
     /// 容器使用策略
-    public var containerStrategy: NIOJSONDecoder.OptionalContainerStrategy = .useEmpty
+    public var optionalContainerStrategy: NIOJSONDecoder.OptionalContainerStrategy = .useEmpty
     /// KeyNotFound策略
     public var keyNotFoundStrategy: NIOJSONDecoder.KeyNotFoundStrategy = .useExecption
     /// ValueNotFound策略
@@ -36,12 +36,6 @@ public final class NIOJSONDecoder {
 
 /// 配置策略
 public extension NIOJSONDecoder {
-    /// 处理类型转枚举值
-    enum MappingStrategy {
-        case useDefaultable
-        case useCustom(MappingControllable)
-    }
-
     /// 类型不一致策略
     enum ConvertTypeStrategy {
         case useDefaultable  // 默认处理

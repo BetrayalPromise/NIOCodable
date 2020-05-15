@@ -1317,7 +1317,7 @@ class NIOCodableTests: XCTestCase {
             {}
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
-            decoder.containerStrategy = .useNull
+            decoder.optionalContainerStrategy = .useNull
             do {
                 let model: Example? = try decoder.decode(type: Example.self, from: data)
                 XCTAssert(model == nil)
@@ -1339,7 +1339,7 @@ class NIOCodableTests: XCTestCase {
                 var info: String?
             }
             let decoder = NIOJSONDecoder()
-            decoder.containerStrategy = .useNull
+            decoder.optionalContainerStrategy = .useNull
             do {
                 let model: ESRootClass? = try decoder.decode(type: ESRootClass.self, from: data)
                 XCTAssert(model?.key != nil)
@@ -1354,7 +1354,7 @@ class NIOCodableTests: XCTestCase {
             {"key": {"key": {"key": "key"}}}
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
-            decoder.containerStrategy = .useNull
+            decoder.optionalContainerStrategy = .useNull
 
             class ESRootClass: Codable {
                 var key: Key0?
@@ -1403,7 +1403,7 @@ class NIOCodableTests: XCTestCase {
             ]
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
-            decoder.containerStrategy = .useEmpty
+            decoder.optionalContainerStrategy = .useEmpty
             do {
                 let models: [Example]? = try decoder.decode(type: [Example].self, from: data)
                 XCTAssert(models?.count == 0)
@@ -1419,7 +1419,7 @@ class NIOCodableTests: XCTestCase {
             ]
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
-            decoder.containerStrategy = .useNull
+            decoder.optionalContainerStrategy = .useNull
             do {
                 guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else {
                     XCTAssert(false)
@@ -1447,7 +1447,7 @@ class NIOCodableTests: XCTestCase {
             }
 
             let decoder = NIOJSONDecoder()
-            decoder.containerStrategy = .useNull
+            decoder.optionalContainerStrategy = .useNull
             do {
                 guard let models: ESRootClass = try decoder.decode(type: ESRootClass.self, from: data) else {
                     XCTAssert(false)
@@ -1475,7 +1475,7 @@ class NIOCodableTests: XCTestCase {
             }
 
             let decoder = NIOJSONDecoder()
-            decoder.containerStrategy = .useNull
+            decoder.optionalContainerStrategy = .useNull
             do {
                 guard let models: ESRootClass = try decoder.decode(type: ESRootClass.self, from: data) else {
                     XCTAssert(false)
@@ -1743,7 +1743,7 @@ class NIOCodableTests: XCTestCase {
         }
 
         let decoder = NIOJSONDecoder()
-        decoder.containerStrategy = .useEmpty
+        decoder.optionalContainerStrategy = .useEmpty
         do {
             guard let models: ESRootClass = try decoder.decode(type: ESRootClass.self, from: data) else { return }
             print(models)
@@ -1764,7 +1764,7 @@ class NIOCodableTests: XCTestCase {
             }
 
             let decoder = NIOJSONDecoder()
-            decoder.containerStrategy = .useEmpty
+            decoder.optionalContainerStrategy = .useEmpty
             decoder.keyNotFoundStrategy = .useNull
             do {
                 guard let models: Root = try decoder.decode(type: Root.self, from: data) else { return }
@@ -1816,6 +1816,37 @@ class NIOCodableTests: XCTestCase {
             } catch {
                 XCTAssertNil(error, error.localizedDescription)
             }
+        }
+    }
+
+    func testComplex() {
+        class Root: Codable {
+            var risks: [Risks]?
+        }
+
+        class Risks: Codable {
+            var cashValues: [Cashvalues]?
+        }
+
+        class Cashvalues: Codable {
+
+        }
+
+        let data: Data = #"""
+            {
+                "risks": [{
+                    "cashValues": [{}]
+                }]
+            }
+        """#.data(using: String.Encoding.utf8) ?? Data()
+        let decoder: NIOJSONDecoder = NIOJSONDecoder()
+        decoder.keyNotFoundStrategy = .useDefaultable
+        decoder.valueNotFoundStrategy = .useDefaultable
+        do {
+            guard let model: Root = try decoder.decode(type: Root.self, from: data) else { return }
+            print(model)
+        } catch {
+            XCTAssertNil(error, error.localizedDescription)
         }
     }
 }
