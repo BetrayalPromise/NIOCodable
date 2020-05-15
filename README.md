@@ -1,7 +1,7 @@
 # NIOCodable
 ## codable目前还有点问题 
 ### 1.模型继承子类特有的属性解析为nil的问题 
-### 2.类型不匹配到值整个模型解析失败的问题
+### 2.类型不匹配导致整个模型解析失败的问题
 ### 3.扁平化不方便(模型层级结构自定义)
 
 ## 解决方案
@@ -50,7 +50,8 @@ do {
 ```
 
 #### 3.异常枚举
-```swift
+##### (旧处理)
+```Swift
 struct Human: Codable {
     var gender: Gender?
 }
@@ -75,9 +76,7 @@ do {
 } catch {
     print(error)
 }
-```
-#### 该例子中定义的枚举值只有(0, 1, 2)数据源则有(0, 1, 2, 3.5, 4)也会导致解析失败分析得出(3.5, 4)属于异常的枚举值 当原因不同3.5属于类型不一致 4属于取值异常
-```swift
+------------------------------------------
 struct Human: Codable {
     var gender: Gender?
 }
@@ -120,9 +119,55 @@ do {
 } catch {
     print(error)
 }
-````
+```
+##### (新处理)
+```Swift
+struct Human: Codable {
+    var gender: Gender?
+    var name: Int
+    var age: Int
+}
+
+enum Gender: Int, Codable {
+    case unknow = 0
+    case male = 1
+    case female = 2
+
+    enum CodingKeys: CodingKey {
+        case unknow
+        case male
+        case female
+    }
+}
+
+let data: Data = """
+        {"gender": 3,
+        "name": 3,
+        "age": 4
+        }
+""".data(using: String.Encoding.utf8) ?? Data()
+
+struct Adapter: TypeConvertible {
+    func toInt(key: CodingKey, path: CodingPath, value: Int) -> Int {
+        print(path)
+        if path == "[:]gender" && value > 2 {
+            return 0
+        }
+        return value
+    }
+}
+
+let decoder: NIOJSONDecoder = NIOJSONDecoder()
+decoder.convertTypeStrategy = .useCustom(Adapter())
+do {
+    guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
+    XCTAssert(models.gender == Gender.male)
+} catch {
+    XCTAssertNil(error, error.localizedDescription)
+}
+```
 #### 4.空容器处理 无数据时(null, 数据量为0)可选容器策略
-```swift
+```Swift
 enum OptionalContainerStrategy {
     case useNull    // 使用null
     case useEmpty   // 使用空容器
