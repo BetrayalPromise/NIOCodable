@@ -13,8 +13,6 @@ public final class NIOJSONDecoder {
     public var optionalContainerStrategy: NIOJSONDecoder.OptionalContainerStrategy = .useEmpty
     /// KeyNotFound策略
     public var keyNotFoundStrategy: NIOJSONDecoder.KeyNotFoundStrategy = .useExecption
-    /// ValueNotFound策略
-    public var valueNotFoundStrategy: NIOJSONDecoder.ValueNotFoundStrategy = .useExecption
 
     /// 内建类型(Bool, Int, Int8, Int16, Int32, Int64, UInt, UInt8, UInt16, UInt32, UInt64, Float, Double, String)默认值自定义
     public var boxBaseValue: BoxBaseValue = BoxBaseValue()
@@ -51,14 +49,8 @@ public extension NIOJSONDecoder {
 
     /// 可选类型key不对应策略
     enum KeyNotFoundStrategy {
+        case useCustom(DefaultValueControllable) /// 处理[:]这种空值字典
         case useExecption
-        case useDefaultable
-        case useNull
-    }
-
-    enum ValueNotFoundStrategy {
-        case useExecption
-        case useCustom(DefaultValueControllable)
         case useDefaultable
         case useNull
     }

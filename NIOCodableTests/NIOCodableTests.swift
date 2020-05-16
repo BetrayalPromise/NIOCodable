@@ -330,7 +330,7 @@ class NIOCodableTests: XCTestCase {
             [[], [], [], null]
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
-            decoder.valueNotFoundStrategy = .useDefaultable
+            decoder.keyNotFoundStrategy = .useDefaultable
             do {
                 guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else { return }
                 XCTAssertEqual(models[0], false)
@@ -352,7 +352,7 @@ class NIOCodableTests: XCTestCase {
             [[], [], [], null]
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
-            decoder.valueNotFoundStrategy = .useDefaultable
+            decoder.keyNotFoundStrategy = .useDefaultable
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
                 guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else { return }
@@ -374,7 +374,7 @@ class NIOCodableTests: XCTestCase {
             [{}, {}, {}, null]
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
-            decoder.valueNotFoundStrategy = .useDefaultable
+            decoder.keyNotFoundStrategy = .useDefaultable
             do {
                 guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else { return }
                 XCTAssertEqual(models[0], false)
@@ -396,7 +396,7 @@ class NIOCodableTests: XCTestCase {
             [{}, {}, {}, null]
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
-            decoder.valueNotFoundStrategy = .useDefaultable
+            decoder.keyNotFoundStrategy = .useDefaultable
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
                 guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else { return }
@@ -1907,6 +1907,12 @@ class NIOCodableTests: XCTestCase {
     }
 
     func testComplex() {
+        struct Adapter: DefaultValueControllable {
+            func handle(key: CodingKey, path: CodingPath, source: Any) -> Initalizable {
+                return Cashvalues(by: key, path: path, source: source)
+            }
+        }
+
         class Root: Codable {
             var risks: [Risks]?
         }
@@ -1915,8 +1921,10 @@ class NIOCodableTests: XCTestCase {
             var cashValues: [Cashvalues]?
         }
 
-        class Cashvalues: Codable {
+        class Cashvalues: Codable, Initalizable {
+            required init(by key: CodingKey, path: CodingPath, source: Any) {
 
+            }
         }
 
         let data: Data = #"""
@@ -1927,8 +1935,7 @@ class NIOCodableTests: XCTestCase {
             }
         """#.data(using: String.Encoding.utf8) ?? Data()
         let decoder: NIOJSONDecoder = NIOJSONDecoder()
-        decoder.keyNotFoundStrategy = .useDefaultable
-        decoder.valueNotFoundStrategy = .useDefaultable
+        decoder.keyNotFoundStrategy = .useCustom(Adapter())
         do {
             guard let model: Root = try decoder.decode(type: Root.self, from: data) else { return }
             print(model)

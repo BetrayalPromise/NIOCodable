@@ -3275,12 +3275,12 @@ public protocol MappingControllable {
 // MARK: - 处理模型与数据结构不匹配问题
 /// 模型解析失败时 使用的构造器 在可能解析失败的模型中实现该协议
 public protocol Initalizable {
-    init(by key: CodingKey, source: Any)
+    init(by key: CodingKey, path: CodingPath, source: Any)
 }
 
 /// 模型解析失败时 用以防御处理的 自定义结构中(enum, struc, class)中实现该协议
 public protocol DefaultValueControllable {
-    func handle(key: CodingKey, source: Any) -> Initalizable
+    func handle(key: CodingKey, path: CodingPath, source: Any) -> Initalizable
 }
 
 //extension String: Initalizable, DefaultValueControllable {

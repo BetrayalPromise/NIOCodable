@@ -48,7 +48,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.bool ?? BoxBaseValue().bool
-            default:
+            case .useExecption, .useNull, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -65,7 +65,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 return self.decoder.wrapper?.boxBaseValue.bool ?? BoxBaseValue().bool
             case .useNull:
                 return nil
-            default:
+            case .useExecption, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -80,7 +80,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.int ?? BoxBaseValue().int
-            default:
+            case .useExecption, .useNull, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -97,7 +97,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 return self.decoder.wrapper?.boxBaseValue.int ?? BoxBaseValue().int
             case .useNull:
                 return nil
-            default:
+            case .useExecption, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -112,7 +112,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.int8 ?? BoxBaseValue().int8
-            default:
+            case .useExecption, .useNull, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -129,7 +129,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 return self.decoder.wrapper?.boxBaseValue.int8 ?? BoxBaseValue().int8
             case .useNull:
                 return nil
-            default:
+            case .useExecption, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -144,7 +144,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.int16 ?? BoxBaseValue().int16
-            default:
+            case .useExecption, .useNull, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -161,7 +161,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 return self.decoder.wrapper?.boxBaseValue.int16 ?? BoxBaseValue().int16
             case .useNull:
                 return nil
-            default:
+            case .useExecption, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -176,7 +176,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.int32 ?? BoxBaseValue().int32
-            default:
+            case .useExecption, .useNull, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -193,7 +193,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 return self.decoder.wrapper?.boxBaseValue.int32 ?? BoxBaseValue().int32
             case .useNull:
                 return nil
-            default:
+            case .useExecption, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -208,7 +208,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.int64 ?? BoxBaseValue().int64
-            default:
+            case .useExecption, .useNull, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -225,7 +225,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 return self.decoder.wrapper?.boxBaseValue.int64 ?? BoxBaseValue().int64
             case .useNull:
                 return nil
-            default:
+            case .useExecption, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -240,7 +240,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.uint ?? BoxBaseValue().uint
-            default:
+            case .useExecption, .useNull, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -257,7 +257,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 return self.decoder.wrapper?.boxBaseValue.uint ?? BoxBaseValue().uint
             case .useNull:
                 return nil
-            default:
+            case .useExecption, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -270,7 +270,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.uint8 ?? BoxBaseValue().uint8
-            default:
+            case .useExecption, .useNull, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -287,7 +287,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 return self.decoder.wrapper?.boxBaseValue.uint8 ?? BoxBaseValue().uint8
             case .useNull:
                 return nil
-            default:
+            case .useExecption, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -302,7 +302,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.uint16 ?? BoxBaseValue().uint16
-            default:
+            case .useExecption, .useNull, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -319,7 +319,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 return self.decoder.wrapper?.boxBaseValue.uint16 ?? BoxBaseValue().uint16
             case .useNull:
                 return nil
-            default:
+            case .useExecption, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -334,7 +334,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.uint32 ?? BoxBaseValue().uint32
-            default:
+            case .useExecption, .useNull, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -351,7 +351,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 return self.decoder.wrapper?.boxBaseValue.uint32 ?? BoxBaseValue().uint32
             case .useNull:
                 return nil
-            default:
+            case .useExecption, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -366,7 +366,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.uint64 ?? BoxBaseValue().uint64
-            default:
+            case .useExecption, .useNull, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -383,7 +383,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 return self.decoder.wrapper?.boxBaseValue.uint64 ?? BoxBaseValue().uint64
             case .useNull:
                 return nil
-            default:
+            case .useExecption, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -398,7 +398,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.float ?? BoxBaseValue().float
-            default:
+            case .useExecption, .useNull, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -415,7 +415,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 return self.decoder.wrapper?.boxBaseValue.float ?? BoxBaseValue().float
             case .useNull:
                 return nil
-            default:
+            case .useExecption, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -430,7 +430,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.double ?? BoxBaseValue().double
-            default:
+            case .useExecption, .useNull, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -447,7 +447,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 return self.decoder.wrapper?.boxBaseValue.double ?? BoxBaseValue().double
             case .useNull:
                 return nil
-            default:
+            case .useExecption, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -462,7 +462,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useDefaultable:
                 return self.decoder.wrapper?.boxBaseValue.string ?? BoxBaseValue().string
-            case .useExecption, .useNull, .none:
+            case .useExecption, .useNull, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
@@ -479,7 +479,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 return self.decoder.wrapper?.boxBaseValue.string ?? BoxBaseValue().string
             case .useNull:
                 return nil
-            default:
+            case .useExecption, .useCustom(_), .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
         }
