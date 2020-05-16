@@ -9,11 +9,20 @@ class NIODecoder: Decoder {
     weak var wrapper: NIOJSONDecoder?
     let inner: Inner = Inner()
 
+    var baseNode: BaseNode = .none
+
     init(wrapper: NIOJSONDecoder, source: Any, codingPath: [CodingKey] = [], userInfo: [CodingUserInfoKey : Any] = [:]) {
         self.wrapper = wrapper
         self.source = source
         self.codingPath = codingPath
         self.userInfo = userInfo
+        if source is [Any] {
+            self.baseNode = .array
+        } else if source is [AnyHashable: Any] {
+            self.baseNode = .dictionary
+        } else {
+            self.baseNode = .none
+        }
     }
     
     func container<Key>(keyedBy type: Key.Type) throws -> KeyedDecodingContainer<Key> where Key : CodingKey {
@@ -89,6 +98,12 @@ struct OperationData {
     var currentValue: Any? { return self.container.last }
     mutating func push(_ value: Any) { self.container.append(value) }
     mutating func pop() { if self.container.count > 0 { self.container.removeLast() } }
+}
+
+enum BaseNode {
+    case none
+    case array
+    case dictionary
 }
 
 struct Empty {

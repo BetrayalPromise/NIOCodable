@@ -26,7 +26,10 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
     }
     
     func contains(_ key: K) -> Bool {
-        return self.source[key.stringValue] != nil
+//        return self.source[key.stringValue] != nil
+        return self.allKeys.contains { (item) -> Bool in
+            return item.stringValue == key.stringValue ? true : false
+        }
     }
     
     func decodeNil(forKey key: K) throws -> Bool {
@@ -39,9 +42,6 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
     
     // MARK: Bool
     func decode(_ type: Bool.Type, forKey key: K) throws -> Bool {
-//        self.decoder.codingPath.append(NIOCodableKey(dictionaryIndex: key.stringValue))
-//        defer { self.decoder.codingPath.removeLast() }
-
         self.decoder.codingPath.append(NIOCodableKey(dictionaryIndex: key.stringValue))
         defer { self.decoder.codingPath.removeLast() }
         guard var entry: Any = self.source[key.stringValue] else {

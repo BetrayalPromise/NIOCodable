@@ -21,7 +21,7 @@ public final class NIOJSONDecoder {
     
     public func decode<T>(type: T.Type, from data: Data) throws -> T? where T: Decodable {
         guard let source: Any = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) else {
-            throw DecodingError.typeMismatch(type, DecodingError.Context(codingPath: [], debugDescription: "非JSON结构"))
+            throw DecodingError.typeMismatch(type, DecodingError.Context(codingPath: [], debugDescription: "无法转化为以Array或者Dictionary为根节点的JSON数据"))
         }
         let decoder: NIODecoder = NIODecoder(wrapper: self, source: source)
         defer { decoder.cleanup() }
