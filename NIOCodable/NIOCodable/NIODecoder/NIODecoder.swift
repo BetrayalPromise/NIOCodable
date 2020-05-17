@@ -7,7 +7,6 @@ class NIODecoder: Decoder {
     var source: Any
     var storage: OperationData = OperationData()
     weak var wrapper: NIOJSONDecoder?
-    let inner: Inner = Inner()
 
     var baseNode: BaseNode = .none
 

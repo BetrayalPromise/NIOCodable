@@ -21,7 +21,3 @@ public struct BoxBaseValue {
 
     var string: String = ""
 }
-
-struct Inner {
-
-}
