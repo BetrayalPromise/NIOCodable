@@ -33,7 +33,7 @@ class NIOCodableTests: XCTestCase {
     func testBoolToBool() {
 //        if true {
 //            struct Adapter: TypeConvertible {
-//                func toBool(key: CodingKey, path: CodingPath, value: NSNull) -> Bool {
+//                func toBool(key: CodingKey, path: NIOCodingPath, value: NSNull) -> Bool {
 //                    print(path)
 //                    return true
 //                }
@@ -55,7 +55,7 @@ class NIOCodableTests: XCTestCase {
 
 //        if true {
 //            struct Adapter: TypeConvertible {
-//                func toBool(key: CodingKey, path: CodingPath, value: Bool) -> Bool {
+//                func toBool(key: CodingKey, path: NIOCodingPath, value: Bool) -> Bool {
 //                    print(path)
 //                    return true
 //                }
@@ -80,7 +80,7 @@ class NIOCodableTests: XCTestCase {
 
 //        if true {
 //            struct Adapter: TypeConvertible {
-//                func toBool(key: CodingKey, path: CodingPath, value: Bool) -> Bool {
+//                func toBool(key: CodingKey, path: NIOCodingPath, value: Bool) -> Bool {
 //                    print(path)
 //                    return true
 //                }
@@ -107,7 +107,7 @@ class NIOCodableTests: XCTestCase {
 
 //        if true {
 //            struct Adapter: TypeConvertible {
-//                func toBool(key: CodingKey, path: CodingPath, value: Bool) -> Bool {
+//                func toBool(key: CodingKey, path: NIOCodingPath, value: Bool) -> Bool {
 //                    print(path)
 //                    return true
 //                }
@@ -130,7 +130,7 @@ class NIOCodableTests: XCTestCase {
 
 //        if true {
 //            struct Adapter: TypeConvertible {
-//                func toBool(key: CodingKey, path: CodingPath, value: Bool) -> Bool {
+//                func toBool(key: CodingKey, path: NIOCodingPath, value: Bool) -> Bool {
 //                    print(path)
 //                    return true
 //                }
@@ -1706,7 +1706,7 @@ class NIOCodableTests: XCTestCase {
             """.data(using: String.Encoding.utf8) ?? Data()
 
             struct Adapter: TypeConvertible {
-                func toInt(key: CodingKey, path: CodingPath, value: Int) -> Int {
+                func toInt(key: CodingKey, path: NIOCodingPath, value: Int) -> Int {
                     print(path)
                     if path == "[:]gender" && value > 2 {
                         return 0
@@ -1841,30 +1841,31 @@ class NIOCodableTests: XCTestCase {
     }
 
     func testKeyNoFound() {
-        if true {
-            let data: Data = """
-                {"key": "abc"}
-            """.data(using: String.Encoding.utf8) ?? Data()
-
-            class Root: Codable {
-                var array: String?
-            }
-
-            let decoder = NIOJSONDecoder()
-            decoder.optionalContainerStrategy = .useEmpty
-            decoder.keyNotFoundStrategy = .useNull
-            do {
-                guard let models: Root = try decoder.decode(type: Root.self, from: data) else { return }
-                print(models)
-                XCTAssert(models.array == nil)
-            } catch {
-                XCTAssertNil(error, error.localizedDescription)
-            }
-        }
+//        if true {
+//            let data: Data = """
+//                {"key": "abc"}
+//            """.data(using: String.Encoding.utf8) ?? Data()
+//
+//            class Root: Codable {
+//                var array: String?
+//            }
+//
+//            let decoder = NIOJSONDecoder()
+//            decoder.optionalContainerStrategy = .useEmpty
+//            decoder.keyNotFoundStrategy = .useNull
+//            do {
+//                guard let models: Root = try decoder.decode(type: Root.self, from: data) else { return }
+//                print(models)
+//                XCTAssert(models.array == nil)
+//            } catch {
+//                XCTAssertNil(error, error.localizedDescription)
+//            }
+//        }
 
         if true {
             struct Human: Codable {
                 var gender: Gender
+                var age: Int
             }
 
             enum Gender: String, Codable {
@@ -1872,10 +1873,25 @@ class NIOCodableTests: XCTestCase {
                 case female
             }
 
+            struct Adapter: TypeConvertible, KeyControllable {
+                func key(sourcePath: NIOCodingPath) -> NIOCodingPath {
+                    if sourcePath == "[:]gender" {
+                        return "[:]gendergender"
+                    } else if sourcePath == "[:]age" {
+                        return "[:]ageAge"
+                    }
+                    return sourcePath
+                }
+            }
+
             let data: Data = """
-             {"gendergender": "male"}
+            {
+                "gendergender": "male",
+                "ageAge": 3
+            }
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder: NIOJSONDecoder = NIOJSONDecoder()
+            decoder.keyMismatchingStrategy = .useCustom(Adapter())
             do {
                 guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
                 XCTAssert(models.gender.rawValue == "male")
@@ -1908,7 +1924,7 @@ class NIOCodableTests: XCTestCase {
 
     func testComplex() {
         struct Adapter: DefaultValueControllable {
-            func handle(key: CodingKey, path: CodingPath, source: Any) -> Initalizable {
+            func handle(key: CodingKey, path: NIOCodingPath, source: Any) -> Initalizable {
                 return Cashvalues(by: key, path: path, source: source)
             }
         }
@@ -1922,7 +1938,7 @@ class NIOCodableTests: XCTestCase {
         }
 
         class Cashvalues: Codable, Initalizable {
-            required init(by key: CodingKey, path: CodingPath, source: Any) {
+            required init(by key: CodingKey, path: NIOCodingPath, source: Any) {
 
             }
         }
@@ -1954,7 +1970,7 @@ class NIOCodableTests: XCTestCase {
         }
 
         struct Adapter: TypeConvertible {
-            func toString(key: CodingKey, path: CodingPath, value: String) -> String {
+            func toString(key: CodingKey, path: NIOCodingPath, value: String) -> String {
                 print(path)
                 if path == "[:]name" {
                     return "XXXX"

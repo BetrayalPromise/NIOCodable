@@ -13,6 +13,10 @@ public final class NIOJSONDecoder {
     public var optionalContainerStrategy: NIOJSONDecoder.OptionalContainerStrategy = .useEmpty
     /// KeyNotFound策略
     public var keyNotFoundStrategy: NIOJSONDecoder.KeyNotFoundStrategy = .useExecption
+    
+    public var keyedDecodingKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.KeyedDecoding.Mismatching = .useExecption
+
+    public var singleValueDecodingKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.SingleValueDecoding.Mismatching = .useExecption
 
     /// 内建类型(Bool, Int, Int8, Int16, Int32, Int64, UInt, UInt8, UInt16, UInt32, UInt64, Float, Double, String)默认值自定义
     public var boxBaseValue: BoxBaseValue = BoxBaseValue()
@@ -26,7 +30,7 @@ public final class NIOJSONDecoder {
         do {
             return try decoder.unbox(value: source, as: type)
         } catch {
-            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [], debugDescription: "无法解析\(type)", underlyingError: error))
+            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "无法解析\(type)", underlyingError: error))
         }
     }
     
@@ -54,4 +58,23 @@ public extension NIOJSONDecoder {
         case useDefaultable
         case useNull
     }
+
+    enum KeyExecptionStrategy {
+        public enum SingleValueDecoding {
+            public enum Mismatching {
+                case useCustom(KeyControllable)
+                case useExecption
+            }
+        }
+
+        public enum KeyedDecoding {
+            public enum Mismatching {
+                case useCustom(KeyControllable)
+                case useExecption
+                case useDefaultable
+                case useNull
+            }
+        }
+    }
+
 }

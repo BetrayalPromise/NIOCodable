@@ -24,7 +24,13 @@ struct NIOCodableKey: CodingKey {
     }
 
     init(string: String) {
-        self.stringValue = string
+        if string.contains("[]")  {
+            self.stringValue = string.replacingOccurrences(of: "[]", with: "")
+        } else if string.contains("[:]") {
+            self.stringValue = string.replacingOccurrences(of: "[:]", with: "")
+        } else {
+            self.stringValue = string
+        }
         self.information = string
     }
 
@@ -35,8 +41,15 @@ struct NIOCodableKey: CodingKey {
     }
 
     init(dictionaryIndex: AnyHashable) {
-        self.stringValue = dictionaryIndex.description
         self.information = "[:]" + dictionaryIndex.description
+        let string: String = dictionaryIndex.description
+        if string.contains("[]")  {
+            self.stringValue = string.replacingOccurrences(of: "[]", with: "")
+        } else if string.contains("[:]") {
+            self.stringValue = string.replacingOccurrences(of: "[:]", with: "")
+        } else {
+            self.stringValue = string
+        }
     }
 
     // 处理字典和数组

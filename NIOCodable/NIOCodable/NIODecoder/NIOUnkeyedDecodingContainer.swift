@@ -104,7 +104,7 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
         guard let model: T = try self.decoder.unbox(value: value, as: type) else {
             switch self.decoder.wrapper?.keyNotFoundStrategy {
             case .useCustom(let delegate):
-                let codingPath: CodingPath = self.decoder.codingPath.filter { (item) -> Bool in
+                let codingPath: NIOCodingPath = self.decoder.codingPath.filter { (item) -> Bool in
                     if item is NIOCodableKey {
                         return true
                     }
