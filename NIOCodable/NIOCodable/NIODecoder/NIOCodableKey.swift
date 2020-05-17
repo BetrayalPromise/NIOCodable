@@ -7,6 +7,7 @@ struct NIOCodableKey: CodingKey {
 
     init?(stringValue: String) {
         self.stringValue = stringValue
+        self.information = stringValue
     }
 
     var intValue: Int?

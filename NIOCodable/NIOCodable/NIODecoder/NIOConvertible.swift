@@ -51,11 +51,11 @@ public protocol TypeConvertible {
     func toBool(key: CodingKey, path: NIOCodingPath, value: String) -> Bool
     func toBool(key: CodingKey, path: NIOCodingPath, value: String) -> Bool?
 
-    func toBool(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Bool
-    func toBool(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Bool?
-
-    func toBool(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Bool
-    func toBool(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Bool?
+//    func toBool(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Bool
+//    func toBool(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Bool?
+//
+//    func toBool(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Bool
+//    func toBool(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Bool?
 
 
     // MARK: - Int
@@ -104,11 +104,11 @@ public protocol TypeConvertible {
     func toInt(key: CodingKey, path: NIOCodingPath, value: String) -> Int
     func toInt(key: CodingKey, path: NIOCodingPath, value: String) -> Int?
 
-    func toInt(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int
-    func toInt(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int?
-
-    func toInt(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int
-    func toInt(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int?
+//    func toInt(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int
+//    func toInt(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int?
+//
+//    func toInt(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int
+//    func toInt(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int?
 
     // MARK:  - Int8
     func toInt8(key: CodingKey, path: NIOCodingPath, value: NSNull) -> Int8
@@ -156,11 +156,11 @@ public protocol TypeConvertible {
     func toInt8(key: CodingKey, path: NIOCodingPath, value: String) -> Int8
     func toInt8(key: CodingKey, path: NIOCodingPath, value: String) -> Int8?
 
-    func toInt8(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int8
-    func toInt8(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int8?
-
-    func toInt8(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int8
-    func toInt8(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int8?
+//    func toInt8(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int8
+//    func toInt8(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int8?
+//
+//    func toInt8(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int8
+//    func toInt8(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int8?
 
     // MARK: - Int16
     func toInt16(key: CodingKey, path: NIOCodingPath, value: NSNull) -> Int16
@@ -208,11 +208,11 @@ public protocol TypeConvertible {
     func toInt16(key: CodingKey, path: NIOCodingPath, value: String) -> Int16
     func toInt16(key: CodingKey, path: NIOCodingPath, value: String) -> Int16?
 
-    func toInt16(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int16
-    func toInt16(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int16?
-
-    func toInt16(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int16
-    func toInt16(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int16?
+//    func toInt16(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int16
+//    func toInt16(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int16?
+//
+//    func toInt16(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int16
+//    func toInt16(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int16?
 
     // MARK: - Int32
     func toInt32(key: CodingKey, path: NIOCodingPath, value: NSNull) -> Int32
@@ -260,11 +260,11 @@ public protocol TypeConvertible {
     func toInt32(key: CodingKey, path: NIOCodingPath, value: String) -> Int32
     func toInt32(key: CodingKey, path: NIOCodingPath, value: String) -> Int32?
 
-    func toInt32(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int32
-    func toInt32(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int32?
-
-    func toInt32(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int32
-    func toInt32(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int32?
+//    func toInt32(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int32
+//    func toInt32(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int32?
+//
+//    func toInt32(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int32
+//    func toInt32(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int32?
 
     // MARK: - Int64
     func toInt64(key: CodingKey, path: NIOCodingPath, value: NSNull) -> Int64
@@ -312,11 +312,11 @@ public protocol TypeConvertible {
     func toInt64(key: CodingKey, path: NIOCodingPath, value: String) -> Int64
     func toInt64(key: CodingKey, path: NIOCodingPath, value: String) -> Int64?
 
-    func toInt64(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int64
-    func toInt64(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int64?
-
-    func toInt64(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int64
-    func toInt64(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int64?
+//    func toInt64(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int64
+//    func toInt64(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int64?
+//
+//    func toInt64(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int64
+//    func toInt64(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int64?
 
     // MARK: - UInt
     func toUInt(key: CodingKey, path: NIOCodingPath, value: NSNull) -> UInt
@@ -364,11 +364,11 @@ public protocol TypeConvertible {
     func toUInt(key: CodingKey, path: NIOCodingPath, value: String) -> UInt
     func toUInt(key: CodingKey, path: NIOCodingPath, value: String) -> UInt?
 
-    func toUInt(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt
-    func toUInt(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt?
-
-    func toUInt(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt
-    func toUInt(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt?
+//    func toUInt(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt
+//    func toUInt(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt?
+//
+//    func toUInt(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt
+//    func toUInt(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt?
 
     // MARK: - UInt8
     func toUInt8(key: CodingKey, path: NIOCodingPath, value: NSNull) -> UInt8
@@ -416,11 +416,11 @@ public protocol TypeConvertible {
     func toUInt8(key: CodingKey, path: NIOCodingPath, value: String) -> UInt8
     func toUInt8(key: CodingKey, path: NIOCodingPath, value: String) -> UInt8?
 
-    func toUInt8(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt8
-    func toUInt8(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt8?
-
-    func toUInt8(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt8
-    func toUInt8(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt8?
+//    func toUInt8(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt8
+//    func toUInt8(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt8?
+//
+//    func toUInt8(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt8
+//    func toUInt8(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt8?
 
     // MARK: - UInt16
     func toUInt16(key: CodingKey, path: NIOCodingPath, value: NSNull) -> UInt16
@@ -468,11 +468,11 @@ public protocol TypeConvertible {
     func toUInt16(key: CodingKey, path: NIOCodingPath, value: String) -> UInt16
     func toUInt16(key: CodingKey, path: NIOCodingPath, value: String) -> UInt16?
 
-    func toUInt16(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt16
-    func toUInt16(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt16?
-
-    func toUInt16(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt16
-    func toUInt16(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt16?
+//    func toUInt16(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt16
+//    func toUInt16(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt16?
+//
+//    func toUInt16(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt16
+//    func toUInt16(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt16?
 
     // MARK: - UInt32
     func toUInt32(key: CodingKey, path: NIOCodingPath, value: NSNull) -> UInt32
@@ -520,11 +520,11 @@ public protocol TypeConvertible {
     func toUInt32(key: CodingKey, path: NIOCodingPath, value: String) -> UInt32
     func toUInt32(key: CodingKey, path: NIOCodingPath, value: String) -> UInt32?
 
-    func toUInt32(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt32
-    func toUInt32(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt32?
-
-    func toUInt32(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt32
-    func toUInt32(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt32?
+//    func toUInt32(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt32
+//    func toUInt32(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt32?
+//
+//    func toUInt32(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt32
+//    func toUInt32(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt32?
 
     // MARK: - UInt64
     func toUInt64(key: CodingKey, path: NIOCodingPath, value: NSNull) -> UInt64
@@ -572,11 +572,11 @@ public protocol TypeConvertible {
     func toUInt64(key: CodingKey, path: NIOCodingPath, value: String) -> UInt64
     func toUInt64(key: CodingKey, path: NIOCodingPath, value: String) -> UInt64?
 
-    func toUInt64(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt64
-    func toUInt64(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt64?
-
-    func toUInt64(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt64
-    func toUInt64(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt64?
+//    func toUInt64(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt64
+//    func toUInt64(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt64?
+//
+//    func toUInt64(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt64
+//    func toUInt64(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt64?
 
     // MARK: - Float
     func toFloat(key: CodingKey, path: NIOCodingPath, value: NSNull) -> Float
@@ -624,11 +624,11 @@ public protocol TypeConvertible {
     func toFloat(key: CodingKey, path: NIOCodingPath, value: String) -> Float
     func toFloat(key: CodingKey, path: NIOCodingPath, value: String) -> Float?
 
-    func toFloat(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Float
-    func toFloat(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Float?
-
-    func toFloat(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Float
-    func toFloat(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Float?
+//    func toFloat(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Float
+//    func toFloat(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Float?
+//
+//    func toFloat(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Float
+//    func toFloat(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Float?
 
     // MARK: - Double
     func toDouble(key: CodingKey, path: NIOCodingPath, value: NSNull) ->  Double
@@ -676,11 +676,11 @@ public protocol TypeConvertible {
     func toDouble(key: CodingKey, path: NIOCodingPath, value: String) -> Double
     func toDouble(key: CodingKey, path: NIOCodingPath, value: String) -> Double?
 
-    func toDouble(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) ->  Double
-    func toDouble(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) ->  Double?
-
-    func toDouble(key: CodingKey, path: NIOCodingPath, value: [Any]) ->  Double
-    func toDouble(key: CodingKey, path: NIOCodingPath, value: [Any]) ->  Double?
+//    func toDouble(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) ->  Double
+//    func toDouble(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) ->  Double?
+//
+//    func toDouble(key: CodingKey, path: NIOCodingPath, value: [Any]) ->  Double
+//    func toDouble(key: CodingKey, path: NIOCodingPath, value: [Any]) ->  Double?
 
     // MARK: - String
     func toString(key: CodingKey, path: NIOCodingPath, value: NSNull) -> String
@@ -728,11 +728,11 @@ public protocol TypeConvertible {
     func toString(key: CodingKey, path: NIOCodingPath, value: String) -> String
     func toString(key: CodingKey, path: NIOCodingPath, value: String) -> String?
 
-    func toString(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> String
-    func toString(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> String?
-
-    func toString(key: CodingKey, path: NIOCodingPath, value: [Any]) -> String
-    func toString(key: CodingKey, path: NIOCodingPath, value: [Any]) -> String?
+//    func toString(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> String
+//    func toString(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> String?
+//
+//    func toString(key: CodingKey, path: NIOCodingPath, value: [Any]) -> String
+//    func toString(key: CodingKey, path: NIOCodingPath, value: [Any]) -> String?
 }
 
 // MARK: - BOOL -
@@ -962,23 +962,23 @@ extension TypeConvertible {
         }
     }
 
-    // MARK: Dictionary -> Bool
-    func toBool(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Bool {
-        return false
-    }
-
-    func toBool(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Bool? {
-        return false
-    }
-
-    // MARK: Array -> Bool
-    func toBool(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Bool {
-        return false
-    }
-
-    func toBool(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Bool? {
-        return false
-    }
+//    // MARK: Dictionary -> Bool
+//    func toBool(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Bool {
+//        return false
+//    }
+//
+//    func toBool(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Bool? {
+//        return false
+//    }
+//
+//    // MARK: Array -> Bool
+//    func toBool(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Bool {
+//        return false
+//    }
+//
+//    func toBool(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Bool? {
+//        return false
+//    }
 }
 
 // MARK: - INT -
@@ -1133,23 +1133,23 @@ extension TypeConvertible {
         }
     }
 
-    // MARK: Dictionary -> Int
-    func toInt(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int {
-        return 0
-    }
-
-    func toInt(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int? {
-        return 0
-    }
-
-    // MARK: Array -> Int
-    func toInt(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int {
-        return 0
-    }
-
-    func toInt(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int? {
-        return 0
-    }
+//    // MARK: Dictionary -> Int
+//    func toInt(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int {
+//        return 0
+//    }
+//
+//    func toInt(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int? {
+//        return 0
+//    }
+//
+//    // MARK: Array -> Int
+//    func toInt(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int {
+//        return 0
+//    }
+//
+//    func toInt(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int? {
+//        return 0
+//    }
 }
 
 // MARK: - INT8 -
@@ -1303,23 +1303,23 @@ extension TypeConvertible {
         }
     }
 
-    // MARK: Dictionary -> Int8
-    func toInt8(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int8 {
-        return 0
-    }
-
-    func toInt8(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int8? {
-        return 0
-    }
-
-    // MARK: Array -> Int8
-    func toInt8(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int8 {
-        return 0
-    }
-
-    func toInt8(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int8? {
-        return 0
-    }
+//    // MARK: Dictionary -> Int8
+//    func toInt8(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int8 {
+//        return 0
+//    }
+//
+//    func toInt8(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int8? {
+//        return 0
+//    }
+//
+//    // MARK: Array -> Int8
+//    func toInt8(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int8 {
+//        return 0
+//    }
+//
+//    func toInt8(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int8? {
+//        return 0
+//    }
 }
 
 // MARK: - INT16 -
@@ -1474,23 +1474,23 @@ extension TypeConvertible {
         }
     }
 
-    // MARK: Dictionary -> Int16
-    func toInt16(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int16 {
-        return 0
-    }
-
-    func toInt16(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int16? {
-        return 0
-    }
-
-    // MARK: Array -> Int16
-    func toInt16(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int16 {
-        return 0
-    }
-
-    func toInt16(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int16? {
-        return 0
-    }
+//    // MARK: Dictionary -> Int16
+//    func toInt16(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int16 {
+//        return 0
+//    }
+//
+//    func toInt16(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int16? {
+//        return 0
+//    }
+//
+//    // MARK: Array -> Int16
+//    func toInt16(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int16 {
+//        return 0
+//    }
+//
+//    func toInt16(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int16? {
+//        return 0
+//    }
 }
 
 // MARK: - INT32 -
@@ -1644,23 +1644,23 @@ extension TypeConvertible {
         }
     }
 
-    // MARK: Dictionary -> Int32
-    func toInt32(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int32 {
-        return 0
-    }
-
-    func toInt32(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int32? {
-        return 0
-    }
-
-    // MARK: Array -> Int32
-    func toInt32(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int32 {
-        return 0
-    }
-
-    func toInt32(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int32? {
-        return 0
-    }
+//    // MARK: Dictionary -> Int32
+//    func toInt32(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int32 {
+//        return 0
+//    }
+//
+//    func toInt32(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int32? {
+//        return 0
+//    }
+//
+//    // MARK: Array -> Int32
+//    func toInt32(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int32 {
+//        return 0
+//    }
+//
+//    func toInt32(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int32? {
+//        return 0
+//    }
 }
 
 // MARK: - INT64 -
@@ -1813,23 +1813,23 @@ extension TypeConvertible {
         }
     }
 
-    // MARK: Dictionay -> Int64
-    func toInt64(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int64 {
-        return 0
-    }
-
-    func toInt64(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int64? {
-        return 0
-    }
-
-    // MARK: Array -> Int64
-    func toInt64(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int64 {
-        return 0
-    }
-
-    func toInt64(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int64? {
-        return 0
-    }
+//    // MARK: Dictionay -> Int64
+//    func toInt64(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int64 {
+//        return 0
+//    }
+//
+//    func toInt64(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> Int64? {
+//        return 0
+//    }
+//
+//    // MARK: Array -> Int64
+//    func toInt64(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int64 {
+//        return 0
+//    }
+//
+//    func toInt64(key: CodingKey, path: NIOCodingPath, value: [Any]) -> Int64? {
+//        return 0
+//    }
 }
 
 // MARK: - UINT -
@@ -1996,23 +1996,23 @@ extension TypeConvertible {
         }
     }
 
-    // MARK: Dictionary -> UInt
-    func toUInt(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt {
-        return 0
-    }
-
-    func toUInt(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt? {
-        return 0
-    }
-
-    // MARK: Array -> UInt
-    func toUInt(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt {
-        return 0
-    }
-
-    func toUInt(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt? {
-        return 0
-    }
+//    // MARK: Dictionary -> UInt
+//    func toUInt(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt {
+//        return 0
+//    }
+//
+//    func toUInt(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt? {
+//        return 0
+//    }
+//
+//    // MARK: Array -> UInt
+//    func toUInt(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt {
+//        return 0
+//    }
+//
+//    func toUInt(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt? {
+//        return 0
+//    }
 }
 
 // MARK: - UInt8 -
@@ -2178,23 +2178,23 @@ extension TypeConvertible {
         }
     }
 
-    // MARK: Dictionary -> UInt8
-    func toUInt8(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt8 {
-        return 0
-    }
-
-    func toUInt8(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt8? {
-        return 0
-    }
-
-    // MARK: Array -> UInt8
-    func toUInt8(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt8 {
-        return 0
-    }
-
-    func toUInt8(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt8? {
-        return 0
-    }
+//    // MARK: Dictionary -> UInt8
+//    func toUInt8(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt8 {
+//        return 0
+//    }
+//
+//    func toUInt8(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt8? {
+//        return 0
+//    }
+//
+//    // MARK: Array -> UInt8
+//    func toUInt8(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt8 {
+//        return 0
+//    }
+//
+//    func toUInt8(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt8? {
+//        return 0
+//    }
 }
 
 // MARK: - UInt16 -
@@ -2362,23 +2362,23 @@ extension TypeConvertible {
         }
     }
 
-    // MARK: Dictionary -> UInt16
-    func toUInt16(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt16 {
-        return 0
-    }
-
-    func toUInt16(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt16? {
-        return 0
-    }
-
-    // MARK: Array -> UInt16
-    func toUInt16(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt16 {
-        return 0
-    }
-
-    func toUInt16(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt16? {
-        return 0
-    }
+//    // MARK: Dictionary -> UInt16
+//    func toUInt16(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt16 {
+//        return 0
+//    }
+//
+//    func toUInt16(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt16? {
+//        return 0
+//    }
+//
+//    // MARK: Array -> UInt16
+//    func toUInt16(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt16 {
+//        return 0
+//    }
+//
+//    func toUInt16(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt16? {
+//        return 0
+//    }
 }
 
 // MARK: - UInt32 -
@@ -2546,23 +2546,23 @@ extension TypeConvertible {
         }
     }
 
-    // MARK: Dictionary -> UInt32
-    func toUInt32(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt32 {
-        return 0
-    }
-
-    func toUInt32(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt32? {
-        return 0
-    }
-
-    // MARK: Array -> UInt32
-    func toUInt32(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt32 {
-        return 0
-    }
-
-    func toUInt32(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt32? {
-        return 0
-    }
+//    // MARK: Dictionary -> UInt32
+//    func toUInt32(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt32 {
+//        return 0
+//    }
+//
+//    func toUInt32(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt32? {
+//        return 0
+//    }
+//
+//    // MARK: Array -> UInt32
+//    func toUInt32(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt32 {
+//        return 0
+//    }
+//
+//    func toUInt32(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt32? {
+//        return 0
+//    }
 }
 
 // MARK: - UInt64 -
@@ -2728,23 +2728,23 @@ extension TypeConvertible {
         }
     }
 
-    // MARK: Dictionary -> UInt64
-    func toUInt64(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt64 {
-        return 0
-    }
-
-    func toUInt64(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt64? {
-        return 0
-    }
-
-    // MARK: Array -> UInt64
-    func toUInt64(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt64 {
-        return 0
-    }
-
-    func toUInt64(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt64? {
-        return 0
-    }
+//    // MARK: Dictionary -> UInt64
+//    func toUInt64(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt64 {
+//        return 0
+//    }
+//
+//    func toUInt64(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> UInt64? {
+//        return 0
+//    }
+//
+//    // MARK: Array -> UInt64
+//    func toUInt64(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt64 {
+//        return 0
+//    }
+//
+//    func toUInt64(key: CodingKey, path: NIOCodingPath, value: [Any]) -> UInt64? {
+//        return 0
+//    }
 }
 
 // MARK: - Float -
@@ -2897,22 +2897,22 @@ extension TypeConvertible {
         }
     }
 
-    // MARK: Dictionary -> Float
-    func toFloat(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) ->  Float {
-        return 0.0
-    }
-    func toFloat(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) ->  Float? {
-        return 0.0
-    }
-
-    // MARK: Array -> Float
-    func toFloat(key: CodingKey, path: NIOCodingPath, value: [Any]) ->  Float {
-        return 0.0
-    }
-
-    func toFloat(key: CodingKey, path: NIOCodingPath, value: [Any]) ->  Float? {
-        return 0.0
-    }
+//    // MARK: Dictionary -> Float
+//    func toFloat(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) ->  Float {
+//        return 0.0
+//    }
+//    func toFloat(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) ->  Float? {
+//        return 0.0
+//    }
+//
+//    // MARK: Array -> Float
+//    func toFloat(key: CodingKey, path: NIOCodingPath, value: [Any]) ->  Float {
+//        return 0.0
+//    }
+//
+//    func toFloat(key: CodingKey, path: NIOCodingPath, value: [Any]) ->  Float? {
+//        return 0.0
+//    }
 }
 
 // MARK: - Double -
@@ -3065,22 +3065,22 @@ extension TypeConvertible {
         }
     }
 
-    // MARK: Dictionary -> Double
-    func toDouble(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) ->  Double {
-        return 0.0
-    }
-    func toDouble(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) ->  Double? {
-        return 0.0
-    }
-
-    // MARK: Array -> Double
-    func toDouble(key: CodingKey, path: NIOCodingPath, value: [Any]) ->  Double {
-        return 0.0
-    }
-
-    func toDouble(key: CodingKey, path: NIOCodingPath, value: [Any]) ->  Double? {
-        return 0.0
-    }
+//    // MARK: Dictionary -> Double
+//    func toDouble(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) ->  Double {
+//        return 0.0
+//    }
+//    func toDouble(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) ->  Double? {
+//        return 0.0
+//    }
+//
+//    // MARK: Array -> Double
+//    func toDouble(key: CodingKey, path: NIOCodingPath, value: [Any]) ->  Double {
+//        return 0.0
+//    }
+//
+//    func toDouble(key: CodingKey, path: NIOCodingPath, value: [Any]) ->  Double? {
+//        return 0.0
+//    }
 }
 
 // MARK: - String -
@@ -3225,23 +3225,23 @@ extension TypeConvertible {
         return value
     }
 
-    // MARK: Dictionary -> String
-    func toString(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> String {
-        return ""
-    }
-
-    func toString(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> String? {
-        return ""
-    }
-
-    // MARK: Array -> String
-    func toString(key: CodingKey, path: NIOCodingPath, value: [Any]) -> String {
-        return ""
-    }
-
-    func toString(key: CodingKey, path: NIOCodingPath, value: [Any]) -> String? {
-        return ""
-    }
+//    // MARK: Dictionary -> String
+//    func toString(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> String {
+//        return ""
+//    }
+//
+//    func toString(key: CodingKey, path: NIOCodingPath, value: [AnyHashable: Any]) -> String? {
+//        return ""
+//    }
+//
+//    // MARK: Array -> String
+//    func toString(key: CodingKey, path: NIOCodingPath, value: [Any]) -> String {
+//        return ""
+//    }
+//
+//    func toString(key: CodingKey, path: NIOCodingPath, value: [Any]) -> String? {
+//        return ""
+//    }
 }
 
 #if false

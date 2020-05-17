@@ -11,12 +11,12 @@ public final class NIOJSONDecoder {
     public var convertTypeStrategy: NIOJSONDecoder.ConvertTypeStrategy = .useDefaultable
     /// 容器使用策略
     public var optionalContainerStrategy: NIOJSONDecoder.OptionalContainerStrategy = .useEmpty
-    /// KeyNotFound策略
-    public var keyNotFoundStrategy: NIOJSONDecoder.KeyNotFoundStrategy = .useExecption
-    
-    public var keyedDecodingKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.KeyedDecoding.Mismatching = .useExecption
 
-    public var singleValueDecodingKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.SingleValueDecoding.Mismatching = .useExecption
+    public var unkeyedDecodingKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.UnkeyedDecoding.NotFound = .useExecption
+    
+    public var keyedDecodingKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.KeyedDecoding.NotFound = .useExecption
+
+    public var singleValueDecodingKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.SingleValueDecoding.NotFound = .useExecption
 
     /// 内建类型(Bool, Int, Int8, Int16, Int32, Int64, UInt, UInt8, UInt16, UInt32, UInt64, Float, Double, String)默认值自定义
     public var boxBaseValue: BoxBaseValue = BoxBaseValue()
@@ -51,25 +51,34 @@ public extension NIOJSONDecoder {
         case useEmpty   // 使用空容器
     }
 
-    /// 可选类型key不对应策略
-    enum KeyNotFoundStrategy {
-        case useCustom(DefaultValueControllable) /// 处理[:]这种空值字典
-        case useExecption
-        case useDefaultable
-        case useNull
-    }
+//    /// 可选类型key不对应策略
+//    enum KeyNotFoundStrategy {
+//        case useCustom(DefaultValueControllable) /// 处理[:]这种空值字典
+//        case useExecption
+//        case useDefaultable
+//        case useNull
+//    }
 
     enum KeyExecptionStrategy {
         public enum SingleValueDecoding {
-            public enum Mismatching {
+            public enum NotFound {
                 case useCustom(KeyControllable)
                 case useExecption
             }
         }
 
         public enum KeyedDecoding {
-            public enum Mismatching {
+            public enum NotFound {
                 case useCustom(KeyControllable)
+                case useExecption
+                case useDefaultable
+                case useNull
+            }
+        }
+
+        public enum UnkeyedDecoding {
+            public enum NotFound {
+                case useCustom(DefaultValueControllable) /// 处理[:]这种空值字典
                 case useExecption
                 case useDefaultable
                 case useNull
@@ -77,4 +86,7 @@ public extension NIOJSONDecoder {
         }
     }
 
+    enum ValueExecptionStrategy {
+//        public enum
+    }
 }

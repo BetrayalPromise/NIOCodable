@@ -123,22 +123,6 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toBool(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toBool(key: key, path: self.codingPath, value: value)
             }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to Bool"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toBool(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toBool(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to Bool"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toBool(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toBool(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
         } else {
             debugPrint("Bool type unsupport :\(value), set default false")
             return false
@@ -236,22 +220,6 @@ extension NIOCodableHandle {
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toBool(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toBool(key: key, path: self.codingPath, value: value)
-            }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to Bool"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toBool(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toBool(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to Bool"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toBool(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toBool(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
             }
         } else {
             debugPrint("Bool type unsupport :\(value), set default false")
@@ -357,22 +325,6 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toInt(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toInt(key: key, path: self.codingPath, value: value)
             }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to Int"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to Int"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
         } else {
             debugPrint("Int type unsupport :\(value), set default 0")
             return 0
@@ -473,22 +425,6 @@ extension NIOCodableHandle {
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toInt(key: key, path: self.codingPath, value: value)
-            }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to Int"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to Int"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
             }
         } else {
             debugPrint("Int type unsupport :\(value), set default 0")
@@ -594,22 +530,6 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toInt8(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toInt8(key: key, path: self.codingPath, value: value)
             }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Int8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to Int8"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt8(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt8(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Int8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to Int8"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt8(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt8(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
         } else {
             debugPrint("Int8 type unsupport :\(value), set default nil")
             return 0
@@ -710,22 +630,6 @@ extension NIOCodableHandle {
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt8(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toInt8(key: key, path: self.codingPath, value: value)
-            }
-        }  else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Int16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to Int8"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt8(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt8(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Int16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to Int8"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt8(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt8(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
             }
         } else {
             debugPrint("Int8 type unsupport :\(value), set default nil")
@@ -828,22 +732,6 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toInt16(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toInt16(key: key, path: self.codingPath, value: value)
             }
-        }  else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Int16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to Int8"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt16(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt16(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Int16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to Int8"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt16(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt16(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
         } else {
             debugPrint("Int16 type unsupport :\(value), set default 0")
             return 0
@@ -941,22 +829,6 @@ extension NIOCodableHandle {
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt16(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toInt16(key: key, path: self.codingPath, value: value)
-            }
-        }  else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Int16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to Int8"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt16(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt16(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Int16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to Int8"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt16(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt16(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
             }
         } else {
             debugPrint("Int16 type unsupport :\(value), set default nil")
@@ -1062,22 +934,6 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toInt32(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toInt32(key: key, path: self.codingPath, value: value)
             }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Int32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to Int32"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt32(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt32(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Int32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to Int32"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt32(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt32(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
         } else {
             debugPrint("Int32 type unsupport :\(value), set default 0")
             return 0
@@ -1178,22 +1034,6 @@ extension NIOCodableHandle {
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt32(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toInt32(key: key, path: self.codingPath, value: value)
-            }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Int32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to Int32"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt32(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt32(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Int32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to Int32"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt32(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt32(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
             }
         } else {
             debugPrint("Int32 type unsupport :\(value), set default nil")
@@ -1296,22 +1136,6 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toInt64(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toInt64(key: key, path: self.codingPath, value: value)
             }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to Int64"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt64(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt64(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to Int64"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt64(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt64(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
         } else {
             debugPrint("Int64 type unsupport :\(value), set default 0")
             return 0
@@ -1409,22 +1233,6 @@ extension NIOCodableHandle {
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt64(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toInt64(key: key, path: self.codingPath, value: value)
-            }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to Int64"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt64(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt64(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to Int64"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt64(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toInt64(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
             }
         } else {
             debugPrint("Int64 type unsupport :\(value), set default nil")
@@ -1527,22 +1335,6 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toUInt(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toUInt(key: key, path: self.codingPath, value: value)
             }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(UInt.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to UInt"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(UInt.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to UInt"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
         } else {
             debugPrint("UInt type unsupport :\(value), set default 0")
             return 0
@@ -1640,22 +1432,6 @@ extension NIOCodableHandle {
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toUInt(key: key, path: self.codingPath, value: value)
-            }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(UInt.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to UInt"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(UInt.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to UInt"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
             }
         } else {
             debugPrint("UInt type unsupport :\(value), set default nil")
@@ -1758,22 +1534,6 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toUInt8(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toUInt8(key: key, path: self.codingPath, value: value)
             }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to UInt8"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt8(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt8(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to UInt8"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt8(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt8(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
         } else {
             debugPrint("UInt8 type unsupport :\(value), set default 0")
             return 0
@@ -1871,22 +1631,6 @@ extension NIOCodableHandle {
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt8(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toUInt8(key: key, path: self.codingPath, value: value)
-            }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to UInt8"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt8(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt8(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to UInt8"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt8(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt8(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
             }
         } else {
             debugPrint("UInt8 type unsupport :\(value), set default nil")
@@ -1989,22 +1733,6 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toUInt16(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toUInt16(key: key, path: self.codingPath, value: value)
             }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to UInt16"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt16(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt16(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to UInt16"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt16(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt16(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
         } else {
             debugPrint("UInt16 type unsupport :\(value), set default 0")
             return 0
@@ -2102,22 +1830,6 @@ extension NIOCodableHandle {
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt16(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toUInt16(key: key, path: self.codingPath, value: value)
-            }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to UInt16"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt16(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt16(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to UInt16"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt16(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt16(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
             }
         } else {
             debugPrint("UInt16 type unsupport :\(value), set default nil")
@@ -2220,22 +1932,6 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toUInt32(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toUInt32(key: key, path: self.codingPath, value: value)
             }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to UInt32"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt32(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt32(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to UInt32"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt32(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt32(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
         } else {
             debugPrint("UInt32 type unsupport :\(value), set default 0")
             return 0
@@ -2333,22 +2029,6 @@ extension NIOCodableHandle {
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt32(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toUInt32(key: key, path: self.codingPath, value: value)
-            }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to UInt32"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt32(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt32(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to UInt32"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt32(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt32(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
             }
         } else {
             debugPrint("UInt32 type unsupport :\(value), set default nil")
@@ -2451,22 +2131,6 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toUInt64(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toUInt64(key: key, path: self.codingPath, value: value)
             }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to UInt64"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt64(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt64(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to UInt64"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt64(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt64(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
         } else {
             debugPrint("UInt64 type unsupport :\(value), set default 0")
             return 0
@@ -2564,22 +2228,6 @@ extension NIOCodableHandle {
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toUInt64(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toUInt64(key: key, path: self.codingPath, value: value)
-            }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to UInt64"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt64(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt64(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to UInt64"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt64(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toUInt64(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
             }
         } else {
             debugPrint("UInt64 type unsupport :\(value), set default nil")
@@ -2682,22 +2330,6 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toFloat(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toFloat(key: key, path: self.codingPath, value: value)
             }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Float.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to Float"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toFloat(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toFloat(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Float.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to Float"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toFloat(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toFloat(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
         } else {
             debugPrint("Float type unsupport :\(value), set default 0.0")
             return 0.0
@@ -2795,22 +2427,6 @@ extension NIOCodableHandle {
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toFloat(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toFloat(key: key, path: self.codingPath, value: value)
-            }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Float.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to Float"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toFloat(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toFloat(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Float.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to Float"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toFloat(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toFloat(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
             }
         } else {
             debugPrint("Float type unsupport :\(value), set default nil")
@@ -2913,22 +2529,6 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toDouble(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toDouble(key: key, path: self.codingPath, value: value)
             }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to Double"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to Double"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
         } else {
             debugPrint("Double type unsupport :\(value), set default 0.0")
             return 0.0
@@ -3026,22 +2626,6 @@ extension NIOCodableHandle {
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toDouble(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toDouble(key: key, path: self.codingPath, value: value)
-            }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to Double"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to Double"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
             }
         } else {
             debugPrint("Double type unsupport :\(value), set default nil")
@@ -3144,22 +2728,6 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toString(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toString(key: key, path: self.codingPath, value: value)
             }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(String.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to String"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toString(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toString(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(String.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to String"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toString(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toString(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
         } else {
             debugPrint("Double type unsupport :\(value), set default \"\"")
             return ""
@@ -3257,22 +2825,6 @@ extension NIOCodableHandle {
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toString(key: key, path: self.codingPath, value: value)
             case .useCustom(let delegate): return delegate.toString(key: key, path: self.codingPath, value: value)
-            }
-        } else if value is [AnyHashable: Any] {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                throw DecodingError.typeMismatch(String.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to String"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toString(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toString(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            }
-        } else if value is [Any] {
-            guard let `value`: [Any] = value as? [Any] else {
-                throw DecodingError.typeMismatch(String.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Array can't convert to String"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toString(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
-            case .useCustom(let delegate): return delegate.toString(key: NIOCodableKey(value: value), path: self.codingPath, value: value)
             }
         } else {
             debugPrint("Double type unsupport :\(value), set default nil")

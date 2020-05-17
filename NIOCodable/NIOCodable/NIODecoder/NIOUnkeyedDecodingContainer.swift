@@ -102,19 +102,9 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
         let value: Any = self.source[self.currentIndex]
 
         guard let model: T = try self.decoder.unbox(value: value, as: type) else {
-            switch self.decoder.wrapper?.keyNotFoundStrategy {
+            switch self.decoder.wrapper?.unkeyedDecodingKeyMismatchingStrategy {
             case .useCustom(let delegate):
-                let codingPath: NIOCodingPath = self.decoder.codingPath.filter { (item) -> Bool in
-                    if item is NIOCodableKey {
-                        return true
-                    }
-                    return false
-                }.map { (item) -> NIOCodableKey in
-                    return item as! NIOCodableKey
-                }.reduce("") { (result, item) -> String in
-                    return result + (item.information ?? "")
-                }
-                guard let `model`: T = delegate.handle(key: NIOCodableKey(int: self.currentIndex), path: codingPath, source: self.source[self.currentIndex]) as? T else {
+                guard let `model`: T = delegate.handle(key: NIOCodableKey(int: self.currentIndex), path: self.handle.codingPath, source: self.source[self.currentIndex]) as? T else {
                     throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Value Execption"))
                 }
                 self.currentIndex += 1

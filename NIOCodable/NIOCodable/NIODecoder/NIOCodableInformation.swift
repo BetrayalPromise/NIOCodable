@@ -21,3 +21,88 @@ public struct BoxBaseValue {
 
     var string: String = ""
 }
+
+extension Bool: Initalizable {
+    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+        self.init()
+    }
+}
+
+extension Int: Initalizable {
+    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+        self.init()
+    }
+}
+
+extension Int8: Initalizable {
+    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+        self.init()
+    }
+}
+
+extension Int16: Initalizable {
+    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+        self.init()
+    }
+}
+
+extension Int32: Initalizable {
+    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+        self.init()
+    }
+}
+
+
+extension Int64: Initalizable {
+    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+        self.init()
+    }
+}
+
+extension UInt: Initalizable {
+    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+        self.init()
+    }
+}
+
+extension UInt8: Initalizable {
+    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+        self.init()
+    }
+}
+
+extension UInt16: Initalizable {
+    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+        self.init()
+    }
+}
+
+extension UInt32: Initalizable {
+    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+        self.init()
+    }
+}
+
+extension UInt64: Initalizable {
+    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+        self.init()
+    }
+}
+
+extension Float: Initalizable {
+    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+        self.init()
+    }
+}
+
+extension Double: Initalizable {
+    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+        self.init()
+    }
+}
+
+extension String: Initalizable {
+    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+        self.init()
+    }
+}
