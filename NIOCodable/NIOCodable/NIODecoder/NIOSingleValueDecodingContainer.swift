@@ -27,6 +27,22 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
         guard let key = NIOCodableKey(stringValue: self.decoder.codingPath.last?.stringValue ?? "") else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法找到Key", underlyingError: nil))
         }
+        if value is [AnyHashable: Any] {
+            guard let dictionary: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "转化失败", underlyingError: nil))
+            }
+            if dictionary.keys.contains(key.stringValue) {
+                return try self.handle.decode(value: value, type: Bool.self, forKey: key)
+            } else {
+                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                case .useCustom(let delegate):
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Bool.self, forKey: replaceKey)
+                case .useExecption, .none:
+                    throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
+                }
+            }
+        }
         return try self.handle.decode(value: value, type: Bool.self, forKey: key)
     }
 
@@ -35,8 +51,25 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
         guard let value = self.decoder.storage.currentValue else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法解析\(type)", underlyingError: nil))
         }
-        guard let key = NIOCodableKey(stringValue: self.codingPath.last?.stringValue ?? "") else {
+        guard let key = NIOCodableKey(stringValue: self.decoder.codingPath.last?.stringValue ?? "") else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法找到Key", underlyingError: nil))
+        }
+
+        if value is [AnyHashable: Any] {
+            guard let dictionary: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "转化失败", underlyingError: nil))
+            }
+            if dictionary.keys.contains(key.stringValue) {
+                return try self.handle.decode(value: value, type: Int.self, forKey: key)
+            } else {
+                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                case .useCustom(let delegate):
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Int.self, forKey: replaceKey)
+                case .useExecption, .none:
+                    throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
+                }
+            }
         }
         return try self.handle.decode(value: value, type: Int.self, forKey: key)
     }
@@ -46,8 +79,25 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
         guard let value = self.decoder.storage.currentValue else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法解析\(type)", underlyingError: nil))
         }
-        guard let key = NIOCodableKey(stringValue: self.codingPath.last?.stringValue ?? "") else {
+        guard let key = NIOCodableKey(stringValue: self.decoder.codingPath.last?.stringValue ?? "") else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法找到Key", underlyingError: nil))
+        }
+
+        if value is [AnyHashable: Any] {
+            guard let dictionary: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "转化失败", underlyingError: nil))
+            }
+            if dictionary.keys.contains(key.stringValue) {
+                return try self.handle.decode(value: value, type: Int8.self, forKey: key)
+            } else {
+                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                case .useCustom(let delegate):
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Int8.self, forKey: replaceKey)
+                case .useExecption, .none:
+                    throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
+                }
+            }
         }
         return try self.handle.decode(value: value, type: Int8.self, forKey: key)
     }
@@ -57,8 +107,25 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
         guard let value = self.decoder.storage.currentValue else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法解析\(type)", underlyingError: nil))
         }
-        guard let key = NIOCodableKey(stringValue: self.codingPath.last?.stringValue ?? "") else {
+        guard let key = NIOCodableKey(stringValue: self.decoder.codingPath.last?.stringValue ?? "") else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法找到Key", underlyingError: nil))
+        }
+
+        if value is [AnyHashable: Any] {
+            guard let dictionary: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "转化失败", underlyingError: nil))
+            }
+            if dictionary.keys.contains(key.stringValue) {
+                return try self.handle.decode(value: value, type: Int16.self, forKey: key)
+            } else {
+                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                case .useCustom(let delegate):
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Int16.self, forKey: replaceKey)
+                case .useExecption, .none:
+                    throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
+                }
+            }
         }
         return try self.handle.decode(value: value, type: Int16.self, forKey: key)
     }
@@ -68,8 +135,25 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
         guard let value = self.decoder.storage.currentValue else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法解析\(type)", underlyingError: nil))
         }
-        guard let key = NIOCodableKey(stringValue: self.codingPath.last?.stringValue ?? "") else {
+        guard let key = NIOCodableKey(stringValue: self.decoder.codingPath.last?.stringValue ?? "") else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法找到Key", underlyingError: nil))
+        }
+
+        if value is [AnyHashable: Any] {
+            guard let dictionary: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "转化失败", underlyingError: nil))
+            }
+            if dictionary.keys.contains(key.stringValue) {
+                return try self.handle.decode(value: value, type: Int32.self, forKey: key)
+            } else {
+                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                case .useCustom(let delegate):
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Int32.self, forKey: replaceKey)
+                case .useExecption, .none:
+                    throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
+                }
+            }
         }
         return try self.handle.decode(value: value, type: Int32.self, forKey: key)
     }
@@ -79,8 +163,25 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
         guard let value = self.decoder.storage.currentValue else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法解析\(type)", underlyingError: nil))
         }
-        guard let key = NIOCodableKey(stringValue: self.codingPath.last?.stringValue ?? "") else {
+        guard let key = NIOCodableKey(stringValue: self.decoder.codingPath.last?.stringValue ?? "") else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法找到Key", underlyingError: nil))
+        }
+
+        if value is [AnyHashable: Any] {
+            guard let dictionary: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "转化失败", underlyingError: nil))
+            }
+            if dictionary.keys.contains(key.stringValue) {
+                return try self.handle.decode(value: value, type: Int64.self, forKey: key)
+            } else {
+                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                case .useCustom(let delegate):
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Int64.self, forKey: replaceKey)
+                case .useExecption, .none:
+                    throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
+                }
+            }
         }
         return try self.handle.decode(value: value, type: Int64.self, forKey: key)
     }
@@ -89,8 +190,25 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
         guard let value = self.decoder.storage.currentValue else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法解析\(type)", underlyingError: nil))
         }
-        guard let key = NIOCodableKey(stringValue: self.codingPath.last?.stringValue ?? "") else {
+        guard let key = NIOCodableKey(stringValue: self.decoder.codingPath.last?.stringValue ?? "") else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法找到Key", underlyingError: nil))
+        }
+
+        if value is [AnyHashable: Any] {
+            guard let dictionary: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "转化失败", underlyingError: nil))
+            }
+            if dictionary.keys.contains(key.stringValue) {
+                return try self.handle.decode(value: value, type: UInt.self, forKey: key)
+            } else {
+                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                case .useCustom(let delegate):
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: UInt.self, forKey: replaceKey)
+                case .useExecption, .none:
+                    throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
+                }
+            }
         }
         return try self.handle.decode(value: value, type: UInt.self, forKey: key)
     }
@@ -100,8 +218,25 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
         guard let value = self.decoder.storage.currentValue else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法解析\(type)", underlyingError: nil))
         }
-        guard let key = NIOCodableKey(stringValue: self.codingPath.last?.stringValue ?? "") else {
+        guard let key = NIOCodableKey(stringValue: self.decoder.codingPath.last?.stringValue ?? "") else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法找到Key", underlyingError: nil))
+        }
+
+        if value is [AnyHashable: Any] {
+            guard let dictionary: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "转化失败", underlyingError: nil))
+            }
+            if dictionary.keys.contains(key.stringValue) {
+                return try self.handle.decode(value: value, type: UInt8.self, forKey: key)
+            } else {
+                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                case .useCustom(let delegate):
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: UInt8.self, forKey: replaceKey)
+                case .useExecption, .none:
+                    throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
+                }
+            }
         }
         return try self.handle.decode(value: value, type: UInt8.self, forKey: key)
     }
@@ -111,8 +246,25 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
         guard let value = self.decoder.storage.currentValue else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法解析\(type)", underlyingError: nil))
         }
-        guard let key = NIOCodableKey(stringValue: self.codingPath.last?.stringValue ?? "") else {
+        guard let key = NIOCodableKey(stringValue: self.decoder.codingPath.last?.stringValue ?? "") else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法找到Key", underlyingError: nil))
+        }
+
+        if value is [AnyHashable: Any] {
+            guard let dictionary: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "转化失败", underlyingError: nil))
+            }
+            if dictionary.keys.contains(key.stringValue) {
+                return try self.handle.decode(value: value, type: UInt16.self, forKey: key)
+            } else {
+                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                case .useCustom(let delegate):
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: UInt16.self, forKey: replaceKey)
+                case .useExecption, .none:
+                    throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
+                }
+            }
         }
         return try self.handle.decode(value: value, type: UInt16.self, forKey: key)
     }
@@ -122,8 +274,25 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
         guard let value = self.decoder.storage.currentValue else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法解析\(type)", underlyingError: nil))
         }
-        guard let key = NIOCodableKey(stringValue: self.codingPath.last?.stringValue ?? "") else {
+        guard let key = NIOCodableKey(stringValue: self.decoder.codingPath.last?.stringValue ?? "") else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法找到Key", underlyingError: nil))
+        }
+
+        if value is [AnyHashable: Any] {
+            guard let dictionary: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "转化失败", underlyingError: nil))
+            }
+            if dictionary.keys.contains(key.stringValue) {
+                return try self.handle.decode(value: value, type: UInt32.self, forKey: key)
+            } else {
+                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                case .useCustom(let delegate):
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: UInt32.self, forKey: replaceKey)
+                case .useExecption, .none:
+                    throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
+                }
+            }
         }
         return try self.handle.decode(value: value, type: UInt32.self, forKey: key)
     }
@@ -133,8 +302,25 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
         guard let value = self.decoder.storage.currentValue else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法解析\(type)", underlyingError: nil))
         }
-        guard let key = NIOCodableKey(stringValue: self.codingPath.last?.stringValue ?? "") else {
+        guard let key = NIOCodableKey(stringValue: self.decoder.codingPath.last?.stringValue ?? "") else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法找到Key", underlyingError: nil))
+        }
+
+        if value is [AnyHashable: Any] {
+            guard let dictionary: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "转化失败", underlyingError: nil))
+            }
+            if dictionary.keys.contains(key.stringValue) {
+                return try self.handle.decode(value: value, type: UInt64.self, forKey: key)
+            } else {
+                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                case .useCustom(let delegate):
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: UInt64.self, forKey: replaceKey)
+                case .useExecption, .none:
+                    throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
+                }
+            }
         }
         return try self.handle.decode(value: value, type: UInt64.self, forKey: key)
     }
@@ -144,8 +330,25 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
         guard let value = self.decoder.storage.currentValue else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法解析\(type)", underlyingError: nil))
         }
-        guard let key = NIOCodableKey(stringValue: self.codingPath.last?.stringValue ?? "") else {
+        guard let key = NIOCodableKey(stringValue: self.decoder.codingPath.last?.stringValue ?? "") else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法找到Key", underlyingError: nil))
+        }
+
+        if value is [AnyHashable: Any] {
+            guard let dictionary: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "转化失败", underlyingError: nil))
+            }
+            if dictionary.keys.contains(key.stringValue) {
+                return try self.handle.decode(value: value, type: Float.self, forKey: key)
+            } else {
+                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                case .useCustom(let delegate):
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Float.self, forKey: replaceKey)
+                case .useExecption, .none:
+                    throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
+                }
+            }
         }
         return try self.handle.decode(value: value, type: Float.self, forKey: key)
     }
@@ -155,8 +358,25 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
         guard let value = self.decoder.storage.currentValue else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法解析\(type)", underlyingError: nil))
         }
-        guard let key = NIOCodableKey(stringValue: self.codingPath.last?.stringValue ?? "") else {
+        guard let key = NIOCodableKey(stringValue: self.decoder.codingPath.last?.stringValue ?? "") else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法找到Key", underlyingError: nil))
+        }
+
+        if value is [AnyHashable: Any] {
+            guard let dictionary: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "转化失败", underlyingError: nil))
+            }
+            if dictionary.keys.contains(key.stringValue) {
+                return try self.handle.decode(value: value, type: Double.self, forKey: key)
+            } else {
+                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                case .useCustom(let delegate):
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Double.self, forKey: replaceKey)
+                case .useExecption, .none:
+                    throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
+                }
+            }
         }
         return try self.handle.decode(value: value, type: Double.self, forKey: key)
     }
@@ -166,7 +386,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
         guard let value = self.decoder.storage.currentValue else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法解析\(type)", underlyingError: nil))
         }
-        guard let key = NIOCodableKey(stringValue: self.codingPath.last?.stringValue ?? "") else {
+        guard let key = NIOCodableKey(stringValue: self.decoder.codingPath.last?.stringValue ?? "") else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法找到Key", underlyingError: nil))
         }
 
@@ -174,17 +394,15 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             guard let dictionary: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
                 throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "转化失败", underlyingError: nil))
             }
-            if dictionary.keys.count != 0 {
-                if dictionary.keys.contains(key.stringValue) {
-                    return try self.handle.decode(value: value, type: String.self, forKey: key)
-                } else {
-                    switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
-                    case .useCustom(let delegate):
-                        let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
-                        return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: String.self, forKey: replaceKey)
-                    case .useExecption, .none:
-                        throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
-                    }
+            if dictionary.keys.contains(key.stringValue) {
+                return try self.handle.decode(value: value, type: String.self, forKey: key)
+            } else {
+                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                case .useCustom(let delegate):
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: String.self, forKey: replaceKey)
+                case .useExecption, .none:
+                    throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
                 }
             }
         }

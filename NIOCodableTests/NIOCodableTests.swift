@@ -1862,60 +1862,104 @@ class NIOCodableTests: XCTestCase {
 //            }
 //        }
 
+//        if true {
+//            struct Human: Codable {
+//                var gender: Gender
+//                var age: Int
+//            }
+//
+//            enum Gender: String, Codable {
+//                case male
+//                case female
+//            }
+//
+//            struct Adapter: TypeConvertible, KeyControllable {
+//                func key(sourcePath: NIOCodingPath) -> NIOCodingPath {
+//                    if sourcePath == "[:]gender" {
+//                        return "[:]gendergender"
+//                    } else if sourcePath == "[:]age" {
+//                        return "[:]ageAge"
+//                    }
+//                    return sourcePath
+//                }
+//            }
+//
+//            let data: Data = """
+//            {
+//                "gendergender": "male",
+//                "ageAge": 3
+//            }
+//            """.data(using: String.Encoding.utf8) ?? Data()
+//            let decoder: NIOJSONDecoder = NIOJSONDecoder()
+//            decoder.keyedDecodingKeyMismatchingStrategy = .useCustom(Adapter())
+//            decoder.singleValueDecodingKeyMismatchingStrategy = .useCustom(Adapter())
+//            do {
+//                guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
+//                XCTAssert(models.gender.rawValue == "male")
+//            } catch {
+//                XCTAssertNil(error, error.localizedDescription)
+//            }
+//        }
+
+//        if true {
+//            struct Adapter: TypeConvertible, KeyControllable {
+//                func key(sourcePath: NIOCodingPath) -> NIOCodingPath {
+//                    if sourcePath == "[:]firstName" {
+//                        return "[:]firstNameM"
+//                    } else if sourcePath == "[:]lastName" {
+//                        return "[:]lastNameM"
+//                    }
+//                    return sourcePath
+//                }
+//            }
+//
+//            struct Root: Codable {
+//                let lastName: String
+//                let firstName: String
+//            }
+//            let data: Data = """
+//                 {
+//                     "firstNameM": "John",
+//                     "lastNameM": "Smith"
+//                 }
+//                """.data(using: String.Encoding.utf8) ?? Data()
+//            let decoder: NIOJSONDecoder = NIOJSONDecoder()
+//            decoder.keyedDecodingKeyMismatchingStrategy = .useCustom(Adapter())
+//            do {
+//                guard let model: Root = try decoder.decode(type: Root.self, from: data) else { return }
+//                XCTAssertEqual(model.firstName, "John")
+//            } catch {
+//                XCTAssertNil(error, error.localizedDescription)
+//            }
+//        }
+
         if true {
-            struct Human: Codable {
-                var gender: Gender
-                var age: Int
-            }
-
-            enum Gender: String, Codable {
-                case male
-                case female
-            }
-
             struct Adapter: TypeConvertible, KeyControllable {
                 func key(sourcePath: NIOCodingPath) -> NIOCodingPath {
-                    if sourcePath == "[:]gender" {
-                        return "[:]gendergender"
-                    } else if sourcePath == "[:]age" {
-                        return "[:]ageAge"
+                    if sourcePath == "[:]infos" {
+                        return "[:]info"
                     }
                     return sourcePath
                 }
             }
 
-            let data: Data = """
-            {
-                "gendergender": "male",
-                "ageAge": 3
-            }
-            """.data(using: String.Encoding.utf8) ?? Data()
-            let decoder: NIOJSONDecoder = NIOJSONDecoder()
-            decoder.keyMismatchingStrategy = .useCustom(Adapter())
-            do {
-                guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
-                XCTAssert(models.gender.rawValue == "male")
-            } catch {
-                XCTAssertNil(error, error.localizedDescription)
-            }
-        }
-
-        if true {
             struct Root: Codable {
-                let lastName: String
-                let firstName: String
+                struct info: Codable {
+                    let name: String
+                }
+                let infos: [info]
             }
+
             let data: Data = """
                  {
-                     "firstNameM": "John",
-                     "lastNameM": "Smith"
+                     "info": [{"name": "ABC"}]
                  }
                 """.data(using: String.Encoding.utf8) ?? Data()
             let decoder: NIOJSONDecoder = NIOJSONDecoder()
-            decoder.keyNotFoundStrategy = .useDefaultable
+            decoder.keyedDecodingKeyMismatchingStrategy = .useDefaultable
             do {
                 guard let model: Root = try decoder.decode(type: Root.self, from: data) else { return }
-                XCTAssertEqual(model.firstName, "")
+                print(model)
             } catch {
                 XCTAssertNil(error, error.localizedDescription)
             }

@@ -119,7 +119,7 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
                 }
                 self.currentIndex += 1
                 return model
-            case .useNull, .useDefaultable:
+            case .useDefaultable:
                 if value is [AnyHashable: Any] {
                     guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
                         throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Value Execption"))
@@ -133,7 +133,7 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
                     }
                 }
                 throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Value Execption"))
-            case .useExecption, .none:
+            case .useExecption, .useNull, .none:
                 throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Value Execption"))
             }
         }
