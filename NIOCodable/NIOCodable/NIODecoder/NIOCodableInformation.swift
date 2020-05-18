@@ -23,86 +23,138 @@ public struct BoxBaseValue {
 }
 
 extension Bool: Initalizable {
-    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+    public init(by key: CodingKey, path: AbstractPath, source: Any) {
         self.init()
     }
 }
 
 extension Int: Initalizable {
-    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+    public init(by key: CodingKey, path: AbstractPath, source: Any) {
         self.init()
     }
 }
 
 extension Int8: Initalizable {
-    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+    public init(by key: CodingKey, path: AbstractPath, source: Any) {
         self.init()
     }
 }
 
 extension Int16: Initalizable {
-    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+    public init(by key: CodingKey, path: AbstractPath, source: Any) {
         self.init()
     }
 }
 
 extension Int32: Initalizable {
-    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+    public init(by key: CodingKey, path: AbstractPath, source: Any) {
         self.init()
     }
 }
 
 
 extension Int64: Initalizable {
-    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+    public init(by key: CodingKey, path: AbstractPath, source: Any) {
         self.init()
     }
 }
 
 extension UInt: Initalizable {
-    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+    public init(by key: CodingKey, path: AbstractPath, source: Any) {
         self.init()
     }
 }
 
 extension UInt8: Initalizable {
-    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+    public init(by key: CodingKey, path: AbstractPath, source: Any) {
         self.init()
     }
 }
 
 extension UInt16: Initalizable {
-    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+    public init(by key: CodingKey, path: AbstractPath, source: Any) {
         self.init()
     }
 }
 
 extension UInt32: Initalizable {
-    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+    public init(by key: CodingKey, path: AbstractPath, source: Any) {
         self.init()
     }
 }
 
 extension UInt64: Initalizable {
-    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+    public init(by key: CodingKey, path: AbstractPath, source: Any) {
         self.init()
     }
 }
 
 extension Float: Initalizable {
-    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+    public init(by key: CodingKey, path: AbstractPath, source: Any) {
         self.init()
     }
 }
 
 extension Double: Initalizable {
-    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+    public init(by key: CodingKey, path: AbstractPath, source: Any) {
         self.init()
     }
 }
 
 extension String: Initalizable {
-    public init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+    public init(by key: CodingKey, path: AbstractPath, source: Any) {
         self.init()
+    }
+}
+
+public class AbstractPath {
+    private(set) var codingKeys: [CodingKey] = []
+
+    private(set) var codingPath: String {
+        set {}
+        get {
+            return self.codingKeys.filter { (item) -> Bool in
+                if item is NIOCodableKey {
+                    return true
+                }
+                return false
+            }.map { (item) -> NIOCodableKey in
+                return item as! NIOCodableKey
+            }.reduce("") { (result, item) -> String in
+                return result + (item.information ?? "")
+            }
+        }
+    }
+
+    init(codingKeys: [CodingKey]) {
+        self.codingKeys = codingKeys
+    }
+
+    init() {
+
+    }
+
+    @discardableResult
+    func array(index: Int) -> AbstractPath {
+        self.codingKeys.append(NIOCodableKey(arrayIndex: index))
+        return self
+    }
+
+    @discardableResult
+    func array() -> AbstractPath {
+        self.codingKeys.append(NIOCodableKey(string: "[]"))
+        return self
+    }
+
+    @discardableResult
+    func dictionary(index: AnyHashable) -> AbstractPath {
+        self.codingKeys.append(NIOCodableKey(dictionaryIndex: index))
+        return self
+    }
+
+    @discardableResult
+    func dictionary() -> AbstractPath {
+        self.codingKeys.append(NIOCodableKey(string: "[:]"))
+        return self
     }
 }

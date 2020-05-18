@@ -110,7 +110,7 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
                 if dictionary.keys.count == 0 && dictionary.values.count == 0 {
                     switch self.decoder.wrapper?.keyedDecodingEmptyValueStrategy {
                     case .useCustom(let delegate):
-                        guard let `model`: T = delegate.emptyValue(key: NIOCodableKey(int: self.currentIndex), path: self.handle.codingPath, source: self.source[self.currentIndex]) as? T else {
+                        guard let `model`: T = delegate.emptyValue(key: NIOCodableKey(int: self.currentIndex), path: AbstractPath(codingKeys: self.decoder.codingPath), source: self.source[self.currentIndex]) as? T else {
                             throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "转换失败"))
                         }
                         return model
@@ -124,7 +124,7 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
                     }
                 }
             }
-            throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "[:] Execption"))
+            return try T.init(from: self.decoder)
         }
         return model
     }

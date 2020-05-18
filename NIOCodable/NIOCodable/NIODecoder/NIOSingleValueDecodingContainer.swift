@@ -36,7 +36,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             } else {
                 switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
                 case .useCustom(let delegate):
-                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Bool.self, forKey: replaceKey)
                 case .useExecption, .none:
                     throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
@@ -64,7 +64,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             } else {
                 switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
                 case .useCustom(let delegate):
-                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Int.self, forKey: replaceKey)
                 case .useExecption, .none:
                     throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
@@ -92,7 +92,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             } else {
                 switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
                 case .useCustom(let delegate):
-                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Int8.self, forKey: replaceKey)
                 case .useExecption, .none:
                     throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
@@ -120,7 +120,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             } else {
                 switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
                 case .useCustom(let delegate):
-                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Int16.self, forKey: replaceKey)
                 case .useExecption, .none:
                     throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
@@ -148,7 +148,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             } else {
                 switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
                 case .useCustom(let delegate):
-                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Int32.self, forKey: replaceKey)
                 case .useExecption, .none:
                     throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
@@ -176,7 +176,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             } else {
                 switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
                 case .useCustom(let delegate):
-                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Int64.self, forKey: replaceKey)
                 case .useExecption, .none:
                     throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
@@ -203,7 +203,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             } else {
                 switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
                 case .useCustom(let delegate):
-                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: UInt.self, forKey: replaceKey)
                 case .useExecption, .none:
                     throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
@@ -231,7 +231,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             } else {
                 switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
                 case .useCustom(let delegate):
-                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: UInt8.self, forKey: replaceKey)
                 case .useExecption, .none:
                     throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
@@ -259,7 +259,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             } else {
                 switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
                 case .useCustom(let delegate):
-                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: UInt16.self, forKey: replaceKey)
                 case .useExecption, .none:
                     throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
@@ -287,7 +287,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             } else {
                 switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
                 case .useCustom(let delegate):
-                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: UInt32.self, forKey: replaceKey)
                 case .useExecption, .none:
                     throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
@@ -315,7 +315,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             } else {
                 switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
                 case .useCustom(let delegate):
-                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: UInt64.self, forKey: replaceKey)
                 case .useExecption, .none:
                     throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
@@ -343,7 +343,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             } else {
                 switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
                 case .useCustom(let delegate):
-                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Float.self, forKey: replaceKey)
                 case .useExecption, .none:
                     throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
@@ -371,7 +371,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             } else {
                 switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
                 case .useCustom(let delegate):
-                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Double.self, forKey: replaceKey)
                 case .useExecption, .none:
                     throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
@@ -399,7 +399,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             } else {
                 switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
                 case .useCustom(let delegate):
-                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: self.handle.codingPath))
+                    let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: String.self, forKey: replaceKey)
                 case .useExecption, .none:
                     throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Key Mismatching", underlyingError: nil))
