@@ -27,8 +27,8 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     }
     
     mutating func decodeNil() throws -> Bool {
+        defer { self.currentIndex += 1 }
         if self.source[self.currentIndex] is NSNull {
-            self.currentIndex += 1
             return true
         } else {
             return false
@@ -94,6 +94,7 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     mutating func decode<T>(_ type: T.Type) throws -> T where T : Decodable {
         self.decoder.codingPath.append(NIOCodableKey(arrayIndex: self.currentIndex))
         defer {
+            self.currentIndex += 1
             if self.decoder.baseNode == .array && !self.decoder.codingPath.isEmpty {
                 self.decoder.codingPath.removeLast()
             }
@@ -106,13 +107,12 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
                 guard let dictionary: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
                     throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "转换失败"))
                 }
-                if dictionary.keys.count == 0 {
+                if dictionary.keys.count == 0 && dictionary.values.count == 0 {
                     switch self.decoder.wrapper?.keyedDecodingEmptyValueStrategy {
                     case .useCustom(let delegate):
                         guard let `model`: T = delegate.emptyValue(key: NIOCodableKey(int: self.currentIndex), path: self.handle.codingPath, source: self.source[self.currentIndex]) as? T else {
                             throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "转换失败"))
                         }
-                        self.currentIndex += 1
                         return model
                     case .none, .useExecption:
                         throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "转换失败"))
@@ -120,21 +120,19 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
                         guard let replaceModel: T = try self.decoder.unbox(value: ["NoKey": "NoValue"], as: type) else {
                             throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "[:] Execption"))
                         }
-                        self.currentIndex += 1
                         return replaceModel
                     }
                 }
             }
             throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "[:] Execption"))
         }
-        self.currentIndex += 1
         return model
     }
     
     mutating func nestedContainer<NestedKey>(keyedBy type: NestedKey.Type) throws -> KeyedDecodingContainer<NestedKey> where NestedKey : CodingKey {
+        defer { self.currentIndex += 1 }
         let value = self.source[self.currentIndex]
         guard let dictionary = value as? [AnyHashable: Any] else { fatalError() }
-        self.currentIndex += 1
         return KeyedDecodingContainer(NIOKeyedDecodingContainer<NestedKey>(decoder: self.decoder, source: dictionary))
     }
     
