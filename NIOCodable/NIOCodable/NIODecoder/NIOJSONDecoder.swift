@@ -32,7 +32,7 @@ public final class NIOJSONDecoder {
         do {
             return try decoder.unbox(value: source, as: type)
         } catch {
-            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "无法解析\(type)", underlyingError: error))
+            throw error
         }
     }
     
