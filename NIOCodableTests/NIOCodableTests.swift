@@ -1309,7 +1309,7 @@ class NIOCodableTests: XCTestCase {
                 var name: String
             }
             let data: Data = """
-            {}
+                {}
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             decoder.optionalContainerStrategy = .useNull
@@ -1323,7 +1323,11 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             let data: Data = """
-            {"key": [{"info": "b"}]}
+                {
+                    "key": [
+                        {"info": "b"}
+                    ]
+                }
             """.data(using: String.Encoding.utf8) ?? Data()
 
             class ESRootClass: Codable {
@@ -1876,42 +1880,93 @@ class NIOCodableTests: XCTestCase {
         }
     }
 
-    func testComplex() {
-        struct Adapter: EmptyValueControllable {
-            func emptyValue(key: CodingKey, path: NIOCodingPath, source: Any) -> Initalizable {
-                return Cashvalues(by: key, path: path, source: source)
+    func testValueNotFount() {
+        struct Adapter: TypeConvertible {
+            func toBool(key: CodingKey, path: NIOCodingPath, value: NSNull) -> Bool {
+                return true
             }
         }
-
-        class Root: Codable {
-            var risks: [Risks]?
-        }
-
-        class Risks: Codable {
-            var cashValues: [Cashvalues]?
-        }
-
-        class Cashvalues: Codable, Initalizable {
-            required init(by key: CodingKey, path: NIOCodingPath, source: Any) {
-
-            }
-        }
-
         let data: Data = #"""
-            {
-                "risks": [{
-                    "cashValues": [{}]
-                }]
-            }
+            [null]
         """#.data(using: String.Encoding.utf8) ?? Data()
         let decoder: NIOJSONDecoder = NIOJSONDecoder()
-        decoder.keyedDecodingEmptyValueStrategy = .useCustom(Adapter())
+        decoder.convertTypeStrategy = .useCustom(Adapter())
         do {
-            guard let model: Root = try decoder.decode(type: Root.self, from: data) else { return }
-            XCTAssertEqual(model.risks?.count, 1)
-            XCTAssertEqual(model.risks?[0].cashValues?.count, 1)
+            guard let model: [Bool] = try decoder.decode(type: [Bool].self, from: data) else { return }
+            XCTAssertEqual(model[0], true)
         } catch {
             XCTAssertNil(error, error.localizedDescription)
+        }
+    }
+
+    func testComplex() {
+        if true {
+            struct Adapter: EmptyValueControllable {
+                func emptyValue(key: CodingKey, path: NIOCodingPath, source: Any) -> Initalizable {
+                    return Cashvalues(by: key, path: path, source: source)
+                }
+            }
+
+            class Root: Codable {
+                var risks: [Risks]?
+            }
+
+            class Risks: Codable {
+                var cashValues: [Cashvalues]?
+            }
+
+            class Cashvalues: Codable, Initalizable {
+                required init(by key: CodingKey, path: NIOCodingPath, source: Any) {
+
+                }
+            }
+
+            let data: Data = #"""
+                {
+                    "risks": [{
+                        "cashValues": [{}]
+                    }]
+                }
+            """#.data(using: String.Encoding.utf8) ?? Data()
+            let decoder: NIOJSONDecoder = NIOJSONDecoder()
+            decoder.keyedDecodingEmptyValueStrategy = .useCustom(Adapter())
+            do {
+                guard let model: Root = try decoder.decode(type: Root.self, from: data) else { return }
+                XCTAssertEqual(model.risks?.count, 1)
+                XCTAssertEqual(model.risks?[0].cashValues?.count, 1)
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
+            }
+        }
+
+        if true {
+            struct Adapter: KeyControllable {
+                func key(sourcePath: NIOCodingPath) -> NIOCodingPath {
+                    if sourcePath == "[:]address[]0" {
+                        return "[:]address[]0"
+                    }
+                    return sourcePath
+                }
+            }
+
+            struct Root: Codable {
+                let address: [Bool]
+            }
+
+            let data: Data = #"""
+                {
+                  "address": [true, false, []]
+                }
+            """#.data(using: String.Encoding.utf8) ?? Data()
+
+            let decoder: NIOJSONDecoder = NIOJSONDecoder()
+            decoder.keyedDecodingKeyMismatchingStrategy = .useCustom(Adapter())
+            do {
+                guard let model: Root = try decoder.decode(type: Root.self, from: data) else { return }
+                print(model)
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
+            }
         }
     }
 
