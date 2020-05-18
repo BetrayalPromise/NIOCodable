@@ -102,19 +102,21 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
         let value: Any = self.source[self.currentIndex]
 
         guard let model: T = try self.decoder.unbox(value: value, as: type) else {
-            switch self.decoder.wrapper?.unkeyedDecodingKeyMismatchingStrategy {
-            case .useCustom(let delegate):
-                guard let `model`: T = delegate.handle(key: NIOCodableKey(int: self.currentIndex), path: self.handle.codingPath, source: self.source[self.currentIndex]) as? T else {
-                    throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Value Execption"))
+            if value is [AnyHashable: Any] {
+                guard let dictionary: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                    throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "转换失败"))
                 }
-                self.currentIndex += 1
-                return model
-            case .useDefaultable:
-                if value is [AnyHashable: Any] {
-                    guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
-                        throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Value Execption"))
-                    }
-                    if value.count == 0 {
+                if dictionary.keys.count == 0 {
+                    switch self.decoder.wrapper?.keyedDecodingEmptyValueStrategy {
+                    case .useCustom(let delegate):
+                        guard let `model`: T = delegate.emptyValue(key: NIOCodableKey(int: self.currentIndex), path: self.handle.codingPath, source: self.source[self.currentIndex]) as? T else {
+                            throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "转换失败"))
+                        }
+                        self.currentIndex += 1
+                        return model
+                    case .none, .useExecption:
+                        throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "转换失败"))
+                    case .useDefaultable:
                         guard let replaceModel: T = try self.decoder.unbox(value: ["NoKey": "NoValue"], as: type) else {
                             throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "[:] Execption"))
                         }
@@ -122,10 +124,8 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
                         return replaceModel
                     }
                 }
-                throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Value Execption"))
-            case .useExecption, .useNull, .none:
-                throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Value Execption"))
             }
+            throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "[:] Execption"))
         }
         self.currentIndex += 1
         return model

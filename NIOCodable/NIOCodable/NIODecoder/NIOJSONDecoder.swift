@@ -16,6 +16,8 @@ public final class NIOJSONDecoder {
     
     public var keyedDecodingKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.KeyedDecoding.NotFound = .useExecption
 
+    public var keyedDecodingEmptyValueStrategy: NIOJSONDecoder.EmptyExecption.KeyedDecoding.EmptyValue = .useExecption
+
     public var singleValueDecodingKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.SingleValueDecoding.NotFound = .useExecption
 
     /// 内建类型(Bool, Int, Int8, Int16, Int32, Int64, UInt, UInt8, UInt16, UInt32, UInt64, Float, Double, String)默认值自定义
@@ -86,7 +88,13 @@ public extension NIOJSONDecoder {
         }
     }
 
-    enum ValueExecptionStrategy {
-//        public enum
+    enum EmptyExecption {
+        public enum KeyedDecoding {
+            public enum EmptyValue {
+                case useExecption
+                case useCustom(EmptyValueControllable)
+                case useDefaultable
+            }
+        }
     }
 }

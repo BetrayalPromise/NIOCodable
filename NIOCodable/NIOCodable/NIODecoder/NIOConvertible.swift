@@ -3283,16 +3283,10 @@ public protocol DefaultValueControllable {
     func handle(key: CodingKey, path: NIOCodingPath, source: Any) -> Initalizable
 }
 
-//extension String: Initalizable, DefaultValueControllable {
-//    public init(by key: CodingKey, source: Any) {
-//        self.init()
-//    }
-//
-//    public func handle(key: CodingKey, source: Any) -> Initalizable {
-//        return Self.init(by: key, source: source)
-//    }
-//}
-
 public protocol KeyControllable {
     func key(sourcePath: NIOCodingPath) -> NIOCodingPath
+}
+
+public protocol EmptyValueControllable {
+    func emptyValue(key: CodingKey, path: NIOCodingPath, source: Any) -> Initalizable
 }
