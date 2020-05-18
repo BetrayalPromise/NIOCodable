@@ -33,7 +33,7 @@ class NIOCodableTests: XCTestCase {
     func testBoolToBool() {
         if true {
             struct Adapter: TypeConvertible {
-                func toBool(key: CodingKey, path: AbstractPath, value: NSNull) -> Bool {
+                func toBool(path: AbstractPath, value: NSNull) -> Bool {
                     print(path)
                     return true
                 }
@@ -55,7 +55,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toBool(key: CodingKey, path: AbstractPath, value: Bool) -> Bool {
+                func toBool(path: AbstractPath, value: Bool) -> Bool {
                     print(path)
                     return true
                 }
@@ -80,7 +80,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toBool(key: CodingKey, path: AbstractPath, value: Bool) -> Bool {
+                func toBool(path: AbstractPath, value: Bool) -> Bool {
                     print(path)
                     return true
                 }
@@ -107,7 +107,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toBool(key: CodingKey, path: AbstractPath, value: Bool) -> Bool {
+                func toBool(path: AbstractPath, value: Bool) -> Bool {
                     print(path)
                     return true
                 }
@@ -130,7 +130,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toBool(key: CodingKey, path: AbstractPath, value: Bool) -> Bool {
+                func toBool(path: AbstractPath, value: Bool) -> Bool {
                     print(path)
                     return true
                 }
@@ -179,19 +179,19 @@ class NIOCodableTests: XCTestCase {
         if true {
             /// 自定义的具体处理
             struct Adapter: TypeConvertible {
-                func toBool(key: CodingKey, path: AbstractPath, value: Int) -> Bool {
+                func toBool(path: AbstractPath, value: Int) -> Bool {
                     if value == 100 {
                         return true
                     }
                     return false
                 }
-                func toBool(key: CodingKey, path: AbstractPath, value: Float) -> Bool {
+                func toBool(path: AbstractPath, value: Float) -> Bool {
                     if value == 5.9 {
                         return true
                     }
                     return false
                 }
-                func toBool(key: CodingKey, path: AbstractPath, value: Double) -> Bool {
+                func toBool(path: AbstractPath, value: Double) -> Bool {
                     if value == 5.9 {
                         return true
                     }
@@ -225,7 +225,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toBool(key: CodingKey, path: AbstractPath, value: String) -> Bool {
+                func toBool(path: AbstractPath, value: String) -> Bool {
                     if value == "null" {
                         return true
                     }
@@ -303,7 +303,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toBool(key: CodingKey, path: AbstractPath, value: NSNull) -> Bool {
+                func toBool(path: AbstractPath, value: NSNull) -> Bool {
                     return true
                 }
             }
@@ -342,7 +342,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toInt(key: CodingKey, path: AbstractPath, value: Bool) -> Int {
+                func toInt(path: AbstractPath, value: Bool) -> Int {
                     if value {
                         return 0
                     }
@@ -384,7 +384,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toInt8(key: CodingKey, path: AbstractPath, value: Bool) -> Int8 {
+                func toInt8(path: AbstractPath, value: Bool) -> Int8 {
                     if value {
                         return 0
                     }
@@ -423,7 +423,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toInt16(key: CodingKey, path: AbstractPath, value: Bool) -> Int16 {
+                func toInt16(path: AbstractPath, value: Bool) -> Int16 {
                     if value {
                         return 0
                     }
@@ -462,7 +462,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toInt32(key: CodingKey, path: AbstractPath, value: Bool) -> Int32 {
+                func toInt32(path: AbstractPath, value: Bool) -> Int32 {
                     if value {
                         return 0
                     }
@@ -502,7 +502,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toInt64(key: CodingKey, path: AbstractPath, value: Bool) -> Int64 {
+                func toInt64(path: AbstractPath, value: Bool) -> Int64 {
                     if value {
                         return 0
                     }
@@ -541,7 +541,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toUInt(key: CodingKey, path: AbstractPath, value: Bool) -> UInt {
+                func toUInt(path: AbstractPath, value: Bool) -> UInt {
                     if value {
                         return 0
                     }
@@ -580,7 +580,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toUInt8(key: CodingKey, path: AbstractPath, value: Bool) -> UInt8 {
+                func toUInt8(path: AbstractPath, value: Bool) -> UInt8 {
                     if value {
                         return 0
                     }
@@ -619,7 +619,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toUInt16(key: CodingKey, path: AbstractPath, value: Bool) -> UInt16 {
+                func toUInt16(path: AbstractPath, value: Bool) -> UInt16 {
                     if value {
                         return 0
                     }
@@ -658,7 +658,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toUInt32(key: CodingKey, path: AbstractPath, value: Bool) -> UInt32 {
+                func toUInt32(path: AbstractPath, value: Bool) -> UInt32 {
                     if value {
                         return 0
                     }
@@ -697,7 +697,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toUInt64(key: CodingKey, path: AbstractPath, value: Bool) -> UInt64 {
+                func toUInt64(path: AbstractPath, value: Bool) -> UInt64 {
                     if value {
                         return 0
                     }
@@ -736,7 +736,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toFloat(key: CodingKey, path: AbstractPath, value: Bool) -> Float {
+                func toFloat(path: AbstractPath, value: Bool) -> Float {
                     if value {
                         return 0
                     }
@@ -776,7 +776,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toDouble(key: CodingKey, path: AbstractPath, value: Bool) -> Double {
+                func toDouble(path: AbstractPath, value: Bool) -> Double {
                     if value {
                         return 0
                     }
@@ -815,7 +815,7 @@ class NIOCodableTests: XCTestCase {
 
         if true {
             struct Adapter: TypeConvertible {
-                func toString(key: CodingKey, path: AbstractPath, value: Bool) -> String {
+                func toString(path: AbstractPath, value: Bool) -> String {
                     if value {
                         return "1"
                     }
@@ -1330,7 +1330,7 @@ class NIOCodableTests: XCTestCase {
                 }
             """.data(using: String.Encoding.utf8) ?? Data()
 
-            class ESRootClass: Codable {
+            class Root: Codable {
                 var key: [Key]?
             }
 
@@ -1340,7 +1340,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.optionalContainerStrategy = .useNull
             do {
-                let model: ESRootClass? = try decoder.decode(type: ESRootClass.self, from: data)
+                let model: Root? = try decoder.decode(type: Root.self, from: data)
                 XCTAssert(model?.key != nil)
                 XCTAssert(model?.key?[0].info == "b")
             } catch {
@@ -1355,7 +1355,7 @@ class NIOCodableTests: XCTestCase {
             let decoder = NIOJSONDecoder()
             decoder.optionalContainerStrategy = .useNull
 
-            class ESRootClass: Codable {
+            class Root: Codable {
                 var key: Key0?
                 enum CodingKeys: String, CodingKey {
                     case key = "key"
@@ -1368,7 +1368,7 @@ class NIOCodableTests: XCTestCase {
                 var key: String?
             }
             do {
-                let model: ESRootClass? = try decoder.decode(type: ESRootClass.self, from: data)
+                let model: Root? = try decoder.decode(type: Root.self, from: data)
                 XCTAssert(model?.key?.key?.key == "key")
             } catch {
                 XCTAssertNil(error, error.localizedDescription)
@@ -1378,87 +1378,100 @@ class NIOCodableTests: XCTestCase {
     
     func testArray() {
         if true {
-            struct Example: Codable {
-                var name: String
-            }
             let data: Data = """
-            [{"name": "2ddf"}, {"name": null}]
+                [null, [], {"a": "c"}]
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             do {
-                guard let models: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
+                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else { return }
                 XCTAssert(models.count == 2)
             } catch {
                 XCTAssertNil(error, error.localizedDescription)
             }
         }
 
-        if true {
-            struct Example: Codable {
-                var name: Int64
-            }
-            let data: Data = """
-            [
-            ]
-            """.data(using: String.Encoding.utf8) ?? Data()
-            let decoder = NIOJSONDecoder()
-            decoder.optionalContainerStrategy = .useEmpty
-            do {
-                let models: [Example]? = try decoder.decode(type: [Example].self, from: data)
-                XCTAssert(models?.count == 0)
-            } catch {
-                XCTAssertNil(error, error.localizedDescription)
-            }
-        }
-
-        if true {
-            let data: Data = """
-            [
-                true, false
-            ]
-            """.data(using: String.Encoding.utf8) ?? Data()
-            let decoder = NIOJSONDecoder()
-            decoder.optionalContainerStrategy = .useNull
-            do {
-                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else {
-                    XCTAssert(false)
-                    return
-                }
-                XCTAssert(models.count == 2)
-                XCTAssert(models[0] == true)
-            } catch {
-                XCTAssertNil(error, error.localizedDescription)
-            }
-        }
-
-        if true {
-            let data: Data = """
-            {
-                "a": [{"b": "c"}]
-            }
-            """.data(using: String.Encoding.utf8) ?? Data()
-
-            class ESRootClass: Codable {
-                var a: [A]?
-            }
-            class A: Codable {
-                var b: String?
-            }
-
-            let decoder = NIOJSONDecoder()
-            decoder.optionalContainerStrategy = .useNull
-            do {
-                guard let models: ESRootClass = try decoder.decode(type: ESRootClass.self, from: data) else {
-                    XCTAssert(false)
-                    return
-                }
-                XCTAssert(models.a?.count == 1)
-                XCTAssert(models.a?[0].b == "c")
-            } catch {
-                XCTAssertNil(error, error.localizedDescription)
-            }
-        }
-
+//        if true {
+//            struct Example: Codable {
+//                var name: String
+//            }
+//            let data: Data = """
+//            [{"name": "2ddf"}, {"name": null}]
+//            """.data(using: String.Encoding.utf8) ?? Data()
+//            let decoder = NIOJSONDecoder()
+//            do {
+//                guard let models: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
+//                XCTAssert(models.count == 2)
+//            } catch {
+//                XCTAssertNil(error, error.localizedDescription)
+//            }
+//        }
+//
+//        if true {
+//            struct Example: Codable {
+//                var name: Int64
+//            }
+//            let data: Data = """
+//            [
+//            ]
+//            """.data(using: String.Encoding.utf8) ?? Data()
+//            let decoder = NIOJSONDecoder()
+//            decoder.optionalContainerStrategy = .useEmpty
+//            do {
+//                let models: [Example]? = try decoder.decode(type: [Example].self, from: data)
+//                XCTAssert(models?.count == 0)
+//            } catch {
+//                XCTAssertNil(error, error.localizedDescription)
+//            }
+//        }
+//
+//        if true {
+//            let data: Data = """
+//            [
+//                true, false
+//            ]
+//            """.data(using: String.Encoding.utf8) ?? Data()
+//            let decoder = NIOJSONDecoder()
+//            decoder.optionalContainerStrategy = .useNull
+//            do {
+//                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else {
+//                    XCTAssert(false)
+//                    return
+//                }
+//                XCTAssert(models.count == 2)
+//                XCTAssert(models[0] == true)
+//            } catch {
+//                XCTAssertNil(error, error.localizedDescription)
+//            }
+//        }
+//
+//        if true {
+//            let data: Data = """
+//            {
+//                "a": [{"b": "c"}]
+//            }
+//            """.data(using: String.Encoding.utf8) ?? Data()
+//
+//            class Root: Codable {
+//                var a: [A]?
+//            }
+//            class A: Codable {
+//                var b: String?
+//            }
+//
+//            let decoder = NIOJSONDecoder()
+//            decoder.optionalContainerStrategy = .useNull
+//            do {
+//                guard let models: Root = try decoder.decode(type: Root.self, from: data) else {
+//                    XCTAssert(false)
+//                    return
+//                }
+//                XCTAssert(models.a?.count == 1)
+//                XCTAssert(models.a?[0].b == "c")
+//            } catch {
+//                XCTAssertNil(error, error.localizedDescription)
+//            }
+//        }
+//
 //        if true {
 //            let data: Data = """
 //                [[
@@ -1466,20 +1479,25 @@ class NIOCodableTests: XCTestCase {
 //                ]]
 //                """.data(using: String.Encoding.utf8) ?? Data()
 //
-//            class ESRootClass: Codable {
+//            class Root: Codable {
 //                var a: [[A]]
 //            }
 //            class A: Codable {
 //                var name: String?
 //            }
 //
+//            struct Adapter: KeyControllable {
+//                func key(sourcePath: AbstractPath) -> AbstractPath {
+//                    print(sourcePath.codingPath)
+//                    return sourcePath
+//                }
+//            }
+//
 //            let decoder = NIOJSONDecoder()
 //            decoder.optionalContainerStrategy = .useNull
+//            decoder.keyedDecodingKeyMismatchingStrategy = .useCustom(Adapter())
 //            do {
-//                guard let models: ESRootClass = try decoder.decode(type: ESRootClass.self, from: data) else {
-//                    XCTAssert(false)
-//                    return
-//                }
+//                guard let models: Root = try decoder.decode(type: Root.self, from: data) else { return }
 //                XCTAssert(models.a.count == 1)
 //                XCTAssert(models.a[0][0].name == "true")
 //            } catch {
@@ -1521,13 +1539,12 @@ class NIOCodableTests: XCTestCase {
         }
 
         if true {
-            struct Adapter: MappingControllable {
-                func scope(key: CodingKey) -> Set<AnyHashable> {
-                    return [0, 1, 2]
-                }
-
-                func execption(key: CodingKey, source: AnyHashable) -> AnyHashable {
-                    return 0
+            struct Adapter: TypeConvertible {
+                func toInt(path: AbstractPath, value: Int) -> Int {
+                    if path.codingPath == AbstractPath().dictionary(index: "gender").codingPath && value > 2 {
+                        return 0
+                    }
+                    return value
                 }
             }
 
@@ -1550,7 +1567,7 @@ class NIOCodableTests: XCTestCase {
              {"gender": 4}
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder: NIOJSONDecoder = NIOJSONDecoder()
-            decoder.mappingStrategy = .useCustom(Adapter())
+            decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
                 guard let models: Human = try decoder.decode(type: Human.self, from: data) else { return }
                 XCTAssert(models.gender == Gender.unknow)
@@ -1575,7 +1592,7 @@ class NIOCodableTests: XCTestCase {
                     case unknow
                 }
 
-                func toInt(key: CodingKey, path: AbstractPath, value: Double) -> Int {
+                func toInt(path: AbstractPath, value: Double) -> Int {
                     print(value)
                     return 0
                 }
@@ -1621,7 +1638,7 @@ class NIOCodableTests: XCTestCase {
             """.data(using: String.Encoding.utf8) ?? Data()
 
             struct Adapter: TypeConvertible {
-                func toInt(key: CodingKey, path: AbstractPath, value: Int) -> Int {
+                func toInt(path: AbstractPath, value: Int) -> Int {
                     if path.codingPath == AbstractPath().dictionary(index: "gender").codingPath && value > 2 {
                         return 0
                     }
@@ -1735,7 +1752,7 @@ class NIOCodableTests: XCTestCase {
           }
           """.data(using: String.Encoding.utf8) ?? Data()
 
-        class ESRootClass: Codable {
+        class Root: Codable {
             var array: [List]?
         }
 
@@ -1746,7 +1763,7 @@ class NIOCodableTests: XCTestCase {
         let decoder = NIOJSONDecoder()
         decoder.optionalContainerStrategy = .useEmpty
         do {
-            guard let models: ESRootClass = try decoder.decode(type: ESRootClass.self, from: data) else { return }
+            guard let models: Root = try decoder.decode(type: Root.self, from: data) else { return }
             print(models)
             XCTAssert(models.array != nil)
         } catch {
@@ -1756,6 +1773,16 @@ class NIOCodableTests: XCTestCase {
 
     func testKeyNoFound() {
         if true {
+
+            struct Adapter: KeyControllable {
+                func key(sourcePath: AbstractPath) -> AbstractPath {
+                    if sourcePath.codingPath == AbstractPath().dictionary(index: "array").codingPath {
+                        return AbstractPath().dictionary(index: "key")
+                    }
+                    return sourcePath
+                }
+            }
+
             let data: Data = """
                 {"key": "abc"}
             """.data(using: String.Encoding.utf8) ?? Data()
@@ -1766,10 +1793,11 @@ class NIOCodableTests: XCTestCase {
 
             let decoder = NIOJSONDecoder()
             decoder.optionalContainerStrategy = .useEmpty
+            decoder.keyedDecodingKeyMismatchingStrategy = .useCustom(Adapter())
             do {
                 guard let models: Root = try decoder.decode(type: Root.self, from: data) else { return }
                 print(models)
-                XCTAssert(models.array == nil)
+                XCTAssert(models.array == "abc")
             } catch {
                 XCTAssertNil(error, error.localizedDescription)
             }
@@ -1881,7 +1909,7 @@ class NIOCodableTests: XCTestCase {
 
     func testValueNotFount() {
         struct Adapter: TypeConvertible {
-            func toBool(key: CodingKey, path: AbstractPath, value: NSNull) -> Bool {
+            func toBool(path: AbstractPath, value: NSNull) -> Bool {
                 return true
             }
         }
@@ -1901,8 +1929,8 @@ class NIOCodableTests: XCTestCase {
     func testComplex() {
         if true {
             struct Adapter: EmptyValueControllable {
-                func emptyValue(key: CodingKey, path: AbstractPath, source: Any) -> Initalizable {
-                    return Cashvalues(by: key, path: path, source: source)
+                func emptyValue(path: AbstractPath, source: Any) -> Initalizable {
+                    return Cashvalues(path: path, source: source)
                 }
             }
 
@@ -1915,7 +1943,7 @@ class NIOCodableTests: XCTestCase {
             }
 
             class Cashvalues: Codable, Initalizable {
-                required init(by key: CodingKey, path: AbstractPath, source: Any) {
+                required init(path: AbstractPath, source: Any) {
 
                 }
             }
@@ -1979,7 +2007,7 @@ class NIOCodableTests: XCTestCase {
         }
 
         struct Adapter: TypeConvertible {
-            func toString(key: CodingKey, path: AbstractPath, value: String) -> String {
+            func toString(path: AbstractPath, value: String) -> String {
                 print(path)
                 if path.codingPath == AbstractPath().dictionary(index: "name").codingPath {
                     return "XXXX"

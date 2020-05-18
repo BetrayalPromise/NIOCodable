@@ -22,8 +22,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Bool"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -34,69 +34,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber can't convert to Bool"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("Bool type unsupport :\(value), set default false")
@@ -105,8 +105,8 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("Bool type unsupport :\(value), set default false")
@@ -120,8 +120,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Bool"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -132,69 +132,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber can't convert to Bool"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("Bool type unsupport :\(value), set default nil")
@@ -203,12 +203,12 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toBool(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
-            debugPrint("Bool type unsupport :\(value), set default false")
-            return false
+            debugPrint("Bool type unsupport :\(value), set default nil")
+            return nil
         }
     }
 }
@@ -221,8 +221,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -233,69 +233,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber can't convert to Bool"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else  {
                     debugPrint("Int type unsupport :\(value), set default 0")
@@ -307,8 +307,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to Int"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("Int type unsupport :\(value), set default 0")
@@ -322,8 +322,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -334,73 +334,73 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber can't convert to Bool"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else  {
-                    debugPrint("Int type unsupport :\(value), set default 0")
-                    return 0
+                    debugPrint("Int type unsupport :\(value), set default nil")
+                    return nil
                 }
             }
         } else if  value is String {
@@ -408,12 +408,12 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Dictionary can't convert to Int"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
-            debugPrint("Int type unsupport :\(value), set default 0")
-            return 0
+            debugPrint("Int type unsupport :\(value), set default nil")
+            return nil
         }
     }
 }
@@ -426,8 +426,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Int8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int8"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -438,69 +438,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int8"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 }  else {
                     debugPrint("Int8 type unsupport :\(value), set default 0")
@@ -512,8 +512,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(String.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "无法转化为String"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("Int8 type unsupport :\(value), set default nil")
@@ -527,8 +527,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Int8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int8"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -539,69 +539,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int8"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 }  else {
                     debugPrint("Int8 type unsupport :\(value), set default nil")
@@ -613,14 +613,15 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "无法转化为String"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("Int8 type unsupport :\(value), set default nil")
             return nil
         }
     }
+
 }
 
 // MARK: - 处理Int16和Int16?类型
@@ -631,8 +632,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Int16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int16"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -643,69 +644,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int8"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("Int16 type unsupport :\(value), set default 0")
@@ -714,8 +715,8 @@ extension NIOCodableHandle {
             }
         }  else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("Int16 type unsupport :\(value), set default 0")
@@ -729,8 +730,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Int16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int16"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -741,69 +742,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int8"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("Int16 type unsupport :\(value), set default nil")
@@ -812,14 +813,15 @@ extension NIOCodableHandle {
             }
         }  else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("Int16 type unsupport :\(value), set default nil")
             return nil
         }
     }
+
 }
 
 // MARK: - 处理Int32和Int32?类型
@@ -830,8 +832,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Int32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int32"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -842,69 +844,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 }  else {
                     debugPrint("Int32 type unsupport :\(value), set default 0")
@@ -916,8 +918,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(String.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "无法转化为String"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("Int32 type unsupport :\(value), set default 0")
@@ -931,8 +933,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Int32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int32"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -943,69 +945,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 }  else {
                     debugPrint("Int32 type unsupport :\(value), set default nil")
@@ -1017,8 +1019,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(String.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "无法转化为String"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("Int32 type unsupport :\(value), set default nil")
@@ -1035,8 +1037,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int64"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -1047,69 +1049,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("Int64 type unsupport :\(value), set default 0")
@@ -1118,8 +1120,8 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("Int64 type unsupport :\(value), set default 0")
@@ -1133,8 +1135,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int64"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -1145,69 +1147,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("Int64 type unsupport :\(value), set default nil")
@@ -1216,8 +1218,8 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("Int64 type unsupport :\(value), set default nil")
@@ -1234,8 +1236,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(UInt.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -1246,69 +1248,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("UInt type unsupport :\(value), set default 0")
@@ -1317,8 +1319,8 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("UInt type unsupport :\(value), set default 0")
@@ -1332,8 +1334,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(UInt.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -1344,69 +1346,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("UInt type unsupport :\(value), set default nil")
@@ -1415,8 +1417,8 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("UInt type unsupport :\(value), set default nil")
@@ -1433,8 +1435,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt8"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -1445,69 +1447,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("UInt8 type unsupport :\(value), set default 0")
@@ -1516,8 +1518,8 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("UInt8 type unsupport :\(value), set default 0")
@@ -1531,8 +1533,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt8"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -1543,69 +1545,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("UInt8 type unsupport :\(value), set default nil")
@@ -1614,8 +1616,8 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt8(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("UInt8 type unsupport :\(value), set default nil")
@@ -1632,8 +1634,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt16"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -1644,69 +1646,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("UInt16 type unsupport :\(value), set default 0")
@@ -1715,8 +1717,8 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("UInt16 type unsupport :\(value), set default 0")
@@ -1730,8 +1732,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt16"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -1742,69 +1744,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("UInt16 type unsupport :\(value), set default nil")
@@ -1813,8 +1815,8 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt16(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("UInt16 type unsupport :\(value), set default nil")
@@ -1831,8 +1833,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt32"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -1843,69 +1845,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 }  else {
                     debugPrint("UInt32 type unsupport :\(value), set default 0")
@@ -1914,8 +1916,8 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("UInt32 type unsupport :\(value), set default 0")
@@ -1929,8 +1931,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt32"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -1941,69 +1943,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 }  else {
                     debugPrint("UInt32 type unsupport :\(value), set default nil")
@@ -2012,8 +2014,8 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt32(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("UInt32 type unsupport :\(value), set default nil")
@@ -2030,8 +2032,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt64"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -2042,69 +2044,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("UInt64 type unsupport :\(value), set default 0")
@@ -2113,8 +2115,8 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("UInt64 type unsupport :\(value), set default 0")
@@ -2128,8 +2130,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt64"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -2140,69 +2142,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return try self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return try delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return try self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return try delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("UInt64 type unsupport :\(value), set default nil")
@@ -2211,14 +2213,15 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt64(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("UInt64 type unsupport :\(value), set default nil")
             return nil
         }
     }
+
 }
 
 // MARK: - 处理Float和Float?类型
@@ -2229,8 +2232,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Float.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Float"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -2241,69 +2244,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                        case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                        case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                        case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                        case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("Float type unsupport :\(value), set default 0.0")
@@ -2312,8 +2315,8 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("Float type unsupport :\(value), set default 0.0")
@@ -2327,8 +2330,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Float.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Float"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -2339,69 +2342,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("Float type unsupport :\(value), set default nil")
@@ -2410,8 +2413,8 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toFloat(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("Float type unsupport :\(value), set default nil")
@@ -2428,8 +2431,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Double"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -2440,69 +2443,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("Double type unsupport :\(value), set default 0.0")
@@ -2511,8 +2514,8 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("Double type unsupport :\(value), set default 0.0")
@@ -2526,8 +2529,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Double"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -2538,69 +2541,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("Double type unsupport :\(value), set default nil")
@@ -2609,8 +2612,8 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toDouble(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("Double type unsupport :\(value), set default nil")
@@ -2627,8 +2630,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(String.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to String"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -2639,69 +2642,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("Double type unsupport :\(value), set default \"\"")
@@ -2710,8 +2713,8 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("Double type unsupport :\(value), set default \"\"")
@@ -2725,8 +2728,8 @@ extension NIOCodableHandle {
                 throw DecodingError.typeMismatch(String.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to String"))
             }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -2737,69 +2740,69 @@ extension NIOCodableHandle {
                     throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNumber cant't convert to Int32"))
                 }
                 switch self.convertTypeStrategy {
-                case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                 }
             } else {
                 if let `value`: Int = value as? Int {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int8 = value as? Int8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int16 = value as? Int16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int32 = value as? Int32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Int64 = value as? Int64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt = value as? UInt {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt8 = value as? UInt8 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt16 = value as? UInt16 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt32 = value as? UInt32 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: UInt64 = value as? UInt64 {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Double = value as? Double {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else if let `value`: Float = value as? Float {
                     switch self.convertTypeStrategy {
-                    case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-                    case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+                    case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
                     debugPrint("Double type unsupport :\(value), set default nil")
@@ -2808,8 +2811,8 @@ extension NIOCodableHandle {
             }
         } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toString(key: key, path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
         } else {
             debugPrint("Double type unsupport :\(value), set default nil")

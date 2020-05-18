@@ -36,59 +36,73 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     }
     
     mutating func decode(_ type: Bool.Type) throws -> Bool {
-        return false
+        let value = self.source[self.currentIndex]
+        return try self.handle.decode(value: value, type: type, forKey: NIOCodableKey(arrayIndex: self.currentIndex))
     }
     
     mutating func decode(_ type: String.Type) throws -> String {
-        return ""
+        let value = self.source[self.currentIndex]
+        return try self.handle.decode(value: value, type: type, forKey: NIOCodableKey(arrayIndex: self.currentIndex))
     }
     
     mutating func decode(_ type: Double.Type) throws -> Double {
-        return 0.0
+        let value = self.source[self.currentIndex]
+        return try self.handle.decode(value: value, type: type, forKey: NIOCodableKey(arrayIndex: self.currentIndex))
     }
     
     mutating func decode(_ type: Float.Type) throws -> Float {
-        return 0.0
+        let value = self.source[self.currentIndex]
+        return try self.handle.decode(value: value, type: type, forKey: NIOCodableKey(arrayIndex: self.currentIndex))
     }
     
     mutating func decode(_ type: Int.Type) throws -> Int {
-        return 0
+        let value = self.source[self.currentIndex]
+        return try self.handle.decode(value: value, type: type, forKey: NIOCodableKey(arrayIndex: self.currentIndex))
     }
     
     mutating func decode(_ type: Int8.Type) throws -> Int8 {
-        return 0
+        let value = self.source[self.currentIndex]
+        return try self.handle.decode(value: value, type: type, forKey: NIOCodableKey(arrayIndex: self.currentIndex))
     }
     
     mutating func decode(_ type: Int16.Type) throws -> Int16 {
-        return 0
+        let value = self.source[self.currentIndex]
+        return try self.handle.decode(value: value, type: type, forKey: NIOCodableKey(arrayIndex: self.currentIndex))
     }
     
     mutating func decode(_ type: Int32.Type) throws -> Int32 {
-        return 0
+        let value = self.source[self.currentIndex]
+        return try self.handle.decode(value: value, type: type, forKey: NIOCodableKey(arrayIndex: self.currentIndex))
     }
     
     mutating func decode(_ type: Int64.Type) throws -> Int64 {
-        return 0
+        let value = self.source[self.currentIndex]
+        return try self.handle.decode(value: value, type: type, forKey: NIOCodableKey(arrayIndex: self.currentIndex))
     }
     
     mutating func decode(_ type: UInt.Type) throws -> UInt {
-        return 0
+        let value = self.source[self.currentIndex]
+        return try self.handle.decode(value: value, type: type, forKey: NIOCodableKey(arrayIndex: self.currentIndex))
     }
     
     mutating func decode(_ type: UInt8.Type) throws -> UInt8 {
-        return 0
+        let value = self.source[self.currentIndex]
+        return try self.handle.decode(value: value, type: type, forKey: NIOCodableKey(arrayIndex: self.currentIndex))
     }
     
     mutating func decode(_ type: UInt16.Type) throws -> UInt16 {
-        return 0
+        let value = self.source[self.currentIndex]
+        return try self.handle.decode(value: value, type: type, forKey: NIOCodableKey(arrayIndex: self.currentIndex))
     }
     
     mutating func decode(_ type: UInt32.Type) throws -> UInt32 {
-        return 0
+        let value = self.source[self.currentIndex]
+        return try self.handle.decode(value: value, type: type, forKey: NIOCodableKey(arrayIndex: self.currentIndex))
     }
     
     mutating func decode(_ type: UInt64.Type) throws -> UInt64 {
-        return 0
+        let value = self.source[self.currentIndex]
+        return try self.handle.decode(value: value, type: type, forKey: NIOCodableKey(arrayIndex: self.currentIndex))
     }
     
     mutating func decode<T>(_ type: T.Type) throws -> T where T : Decodable {
@@ -98,6 +112,36 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
             if self.decoder.baseNode == .array && !self.decoder.codingPath.isEmpty {
                 self.decoder.codingPath.removeLast()
             }
+        }
+
+        if type == Bool.self {
+            return try self.decode(Bool.self) as! T
+        } else if type == Int.self {
+            return try self.decode(Int.self) as! T
+        } else if type == Int8.self {
+            return try self.decode(Int8.self) as! T
+        } else if type == Int16.self {
+            return try self.decode(Int16.self) as! T
+        } else if type == Int32.self {
+            return try self.decode(Int32.self) as! T
+        } else if type == Int64.self {
+            return try self.decode(Int64.self) as! T
+        } else if type == UInt.self {
+            return try self.decode(UInt.self) as! T
+        } else if type == UInt8.self {
+            return try self.decode(UInt8.self) as! T
+        } else if type == UInt16.self {
+            return try self.decode(UInt16.self) as! T
+        } else if type == UInt32.self {
+            return try self.decode(UInt32.self) as! T
+        } else if type == UInt64.self {
+            return try self.decode(UInt64.self) as! T
+        } else if type == Float.self {
+            return try self.decode(Float.self) as! T
+        } else if type == Double.self {
+            return try self.decode(Double.self) as! T
+        } else if type == String.self {
+            return try self.decode(String.self) as! T
         }
 
         let value: Any = self.source[self.currentIndex]
@@ -110,7 +154,7 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
                 if dictionary.keys.count == 0 && dictionary.values.count == 0 {
                     switch self.decoder.wrapper?.keyedDecodingEmptyValueStrategy {
                     case .useCustom(let delegate):
-                        guard let `model`: T = delegate.emptyValue(key: NIOCodableKey(int: self.currentIndex), path: AbstractPath(codingKeys: self.decoder.codingPath), source: self.source[self.currentIndex]) as? T else {
+                        guard let `model`: T = delegate.emptyValue(path: AbstractPath(codingKeys: self.decoder.codingPath), source: self.source[self.currentIndex]) as? T else {
                             throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "转换失败"))
                         }
                         return model
