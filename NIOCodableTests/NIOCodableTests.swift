@@ -38,16 +38,23 @@ class NIOCodableTests: XCTestCase {
                     return true
                 }
             }
+
+            struct Root: Codable {
+                struct info: Codable {
+                    let a: String
+                }
+                let info: [info]?
+            }
+
             let data: Data = """
-            [true, false, null]
+            {"info": null}
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
+            decoder.convertNullStrategy = true
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
-                guard let models: [Bool?] = try decoder.decode(type: [Bool?].self, from: data) else { return }
-                XCTAssertEqual(models[0], true)
-                XCTAssertEqual(models[1], false)
-                XCTAssertEqual(models[2], true)
+                guard let models: Root = try decoder.decode(type: Root.self, from: data) else { return }
+                XCTAssertEqual(models.info?.count, 1)
             } catch {
                 XCTAssertNil(error, error.localizedDescription)
             }

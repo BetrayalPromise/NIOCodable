@@ -14,10 +14,10 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
     }
     
     func decodeNil() -> Bool {
-        switch self.decoder.wrapper?.convertTypeStrategy {
-        case .useDefaultable, .none: return self.decoder.storage.currentValue is NSNull ? true : false
-        case .useCustom(_): return false
+        if self.decoder.wrapper?.convertNullStrategy == true {
+            return false
         }
+        return self.decoder.storage.currentValue is NSNull ? true : false
     }
     // MARK: - Bool
     func decode(_ type: Bool.Type) throws -> Bool {
@@ -414,8 +414,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
         guard let value: Any = self.decoder.storage.currentValue else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法取值\(type)", underlyingError: nil))
         }
-        debugPrint(value)
-        return try type.init(from: self.decoder)
+        return try self.decoder.unbox(value: value, as: type) ?? (try type.init(from: self.decoder))
     }
 }
 

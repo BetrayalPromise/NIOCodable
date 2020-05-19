@@ -20,6 +20,9 @@ public final class NIOJSONDecoder {
 
     public var singleValueDecodingKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.SingleValueDecoding.NotFound = .useExecption
 
+    /// null是否参与转换
+    public var convertNullStrategy: Bool = false
+
     /// 内建类型(Bool, Int, Int8, Int16, Int32, Int64, UInt, UInt8, UInt16, UInt32, UInt64, Float, Double, String)默认值自定义
     public var boxBaseValue: BoxBaseValue = BoxBaseValue()
     

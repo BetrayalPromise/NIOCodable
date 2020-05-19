@@ -72,7 +72,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             guard let entry: Any = self.source[key.stringValue] else {
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
-            return try self.handle.decode(value: entry, type: Bool.self, forKey: key)
+            return try self.handle.decodeIfPresent(value: entry, type: Bool.self, forKey: key)
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useDefaultable:
@@ -83,7 +83,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             case .useCustom(let delegate):
                 let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
-                return try self.handle.decode(value: self.source[replaceKey.stringValue] as Any, type: Bool.self, forKey: replaceKey)
+                return try self.handle.decodeIfPresent(value: self.source[replaceKey.stringValue] as Any, type: Bool.self, forKey: replaceKey)
             }
         }
     }
@@ -120,7 +120,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             guard let entry: Any = self.source[key.stringValue] else {
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
-            return try self.handle.decode(value: entry, type: Int.self, forKey: key)
+            return try self.handle.decodeIfPresent(value: entry, type: Int.self, forKey: key)
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useDefaultable:
@@ -131,7 +131,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             case .useCustom(let delegate):
                 let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
-                return try self.handle.decode(value: self.source[replaceKey.stringValue] as Any, type: Int.self, forKey: replaceKey)
+                return try self.handle.decodeIfPresent(value: self.source[replaceKey.stringValue] as Any, type: Int.self, forKey: replaceKey)
             }
         }
     }
@@ -168,7 +168,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             guard let entry: Any = self.source[key.stringValue] else {
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
-            return try self.handle.decode(value: entry, type: Int8.self, forKey: key)
+            return try self.handle.decodeIfPresent(value: entry, type: Int8.self, forKey: key)
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useDefaultable:
@@ -179,7 +179,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             case .useCustom(let delegate):
                 let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
-                return try self.handle.decode(value: self.source[replaceKey.stringValue] as Any, type: Int8.self, forKey: replaceKey)
+                return try self.handle.decodeIfPresent(value: self.source[replaceKey.stringValue] as Any, type: Int8.self, forKey: replaceKey)
             }
         }
     }
@@ -216,7 +216,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             guard let entry: Any = self.source[key.stringValue] else {
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
-            return try self.handle.decode(value: entry, type: Int16.self, forKey: key)
+            return try self.handle.decodeIfPresent(value: entry, type: Int16.self, forKey: key)
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useDefaultable:
@@ -227,7 +227,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             case .useCustom(let delegate):
                 let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
-                return try self.handle.decode(value: self.source[replaceKey.stringValue] as Any, type: Int16.self, forKey: replaceKey)
+                return try self.handle.decodeIfPresent(value: self.source[replaceKey.stringValue] as Any, type: Int16.self, forKey: replaceKey)
             }
         }
     }
@@ -264,7 +264,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             guard let entry: Any = self.source[key.stringValue] else {
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
-            return try self.handle.decode(value: entry, type: Int32.self, forKey: key)
+            return try self.handle.decodeIfPresent(value: entry, type: Int32.self, forKey: key)
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useDefaultable:
@@ -275,7 +275,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             case .useCustom(let delegate):
                 let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
-                return try self.handle.decode(value: self.source[replaceKey.stringValue] as Any, type: Int32.self, forKey: replaceKey)
+                return try self.handle.decodeIfPresent(value: self.source[replaceKey.stringValue] as Any, type: Int32.self, forKey: replaceKey)
             }
         }
     }
@@ -312,7 +312,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             guard let entry: Any = self.source[key.stringValue] else {
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
-            return try self.handle.decode(value: entry, type: Int64.self, forKey: key)
+            return try self.handle.decodeIfPresent(value: entry, type: Int64.self, forKey: key)
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useDefaultable:
@@ -323,7 +323,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             case .useCustom(let delegate):
                 let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
-                return try self.handle.decode(value: self.source[replaceKey.stringValue] as Any, type: Int64.self, forKey: replaceKey)
+                return try self.handle.decodeIfPresent(value: self.source[replaceKey.stringValue] as Any, type: Int64.self, forKey: replaceKey)
             }
         }
     }
@@ -360,7 +360,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             guard let entry: Any = self.source[key.stringValue] else {
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
-            return try self.handle.decode(value: entry, type: UInt.self, forKey: key)
+            return try self.handle.decodeIfPresent(value: entry, type: UInt.self, forKey: key)
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useDefaultable:
@@ -371,7 +371,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             case .useCustom(let delegate):
                 let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
-                return try self.handle.decode(value: self.source[replaceKey.stringValue] as Any, type: UInt.self, forKey: replaceKey)
+                return try self.handle.decodeIfPresent(value: self.source[replaceKey.stringValue] as Any, type: UInt.self, forKey: replaceKey)
             }
         }
     }
@@ -408,7 +408,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             guard let entry: Any = self.source[key.stringValue] else {
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
-            return try self.handle.decode(value: entry, type: UInt8.self, forKey: key)
+            return try self.handle.decodeIfPresent(value: entry, type: UInt8.self, forKey: key)
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useDefaultable:
@@ -419,7 +419,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             case .useCustom(let delegate):
                 let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
-                return try self.handle.decode(value: self.source[replaceKey.stringValue] as Any, type: UInt8.self, forKey: replaceKey)
+                return try self.handle.decodeIfPresent(value: self.source[replaceKey.stringValue] as Any, type: UInt8.self, forKey: replaceKey)
             }
         }
     }
@@ -456,7 +456,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             guard let entry: Any = self.source[key.stringValue] else {
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
-            return try self.handle.decode(value: entry, type: UInt16.self, forKey: key)
+            return try self.handle.decodeIfPresent(value: entry, type: UInt16.self, forKey: key)
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useDefaultable:
@@ -467,7 +467,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             case .useCustom(let delegate):
                 let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
-                return try self.handle.decode(value: self.source[replaceKey.stringValue] as Any, type: UInt16.self, forKey: replaceKey)
+                return try self.handle.decodeIfPresent(value: self.source[replaceKey.stringValue] as Any, type: UInt16.self, forKey: replaceKey)
             }
         }
     }
@@ -504,7 +504,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             guard let entry: Any = self.source[key.stringValue] else {
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
-            return try self.handle.decode(value: entry, type: UInt32.self, forKey: key)
+            return try self.handle.decodeIfPresent(value: entry, type: UInt32.self, forKey: key)
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useDefaultable:
@@ -515,7 +515,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             case .useCustom(let delegate):
                 let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
-                return try self.handle.decode(value: self.source[replaceKey.stringValue] as Any, type: UInt32.self, forKey: replaceKey)
+                return try self.handle.decodeIfPresent(value: self.source[replaceKey.stringValue] as Any, type: UInt32.self, forKey: replaceKey)
             }
         }
     }
@@ -552,7 +552,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             guard let entry: Any = self.source[key.stringValue] else {
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
-            return try self.handle.decode(value: entry, type: UInt64.self, forKey: key)
+            return try self.handle.decodeIfPresent(value: entry, type: UInt64.self, forKey: key)
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useDefaultable:
@@ -563,7 +563,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             case .useCustom(let delegate):
                 let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
-                return try self.handle.decode(value: self.source[replaceKey.stringValue] as Any, type: UInt64.self, forKey: replaceKey)
+                return try self.handle.decodeIfPresent(value: self.source[replaceKey.stringValue] as Any, type: UInt64.self, forKey: replaceKey)
             }
         }
     }
@@ -600,7 +600,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             guard let entry: Any = self.source[key.stringValue] else {
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
-            return try self.handle.decode(value: entry, type: Float.self, forKey: key)
+            return try self.handle.decodeIfPresent(value: entry, type: Float.self, forKey: key)
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useDefaultable:
@@ -611,7 +611,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             case .useCustom(let delegate):
                 let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
-                return try self.handle.decode(value: self.source[replaceKey.stringValue] as Any, type: Float.self, forKey: replaceKey)
+                return try self.handle.decodeIfPresent(value: self.source[replaceKey.stringValue] as Any, type: Float.self, forKey: replaceKey)
             }
         }
     }
@@ -648,7 +648,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             guard let entry: Any = self.source[key.stringValue] else {
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
-            return try self.handle.decode(value: entry, type: Double.self, forKey: key)
+            return try self.handle.decodeIfPresent(value: entry, type: Double.self, forKey: key)
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useDefaultable:
@@ -659,7 +659,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             case .useCustom(let delegate):
                 let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
-                return try self.handle.decode(value: self.source[replaceKey.stringValue] as Any, type: Double.self, forKey: replaceKey)
+                return try self.handle.decodeIfPresent(value: self.source[replaceKey.stringValue] as Any, type: Double.self, forKey: replaceKey)
             }
         }
     }
@@ -696,7 +696,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             guard let entry: Any = self.source[key.stringValue] else {
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             }
-            return try self.handle.decode(value: entry, type: String.self, forKey: key)
+            return try self.handle.decodeIfPresent(value: entry, type: String.self, forKey: key)
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useDefaultable:
@@ -707,7 +707,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             case .useCustom(let delegate):
                 let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
-                return try self.handle.decode(value: self.source[replaceKey.stringValue] as Any, type: String.self, forKey: replaceKey)
+                return try self.handle.decodeIfPresent(value: self.source[replaceKey.stringValue] as Any, type: String.self, forKey: replaceKey)
             }
         }
     }
@@ -744,38 +744,6 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
     
     // MARK: T?
     func decodeIfPresent<T>(_ type: T.Type, forKey key: K) throws -> T? where T : Decodable {
-//        self.decoder.codingPath.append(NIOCodableKey(dictionaryIndex: key.stringValue))
-//        defer { self.decoder.codingPath.removeLast() }
-//        guard let entry = self.source[key.stringValue] else {
-//            return nil
-//        }
-//        if entry is NSNull {
-//            switch self.decoder.wrapper?.optionalContainerStrategy {
-//            case .useNull:
-//                return nil
-//            default:
-//                return [] as? T
-//            }
-//        }
-//        guard let value: String = entry as? String else {
-//            self.decoder.storage.push(entry)
-//            defer { self.decoder.storage.pop() }
-//            return try type.init(from: self.decoder)
-//        }
-//
-//        if value == "null" {
-//            switch self.decoder.wrapper?.optionalContainerStrategy {
-//            case .useNull:
-//                return nil
-//            default:
-//                return [] as? T
-//            }
-//        }
-//
-//        self.decoder.storage.push(entry)
-//        defer { self.decoder.storage.pop() }
-//        return try type.init(from: self.decoder)
-
         self.decoder.codingPath.append(NIOCodableKey(dictionaryIndex: key.stringValue))
         defer {
             if !self.decoder.codingPath.isEmpty {
@@ -788,7 +756,11 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             }
             self.decoder.storage.push(entry)
             defer { self.decoder.storage.pop() }
-            return try type.init(from: self.decoder)
+            do {
+                return try type.init(from: self.decoder)
+            } catch {
+                return nil
+            }
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useCustom(let delegate):
