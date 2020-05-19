@@ -99,7 +99,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("Bool type unsupport :\(value), set default false")
+                    print("Bool type unsupport :\(value), set default false")
                     return false
                 }
             }
@@ -108,8 +108,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("Bool type unsupport :\(value), set default false")
+            print("Bool type unsupport :\(value), set default false")
             return false
         }
     }
@@ -197,7 +213,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("Bool type unsupport :\(value), set default nil")
+                    print("Bool type unsupport :\(value), set default nil")
                     return nil
                 }
             }
@@ -206,8 +222,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("Bool type unsupport :\(value), set default nil")
+            print("Bool type unsupport :\(value), set default nil")
             return nil
         }
     }
@@ -298,7 +330,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else  {
-                    debugPrint("Int type unsupport :\(value), set default 0")
+                    print("Int type unsupport :\(value), set default 0")
                     return 0
                 }
             }
@@ -310,8 +342,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("Int type unsupport :\(value), set default 0")
+            print("Int type unsupport :\(value), set default 0")
             return 0
         }
     }
@@ -399,7 +447,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else  {
-                    debugPrint("Int type unsupport :\(value), set default nil")
+                    print("Int type unsupport :\(value), set default nil")
                     return nil
                 }
             }
@@ -411,8 +459,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("Int type unsupport :\(value), set default nil")
+            print("Int type unsupport :\(value), set default nil")
             return nil
         }
     }
@@ -503,7 +567,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 }  else {
-                    debugPrint("Int8 type unsupport :\(value), set default 0")
+                    print("Int8 type unsupport :\(value), set default 0")
                     return 0
                 }
             }
@@ -515,8 +579,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
-        } else {
-            debugPrint("Int8 type unsupport :\(value), set default nil")
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Int8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Int8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        }  else {
+            print("Int8 type unsupport :\(value), set default nil")
             return 0
         }
     }
@@ -604,7 +684,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 }  else {
-                    debugPrint("Int8 type unsupport :\(value), set default nil")
+                    print("Int8 type unsupport :\(value), set default nil")
                     return nil
                 }
             }
@@ -616,8 +696,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
-        } else {
-            debugPrint("Int8 type unsupport :\(value), set default nil")
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Int8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Int8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        }  else {
+            print("Int8 type unsupport :\(value), set default nil")
             return nil
         }
     }
@@ -709,17 +805,33 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("Int16 type unsupport :\(value), set default 0")
+                    print("Int16 type unsupport :\(value), set default 0")
                     return 0
                 }
             }
-        }  else if let `value`: String = value as? String {
+        } else if let `value`: String = value as? String {
             switch self.convertTypeStrategy {
             case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
-        } else {
-            debugPrint("Int16 type unsupport :\(value), set default 0")
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Int16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Int16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        }  else {
+            print("Int16 type unsupport :\(value), set default 0")
             return 0
         }
     }
@@ -807,7 +919,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("Int16 type unsupport :\(value), set default nil")
+                    print("Int16 type unsupport :\(value), set default nil")
                     return nil
                 }
             }
@@ -816,12 +928,27 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
-        } else {
-            debugPrint("Int16 type unsupport :\(value), set default nil")
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Int16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Int16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        }  else {
+            print("Int16 type unsupport :\(value), set default nil")
             return nil
         }
     }
-
 }
 
 // MARK: - 处理Int32和Int32?类型
@@ -909,7 +1036,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 }  else {
-                    debugPrint("Int32 type unsupport :\(value), set default 0")
+                    print("Int32 type unsupport :\(value), set default 0")
                     return 0
                 }
             }
@@ -921,8 +1048,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
-        } else {
-            debugPrint("Int32 type unsupport :\(value), set default 0")
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Int32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Int32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        }  else {
+            print("Int32 type unsupport :\(value), set default 0")
             return 0
         }
     }
@@ -1010,7 +1153,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 }  else {
-                    debugPrint("Int32 type unsupport :\(value), set default nil")
+                    print("Int32 type unsupport :\(value), set default nil")
                     return nil
                 }
             }
@@ -1022,8 +1165,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
-        } else {
-            debugPrint("Int32 type unsupport :\(value), set default nil")
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Int32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Int32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        }  else {
+            print("Int32 type unsupport :\(value), set default nil")
             return nil
         }
     }
@@ -1114,7 +1273,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("Int64 type unsupport :\(value), set default 0")
+                    print("Int64 type unsupport :\(value), set default 0")
                     return 0
                 }
             }
@@ -1123,8 +1282,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
-        } else {
-            debugPrint("Int64 type unsupport :\(value), set default 0")
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        }  else {
+            print("Int64 type unsupport :\(value), set default 0")
             return 0
         }
     }
@@ -1212,7 +1387,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("Int64 type unsupport :\(value), set default nil")
+                    print("Int64 type unsupport :\(value), set default nil")
                     return nil
                 }
             }
@@ -1221,8 +1396,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
-        } else {
-            debugPrint("Int64 type unsupport :\(value), set default nil")
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        }  else {
+            print("Int64 type unsupport :\(value), set default nil")
             return nil
         }
     }
@@ -1313,7 +1504,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return try delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("UInt type unsupport :\(value), set default 0")
+                    print("UInt type unsupport :\(value), set default 0")
                     return 0
                 }
             }
@@ -1322,8 +1513,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(UInt.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(UInt.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("UInt type unsupport :\(value), set default 0")
+            print("UInt type unsupport :\(value), set default 0")
             return 0
         }
     }
@@ -1411,7 +1618,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return try delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("UInt type unsupport :\(value), set default nil")
+                    print("UInt type unsupport :\(value), set default nil")
                     return nil
                 }
             }
@@ -1420,8 +1627,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(UInt.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(UInt.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("UInt type unsupport :\(value), set default nil")
+            print("UInt type unsupport :\(value), set default nil")
             return nil
         }
     }
@@ -1512,7 +1735,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return try delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("UInt8 type unsupport :\(value), set default 0")
+                    print("UInt8 type unsupport :\(value), set default 0")
                     return 0
                 }
             }
@@ -1521,8 +1744,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("UInt8 type unsupport :\(value), set default 0")
+            print("UInt8 type unsupport :\(value), set default 0")
             return 0
         }
     }
@@ -1610,7 +1849,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return try delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("UInt8 type unsupport :\(value), set default nil")
+                    print("UInt8 type unsupport :\(value), set default nil")
                     return nil
                 }
             }
@@ -1619,8 +1858,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("UInt8 type unsupport :\(value), set default nil")
+            print("UInt8 type unsupport :\(value), set default nil")
             return nil
         }
     }
@@ -1711,7 +1966,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return try delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("UInt16 type unsupport :\(value), set default 0")
+                    print("UInt16 type unsupport :\(value), set default 0")
                     return 0
                 }
             }
@@ -1720,8 +1975,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("UInt16 type unsupport :\(value), set default 0")
+            print("UInt16 type unsupport :\(value), set default 0")
             return 0
         }
     }
@@ -1809,7 +2080,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return try delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("UInt16 type unsupport :\(value), set default nil")
+                    print("UInt16 type unsupport :\(value), set default nil")
                     return nil
                 }
             }
@@ -1818,8 +2089,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("UInt16 type unsupport :\(value), set default nil")
+            print("UInt16 type unsupport :\(value), set default nil")
             return nil
         }
     }
@@ -1910,7 +2197,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return try delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 }  else {
-                    debugPrint("UInt32 type unsupport :\(value), set default 0")
+                    print("UInt32 type unsupport :\(value), set default 0")
                     return 0
                 }
             }
@@ -1919,8 +2206,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("UInt32 type unsupport :\(value), set default 0")
+            print("UInt32 type unsupport :\(value), set default 0")
             return 0
         }
     }
@@ -2008,7 +2311,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return try delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 }  else {
-                    debugPrint("UInt32 type unsupport :\(value), set default nil")
+                    print("UInt32 type unsupport :\(value), set default nil")
                     return nil
                 }
             }
@@ -2017,8 +2320,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("UInt32 type unsupport :\(value), set default nil")
+            print("UInt32 type unsupport :\(value), set default nil")
             return nil
         }
     }
@@ -2109,7 +2428,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return try delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("UInt64 type unsupport :\(value), set default 0")
+                    print("UInt64 type unsupport :\(value), set default 0")
                     return 0
                 }
             }
@@ -2118,8 +2437,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("UInt64 type unsupport :\(value), set default 0")
+            print("UInt64 type unsupport :\(value), set default 0")
             return 0
         }
     }
@@ -2207,7 +2542,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return try delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("UInt64 type unsupport :\(value), set default nil")
+                    print("UInt64 type unsupport :\(value), set default nil")
                     return nil
                 }
             }
@@ -2216,12 +2551,27 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("UInt64 type unsupport :\(value), set default nil")
+            print("UInt64 type unsupport :\(value), set default nil")
             return nil
         }
     }
-
 }
 
 // MARK: - 处理Float和Float?类型
@@ -2309,7 +2659,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("Float type unsupport :\(value), set default 0.0")
+                    print("Float type unsupport :\(value), set default 0.0")
                     return 0.0
                 }
             }
@@ -2318,8 +2668,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Float.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Float.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("Float type unsupport :\(value), set default 0.0")
+            print("Float type unsupport :\(value), set default 0.0")
             return 0.0
         }
     }
@@ -2407,7 +2773,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("Float type unsupport :\(value), set default nil")
+                    print("Float type unsupport :\(value), set default nil")
                     return nil
                 }
             }
@@ -2416,8 +2782,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Float.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Float.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("Float type unsupport :\(value), set default nil")
+            print("Float type unsupport :\(value), set default nil")
             return nil
         }
     }
@@ -2508,7 +2890,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("Double type unsupport :\(value), set default 0.0")
+                    print("Double type unsupport :\(value), set default 0.0")
                     return 0.0
                 }
             }
@@ -2517,8 +2899,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("Double type unsupport :\(value), set default 0.0")
+            print("Double type unsupport :\(value), set default 0.0")
             return 0.0
         }
     }
@@ -2606,7 +3004,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("Double type unsupport :\(value), set default nil")
+                    print("Double type unsupport :\(value), set default nil")
                     return nil
                 }
             }
@@ -2615,8 +3013,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("Double type unsupport :\(value), set default nil")
+            print("Double type unsupport :\(value), set default nil")
             return nil
         }
     }
@@ -2707,7 +3121,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("Double type unsupport :\(value), set default \"\"")
+                    print("Double type unsupport :\(value), set default \"\"")
                     return ""
                 }
             }
@@ -2716,8 +3130,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("Double type unsupport :\(value), set default \"\"")
+            print("Double type unsupport :\(value), set default \"\"")
             return ""
         }
     }
@@ -2805,7 +3235,7 @@ extension NIOCodableHandle {
                     case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
                     }
                 } else {
-                    debugPrint("Double type unsupport :\(value), set default nil")
+                    print("Double type unsupport :\(value), set default nil")
                     return nil
                 }
             }
@@ -2814,8 +3244,24 @@ extension NIOCodableHandle {
             case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
             }
+        } else if value is [AnyHashable: Any] {
+            guard let value: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
+                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
+        } else if value is [Any] {
+            guard let value: [Any] = value as? [Any] else {
+                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "key: \(key.stringValue) not found"))
+            }
+            switch self.convertTypeStrategy {
+            case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            }
         } else {
-            debugPrint("Double type unsupport :\(value), set default nil")
+            print("Double type unsupport :\(value), set default nil")
             return nil
         }
     }
