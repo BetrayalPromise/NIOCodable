@@ -1753,26 +1753,27 @@ class NIOCodableTests: XCTestCase {
     }
 
     func testNull() {
+        struct Adapter: TypeConvertible {
+            func toBool(path: AbstractPath, value: NSNull) -> Bool {
+                return true
+            }
+
+            func toBoolIfPresent(path: AbstractPath, value: NSNull) -> Bool? {
+                return false
+            }
+        }
         let data: Data = """
-          {
-            "array": "null"
-          }
+            [null]
           """.data(using: String.Encoding.utf8) ?? Data()
-
-        class Root: Codable {
-            var array: [List]?
-        }
-
-        class List: Codable {
-            var a: String?
-        }
-
         let decoder = NIOJSONDecoder()
         decoder.optionalContainerStrategy = .useEmpty
+        decoder.convertNullStrategy = true
+        decoder.convertTypeStrategy = .useCustom(Adapter())
         do {
-            guard let models: Root = try decoder.decode(type: Root.self, from: data) else { return }
+            guard let models: [Bool?] = try decoder.decode(type: [Bool?].self, from: data) else { return }
             print(models)
-            XCTAssert(models.array != nil)
+            XCTAssertEqual(models[0], true)
+            XCTAssertEqual(models[0], false)
         } catch {
             XCTAssertNil(error, error.localizedDescription)
         }

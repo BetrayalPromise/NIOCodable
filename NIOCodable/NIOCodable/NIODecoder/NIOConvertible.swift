@@ -995,7 +995,7 @@ extension TypeConvertible {
     }
 
     func toIntIfPresent(path: AbstractPath, value: NSNull) -> Int? {
-        return 0
+        return nil
     }
 
     // MARK: Bool -> Int
@@ -1166,7 +1166,7 @@ extension TypeConvertible {
     }
 
     func toInt8IfPresent(path: AbstractPath, value: NSNull) -> Int8? {
-        return 0
+        return nil
     }
 
     // MARK: Bool -> Int8
@@ -1336,7 +1336,7 @@ extension TypeConvertible {
     }
 
     func toInt16IfPresent(path: AbstractPath, value: NSNull) -> Int16? {
-        return 0
+        return nil
     }
 
     // MARK: Bool -> Int16
@@ -1515,7 +1515,7 @@ extension TypeConvertible {
     }
 
     func toInt32IfPresent(path: AbstractPath, value: NSNull) -> Int32? {
-        return 0
+        return nil
     }
 
     // MARK: Bool -> Int32
@@ -1685,7 +1685,7 @@ extension TypeConvertible {
     }
 
     func toInt64IfPresent(path: AbstractPath, value: NSNull) -> Int64? {
-        return 0
+        return nil
     }
 
     // MARK: Bool -> Int64
@@ -1854,7 +1854,7 @@ extension TypeConvertible {
     }
 
     func toUIntIfPresent(path: AbstractPath, value: NSNull) -> UInt? {
-        return 0
+        return nil
     }
 
     // MARK: Bool -> UInt
@@ -2037,7 +2037,7 @@ extension TypeConvertible {
     }
 
     func toUInt8IfPresent(path: AbstractPath, value: NSNull) -> UInt8? {
-        return 0
+        return nil
     }
 
     func toUInt8(path: AbstractPath, value: Bool) -> UInt8 {
@@ -2219,7 +2219,7 @@ extension TypeConvertible {
     }
 
     func toUInt16IfPresent(path: AbstractPath, value: NSNull) -> UInt16? {
-        return 0
+        return nil
     }
 
     // MARK: Bool -> UInt16
@@ -2403,7 +2403,7 @@ extension TypeConvertible {
     }
 
     func toUInt32IfPresent(path: AbstractPath, value: NSNull) -> UInt32? {
-        return 0
+        return nil
     }
 
     // MARK: String -> UInt32
@@ -2587,7 +2587,7 @@ extension TypeConvertible {
     }
 
     func toUInt64IfPresent(path: AbstractPath, value: NSNull) -> UInt64? {
-        return 0
+        return nil
     }
     // MARK: Bool -> UInt64
     func toUInt64(path: AbstractPath, value: Bool) -> UInt64 {
@@ -2769,7 +2769,7 @@ extension TypeConvertible {
     }
 
     func toFloatIfPresent(path: AbstractPath, value: NSNull) ->  Float? {
-        return 0.0
+        return nil
     }
 
     func toFloat(path: AbstractPath, value: Bool) -> Float {
@@ -2937,7 +2937,7 @@ extension TypeConvertible {
     }
 
     func toDoubleIfPresent(path: AbstractPath, value: NSNull) ->  Double? {
-        return 0.0
+        return nil
     }
     // MARK: Bool -> Double
     func toDouble(path: AbstractPath, value: Bool) -> Double {
@@ -3104,7 +3104,7 @@ extension TypeConvertible {
         return ""
     }
     func toStringIfPresent(path: AbstractPath, value: NSNull) -> String? {
-        return ""
+        return nil
     }
 
     // MARK: Bool -> String

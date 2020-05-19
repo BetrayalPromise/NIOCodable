@@ -69,7 +69,7 @@ extension NIODecoder {
             }
         }
 
-        if (value as? [Any]) != nil {
+        if (value as? [Any?]) != nil {
             guard let `value`: [Any] = value as? [Any]  else {
                 fatalError()
             }
