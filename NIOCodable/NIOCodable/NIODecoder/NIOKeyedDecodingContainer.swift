@@ -26,7 +26,6 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
     }
     
     func contains(_ key: K) -> Bool {
-//        return self.source[key.stringValue] != nil
         return self.allKeys.contains { (item) -> Bool in
             return item.stringValue == key.stringValue ? true : false
         }
@@ -726,7 +725,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             }
             self.decoder.storage.push(entry)
             defer { self.decoder.storage.pop() }
-            return try type.init(from: self.decoder)
+            return try self.decoder.unbox(value: entry, as: type) ?? (type.init(from: self.decoder))
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useCustom(let delegate):
@@ -756,11 +755,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             }
             self.decoder.storage.push(entry)
             defer { self.decoder.storage.pop() }
-            do {
-                return try type.init(from: self.decoder)
-            } catch {
-                return nil
-            }
+            return try self.decoder.unbox(value: entry, as: type)
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useCustom(let delegate):

@@ -54,7 +54,7 @@ class NIOCodableTests: XCTestCase {
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
                 guard let models: Root = try decoder.decode(type: Root.self, from: data) else { return }
-                XCTAssertEqual(models.info?.count, 1)
+                XCTAssertEqual(models.info?.count, 0)
             } catch {
                 XCTAssertNil(error, error.localizedDescription)
             }
