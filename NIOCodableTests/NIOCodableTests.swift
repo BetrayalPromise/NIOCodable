@@ -1757,10 +1757,6 @@ class NIOCodableTests: XCTestCase {
             func toBool(path: AbstractPath, value: NSNull) -> Bool {
                 return true
             }
-
-            func toBoolIfPresent(path: AbstractPath, value: NSNull) -> Bool? {
-                return false
-            }
         }
         let data: Data = """
             [null]

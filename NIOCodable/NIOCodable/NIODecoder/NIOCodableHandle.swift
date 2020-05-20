@@ -18,12 +18,9 @@ extension NIOCodableHandle: TypeConvertible {
 extension NIOCodableHandle {
     func decode<K>(value: Any, type: Bool.Type, forKey key: K) throws -> Bool where K: CodingKey {
         if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Bool"))
-            }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
+            case .useCustom(let delegate): return delegate.toBool(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -131,15 +128,7 @@ extension NIOCodableHandle {
     }
 
     func decodeIfPresent<K>(value: Any, type: Bool.Type, forKey key: K) throws -> Bool? where K: CodingKey {
-        if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Bool.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Bool"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toBoolIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            }
-        } else if value is NSNumber {
+        if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "can't convert to NSNumber"))
             }
@@ -249,12 +238,9 @@ extension NIOCodableHandle {
 extension NIOCodableHandle {
     func decode<K>(value: Any, type: Int.Type, forKey key: K) throws -> Int where K: CodingKey {
         if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int"))
-            }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
+            case .useCustom(let delegate): return delegate.toInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -365,15 +351,7 @@ extension NIOCodableHandle {
     }
 
     func decodeIfPresent<K>(value: Any, type: Int.Type, forKey key: K) throws -> Int? where K: CodingKey {
-        if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            }
-        } else if value is NSNumber {
+        if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "can't convert to NSNumber"))
             }
@@ -486,12 +464,9 @@ extension NIOCodableHandle {
 extension NIOCodableHandle {
     func decode<K>(value: Any, type: Int8.Type, forKey key: K) throws -> Int8 where K: CodingKey {
         if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Int8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int8"))
-            }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
+            case .useCustom(let delegate): return delegate.toInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -602,15 +577,7 @@ extension NIOCodableHandle {
     }
 
     func decodeIfPresent<K>(value: Any, type: Int8.Type, forKey key: K) throws -> Int8? where K: CodingKey {
-        if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Int8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int8"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            }
-        } else if value is NSNumber {
+        if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "can't convert to NSNumber"))
             }
@@ -724,12 +691,9 @@ extension NIOCodableHandle {
 extension NIOCodableHandle {
     func decode<K>(value: Any, type: Int16.Type, forKey key: K) throws -> Int16 where K: CodingKey {
         if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Int16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int16"))
-            }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
+            case .useCustom(let delegate): return delegate.toInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -837,15 +801,7 @@ extension NIOCodableHandle {
     }
 
     func decodeIfPresent<K>(value: Any, type: Int16.Type, forKey key: K) throws -> Int16? where K: CodingKey {
-        if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Int16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int16"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            }
-        } else if value is NSNumber {
+        if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "can't convert to NSNumber"))
             }
@@ -955,12 +911,9 @@ extension NIOCodableHandle {
 extension NIOCodableHandle {
     func decode<K>(value: Any, type: Int32.Type, forKey key: K) throws -> Int32 where K: CodingKey {
         if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Int32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int32"))
-            }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
+            case .useCustom(let delegate): return delegate.toInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -1071,15 +1024,7 @@ extension NIOCodableHandle {
     }
 
     func decodeIfPresent<K>(value: Any, type: Int32.Type, forKey key: K) throws -> Int32? where K: CodingKey {
-        if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Int32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int32"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            }
-        } else if value is NSNumber {
+        if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "can't convert to NSNumber"))
             }
@@ -1192,12 +1137,9 @@ extension NIOCodableHandle {
 extension NIOCodableHandle {
     func decode<K>(value: Any, type: Int64.Type, forKey key: K) throws -> Int64 where K: CodingKey {
         if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int64"))
-            }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
+            case .useCustom(let delegate): return delegate.toInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -1305,15 +1247,7 @@ extension NIOCodableHandle {
     }
 
     func decodeIfPresent<K>(value: Any, type: Int64.Type, forKey key: K) throws -> Int64? where K: CodingKey {
-        if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Int64"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            }
-        } else if value is NSNumber {
+        if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "can't convert to NSNumber"))
             }
@@ -1423,12 +1357,9 @@ extension NIOCodableHandle {
 extension NIOCodableHandle {
     func decode<K>(value: Any, type: UInt.Type, forKey key: K) throws -> UInt where K: CodingKey {
         if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(UInt.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt"))
-            }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
+            case .useCustom(let delegate): return delegate.toUInt(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -1536,15 +1467,7 @@ extension NIOCodableHandle {
     }
 
     func decodeIfPresent<K>(value: Any, type: UInt.Type, forKey key: K) throws -> UInt? where K: CodingKey  {
-        if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(UInt.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUIntIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            }
-        } else if value is NSNumber {
+        if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "can't convert to NSNumber"))
             }
@@ -1654,12 +1577,9 @@ extension NIOCodableHandle {
 extension NIOCodableHandle {
     func decode<K>(value: Any, type: UInt8.Type, forKey key: K) throws -> UInt8 where K: CodingKey {
         if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt8"))
-            }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
+            case .useCustom(let delegate): return delegate.toUInt8(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -1767,15 +1687,7 @@ extension NIOCodableHandle {
     }
 
     func decodeIfPresent<K>(value: Any, type: UInt8.Type, forKey key: K) throws -> UInt8? where K: CodingKey {
-        if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(UInt8.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt8"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt8IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            }
-        } else if value is NSNumber {
+        if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "can't convert to NSNumber"))
             }
@@ -1885,12 +1797,9 @@ extension NIOCodableHandle {
 extension NIOCodableHandle {
     func decode<K>(value: Any, type: UInt16.Type, forKey key: K) throws -> UInt16 where K: CodingKey {
         if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt16"))
-            }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
+            case .useCustom(let delegate): return delegate.toUInt16(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -1998,15 +1907,7 @@ extension NIOCodableHandle {
     }
 
     func decodeIfPresent<K>(value: Any, type: UInt16.Type, forKey key: K) throws -> UInt16? where K: CodingKey {
-        if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(UInt16.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt16"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt16IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            }
-        } else if value is NSNumber {
+        if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "can't convert to NSNumber"))
             }
@@ -2116,12 +2017,9 @@ extension NIOCodableHandle {
 extension NIOCodableHandle {
     func decode<K>(value: Any, type: UInt32.Type, forKey key: K) throws -> UInt32 where K: CodingKey {
         if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt32"))
-            }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
+            case .useCustom(let delegate): return delegate.toUInt32(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -2229,15 +2127,7 @@ extension NIOCodableHandle {
     }
 
     func decodeIfPresent<K>(value: Any, type: UInt32.Type, forKey key: K) throws -> UInt32? where K: CodingKey {
-        if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(UInt32.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt32"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt32IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            }
-        } else if value is NSNumber {
+        if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "can't convert to NSNumber"))
             }
@@ -2347,12 +2237,9 @@ extension NIOCodableHandle {
 extension NIOCodableHandle {
     func decode<K>(value: Any, type: UInt64.Type, forKey key: K) throws -> UInt64 where K: CodingKey {
         if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt64"))
-            }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
+            case .useCustom(let delegate): return delegate.toUInt64(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -2460,15 +2347,7 @@ extension NIOCodableHandle {
     }
 
     func decodeIfPresent<K>(value: Any, type: UInt64.Type, forKey key: K) throws -> UInt64? where K: CodingKey {
-        if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(UInt64.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to UInt64"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toUInt64IfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            }
-        } else if value is NSNumber {
+        if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "can't convert to NSNumber"))
             }
@@ -2578,12 +2457,9 @@ extension NIOCodableHandle {
 extension NIOCodableHandle {
     func decode<K>(value: Any, type: Float.Type, forKey key: K) throws -> Float where K: CodingKey {
         if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Float.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Float"))
-            }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
+            case .useCustom(let delegate): return delegate.toFloat(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -2691,15 +2567,7 @@ extension NIOCodableHandle {
     }
 
     func decodeIfPresent<K>(value: Any, type: Float.Type, forKey key: K) throws -> Float? where K: CodingKey {
-        if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Float.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Float"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toFloatIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            }
-        } else if value is NSNumber {
+        if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "can't convert to NSNumber"))
             }
@@ -2809,12 +2677,9 @@ extension NIOCodableHandle {
 extension NIOCodableHandle {
     func decode<K>(value: Any, type: Double.Type, forKey key: K) throws -> Double where K: CodingKey {
         if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Double"))
-            }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
+            case .useCustom(let delegate): return delegate.toDouble(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -2922,15 +2787,7 @@ extension NIOCodableHandle {
     }
 
     func decodeIfPresent<K>(value: Any, type: Double.Type, forKey key: K) throws -> Double? where K: CodingKey  {
-        if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to Double"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toDoubleIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            }
-        } else if value is NSNumber {
+        if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "can't convert to NSNumber"))
             }
@@ -3040,12 +2897,9 @@ extension NIOCodableHandle {
 extension NIOCodableHandle {
     func decode<K>(value: Any, type: String.Type, forKey key: K) throws -> String where K: CodingKey {
         if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(String.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to String"))
-            }
             switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
+            case .useDefaultable: return self.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
+            case .useCustom(let delegate): return delegate.toString(path: AbstractPath(codingKeys: self.decoder.codingPath), value: NSNull())
             }
         } else if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
@@ -3153,15 +3007,7 @@ extension NIOCodableHandle {
     }
 
     func decodeIfPresent<K>(value: Any, type: String.Type, forKey key: K) throws -> String? where K: CodingKey {
-        if value is NSNull {
-            guard let `value`: NSNull = value as? NSNull else {
-                throw DecodingError.typeMismatch(String.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "NSNull can't convert to String"))
-            }
-            switch self.convertTypeStrategy {
-            case .useDefaultable: return self.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            case .useCustom(let delegate): return delegate.toStringIfPresent(path: AbstractPath(codingKeys: self.decoder.codingPath), value: value)
-            }
-        } else if value is NSNumber {
+        if value is NSNumber {
             guard let value: NSNumber = value as? NSNumber else {
                 throw DecodingError.typeMismatch(Int.self, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "can't convert to NSNumber"))
             }
