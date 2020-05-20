@@ -109,7 +109,10 @@ extension String: Initalizable {
 
 public class AbstractPath {
     private(set) var codingKeys: [CodingKey] = []
-
+    private(set) var codingKey: CodingKey? {
+        set {}
+        get { return codingKeys.last }
+    }
     private(set) var codingPath: String {
         set {}
         get {

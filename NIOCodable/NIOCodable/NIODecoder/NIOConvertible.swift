@@ -3291,14 +3291,9 @@ public protocol MappingControllable {
 #endif
 
 // MARK: - 处理模型与数据结构不匹配问题
-/// 模型解析失败时 使用的构造器 在可能解析失败的模型中实现该协议
+/// 模型解析失败时 使用的构造器 在可能解析失败的模型中实现该协议 (enum, struc, class)中实现该协议
 public protocol Initalizable {
     init(path: AbstractPath, source: Any)
-}
-
-/// 模型解析失败时 用以防御处理的 自定义结构中(enum, struc, class)中实现该协议
-public protocol DefaultValueControllable {
-    func handle(path: AbstractPath, source: Any) -> Initalizable
 }
 
 public protocol KeyControllable {
@@ -3307,10 +3302,11 @@ public protocol KeyControllable {
     func key(sourcePath: AbstractPath) -> AbstractPath
 }
 
-public protocol EmptyValueControllable {
+/// 模型解析失败时 用以防御处理的
+public protocol ValueControllable {
     /// 返回自定义模型
     /// - Parameters:
     ///   - path: 数据源定义路径
     ///   - source: 原始值
-    func emptyValue(path: AbstractPath, source: Any) -> Initalizable
+    func value(path: AbstractPath, source: Any) -> Initalizable
 }

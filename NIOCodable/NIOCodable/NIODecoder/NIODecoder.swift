@@ -9,7 +9,6 @@ class NIODecoder: Decoder {
     weak var wrapper: NIOJSONDecoder?
 
     var baseNode: BaseNode = .none
-    var baseNodeCondition: BaseNodeCondition = .none
 
     init(wrapper: NIOJSONDecoder, source: Any, codingPath: [CodingKey] = [], userInfo: [CodingUserInfoKey : Any] = [:]) {
         self.wrapper = wrapper
@@ -18,20 +17,8 @@ class NIODecoder: Decoder {
         self.userInfo = userInfo
         if source is [Any] {
             self.baseNode = .array
-            let array: [Any] = source as? [Any] ?? []
-            if array.isEmpty {
-                self.baseNodeCondition = .empty
-            } else {
-                self.baseNodeCondition = .normal
-            }
         } else if source is [AnyHashable: Any] {
             self.baseNode = .dictionary
-            let dictionary: [AnyHashable: Any] = source as? [AnyHashable: Any] ?? [:]
-            if dictionary.isEmpty {
-                self.baseNodeCondition = .empty
-            } else {
-                self.baseNodeCondition = .normal
-            }
         } else {
             self.baseNode = .none
         }
@@ -65,17 +52,28 @@ extension NIODecoder {
 }
 
 extension NIODecoder {
-    func unbox<T>(value: Any, as type: T.Type) throws -> T? where T: Decodable {
+    func unbox<T>(value: Any, as type: T.Type, path: AbstractPath) throws -> T? where T: Decodable {
         self.storage.push(value)
         defer { self.storage.pop() }
         if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable : Any]  else { throw DecodingError.typeMismatch(type, DecodingError.Context(codingPath: self.codingPath, debugDescription: "[] conversion Execption")) }
             if value.isEmpty {
-                switch self.wrapper?.optionalContainerStrategy {
-                case .useNull:
-                    return nil
-                default:
-                    return [:] as? T
+//                switch self.wrapper?.optionalContainerStrategy {
+//                case .useNull:
+//                    return nil
+//                default:
+//                    return [:] as? T
+//                }
+                switch self.wrapper?.keyedDecodingDataSourceEmptyValueStrategy {
+                case .useCustom(let delegate):
+                    let model: Initalizable = delegate.value(path: AbstractPath(codingKeys: self.codingPath), source: source)
+                    if model is Decodable {
+                        return model as? T
+                    } else {
+                        assert(false, "\(type.self) Must Implementation Protocal Decodable")
+                    }
+                case .useExecption, .none:
+                    throw DecodingError.typeMismatch(type, DecodingError.Context(codingPath: self.codingPath, debugDescription: "[] conversion Execption"))
                 }
             }
         }
@@ -112,12 +110,6 @@ enum BaseNode {
     case none
     case array
     case dictionary
-}
-
-enum BaseNodeCondition {
-    case empty
-    case normal
-    case none
 }
 
 struct Empty {

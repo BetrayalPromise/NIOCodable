@@ -414,7 +414,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
         guard let value: Any = self.decoder.storage.currentValue else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "无法取值\(type)", underlyingError: nil))
         }
-        return try self.decoder.unbox(value: value, as: type) ?? (try type.init(from: self.decoder))
+        return try self.decoder.unbox(value: value, as: type, path: AbstractPath(codingKeys: self.decoder.codingPath)) ?? (try type.init(from: self.decoder))
     }
 }
 

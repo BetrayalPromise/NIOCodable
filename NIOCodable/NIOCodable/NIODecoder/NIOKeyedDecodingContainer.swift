@@ -725,14 +725,14 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             }
             self.decoder.storage.push(entry)
             defer { self.decoder.storage.pop() }
-            return try self.decoder.unbox(value: entry, as: type) ?? (type.init(from: self.decoder))
+            return try self.decoder.unbox(value: entry, as: type, path: AbstractPath(codingKeys: self.decoder.codingPath)) ?? (type.init(from: self.decoder))
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useCustom(let delegate):
                 let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                 self.decoder.storage.push(self.source[replaceKey.stringValue] ?? [:])
                 defer { self.decoder.storage.pop() }
-                return try self.decoder.unbox(value: self.source[replaceKey.stringValue] ?? "", as: type) ?? type.init(from: self.decoder)
+                return try self.decoder.unbox(value: self.source[replaceKey.stringValue] ?? "", as: type, path: AbstractPath(codingKeys: self.decoder.codingPath)) ?? type.init(from: self.decoder)
             case .useExecption, .useNull, .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             case .useDefaultable:
@@ -755,14 +755,14 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
             }
             self.decoder.storage.push(entry)
             defer { self.decoder.storage.pop() }
-            return try self.decoder.unbox(value: entry, as: type)
+            return try self.decoder.unbox(value: entry, as: type, path: AbstractPath(codingKeys: self.decoder.codingPath))
         } else {
             switch self.decoder.wrapper?.keyedDecodingKeyMismatchingStrategy {
             case .useCustom(let delegate):
                 let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                 self.decoder.storage.push(self.source[replaceKey.stringValue] ?? [:])
                 defer { self.decoder.storage.pop() }
-                return try self.decoder.unbox(value: self.source[replaceKey.stringValue] ?? "", as: type) ?? type.init(from: self.decoder)
+                return try self.decoder.unbox(value: self.source[replaceKey.stringValue] ?? "", as: type, path: AbstractPath(codingKeys: self.decoder.codingPath)) ?? type.init(from: self.decoder)
             case .useExecption, .none:
                 throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
             case .useDefaultable:

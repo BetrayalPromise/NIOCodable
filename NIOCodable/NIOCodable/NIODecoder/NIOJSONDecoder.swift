@@ -19,7 +19,7 @@ public final class NIOJSONDecoder {
     public var keyedDecodingKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.KeyedDecoding.NotFound = .useExecption
 
     /// [:]类型出现键出现空值问题,即出现{}情况(主要问题就是数据源的树形结构中某一个层级(非顶层级)出现{}的情况
-    public var keyedDecodingEmptyValueStrategy: NIOJSONDecoder.EmptyExecption.KeyedDecoding.EmptyValue = .useExecption
+    public var keyedDecodingDataSourceEmptyValueStrategy: NIOJSONDecoder.KeyedDecoding.DataSouceExecption.EmptyValue = .useExecption
 
     /// 简单可以理解为系统内建类型的之间转换出现键不匹配
     public var singleValueDecodingKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.SingleValueDecoding.NotFound = .useExecption
@@ -43,7 +43,7 @@ public final class NIOJSONDecoder {
         let decoder: NIODecoder = NIODecoder(wrapper: self, source: source)
         defer { decoder.cleanup() }
         do {
-            return try decoder.unbox(value: source, as: type)
+            return try decoder.unbox(value: source, as: type, path: AbstractPath(codingKeys: decoder.codingPath))
         } catch {
             throw error
         }
@@ -111,7 +111,7 @@ public extension NIOJSONDecoder {
 
         public enum UnkeyedDecoding {
             public enum NotFound {
-                case useCustom(DefaultValueControllable) /// 处理[:]这种空值字典
+                case useCustom(ValueControllable)
                 case useExecption
                 case useDefaultable
                 case useNull
@@ -119,12 +119,11 @@ public extension NIOJSONDecoder {
         }
     }
 
-    enum EmptyExecption {
-        public enum KeyedDecoding {
-            public enum EmptyValue {
+    enum KeyedDecoding {
+        public enum DataSouceExecption {
+            public enum EmptyValue { // 处理空字典[:]这种问题
                 case useExecption
-                case useCustom(EmptyValueControllable)
-                case useDefaultable
+                case useCustom(ValueControllable)
             }
         }
     }

@@ -145,25 +145,20 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
 
         let value: Any = self.source[self.currentIndex]
 
-        guard let model: T = try self.decoder.unbox(value: value, as: type) else {
+        guard let model: T = try self.decoder.unbox(value: value, as: type, path: AbstractPath(codingKeys: self.decoder.codingPath)) else {
             if value is [AnyHashable: Any] {
                 guard let dictionary: [AnyHashable: Any] = value as? [AnyHashable: Any] else {
                     throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "转换失败"))
                 }
-                if dictionary.keys.count == 0 && dictionary.values.count == 0 {
-                    switch self.decoder.wrapper?.keyedDecodingEmptyValueStrategy {
+                if dictionary.isEmpty {
+                    switch self.decoder.wrapper?.keyedDecodingDataSourceEmptyValueStrategy {
                     case .useCustom(let delegate):
-                        guard let `model`: T = delegate.emptyValue(path: AbstractPath(codingKeys: self.decoder.codingPath), source: self.source[self.currentIndex]) as? T else {
+                        guard let `model`: T = delegate.value(path: AbstractPath(codingKeys: self.decoder.codingPath), source: self.source[self.currentIndex]) as? T else {
                             throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "转换失败"))
                         }
                         return model
-                    case .none, .useExecption:
+                    case .useExecption, .none:
                         throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "转换失败"))
-                    case .useDefaultable:
-                        guard let replaceModel: T = try self.decoder.unbox(value: ["NoKey": "NoValue"], as: type) else {
-                            throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "[:] Execption"))
-                        }
-                        return replaceModel
                     }
                 }
             }
