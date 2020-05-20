@@ -175,7 +175,9 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     mutating func nestedContainer<NestedKey>(keyedBy type: NestedKey.Type) throws -> KeyedDecodingContainer<NestedKey> where NestedKey : CodingKey {
         defer { self.currentIndex += 1 }
         let value = self.source[self.currentIndex]
-        guard let dictionary = value as? [AnyHashable: Any] else { fatalError() }
+        guard let dictionary = value as? [AnyHashable: Any] else {
+            throw DecodingError.typeMismatch(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "[:] Execption"))
+        }
         return KeyedDecodingContainer(NIOKeyedDecodingContainer<NestedKey>(decoder: self.decoder, source: dictionary))
     }
     

@@ -9,6 +9,7 @@ class NIODecoder: Decoder {
     weak var wrapper: NIOJSONDecoder?
 
     var baseNode: BaseNode = .none
+    var baseNodeCondition: BaseNodeCondition = .none
 
     init(wrapper: NIOJSONDecoder, source: Any, codingPath: [CodingKey] = [], userInfo: [CodingUserInfoKey : Any] = [:]) {
         self.wrapper = wrapper
@@ -17,8 +18,20 @@ class NIODecoder: Decoder {
         self.userInfo = userInfo
         if source is [Any] {
             self.baseNode = .array
+            let array: [Any] = source as? [Any] ?? []
+            if array.isEmpty {
+                self.baseNodeCondition = .empty
+            } else {
+                self.baseNodeCondition = .normal
+            }
         } else if source is [AnyHashable: Any] {
             self.baseNode = .dictionary
+            let dictionary: [AnyHashable: Any] = source as? [AnyHashable: Any] ?? [:]
+            if dictionary.isEmpty {
+                self.baseNodeCondition = .empty
+            } else {
+                self.baseNodeCondition = .normal
+            }
         } else {
             self.baseNode = .none
         }
@@ -55,11 +68,9 @@ extension NIODecoder {
     func unbox<T>(value: Any, as type: T.Type) throws -> T? where T: Decodable {
         self.storage.push(value)
         defer { self.storage.pop() }
-        if (value as? [AnyHashable: Any]) != nil {
-            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable : Any]  else {
-                fatalError()
-            }
-            if value.keys.count == 0 {
+        if value is [AnyHashable: Any] {
+            guard let `value`: [AnyHashable: Any] = value as? [AnyHashable : Any]  else { throw DecodingError.typeMismatch(type, DecodingError.Context(codingPath: self.codingPath, debugDescription: "[] conversion Execption")) }
+            if value.isEmpty {
                 switch self.wrapper?.optionalContainerStrategy {
                 case .useNull:
                     return nil
@@ -69,11 +80,9 @@ extension NIODecoder {
             }
         }
 
-        if (value as? [Any]) != nil {
-            guard let `value`: [Any] = value as? [Any]  else {
-                fatalError()
-            }
-            if value.count == 0 {
+        if value is [Any] {
+            guard let `value`: [Any] = value as? [Any]  else { throw DecodingError.typeMismatch(type, DecodingError.Context(codingPath: self.codingPath, debugDescription: "[] conversion Execption")) }
+            if value.isEmpty {
                 switch self.wrapper?.optionalContainerStrategy {
                 case .useNull:
                     return nil
@@ -103,6 +112,12 @@ enum BaseNode {
     case none
     case array
     case dictionary
+}
+
+enum BaseNodeCondition {
+    case empty
+    case normal
+    case none
 }
 
 struct Empty {
