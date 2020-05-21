@@ -58,13 +58,7 @@ extension NIODecoder {
         if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable : Any]  else { throw DecodingError.typeMismatch(type, DecodingError.Context(codingPath: self.codingPath, debugDescription: "[] conversion Execption")) }
             if value.isEmpty {
-//                switch self.wrapper?.optionalContainerStrategy {
-//                case .useNull:
-//                    return nil
-//                default:
-//                    return [:] as? T
-//                }
-                switch self.wrapper?.keyedDecodingDataSourceEmptyValueStrategy {
+                switch self.wrapper?.decodingKeyedEmptyValueStrategy {
                 case .useCustom(let delegate):
                     let model: Initalizable = delegate.value(path: AbstractPath(codingKeys: self.codingPath), source: source)
                     if model is Decodable {
@@ -74,18 +68,6 @@ extension NIODecoder {
                     }
                 case .useExecption, .none:
                     throw DecodingError.typeMismatch(type, DecodingError.Context(codingPath: self.codingPath, debugDescription: "[] conversion Execption"))
-                }
-            }
-        }
-
-        if value is [Any] {
-            guard let `value`: [Any] = value as? [Any]  else { throw DecodingError.typeMismatch(type, DecodingError.Context(codingPath: self.codingPath, debugDescription: "[] conversion Execption")) }
-            if value.isEmpty {
-                switch self.wrapper?.optionalContainerStrategy {
-                case .useNull:
-                    return nil
-                default:
-                    return [] as? T
                 }
             }
         }

@@ -34,7 +34,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             if dictionary.keys.contains(key.stringValue) {
                 return try self.handle.decode(value: value, type: Bool.self, forKey: key)
             } else {
-                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                switch self.decoder.wrapper?.decodingSingleKeyMismatchingStrategy {
                 case .useCustom(let delegate):
                     let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Bool.self, forKey: replaceKey)
@@ -62,7 +62,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             if dictionary.keys.contains(key.stringValue) {
                 return try self.handle.decode(value: value, type: Int.self, forKey: key)
             } else {
-                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                switch self.decoder.wrapper?.decodingSingleKeyMismatchingStrategy {
                 case .useCustom(let delegate):
                     let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Int.self, forKey: replaceKey)
@@ -90,7 +90,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             if dictionary.keys.contains(key.stringValue) {
                 return try self.handle.decode(value: value, type: Int8.self, forKey: key)
             } else {
-                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                switch self.decoder.wrapper?.decodingSingleKeyMismatchingStrategy {
                 case .useCustom(let delegate):
                     let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Int8.self, forKey: replaceKey)
@@ -118,7 +118,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             if dictionary.keys.contains(key.stringValue) {
                 return try self.handle.decode(value: value, type: Int16.self, forKey: key)
             } else {
-                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                switch self.decoder.wrapper?.decodingSingleKeyMismatchingStrategy {
                 case .useCustom(let delegate):
                     let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Int16.self, forKey: replaceKey)
@@ -146,7 +146,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             if dictionary.keys.contains(key.stringValue) {
                 return try self.handle.decode(value: value, type: Int32.self, forKey: key)
             } else {
-                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                switch self.decoder.wrapper?.decodingSingleKeyMismatchingStrategy {
                 case .useCustom(let delegate):
                     let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Int32.self, forKey: replaceKey)
@@ -174,7 +174,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             if dictionary.keys.contains(key.stringValue) {
                 return try self.handle.decode(value: value, type: Int64.self, forKey: key)
             } else {
-                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                switch self.decoder.wrapper?.decodingSingleKeyMismatchingStrategy {
                 case .useCustom(let delegate):
                     let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Int64.self, forKey: replaceKey)
@@ -201,7 +201,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             if dictionary.keys.contains(key.stringValue) {
                 return try self.handle.decode(value: value, type: UInt.self, forKey: key)
             } else {
-                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                switch self.decoder.wrapper?.decodingSingleKeyMismatchingStrategy {
                 case .useCustom(let delegate):
                     let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: UInt.self, forKey: replaceKey)
@@ -229,7 +229,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             if dictionary.keys.contains(key.stringValue) {
                 return try self.handle.decode(value: value, type: UInt8.self, forKey: key)
             } else {
-                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                switch self.decoder.wrapper?.decodingSingleKeyMismatchingStrategy {
                 case .useCustom(let delegate):
                     let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: UInt8.self, forKey: replaceKey)
@@ -257,7 +257,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             if dictionary.keys.contains(key.stringValue) {
                 return try self.handle.decode(value: value, type: UInt16.self, forKey: key)
             } else {
-                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                switch self.decoder.wrapper?.decodingSingleKeyMismatchingStrategy {
                 case .useCustom(let delegate):
                     let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: UInt16.self, forKey: replaceKey)
@@ -285,7 +285,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             if dictionary.keys.contains(key.stringValue) {
                 return try self.handle.decode(value: value, type: UInt32.self, forKey: key)
             } else {
-                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                switch self.decoder.wrapper?.decodingSingleKeyMismatchingStrategy {
                 case .useCustom(let delegate):
                     let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: UInt32.self, forKey: replaceKey)
@@ -313,7 +313,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             if dictionary.keys.contains(key.stringValue) {
                 return try self.handle.decode(value: value, type: UInt64.self, forKey: key)
             } else {
-                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                switch self.decoder.wrapper?.decodingSingleKeyMismatchingStrategy {
                 case .useCustom(let delegate):
                     let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: UInt64.self, forKey: replaceKey)
@@ -341,7 +341,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             if dictionary.keys.contains(key.stringValue) {
                 return try self.handle.decode(value: value, type: Float.self, forKey: key)
             } else {
-                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                switch self.decoder.wrapper?.decodingSingleKeyMismatchingStrategy {
                 case .useCustom(let delegate):
                     let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Float.self, forKey: replaceKey)
@@ -369,7 +369,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             if dictionary.keys.contains(key.stringValue) {
                 return try self.handle.decode(value: value, type: Double.self, forKey: key)
             } else {
-                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                switch self.decoder.wrapper?.decodingSingleKeyMismatchingStrategy {
                 case .useCustom(let delegate):
                     let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: Double.self, forKey: replaceKey)
@@ -397,7 +397,7 @@ struct NIOSingleValueDecodingContainer: SingleValueDecodingContainer {
             if dictionary.keys.contains(key.stringValue) {
                 return try self.handle.decode(value: value, type: String.self, forKey: key)
             } else {
-                switch self.decoder.wrapper?.singleValueDecodingKeyMismatchingStrategy {
+                switch self.decoder.wrapper?.decodingSingleKeyMismatchingStrategy {
                 case .useCustom(let delegate):
                     let replaceKey = NIOCodableKey(string: delegate.key(sourcePath: AbstractPath(codingKeys: self.decoder.codingPath)).codingPath)
                     return try self.handle.decode(value: dictionary[replaceKey.stringValue] as Any, type: String.self, forKey: replaceKey)

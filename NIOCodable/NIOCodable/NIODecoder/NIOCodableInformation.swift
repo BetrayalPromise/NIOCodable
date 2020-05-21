@@ -107,6 +107,19 @@ extension String: Initalizable {
     }
 }
 
+extension Array: Initalizable where Self.Element: Initalizable {
+    public init(path: AbstractPath, source: Any) {
+        self.init()
+    }
+}
+
+
+extension Dictionary: Initalizable where Self.Key: Initalizable, Self.Value: Initalizable {
+    public init(path: AbstractPath, source: Any) {
+        self.init()
+    }
+}
+
 public class AbstractPath {
     private(set) var codingKeys: [CodingKey] = []
     private(set) var codingKey: CodingKey? {

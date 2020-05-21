@@ -9,20 +9,17 @@ import Foundation
 public final class NIOJSONDecoder {
     /// 类型转换策略
     public var convertTypeStrategy: NIOJSONDecoder.ConvertTypeStrategy = .useDefaultable
-    /// 容器使用策略
-    public var optionalContainerStrategy: NIOJSONDecoder.OptionalContainerStrategy = .useEmpty
-
-    /// []出现键不匹配
-    public var unkeyedDecodingKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.UnkeyedDecoding.NotFound = .useExecption
 
     /// [:]出现键不匹配
-    public var keyedDecodingKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.KeyedDecoding.NotFound = .useExecption
+    public var decodingKeyedKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.KeyedDecoding.NotFound = .useExecption
 
-    /// [:]类型出现键出现空值问题,即出现{}情况(主要问题就是数据源的树形结构中某一个层级(非顶层级)出现{}的情况
-    public var keyedDecodingDataSourceEmptyValueStrategy: NIOJSONDecoder.KeyedDecoding.DataSouceExecption.EmptyValue = .useExecption
+    /// [:]类型出现键出现空值问题,即出现{}情况(主要问题就是数据源的树形结构中某一个层级出现{}的情况
+    public var decodingKeyedEmptyValueStrategy: NIOJSONDecoder.KeyedDecoding.DataSouceExecption.EmptyValue = .useExecption
+
+    public var decodingNullValueStrategy: NIOJSONDecoder.KeyedDecoding.DataSouceExecption.NullValue = .useExecption
 
     /// 简单可以理解为系统内建类型的之间转换出现键不匹配
-    public var singleValueDecodingKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.SingleValueDecoding.NotFound = .useExecption
+    public var decodingSingleKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.SingleDecoding.NotFound = .useExecption
 
     /// null是否参与转换,只有该项先设置为true,再设置自定义转换,才有意义
     public var convertNullStrategy: Bool = false
@@ -86,14 +83,8 @@ public extension NIOJSONDecoder {
         case useCustom(TypeConvertible)  // 自定义处理
     }
 
-    /// 无数据时(null, 数据量为0)可选容器策略
-    enum OptionalContainerStrategy {
-        case useNull    // 使用null
-        case useEmpty   // 使用空容器
-    }
-
     enum KeyExecptionStrategy {
-        public enum SingleValueDecoding {
+        public enum SingleDecoding {
             public enum NotFound {
                 case useCustom(KeyControllable)
                 case useExecption
@@ -122,6 +113,11 @@ public extension NIOJSONDecoder {
     enum KeyedDecoding {
         public enum DataSouceExecption {
             public enum EmptyValue { // 处理空字典[:]这种问题
+                case useExecption
+                case useCustom(ValueControllable)
+            }
+
+            public enum NullValue { // 处理空字典null和数组null
                 case useExecption
                 case useCustom(ValueControllable)
             }
