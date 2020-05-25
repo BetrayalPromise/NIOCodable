@@ -120,7 +120,11 @@ extension Dictionary: Initalizable where Self.Key: Initalizable, Self.Value: Ini
     }
 }
 
-public class AbstractPath {
+public class AbstractPath: Equatable {
+    public static func == (lhs: AbstractPath, rhs: AbstractPath) -> Bool {
+        return lhs.codingPath == rhs.codingPath
+    }
+
     private(set) var codingKeys: [CodingKey] = []
     private(set) var codingKey: CodingKey? {
         set {}

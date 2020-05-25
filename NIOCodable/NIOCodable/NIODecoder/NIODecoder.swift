@@ -94,6 +94,6 @@ enum BaseNode {
     case dictionary
 }
 
-struct Empty {
+private struct Empty {
 
 }

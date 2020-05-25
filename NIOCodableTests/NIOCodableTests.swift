@@ -24,13 +24,92 @@ class NIOCodableTests: XCTestCase {
     /*
      Bool转化标准支持
      标准布尔值 (true false)
-     字符串值 ("true" "false" "yes" "no") 及其大小写混合
+     字符串值 ("true" "false") 及其大小写混合
      数值 只支持 0 == false 1 == true 其他均为 false
      */
 
     // MARK: - Bool -
-    // MARK: Bool -> Bool
-    func testBoolToBool() {
+    func testBool() {
+        if true {
+            let data: Data = """
+                [true, false, 0, 1, 2, 3, 4.5, 6.7, null, [], [null], [true], [false], [0], [1], [2], [3], [4.5], [6.7], {}, {"a": "b"}]
+            """.data(using: String.Encoding.utf8) ?? Data()
+            let decoder = NIOJSONDecoder()
+            do {
+                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else { return }
+                XCTAssertEqual(models[0], true)
+                XCTAssertEqual(models[1], false)
+                XCTAssertEqual(models[2], false)
+                XCTAssertEqual(models[3], true)
+                XCTAssertEqual(models[4], false)
+                XCTAssertEqual(models[5], false)
+                XCTAssertEqual(models[6], false)
+                XCTAssertEqual(models[7], false)
+                XCTAssertEqual(models[8], false)
+                XCTAssertEqual(models[9], false)
+                XCTAssertEqual(models[10], false)
+                XCTAssertEqual(models[11], false)
+                XCTAssertEqual(models[12], false)
+                XCTAssertEqual(models[13], false)
+                XCTAssertEqual(models[14], false)
+                XCTAssertEqual(models[15], false)
+                XCTAssertEqual(models[16], false)
+                XCTAssertEqual(models[17], false)
+                XCTAssertEqual(models[18], false)
+                XCTAssertEqual(models[19], false)
+                XCTAssertEqual(models[20], false)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+
+        if true {
+//            struct Adapter: ValueControllable {
+//                func value(path: AbstractPath, source: Any) -> Initalizable {
+//                    if source is [AnyHashable: Any] {
+//                        return false
+//                    }
+//                }
+//            }
+
+            let data: Data = """
+                [true, false, 0, 1, 2, 3, 4.5, 6.7, null, [], [null], [true], [false], [0], [1], [2], [3], [4.5], [6.7], {}, {"a": "b"}]
+            """.data(using: String.Encoding.utf8) ?? Data()
+            let decoder = NIOJSONDecoder()
+//            decoder.decodingKeyedEmptyValueStrategy = .useCustom(Adapter())
+            do {
+                guard let models: [Bool?] = try decoder.decode(type: [Bool?].self, from: data) else {
+                    XCTAssertFalse(false)
+                    return
+                }
+                XCTAssertEqual(models[0], true)
+                XCTAssertEqual(models[1], false)
+                XCTAssertEqual(models[2], false)
+                XCTAssertEqual(models[3], true)
+                XCTAssertEqual(models[4], false)
+                XCTAssertEqual(models[5], false)
+                XCTAssertEqual(models[6], false)
+                XCTAssertEqual(models[7], false)
+                XCTAssertEqual(models[8], false)
+                XCTAssertEqual(models[9], false)
+                XCTAssertEqual(models[10], false)
+                XCTAssertEqual(models[11], false)
+                XCTAssertEqual(models[12], false)
+                XCTAssertEqual(models[13], false)
+                XCTAssertEqual(models[14], false)
+                XCTAssertEqual(models[15], false)
+                XCTAssertEqual(models[16], false)
+                XCTAssertEqual(models[17], false)
+                XCTAssertEqual(models[18], false)
+                XCTAssertEqual(models[19], false)
+                XCTAssertEqual(models[20], false)
+            } catch {
+                XCTAssertFalse(false, error.localizedDescription)
+                print(error.localizedDescription)
+            }
+        }
+
+
         if true {
             struct Adapter: TypeConvertible {
                 func toBool(path: AbstractPath, value: NSNull) -> Bool {
@@ -40,21 +119,21 @@ class NIOCodableTests: XCTestCase {
             }
 
             struct Root: Codable {
-                struct info: Codable {
-                    let a: String
-                }
                 let info: [info]?
+            }
+            struct info: Codable {
+                let a: String
             }
 
             let data: Data = """
-            {"info": null}
+                {"info": null}
             """.data(using: String.Encoding.utf8) ?? Data()
             let decoder = NIOJSONDecoder()
             decoder.convertNullStrategy = true
             decoder.convertTypeStrategy = .useCustom(Adapter())
             do {
                 guard let models: Root = try decoder.decode(type: Root.self, from: data) else { return }
-                XCTAssertEqual(models.info?.count, 0)
+                XCTAssertEqual(models.info?.count, nil)
             } catch {
                 XCTAssertNil(error, error.localizedDescription)
             }
@@ -229,7 +308,6 @@ class NIOCodableTests: XCTestCase {
     // MARK: - String -> Bool
     // 默认为 "true" 映射为true, 其他为false
     func testStringToBool() {
-
         if true {
             struct Adapter: TypeConvertible {
                 func toBool(path: AbstractPath, value: String) -> Bool {
@@ -1337,57 +1415,57 @@ class NIOCodableTests: XCTestCase {
             }
         }
 
-//        if true {
-//            let data: Data = """
-//                {
-//                    "key": [
-//                        {"info": "b"}
-//                    ]
-//                }
-//            """.data(using: String.Encoding.utf8) ?? Data()
-//
-//            class Root: Codable {
-//                var key: [Key]?
-//            }
-//
-//            class Key: Codable {
-//                var info: String?
-//            }
-//            let decoder = NIOJSONDecoder()
-//            do {
-//                let model: Root? = try decoder.decode(type: Root.self, from: data)
-//                XCTAssert(model?.key != nil)
-//                XCTAssert(model?.key?[0].info == "b")
-//            } catch {
-//                XCTAssertNil(error, error.localizedDescription)
-//            }
-//        }
-//
-//        if true {
-//            let data: Data = """
-//            {"key": {"key": {"key": "key"}}}
-//            """.data(using: String.Encoding.utf8) ?? Data()
-//            let decoder = NIOJSONDecoder()
-//
-//            class Root: Codable {
-//                var key: Key0?
-//                enum CodingKeys: String, CodingKey {
-//                    case key = "key"
-//                }
-//            }
-//            class Key0: Codable {
-//                var key: Key1?
-//            }
-//            class Key1: Codable {
-//                var key: String?
-//            }
-//            do {
-//                let model: Root? = try decoder.decode(type: Root.self, from: data)
-//                XCTAssert(model?.key?.key?.key == "key")
-//            } catch {
-//                XCTAssertNil(error, error.localizedDescription)
-//            }
-//        }
+        if true {
+            let data: Data = """
+                {
+                    "key": [
+                        {"info": "b"}
+                    ]
+                }
+            """.data(using: String.Encoding.utf8) ?? Data()
+
+            class Root: Codable {
+                var key: [Key]?
+            }
+
+            class Key: Codable {
+                var info: String?
+            }
+            let decoder = NIOJSONDecoder()
+            do {
+                let model: Root? = try decoder.decode(type: Root.self, from: data)
+                XCTAssert(model?.key != nil)
+                XCTAssert(model?.key?[0].info == "b")
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
+            }
+        }
+
+        if true {
+            let data: Data = """
+            {"key": {"key": {"key": "key"}}}
+            """.data(using: String.Encoding.utf8) ?? Data()
+            let decoder = NIOJSONDecoder()
+
+            class Root: Codable {
+                var key: Key0?
+                enum CodingKeys: String, CodingKey {
+                    case key = "key"
+                }
+            }
+            class Key0: Codable {
+                var key: Key1?
+            }
+            class Key1: Codable {
+                var key: String?
+            }
+            do {
+                let model: Root? = try decoder.decode(type: Root.self, from: data)
+                XCTAssert(model?.key?.key?.key == "key")
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
+            }
+        }
     }
     
     func testArray() {
@@ -1417,116 +1495,116 @@ class NIOCodableTests: XCTestCase {
             }
         }
 
-//        if true {
-//            struct Example: Codable {
-//                var name: String
-//            }
-//            let data: Data = """
-//            [{"name": "2ddf"}, {"name": null}]
-//            """.data(using: String.Encoding.utf8) ?? Data()
-//            let decoder = NIOJSONDecoder()
-//            do {
-//                guard let models: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
-//                XCTAssert(models.count == 2)
-//            } catch {
-//                XCTAssertNil(error, error.localizedDescription)
-//            }
-//        }
-//
-//        if true {
-//            struct Example: Codable {
-//                var name: Int64
-//            }
-//            let data: Data = """
-//            [
-//            ]
-//            """.data(using: String.Encoding.utf8) ?? Data()
-//            let decoder = NIOJSONDecoder()
-//            do {
-//                let models: [Example]? = try decoder.decode(type: [Example].self, from: data)
-//                XCTAssert(models?.count == 0)
-//            } catch {
-//                XCTAssertNil(error, error.localizedDescription)
-//            }
-//        }
-//
-//        if true {
-//            let data: Data = """
-//            [
-//                true, false
-//            ]
-//            """.data(using: String.Encoding.utf8) ?? Data()
-//            let decoder = NIOJSONDecoder()
-//            do {
-//                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else {
-//                    XCTAssert(false)
-//                    return
-//                }
-//                XCTAssert(models.count == 2)
-//                XCTAssert(models[0] == true)
-//            } catch {
-//                XCTAssertNil(error, error.localizedDescription)
-//            }
-//        }
-//
-//        if true {
-//            let data: Data = """
-//            {
-//                "a": [{"b": "c"}]
-//            }
-//            """.data(using: String.Encoding.utf8) ?? Data()
-//
-//            class Root: Codable {
-//                var a: [A]?
-//            }
-//            class A: Codable {
-//                var b: String?
-//            }
-//
-//            let decoder = NIOJSONDecoder()
-//            do {
-//                guard let models: Root = try decoder.decode(type: Root.self, from: data) else {
-//                    XCTAssert(false)
-//                    return
-//                }
-//                XCTAssert(models.a?.count == 1)
-//                XCTAssert(models.a?[0].b == "c")
-//            } catch {
-//                XCTAssertNil(error, error.localizedDescription)
-//            }
-//        }
-//
-//        if true {
-//            let data: Data = """
-//                [[
-//                {"name": true}
-//                ]]
-//                """.data(using: String.Encoding.utf8) ?? Data()
-//
-//            class Root: Codable {
-//                var a: [[A]]
-//            }
-//            class A: Codable {
-//                var name: String?
-//            }
-//
-//            struct Adapter: KeyControllable {
-//                func key(sourcePath: AbstractPath) -> AbstractPath {
-//                    print(sourcePath.codingPath)
-//                    return sourcePath
-//                }
-//            }
-//
-//            let decoder = NIOJSONDecoder()
-//            decoder.decodingKeyedKeyMismatchingStrategy = .useCustom(Adapter())
-//            do {
-//                guard let models: Root = try decoder.decode(type: Root.self, from: data) else { return }
-//                XCTAssert(models.a.count == 1)
-//                XCTAssert(models.a[0][0].name == "true")
-//            } catch {
-//                XCTAssertNil(error, error.localizedDescription)
-//            }
-//        }
+        if true {
+            struct Example: Codable {
+                var name: String
+            }
+            let data: Data = """
+            [{"name": "2ddf"}, {"name": null}]
+            """.data(using: String.Encoding.utf8) ?? Data()
+            let decoder = NIOJSONDecoder()
+            do {
+                guard let models: [Example] = try decoder.decode(type: [Example].self, from: data) else { return }
+                XCTAssert(models.count == 2)
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
+            }
+        }
+
+        if true {
+            struct Example: Codable {
+                var name: Int64
+            }
+            let data: Data = """
+            [
+            ]
+            """.data(using: String.Encoding.utf8) ?? Data()
+            let decoder = NIOJSONDecoder()
+            do {
+                let models: [Example]? = try decoder.decode(type: [Example].self, from: data)
+                XCTAssert(models?.count == 0)
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
+            }
+        }
+
+        if true {
+            let data: Data = """
+            [
+                true, false
+            ]
+            """.data(using: String.Encoding.utf8) ?? Data()
+            let decoder = NIOJSONDecoder()
+            do {
+                guard let models: [Bool] = try decoder.decode(type: [Bool].self, from: data) else {
+                    XCTAssert(false)
+                    return
+                }
+                XCTAssert(models.count == 2)
+                XCTAssert(models[0] == true)
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
+            }
+        }
+
+        if true {
+            let data: Data = """
+            {
+                "a": [{"b": "c"}]
+            }
+            """.data(using: String.Encoding.utf8) ?? Data()
+
+            class Root: Codable {
+                var a: [A]?
+            }
+            class A: Codable {
+                var b: String?
+            }
+
+            let decoder = NIOJSONDecoder()
+            do {
+                guard let models: Root = try decoder.decode(type: Root.self, from: data) else {
+                    XCTAssert(false)
+                    return
+                }
+                XCTAssert(models.a?.count == 1)
+                XCTAssert(models.a?[0].b == "c")
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
+            }
+        }
+
+        if true {
+            let data: Data = """
+                [[
+                {"name": true}
+                ]]
+                """.data(using: String.Encoding.utf8) ?? Data()
+
+            class Root: Codable {
+                var a: [[A]]
+            }
+            class A: Codable {
+                var name: String?
+            }
+
+            struct Adapter: KeyControllable {
+                func key(sourcePath: AbstractPath) -> AbstractPath {
+                    print(sourcePath.codingPath)
+                    return sourcePath
+                }
+            }
+
+            let decoder = NIOJSONDecoder()
+            decoder.decodingKeyedKeyMismatchingStrategy = .useCustom(Adapter())
+            do {
+                guard let models: Root = try decoder.decode(type: Root.self, from: data) else { return }
+                XCTAssert(models.a.count == 1)
+                XCTAssert(models.a[0][0].name == "true")
+            } catch {
+                XCTAssertNil(error, error.localizedDescription)
+            }
+        }
     }
 
     func testMapping() {
@@ -2035,7 +2113,7 @@ class NIOCodableTests: XCTestCase {
 
             func toString(path: AbstractPath, value: String) -> String {
                 print(path)
-                if path.codingPath == AbstractPath().dictionary(index: "name").codingPath {
+                if path == AbstractPath().dictionary(index: "name") {
                     return "XXXX"
                 }
                 return value
