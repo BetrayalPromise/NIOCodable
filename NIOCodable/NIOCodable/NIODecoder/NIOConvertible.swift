@@ -3303,10 +3303,19 @@ public protocol KeyControllable {
 }
 
 /// 模型解析失败时 用以防御处理的
-public protocol ValueControllable {
+public protocol KeyedEmptyValueControllable {
     /// 返回自定义模型
     /// - Parameters:
     ///   - path: 数据源定义路径
     ///   - source: 原始值
-    func value(path: AbstractPath, source: Any) -> Initalizable
+    func keyedEmptyValue(path: AbstractPath, source: Any) -> Initalizable
+}
+
+/// 模型解析失败时 用以防御处理的
+public protocol KeyedNullValueControllable {
+    /// 返回自定义模型
+    /// - Parameters:
+    ///   - path: 数据源定义路径
+    ///   - source: 原始值
+    func keyedNullValue(path: AbstractPath, source: Any) -> Initalizable
 }

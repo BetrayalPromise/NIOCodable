@@ -11,15 +11,16 @@ public final class NIOJSONDecoder {
     public var convertTypeStrategy: NIOJSONDecoder.ConvertTypeStrategy = .useDefaultable
 
     /// [:]出现键不匹配
-    public var decodingKeyedKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.KeyedDecoding.NotFound = .useExecption
+    public var keyedKeyNotFoundStrategy: NIOJSONDecoder.KeyedDecoding.KeyNotFound = .useExecption
 
-    /// [:]类型出现键出现空值问题,即出现{}情况(主要问题就是数据源的树形结构中某一个层级出现{}的情况
-    public var decodingKeyedEmptyValueStrategy: NIOJSONDecoder.KeyedDecoding.DataSouceExecption.EmptyValue = .useExecption
+    /// [:]类型出现数据源的树形结构中某一个层级出现{}的情况
+    public var keyedEmptyValueStrategy: NIOJSONDecoder.KeyedDecoding.EmptyValue = .useExecption
 
-    public var decodingNullValueStrategy: NIOJSONDecoder.KeyedDecoding.DataSouceExecption.NullValue = .useExecption
+    /// [:]类型出现数据源的树形结构中某一个层级出现null的情况
+    public var keyedNullValueStrategy: NIOJSONDecoder.KeyedDecoding.NullValue = .useExecption
 
     /// 简单可以理解为系统内建类型的之间转换出现键不匹配
-    public var decodingSingleKeyMismatchingStrategy: NIOJSONDecoder.KeyExecptionStrategy.SingleDecoding.NotFound = .useExecption
+    public var decodingSingleKeyNotFoundStrategy: NIOJSONDecoder.SingleDecoding.KeyNotFound = .useExecption
 
     /// null是否参与转换,只有该项先设置为true,再设置自定义转换,才有意义
     public var convertNullStrategy: Bool = false
@@ -83,44 +84,32 @@ public extension NIOJSONDecoder {
         case useCustom(TypeConvertible)  // 自定义处理
     }
 
-    enum KeyExecptionStrategy {
-        public enum SingleDecoding {
-            public enum NotFound {
-                case useCustom(KeyControllable)
-                case useExecption
-            }
+    enum KeyedDecoding {
+        // 处理空字典[:]
+        public enum EmptyValue {
+            case useExecption
+            case useCustom(KeyedEmptyValueControllable)
         }
 
-        public enum KeyedDecoding {
-            public enum NotFound {
-                case useCustom(KeyControllable)
-                case useExecption
-                case useDefaultable
-                case useNull
-            }
+        // 处理字典为null
+        public enum NullValue {
+            case useExecption
+            case useCustom(KeyedNullValueControllable)
         }
 
-        public enum UnkeyedDecoding {
-            public enum NotFound {
-                case useCustom(ValueControllable)
-                case useExecption
-                case useDefaultable
-                case useNull
-            }
+        /// 处理键不匹配 不包含上面俩中情况
+        public enum KeyNotFound {
+            case useCustom(KeyControllable)
+            case useExecption
+            case useDefaultable
+            case useNull
         }
     }
 
-    enum KeyedDecoding {
-        public enum DataSouceExecption {
-            public enum EmptyValue { // 处理空字典[:]这种问题
-                case useExecption
-                case useCustom(ValueControllable)
-            }
-
-            public enum NullValue { // 处理空字典null和数组null
-                case useExecption
-                case useCustom(ValueControllable)
-            }
+    enum SingleDecoding {
+        public enum KeyNotFound {
+            case useCustom(KeyControllable)
+            case useExecption
         }
     }
 }

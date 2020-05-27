@@ -58,9 +58,9 @@ extension NIODecoder {
         if value is [AnyHashable: Any] {
             guard let `value`: [AnyHashable: Any] = value as? [AnyHashable : Any]  else { throw DecodingError.typeMismatch(type, DecodingError.Context(codingPath: self.codingPath, debugDescription: "[] conversion Execption")) }
             if value.isEmpty {
-                switch self.wrapper?.decodingKeyedEmptyValueStrategy {
+                switch self.wrapper?.keyedEmptyValueStrategy {
                 case .useCustom(let delegate):
-                    let model: Initalizable = delegate.value(path: AbstractPath(codingKeys: self.codingPath), source: source)
+                    let model: Initalizable = delegate.keyedEmptyValue(path: AbstractPath(codingKeys: self.codingPath), source: source)
                     if model is Decodable {
                         return model as? T
                     } else {
