@@ -730,7 +730,7 @@ struct NIOKeyedDecodingContainer<K>: KeyedDecodingContainerProtocol where K: Cod
                 case .useExecption, .none:
                     throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: [key], debugDescription: "key: \(key.stringValue) not found"))
                 case .useCustom(let delegate):
-                    let model: Initalizable = delegate.keyedNullValue(path: AbstractPath(codingKeys: self.decoder.codingPath), source: entry)
+                    let model: Initalizable = delegate.nullValue(path: AbstractPath(codingKeys: self.decoder.codingPath), source: entry)
                     if model is Decodable {
                         return model as! T
                     } else {

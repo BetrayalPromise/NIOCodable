@@ -88,13 +88,13 @@ public extension NIOJSONDecoder {
         // 处理空字典[:]
         public enum EmptyValue {
             case useExecption
-            case useCustom(KeyedEmptyValueControllable)
+            case useCustom(ValueControllable)
         }
 
         // 处理字典为null
         public enum NullValue {
             case useExecption
-            case useCustom(KeyedNullValueControllable)
+            case useCustom(ValueControllable)
         }
 
         /// 处理键不匹配 不包含上面俩中情况

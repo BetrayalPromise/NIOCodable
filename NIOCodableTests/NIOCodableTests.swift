@@ -8,7 +8,7 @@ class NIOCodableTests: XCTestCase {
     }
 
     override func tearDown() {
-        
+
     }
 
     func testExample() {
@@ -64,7 +64,7 @@ class NIOCodableTests: XCTestCase {
         }
 
         if true {
-            struct Adapter: KeyedEmptyValueControllable {
+            struct Adapter: ValueControllable {
                 func keyedEmptyValue(path: AbstractPath, source: Any) -> Initalizable {
                     return false
                 }
@@ -1388,8 +1388,8 @@ class NIOCodableTests: XCTestCase {
     
     func testDictionary() {
         if true {
-            struct Adapter: Codable, KeyedEmptyValueControllable {
-                func keyedEmptyValue(path: AbstractPath, source: Any) -> Initalizable {
+            struct Adapter: Codable, ValueControllable {
+                func emptyValue(path: AbstractPath, source: Any) -> Initalizable {
                     return Example(path: path, source: source)
                 }
             }
@@ -1484,8 +1484,8 @@ class NIOCodableTests: XCTestCase {
         }
         
         if true {
-            struct Adapter: KeyedNullValueControllable {
-                func keyedNullValue(path: AbstractPath, source: Any) -> Initalizable {
+            struct Adapter: ValueControllable {
+                func nullValue(path: AbstractPath, source: Any) -> Initalizable {
                     if path.codingPath == AbstractPath().dictionary(index: "info").codingPath {
                         return Array<Bool>(path: path, source: source)
                     }
@@ -2040,8 +2040,8 @@ class NIOCodableTests: XCTestCase {
 
     func testComplex() {
         if true {
-            struct Adapter: KeyedEmptyValueControllable {
-                func keyedEmptyValue(path: AbstractPath, source: Any) -> Initalizable {
+            struct Adapter: ValueControllable {
+                func emptyValue(path: AbstractPath, source: Any) -> Initalizable {
                     return Cashvalues(path: path, source: source)
                 }
             }
@@ -2122,8 +2122,8 @@ class NIOCodableTests: XCTestCase {
             }
         }
 
-        struct Adapter: TypeConvertible, KeyedEmptyValueControllable {
-            func keyedEmptyValue(path: AbstractPath, source: Any) -> Initalizable {
+        struct Adapter: TypeConvertible, ValueControllable {
+            func emptyValue(path: AbstractPath, source: Any) -> Initalizable {
                 return Info(path: path, source: source)
             }
 

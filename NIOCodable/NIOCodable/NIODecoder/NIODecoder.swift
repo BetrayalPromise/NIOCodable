@@ -60,7 +60,7 @@ extension NIODecoder {
             if value.isEmpty {
                 switch self.wrapper?.keyedEmptyValueStrategy {
                 case .useCustom(let delegate):
-                    let model: Initalizable = delegate.keyedEmptyValue(path: AbstractPath(codingKeys: self.codingPath), source: source)
+                    let model: Initalizable = delegate.emptyValue(path: AbstractPath(codingKeys: self.codingPath), source: source)
                     if model is Decodable {
                         return model as? T
                     } else {

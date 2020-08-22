@@ -153,7 +153,7 @@ struct NIOUnkeyedDecodingContainer: UnkeyedDecodingContainer {
                 if dictionary.isEmpty {
                     switch self.decoder.wrapper?.keyedEmptyValueStrategy {
                     case .useCustom(let delegate):
-                        guard let `model`: T = delegate.keyedEmptyValue(path: AbstractPath(codingKeys: self.decoder.codingPath), source: self.source[self.currentIndex]) as? T else {
+                        guard let `model`: T = delegate.emptyValue(path: AbstractPath(codingKeys: self.decoder.codingPath), source: self.source[self.currentIndex]) as? T else {
                             throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "转换失败"))
                         }
                         return model
