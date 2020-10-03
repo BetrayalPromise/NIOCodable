@@ -1,4 +1,5 @@
 # NIOCodable
+# 功能已经集成在[SwiftModel](https://github.com/BetrayalPromise/SwiftModel.git)中 本工具不再更新
 ## codable目前还有点问题 
 ### 1.模型继承子类特有的属性解析为nil的问题 
 ### 2.类型不匹配导致整个模型解析失败的问题
